@@ -1,0 +1,30 @@
+:host {
+  .mat-icon {
+    vertical-align: middle;
+    margin-right: 20px;
+  }
+  .profile-card {
+    text-align: center;
+    padding: 0 20px 20px 20px;
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+}
+
+.side-bar {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,5);;
+  height: 100%;
+  background: rgb(219,106,10);
+  background: linear-gradient(135deg, rgba(219,106,10,0.9318102240896359) 5%, rgba(208,159,63,0.18671218487394958) 35%, rgba(246,243,236,0) 64%);
+}
+
+.divider {
+  color: #eeeeee;
+  box-shadow: 0 4px 8px 0 rgb(0, 0, 0);
+  margin: 5% 5% 5% 5%;
+}
+
