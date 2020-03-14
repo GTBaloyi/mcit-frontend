@@ -1,6 +1,7 @@
 
 export const environment = {
-  production: false
+  production: false,
+    BASE_API_URL: 'just testing if you got the string'
 };
 
 

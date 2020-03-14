@@ -12,12 +12,16 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {DashboardService} from "../../services/dashboard.service";
+import {UserLoginComponent} from "../user-login/user-login.component";
+import {ClientRegistrationComponent} from "../client-registration/client-registration.component";
 
 @NgModule({
   declarations: [
     DefaultComponent,
     DashboardComponent,
-    PostsComponent
+    PostsComponent,
+    UserLoginComponent,
+    ClientRegistrationComponent
   ],
   imports: [
     CommonModule,
