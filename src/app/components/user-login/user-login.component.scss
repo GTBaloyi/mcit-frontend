@@ -3,7 +3,7 @@
     flex-direction: column;
     height: 100%;
     background: rgb(222,116,56);
-    background: radial-gradient(circle, rgba(222,116,56,0.727328431372549) 10%, rgba(208,200,200,1) 51%);
+    background: radial-gradient(circle, rgba(222,116,56,0.727328431372549) 10%, rgba(0,0,0,0.46122198879551823) 51%);
 
 
 
@@ -68,10 +68,48 @@
     cursor: pointer;
 }
 
-.login input[type="submit"]:hover {
+
+.buttonEmp{
+    height: 50px;
+    width: 100%;
+    font-weight: 500;
+    font-size: 100%;
     background: rgb(222,116,56);
+    background: linear-gradient(90deg, rgba(222,116,56,0.8309698879551821) 10%, rgba(238,207,190,1) 93%);
+    color: #fff;
+    cursor: pointer;
+
 }
 
-.login input[type="submit"]:focus {
-    background: rgba(238,207,190,1);
+.buttonEmp :hover{
+    background: rgb(222,116,56);
+
+}
+
+.buttonEmp :focus{
+    background: rgb(222,116,56);
+
+}
+
+
+.button{
+    height: 50px;
+    width: 45%;
+    font-weight: 500;
+    font-size: 100%;
+    background: rgb(222,116,56);
+    background: linear-gradient(90deg, rgba(222,116,56,0.8309698879551821) 10%, rgba(238,207,190,1) 93%);
+    color: #fff;
+    cursor: pointer;
+
+}
+
+.button :hover{
+    background: rgb(222,116,56);
+
+}
+
+.button :focus{
+    background: rgb(222,116,56);
+
 }

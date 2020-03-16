@@ -18,8 +18,14 @@
             <div *ngIf="formControls.password.errors.required">Password is required</div>
         </div>
 
-        <p>
-            <input type="submit" value="Log in">
+        <p *ngIf="false">
+            <button class="buttonEmp" mat-raised-button>Sign up</button>
+
         </p>
+
+        <div *ngIf="true">
+            <button class="button" style="margin-right: 6%; margin-left: 2%" mat-raised-button>Sign in</button>
+            <button class="button" mat-raised-button routerLink="/register">Sign up</button>
+        </div>
     </form>
 </mat-card>

@@ -12,6 +12,11 @@ const routes: Routes = [
       path: '',
         component: DefaultComponent,
         children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: 'dashboard'
+            },
             {path: 'dashboard', component: DashboardComponent},
             {path: 'posts', component: PostsComponent}
         ],
@@ -23,8 +28,7 @@ const routes: Routes = [
     },
     {
       path: 'register', component: ClientRegistrationComponent
-    },
-    { path: '**', redirectTo: '' }
+    }
 ];
 
 @NgModule({

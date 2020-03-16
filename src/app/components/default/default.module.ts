@@ -14,6 +14,10 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {DashboardService} from "../../services/dashboard.service";
 import {UserLoginComponent} from "../user-login/user-login.component";
 import {ClientRegistrationComponent} from "../client-registration/client-registration.component";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {StatModule} from "../../shared/widgets/stat/stat.module";
 
 @NgModule({
   declarations: [
@@ -29,10 +33,14 @@ import {ClientRegistrationComponent} from "../client-registration/client-registr
     SharedModule,
     MatSidenavModule,
     MatDividerModule,
-    FlexLayoutModule,
     MatCardModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    MatGridListModule,
+    StatModule,
+    MatButtonModule,
+    MatIconModule,
+    FlexLayoutModule.withConfig({addFlexToParent: false})
   ],
   providers: [
     DashboardService
