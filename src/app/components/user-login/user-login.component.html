@@ -1,21 +1,21 @@
 <mat-card class="login">
     <h2 class="login-header">METAL CASTING TECHNOLOGY</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <form >
 
-        <p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+       <!-- <p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
             <input type="email" placeholder="Email" formControlName="email">
         </p>
-
-        <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
-            <div *ngIf="formControls.email.errors.required">Email is required</div>
+-->
+        <div  class="help-block">
+            <div >Email is required</div>
         </div>
 
-        <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
+        <!--<p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
             <input type="password" placeholder="Password" formControlName="password">
-        </p>
+        </p>-->
 
-        <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
-            <div *ngIf="formControls.password.errors.required">Password is required</div>
+        <div  class="help-block">
+            <div >Password is required</div>
         </div>
 
         <p *ngIf="false">

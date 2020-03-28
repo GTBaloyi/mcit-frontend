@@ -5,9 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { AreaComponent } from './widgets/area/area.component';
 import { HighchartsChartModule } from 'highcharts-angular';
-import { CardComponent } from './widgets/card/card.component';
 import { PieComponent } from './widgets/pie/pie.component';
 import { MatDividerModule } from "@angular/material/divider";
 import { MatToolbarModule } from "@angular/material/toolbar";
@@ -21,8 +19,6 @@ import { MatListModule } from "@angular/material/list";
   declarations: [
     HeaderComponent,
     SidebarComponent,
-    AreaComponent,
-    CardComponent,
     PieComponent
   ],
   imports: [
@@ -40,8 +36,6 @@ import { MatListModule } from "@angular/material/list";
   exports: [
     HeaderComponent,
     SidebarComponent,
-    AreaComponent,
-    CardComponent,
     PieComponent
   ]
 })

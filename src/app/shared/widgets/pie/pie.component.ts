@@ -19,13 +19,13 @@ export class PieComponent implements OnInit {
   ngOnInit() {
     this.chartOptions = {
       chart: {
-        plotBackgroundColor: null,
+        plotBackgroundColor: "#F9F9F9",
         plotBorderWidth: null,
-        plotShadow: false,
+        plotShadow: null,
         type: 'pie'
       },
       title: {
-        text: 'RANDOM DATA'
+        text: 'KEY PERFORMANCE INDICATORS'
       },
       tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -41,7 +41,12 @@ export class PieComponent implements OnInit {
         }
       },
       exporting: {
-        enabled: true
+        enabled: true,
+          buttons: {
+              contextButton: {
+                  menuItems: ['downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG','label']
+              }
+          }
       },
       credits: {
         enabled: false

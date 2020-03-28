@@ -1,19 +1,28 @@
 <div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="10px">
     <div fxFlex>
-        <app-stat [bgClass]="'P-Invoice-Value-Added'" [icon]="'dashboard'" [count]="1858.97" [label]="'P-Invoice Value Added'"></app-stat>
+        <app-stat [bgClass]="'P-Invoice-Value-Added'" [icon]="'dashboard'" [count]="1858.97" [label]="'Invoice value added per day'"></app-stat>
     </div>
     <div fxFlex>
-        <app-stat [bgClass]="'A-Invoice-Value-Added'" [icon]="'view_list'" [count]="50.56" [label]="'A-Invoice Value Added'"></app-stat>
+        <app-stat [bgClass]="'A-Invoice-Value-Added'" [icon]="'view_list'" [count]="50.56" [label]="'On-time deliveries'"></app-stat>
     </div>
     <div fxFlex>
-        <app-stat [bgClass]="'On-Time-Deliveries'" [icon]="'shopping_cart'" [count]="71.23" [label]="'On-Time Deliveries'"></app-stat>
+        <app-stat [bgClass]="'On-Time-Deliveries'" [icon]="'shopping_cart'" [count]="71.23" [label]="'In-budget projects'"></app-stat>
     </div>
     <div fxFlex>
-        <app-stat [bgClass]="'In-Budget-Projects'" [icon]="'contact_support'" [count]="73.87" [label]="'In-Budget Projects'"></app-stat>
+        <app-stat [bgClass]="'In-Budget-Projects'" [icon]="'contact_support'" [count]="73.87" [label]="'Invoice value budget value'"></app-stat>
     </div>
     <div fxFlex>
-        <app-stat [bgClass]="'Customer-Satisfaction'" [icon]="'contact_support'" [count]="0.00" [label]="'Customer Satisfaction'"></app-stat>
+        <app-stat [bgClass]="'Customer-Satisfaction'" [icon]="'contact_support'" [count]="0.00" [label]="'Customer satisfaction'"></app-stat>
     </div>
 </div>
 
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+
+    <div fxFlex="49">
+        <app-widget-pie [data]="pieChart"></app-widget-pie>
+    </div>
+    <div fxFlex="49">
+        <app-widget-pie [data]="pieChart"></app-widget-pie>
+    </div>
+</div>
 
