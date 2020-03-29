@@ -1,0 +1,115 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: rgb(222,116,56);
+    background: radial-gradient(circle, rgba(222,116,56,0.727328431372549) 10%, rgba(0,0,0,0.46122198879551823) 51%);
+
+
+
+}
+
+.login {
+    width: 40%;
+    margin: auto;
+    font-size: 16px;
+    -moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 10px #000000;
+    background: #f9f9f9;
+}
+
+
+
+
+
+.login-header {
+    background: rgb(222,116,56);
+    background: linear-gradient(90deg, rgba(222,116,56,0.8309698879551821) 10%, rgba(238,207,190,1) 93%);    padding: 20px;
+    font-size: 1.4em;
+    font-weight: normal;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+
+.login p {
+    padding: 12px;
+}
+
+.login input {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    padding: 16px;
+    outline: 0;
+    font-family: inherit;
+    font-size: 0.95em;
+}
+
+.login input[type="email"],
+.login input[type="password"] {
+    border-color: #bbb;
+    color: #555;
+}
+
+.login input[type="email"]:focus,
+.login input[type="password"]:focus {
+    border-color: #888;
+}
+
+.login input[type="submit"] {
+    background: rgb(222,116,56);
+    background: linear-gradient(90deg, rgba(222,116,56,0.8309698879551821) 10%, rgba(238,207,190,1) 93%);
+    color: #fff;
+    cursor: pointer;
+}
+
+
+.buttonEmp{
+    height: 50px;
+    width: 100%;
+    font-weight: 500;
+    font-size: 100%;
+    background: rgb(222,116,56);
+    background: linear-gradient(90deg, rgba(222,116,56,0.8309698879551821) 10%, rgba(238,207,190,1) 93%);
+    color: #fff;
+    cursor: pointer;
+
+}
+
+.buttonEmp :hover{
+    background: rgb(222,116,56);
+
+}
+
+.buttonEmp :focus{
+    background: rgb(222,116,56);
+
+}
+
+
+.button{
+    height: 50px;
+    width: 45%;
+    font-weight: 500;
+    font-size: 100%;
+    background: rgb(222,116,56);
+    background: linear-gradient(90deg, rgba(222,116,56,0.8309698879551821) 10%, rgba(238,207,190,1) 93%);
+    color: #fff;
+    cursor: pointer;
+
+}
+
+.button :hover{
+    background: rgb(222,116,56);
+
+}
+
+.button :focus{
+    background: rgb(222,116,56);
+
+}

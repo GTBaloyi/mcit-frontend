@@ -1,0 +1,43 @@
+<mat-card class="register">
+    <h2 class="register-header">METAL CASTING TECHNOLOGY</h2>
+    <form >
+
+        <!--<p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+            <input type="text" placeholder="Name" formControlName="name">
+        </p>-->
+
+        <div class="help-block">
+            <div >Name is required</div>
+        </div>
+
+       <!-- <p [ngClass]="{ 'has-error': isSubmitted && formControls.surname.errors }">
+            <input type="text" placeholder="Surname" formControlName="surname">
+        </p>-->
+
+        <div class="help-block">
+            <div >Surname is required</div>
+        </div>
+
+
+        <!--<p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+            <input type="email" placeholder="Email" formControlName="email">
+        </p>-->
+
+        <div class="help-block">
+            <div >Email is required</div>
+        </div>
+
+        <!--<p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
+            <input type="password" placeholder="Password" formControlName="password">
+        </p>-->
+
+        <div  class="help-block">
+            <div>Password is required</div>
+        </div>
+
+        <div>
+            <button class="button" style="margin-right: 6%; margin-left: 2%" mat-raised-button routerLink="/login">Cancel</button>
+            <button class="button" mat-raised-button routerLink="/register">Sign up</button>
+        </div>
+    </form>
+</mat-card>
