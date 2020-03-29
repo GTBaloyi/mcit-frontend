@@ -9,13 +9,12 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:server:serverless": "webpack --config webpack.server.config.js --progress --colors",
     "aws-deploy": "aws s3 sync dist/ s3://mcp-frontend"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "9.0.0",
-    "@angular/cdk": "^9.0.0",
+    "@angular/cdk": "9.0.0",
     "@angular/common": "9.0.0",
     "@angular/compiler": "9.0.0",
     "@angular/core": "9.0.0",
@@ -56,8 +55,6 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "opencollective": "^1.0.3",
     "protractor": "~5.4.0",
-    "serverless": "^1.60.0",
-    "serverless-apigw-binary": "^0.4.4",
     "ts-loader": "^6.2.1",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
