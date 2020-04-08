@@ -18,32 +18,72 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {StatModule} from "../../shared/widgets/stat/stat.module";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatFabMenuModule} from "@angular-material-extensions/fab-menu";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
-    DefaultComponent,
-    DashboardComponent,
-    PostsComponent,
-    UserLoginComponent,
-    ClientRegistrationComponent
+      DefaultComponent,
+      DashboardComponent,
+      PostsComponent,
+      UserLoginComponent,
+      ClientRegistrationComponent
   ],
   imports: [
-    CommonModule,
-    RouterModule,
-    SharedModule,
-    MatSidenavModule,
-    MatDividerModule,
-    MatCardModule,
-    MatPaginatorModule,
-    MatTableModule,
-    MatGridListModule,
-    StatModule,
-    MatButtonModule,
-    MatIconModule,
-    FlexLayoutModule.withConfig({addFlexToParent: false})
+      CommonModule,
+      RouterModule,
+      SharedModule,
+      MatSidenavModule,
+      MatDividerModule,
+      MatCardModule,
+      MatPaginatorModule,
+      MatTableModule,
+      MatGridListModule,
+      StatModule,
+      MatButtonModule,
+      MatIconModule,
+      MatProgressSpinnerModule,
+      MatFormFieldModule,
+      MatInputModule,
+      FormsModule,
+      ReactiveFormsModule,
+      MatFabMenuModule,
+      BrowserAnimationsModule,
+      MatProgressBarModule,
+      MatSnackBarModule,
+      FlexLayoutModule.withConfig({addFlexToParent: false})
+  ],
+  exports: [
+      MatFabMenuModule,
+      ReactiveFormsModule,
+      FormsModule,
+      CommonModule,
+      RouterModule,
+      SharedModule,
+      MatSidenavModule,
+      MatDividerModule,
+      MatCardModule,
+      MatPaginatorModule,
+      MatTableModule,
+      MatGridListModule,
+      StatModule,
+      MatButtonModule,
+      MatIconModule,
+      MatProgressSpinnerModule,
+      MatFormFieldModule,
+      MatInputModule,
+      BrowserAnimationsModule,
+      MatProgressBarModule,
+      MatSnackBarModule
   ],
   providers: [
-    DashboardService
+      DashboardService
   ]
 })
 export class DefaultModule { }
