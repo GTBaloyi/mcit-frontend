@@ -1,43 +1,127 @@
 <mat-card class="register">
     <h2 class="register-header">METAL CASTING TECHNOLOGY</h2>
-    <form >
+  
+<mat-tab-group>
 
-        <!--<p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+    <mat-tab label="Basic Information">
+        <mat-card-content>
+        <Form >
+
+              <!--<p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
             <input type="text" placeholder="Name" formControlName="name">
         </p>-->
+            <div class="help-block">
+            <mat-form-field>
+                <div>
+               Contact Name<input placeholder="Name of company" type="text">
+                <mat-icon matSuffix>face</mat-icon>
+            </div>
+            </mat-form-field>
+            </div>
 
-        <div class="help-block">
-            <div >Name is required</div>
-        </div>
-
-       <!-- <p [ngClass]="{ 'has-error': isSubmitted && formControls.surname.errors }">
-            <input type="text" placeholder="Surname" formControlName="surname">
-        </p>-->
-
-        <div class="help-block">
-            <div >Surname is required</div>
-        </div>
+            <div class="help-block">
+                <mat-form-field>
+                    <div>
+                   VAT Number<input placeholder="Vat Number Identification" type="text">
+                    <mat-icon matSuffix>receipt</mat-icon>
+                </div>
+                </mat-form-field>
+                </div>
 
 
+                <div class="help-block">
+                    <mat-form-field>
+                        <div>
+                       Phone<input placeholder="Phone Number" type="text">
+                        <mat-icon matSuffix>phone</mat-icon>
+                    </div>
+                    </mat-form-field>
+                    </div>
+
+
+                <div class="help-block">
+            <mat-form-field>
+                <div>
+                Company<input placeholder="Name of Company"  type="text">
+                 <mat-icon matSuffix>business</mat-icon>
+                </div>
+             </mat-form-field>
+
+            </div>
+            
         <!--<p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
             <input type="email" placeholder="Email" formControlName="email">
         </p>-->
-
-        <div class="help-block">
-            <div >Email is required</div>
-        </div>
-
-        <!--<p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
+            <mat-form-field>
+                <input placeholder="Email" name="email" type="email">
+                <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+             <!--<p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
             <input type="password" placeholder="Password" formControlName="password">
         </p>-->
 
-        <div  class="help-block">
-            <div>Password is required</div>
+        <div class="help-block">
+            <mat-form-field>
+                <div>
+                <input type="password" name="password" placeholder="password">
+                <mat-icon matSuffix>lock</mat-icon>
+                </div>
+            </mat-form-field>
         </div>
 
-        <div>
+
+            <div class="help-block">
+                <mat-form-field>
+                    <div>
+                   Confirm Password<input placeholder="Confirm Password" type="text">
+                    <mat-icon matSuffix>lock</mat-icon>
+                </div>
+                </mat-form-field>
+                </div>
+          
+                <div>
+                    <button class="button" style="margin-right: 6%; margin-left: 2%" mat-raised-button routerLink="/login">Cancel</button>
+                    <button class="button" mat-raised-button routerLink="/register">Sign up</button>
+                </div>
+            
+        </Form>
+        </mat-card-content>
+    </mat-tab>
+</mat-tab-group>
+<mat-tab-group>
+    <mat-tab label="Contact Information">
+    <form >
+
+        <div class="help-block">
+            <mat-form-field>
+                <div>
+                <address>adress
+                    <input placeholder=""  type="text">
+                    <br>
+                    <input placeholder=""  type="text">
+                    
+                    <div  style="width: 50% ;">
+                        
+                        <input type="text">
+                 </div>
+                 <br>
+                 <div  style="width: 50% ;">
+                   
+                   <input type="text">
+                 </div>
+
+                </address>
+                
+                </div>
+             </mat-form-field>
+
+            </div>
+
+       <div>
             <button class="button" style="margin-right: 6%; margin-left: 2%" mat-raised-button routerLink="/login">Cancel</button>
             <button class="button" mat-raised-button routerLink="/register">Sign up</button>
         </div>
     </form>
+    </mat-tab>
+    </mat-tab-group>
 </mat-card>
