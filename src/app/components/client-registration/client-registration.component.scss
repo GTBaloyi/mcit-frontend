@@ -61,6 +61,18 @@
   font-size: 0.95em;
 }
 
+.register input[type="email"],
+.register input[type="password"],
+.register input[type="text"] {
+  border-color: #bbb;
+  color: #555;
+}
+
+.register input[type="email"]:focus,
+.register input[type="password"]:focus,
+ .register input[type="text"]:focus{
+  border-color: #888;
+}
 
 .register input[type="submit"] {
   background: rgb(222,116,56);
@@ -90,4 +102,14 @@
 .button :focus{
   background: rgb(222,116,56);
 
+}
+
+mat-form-field, mat-checkbox {
+  width: 80%;
+  display: block;
+  margin: auto;
+}
+
+mat-card-content {
+  margin-top: 20px;
 }

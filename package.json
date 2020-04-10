@@ -14,8 +14,12 @@
   },
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@angular-material-extensions/fab-menu": "^2.0.1",
     "@angular/animations": "^9.0.0",
+=======
+    "@angular/animations": "9.0.0",
+>>>>>>> feature/register_screen
     "@angular/cdk": "^9.2.0",
     "@angular/common": "9.0.0",
     "@angular/compiler": "9.0.0",
