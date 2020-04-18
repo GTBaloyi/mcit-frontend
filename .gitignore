@@ -10,3 +10,5 @@
 # Learn more about Git LFS for large files:
 #     https://www.atlassian.com/git/tutorials/git-lfs
 bitbucket-pipelines.yml
+
+node_moduless
