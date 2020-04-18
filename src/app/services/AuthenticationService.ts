@@ -25,15 +25,12 @@ export class AuthenticationService {
         })
     }
 
-    // Error handling
     handleErrorObservable(error) {
         let errorMessage = '';
         if(error.error instanceof ErrorEvent) {
-            // Get client-side error
             errorMessage = error.error.message;
         } else {
-            // Get server-side error
-            errorMessage = `Message: ${error.message}`;
+            errorMessage = ` Message: ${error.message}`;
         }
         return throwError(errorMessage);
     }
@@ -52,6 +49,7 @@ export class AuthenticationService {
 
     logout( user: User) {
         localStorage.removeItem('currentUser');
+
         user = null;
     }
 
