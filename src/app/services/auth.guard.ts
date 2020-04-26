@@ -9,10 +9,15 @@ import {User} from "../models/User";
 export class AuthGuard implements CanActivate {
 
     private  loggedIn: boolean = false;
+    private loginInfo: User = null;
+
 
     constructor(private router: Router) {
 
     }
+
+
+
 
     userValidation(user: User){
         this.loggedIn = user.loggedIn
@@ -20,16 +25,21 @@ export class AuthGuard implements CanActivate {
 
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        this.loginInfo  = JSON.parse(sessionStorage.getItem("loginInfo"));
 
-        if(this.loggedIn != null){
+        if (this.loggedIn) {
+            return true;
+        }else if(this.loginInfo != null) {
+            this.loggedIn = this.loginInfo.loggedIn;
+
             if (this.loggedIn) {
                 return true;
-            }else{
-                this.router.navigate(['/login']);
+            } else {
+                this.router.navigate(['/landing-page']);
                 return false;
             }
-        }else{
-            this.router.navigate(['/login']);
+        }else {
+            this.router.navigate(['/landing-page']);
             return false;
         }
     }
