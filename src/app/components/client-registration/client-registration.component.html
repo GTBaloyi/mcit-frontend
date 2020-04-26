@@ -12,44 +12,41 @@
     <div class="line">
     </div>
 
-    <mat-card-content >
+    <mat-card-content  >
         <div class="column" fxLayout="column">
 
           <div style="padding: 0% 20% 0% 0%">
-            <input matInput  type="text" placeholder="Username" [(ngModel)]="username" [value]="username" required>
+            <input matInput  type="text" placeholder="Username" name="Username" #Username="ngModel" [(ngModel)]="user.Username" required >
         
          </div>
 
           <div style="padding: 0% 20% 0% 0%">
-            <input placeholder="Email" name="email" type="email" formControlName="Email">
+            <input placeholder="Email" name="email" type="email" #email="ngModel" [(ngModel)]="user.email" required>
          
         
         </div>
 
         <div style="padding: 0% 20% 0% 0%">
-          <input placeholder="Name of Company"  type="text" formControlName="Name of Company">
+          <input placeholder="Name of Company"  type="text" >
            
           </div>
        
           <div style="padding: 0% 20% 0% 0%">
-              <input placeholder="Vat Number Identification" type="text" formControlName="Vat Number">
+              <input placeholder="Vat Number Identification" type="text" >
               
            </div>
          
           
            <div style="padding: 0% 20% 0% 0%">
-             <input placeholder="Phone Number" type="text" formControlName="Password">
+             <input placeholder="Phone Number" type="text"  required>
               
           </div>
 
           <div style="display: flex;  width: 85%;" >
-    <input matInput style="margin-right:2%;" type="password" placeholder="Password" [(ngModel)]="password" [value]="password" required>
-    <mat-error
-    *ngIf="password.errors && password.errors.required">
-    Password is required
-  </mat-error>
+    <input matInput style="margin-right:2%;" type="password"  placeholder="Password" #passsword="ngModel" [(ngModel)]="password" [value]="password" required>
   
-      <input  placeholder="Confirm Password" type="password" formControlName="Confirm Password" >
+  
+      <input  placeholder="Confirm Password" type="password"   #ConfirmPassword="ngModel" [(ngModel)]="Confirm_Password" required >
  
    </div>
 
@@ -74,7 +71,7 @@
                      
                      <div  style="width: 50% ;">
                        
-                       <input type="text" placeholder="City" formControl="City">
+                       <input type="text" placeholder="City" >
                      </div>
     
                     </address>
@@ -94,8 +91,8 @@
     <mat-card-actions >
 
       <mat-card-actions style="display: flex; padding: 0% 5.5% 0% 0%;">
-        <button mat-button style="margin-right:2%; margin-top:7%" class="button" mat-raised-button routerLink="/register">Sign up</button>
-        <button mat-button style="margin-top: 7%" class="button"  mat-raised-button routerLink="/login">Back</button>
+        <button mat-button style="margin-right:2%; margin-top:7%" class="button" [disabled]="!Username.valid"  [disabled]="!email.valid" [disabled]="!passsword.valid"  mat-raised-button routerLink="/register" >Sign up</button>
+        <button mat-button style="margin-top: 7%" class="button"   mat-raised-button routerLink="/login">Back</button>
     </mat-card-actions>
  
   </mat-card-actions>
