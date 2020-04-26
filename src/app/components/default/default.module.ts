@@ -25,7 +25,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFabMenuModule} from "@angular-material-extensions/fab-menu";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
-import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatSnackBarModule} from "@angular/material/snack-bar"
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTabsModule} from "@angular/material/tabs";
+
 
 @NgModule({
   declarations: [
@@ -57,6 +60,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
       BrowserAnimationsModule,
       MatProgressBarModule,
       MatSnackBarModule,
+      MatDialogModule,
+      MatTabsModule,
       FlexLayoutModule.withConfig({addFlexToParent: false})
   ],
   exports: [
@@ -80,7 +85,10 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
       MatInputModule,
       BrowserAnimationsModule,
       MatProgressBarModule,
-      MatSnackBarModule
+      MatSnackBarModule,
+      MatDialogModule,
+      MatTabsModule,
+
   ],
   providers: [
       DashboardService

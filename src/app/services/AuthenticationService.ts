@@ -1,10 +1,10 @@
 import {Inject, Injectable} from '@angular/core';
 
 import {BASE_API_URL} from "../../ApiModule";
-import {Observable, of, throwError} from "rxjs";
-import {User} from "../models/User";
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {catchError, retry} from "rxjs/operators";
+import {Observable, throwError} from "rxjs";
+import {Register, User} from "../models/User";
+import {HttpClient, } from "@angular/common/http";
+import {catchError} from "rxjs/operators";
 
 @Injectable({
     providedIn: "root"
@@ -19,21 +19,13 @@ export class AuthenticationService {
 
     }
 
-    httpOptions = {
-        headers: new HttpHeaders({
-            'Content-Type': 'application/json'
-        })
-    }
 
-    // Error handling
     handleErrorObservable(error) {
         let errorMessage = '';
         if(error.error instanceof ErrorEvent) {
-            // Get client-side error
             errorMessage = error.error.message;
         } else {
-            // Get server-side error
-            errorMessage = `Message: ${error.message}`;
+            errorMessage = ` Message: ${error.message}`;
         }
         return throwError(errorMessage);
     }
@@ -44,14 +36,24 @@ export class AuthenticationService {
 
         return this.http.get<User>(
            `${this.baseUrl}/Users/login?username=${username}&password=${password}`).pipe(
-               catchError(this.handleErrorObservable
-            )
+               catchError(this.handleErrorObservable)
            );
+    }
+
+
+
+
+    register(newUser: Register): Observable<Register> {
+
+        return this.http.post<Register>(`${this.baseUrl}/Users/client-registration`, newUser).pipe(
+            catchError(this.handleErrorObservable)
+        );
     }
 
 
     logout( user: User) {
         localStorage.removeItem('currentUser');
+
         user = null;
     }
 

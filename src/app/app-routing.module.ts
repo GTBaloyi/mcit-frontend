@@ -6,6 +6,7 @@ import { PostsComponent } from './components/posts/posts.component';
 import {UserLoginComponent} from "./components/user-login/user-login.component";
 import {AuthGuard} from "./services/auth.guard";
 import {ClientRegistrationComponent} from "./components/client-registration/client-registration.component";
+import {LandingPageComponent} from "./components/landing-page/landing-page.component";
 
 const routes: Routes = [
     {
@@ -21,6 +22,10 @@ const routes: Routes = [
             {path: 'posts', component: PostsComponent}
         ],
         canActivate: [AuthGuard]
+    }
+    ,{
+        path: 'landing-page',
+        component: LandingPageComponent
     },
     {
       path: 'login',

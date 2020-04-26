@@ -7,3 +7,13 @@ export class User{
 }
 
 
+export class Register{
+     title: string;
+     lastName: string;
+     companyName: string;
+     vatNumber: string;
+     phone: string;
+     email: string;
+     website: string;
+     address: string;
+}
