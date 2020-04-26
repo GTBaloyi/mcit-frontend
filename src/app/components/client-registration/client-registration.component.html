@@ -8,94 +8,102 @@
 <mat-card class="card">
 
 
-    <div class="header" ><h2 >METAL CASTING TECHNOLOGY</h2></div>
+    <div class="header" ></div>
     <div class="line">
     </div>
 
-    <mat-card-content  >
+    <mat-card-content >
         <div class="column" fxLayout="column">
-
-          <div style="padding: 0% 20% 0% 0%">
-            <input matInput  type="text" placeholder="Username" name="Username" #Username="ngModel" [(ngModel)]="user.Username" required >
-        
-         </div>
-
-          <div style="padding: 0% 20% 0% 0%">
-            <input placeholder="Email" name="email" type="email" #email="ngModel" [(ngModel)]="user.email" required>
-         
-        
+            <div style="padding: 0 9%">
+                <img style="height: 100%; width: 100%" src="../../../assets/mtc.png">
+            </div>
         </div>
-
-        <div style="padding: 0% 20% 0% 0%">
-          <input placeholder="Name of Company"  type="text" >
-           
-          </div>
-       
-          <div style="padding: 0% 20% 0% 0%">
-              <input placeholder="Vat Number Identification" type="text" >
-              
-           </div>
-         
-          
-           <div style="padding: 0% 20% 0% 0%">
-             <input placeholder="Phone Number" type="text"  required>
-              
-          </div>
-
-          <div style="display: flex;  width: 85%;" >
-    <input matInput style="margin-right:2%;" type="password"  placeholder="Password" #passsword="ngModel" [(ngModel)]="password" [value]="password" required>
-  
-  
-      <input  placeholder="Confirm Password" type="password"   #ConfirmPassword="ngModel" [(ngModel)]="Confirm_Password" required >
- 
-   </div>
-
-
-</div>
-
-       
         <div class="column"  fxLayout="column">
-          <form >
+            <div style="padding: 0% 7% 0% 0%">
+                <mat-tab-group [disableRipple]="true" mat-align-tabs="center" #matgroup>
+                    <mat-tab label="Basic_Information">
+                        <ng-template mat-tab-label>
+                            <mat-icon class="tab-icon">folder_shared</mat-icon>
+                            Basic Information
+                        </ng-template>
 
-           
-                    <div style="padding: 0% 20% 0% 0%">
-                    <address style="font-size: 17px;">Address
-                        <input placeholder="Adress Line 1"  type="text">
-                        
-                        <input placeholder="Address line 2"  type="text">
-                        
-                        <div  style="width: 80% ;">
-                            
-                            <input type="text" placeholder="Province">
-                     </div>
-                     
-                     <div  style="width: 50% ;">
-                       
-                       <input type="text" placeholder="City" >
-                     </div>
-    
-                    </address>
-                    
-                    </div>
-               
-              
-        </form>
-          
+                        <mat-card>
+                            <mat-card-content>
+                                <div class="top-row">
+                                    <div class="field-wrap">
+                                        <div style="padding: 0% 5% 0% 0%">
+                                            <input matInput type="text" placeholder="Title" [(ngModel)]="title" [value]="title" [autocomplete]='off' required>
+                                            <input matInput type="text" placeholder="Company name" [(ngModel)]="companyName" [value]="companyName" [autocomplete]='off' required>
+                                        </div>
+                                    </div>
+                                    <div class="field-wrap">
+                                        <div style="padding: 0% 5% 0% 0%">
+                                            <input matInput type="text" placeholder="Last name" [(ngModel)]="lastName" [value]="lastName" required>
+                                            <input matInput type="text" placeholder="VAT number" [(ngModel)]="vatNumber" [value]="vatNumber" required>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div style="padding: 0% 2.5% 0% 0%">
+                                    <input matInput type="text" placeholder="Phone" [(ngModel)]="phone" [value]="phone" required>
+                                    <input matInput type="text" placeholder="Email" [(ngModel)]="email" [value]="email" required>
+                                    <input matInput type="text" placeholder="Website URL" [(ngModel)]="website" [value]="website" required>
+                                </div>
+                            </mat-card-content>
+
+                            <mat-card-actions style="display: flex;">
+                                <button mat-button style="margin-left: 1.5%;" class="button" routerLink="/landing-page"> Cancel </button>
+                                <button mat-button class="button" (click)='matgroup.selectedIndex = 1'> Next </button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </mat-tab>
+
+                    <mat-tab label="Address">
+                        <ng-template mat-tab-label>
+                            <mat-icon class="tab-icon">where_to_vote</mat-icon>
+                            Address
+                        </ng-template>
+
+                        <mat-card>
+                            <mat-card-content>
+                                <div style="padding: 0% 2.5% 0% 0%">
+                                    <input matInput type="text" placeholder="Address line 1" [(ngModel)]="addressLine1" [value]="addressLine1" required>
+                                    <input matInput type="text" placeholder="Address line 2" [(ngModel)]="addressLine2" [value]="addressLine2" required>
+                                    <input matInput type="text" placeholder="City" [(ngModel)]="city" [value]="city" required>
+                                    <input matInput type="text" placeholder="State/Province" [(ngModel)]="province" [value]="province" required>
+                                </div>
+                                <div class="top-row">
+                                    <div class="field-wrap">
+                                        <div style="padding: 0% 5% 0% 0%">
+                                            <input matInput type="text" placeholder="Postal code" [(ngModel)]="postalCode" [value]="postalCode" [autocomplete]='off' required>
+                                        </div>
+                                    </div>
+                                    <div class="field-wrap">
+                                        <div style="padding: 0% 5% 0% 0%">
+                                            <input matInput type="text" placeholder="Country" [(ngModel)]="country" [value]="country" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+
+
+                            <mat-card-actions style="display: flex;">
+                                <button mat-button style="margin-left: 1.5%;" class="button" (click)='matgroup.selectedIndex = 0'> Back </button>
+                                <button mat-button class="button"  > Submit </button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </mat-tab>
+                </mat-tab-group>
+
+            </div>
         </div>
-
 
     </mat-card-content>
-
-  
-
-    <mat-card-actions >
-
-      <mat-card-actions style="display: flex; padding: 0% 5.5% 0% 0%;">
-        <button mat-button style="margin-right:2%; margin-top:7%" class="button" [disabled]="!Username.valid"  [disabled]="!email.valid" [disabled]="!passsword.valid"  mat-raised-button routerLink="/register" >Sign up</button>
-        <button mat-button style="margin-top: 7%" class="button"   mat-raised-button routerLink="/login">Back</button>
-    </mat-card-actions>
- 
-  </mat-card-actions>
-  
-
 </mat-card>
+
+<div *ngIf="isLoading | async" class="overlay">
+    <div class="spinner">
+        <img class="loader" src="../../../assets/wheel.gif">
+    </div>
+</div>
