@@ -1,13 +1,14 @@
 <mat-nav-list class="side-bar">
     <div class="profile-card">
+
+        <img *ngIf="user.picture == ''" src="../../../../assets/no-profile.jpg">
+        <img *ngIf="user.picture != ''" src="../../../../assets/no-profile.jpg">
         <div class="header">
-            <h2>Hi, Aluwani</h2>
-            <h4>aluwani@metalcasting.co.za</h4>
+            <h3>Hi, {{user.name}} {{user.surname}}</h3>
         </div>
-        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Soufiane FADIL">
     </div>
 
-    <mat-divider class="divider"></mat-divider>
+    <mat-divider></mat-divider>
 
     <h2 matSubheader>Pages</h2>
 
@@ -38,8 +39,16 @@
         Leads
     </a>
 
+    <span fxFlex></span>
+
+    <mat-divider class="divider"></mat-divider>
 
 
 </mat-nav-list>
-
+<mat-nav-list class="side-bar-log-out">
+    <button class="button-logout" mat-button (click)="logout()">
+        <mat-icon>directions</mat-icon>
+        Logout
+    </button>
+</mat-nav-list>
 

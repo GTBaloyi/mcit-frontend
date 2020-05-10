@@ -28,6 +28,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatSnackBarModule} from "@angular/material/snack-bar"
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from "@angular/material/tabs";
+import {MatPasswordStrengthModule} from "@angular-material-extensions/password-strength";
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import {MatTabsModule} from "@angular/material/tabs";
       MatSnackBarModule,
       MatDialogModule,
       MatTabsModule,
-      FlexLayoutModule.withConfig({addFlexToParent: false})
+      FlexLayoutModule.withConfig({addFlexToParent: false}),
+      MatPasswordStrengthModule.forRoot()
   ],
   exports: [
       MatFabMenuModule,

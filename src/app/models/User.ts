@@ -4,6 +4,7 @@ export class User{
     picture: string;
     loggedIn: boolean;
     accessLevel: number;
+    userStatus: number;
 }
 
 

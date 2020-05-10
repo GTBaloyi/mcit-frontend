@@ -3,8 +3,9 @@ import {Inject, Injectable} from '@angular/core';
 import {BASE_API_URL} from "../../ApiModule";
 import {Observable, throwError} from "rxjs";
 import {Register, User} from "../models/User";
-import {HttpClient, } from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {catchError} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 @Injectable({
     providedIn: "root"
@@ -50,11 +51,5 @@ export class AuthenticationService {
         );
     }
 
-
-    logout( user: User) {
-        localStorage.removeItem('currentUser');
-
-        user = null;
-    }
 
 }

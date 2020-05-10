@@ -8,7 +8,8 @@ import {User} from "../models/User";
 })
 export class AuthGuard implements CanActivate {
 
-    private  loggedIn: boolean = false;
+    private loggedIn: boolean = false;
+    private accountActive: number = 0;
     private loginInfo: User = null;
 
 
@@ -27,12 +28,14 @@ export class AuthGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         this.loginInfo  = JSON.parse(sessionStorage.getItem("loginInfo"));
 
-        if (this.loggedIn) {
-            return true;
-        }else if(this.loginInfo != null) {
+         if(this.loginInfo != null) {
             this.loggedIn = this.loginInfo.loggedIn;
+            //this.accountActive = this.loginInfo.userStatus;
 
-            if (this.loggedIn) {
+            if (this.loggedIn && this.accountActive == 1 ) {
+                return true;
+            }else if(this.loggedIn && this.accountActive == 0){
+                this.router.navigate(['/password-reset']);
                 return true;
             } else {
                 this.router.navigate(['/landing-page']);
