@@ -6,6 +6,8 @@ import { PostsComponent } from './components/posts/posts.component';
 import {UserLoginComponent} from "./components/user-login/user-login.component";
 import {AuthGuard} from "./services/auth.guard";
 import {ClientRegistrationComponent} from "./components/client-registration/client-registration.component";
+import {QuotationComponent} from "./components/quotation/quotation.component";
+
 
 const routes: Routes = [
     {
@@ -28,6 +30,9 @@ const routes: Routes = [
     },
     {
       path: 'register', component: ClientRegistrationComponent
+    },
+    {
+        path: 'quotation', component: QuotationComponent
     }
 ];
 

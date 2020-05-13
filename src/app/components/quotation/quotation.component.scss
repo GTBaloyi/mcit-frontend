@@ -1,0 +1,93 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: rgb(222,116,56);
+  background: radial-gradient(circle, rgba(222,116,56,0.727328431372549) 10%, rgba(0,0,0,0.46122198879551823) 51%);
+
+
+
+}
+
+
+.card {
+  width: 45%;
+  margin: auto;
+  font-size: 16px;
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
+  background: #f9f9f9;
+  padding: 0%;
+}
+
+.quotation {
+  padding: 2%;
+}
+
+
+.quotation-header {
+  background: rgb(168, 88, 42);
+  background: radial-gradient(circle, rgba(200,108,15,0.8015581232492998) 7%, rgba(205,122,20,0.2861519607843137) 56%);    width: 100%;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  height: 4.5%;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.quotation-footer {
+  background: rgb(200,108,15);
+  background: radial-gradient(circle, rgba(200,108,15,0.8015581232492998) 7%, rgba(205,122,20,0.2861519607843137) 56%);    width: 100%;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+}
+
+
+.quotation .field {
+  padding: 12px;
+}
+
+.quotation input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+}
+
+
+.quotation input[type="submit"] {
+  background: rgb(222,116,56);
+  background: linear-gradient(90deg, rgba(222,116,56,0.8309698879551821) 10%, rgba(238,207,190,1) 93%);
+  color: #fff;
+  cursor: pointer;
+}
+
+
+.button{
+  height: 50px;
+  width: 45%;
+  font-weight: 500;
+  font-size: 100%;
+  background: rgb(222,116,56);
+  background: linear-gradient(90deg, rgba(222,116,56,0.8309698879551821) 10%, rgba(238,207,190,1) 93%);
+  color: #fff;
+  cursor: pointer;
+
+}
+
+.button :hover{
+  background: rgb(222,116,56);
+
+}
+
+.button :focus{
+  background: rgb(222,116,56);
+
+}
