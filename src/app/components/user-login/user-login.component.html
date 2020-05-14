@@ -7,7 +7,6 @@
 
 <mat-card class="card">
 
-
     <div class="header" ></div>
     <div class="line">
     </div>
@@ -20,8 +19,8 @@
         </div>
         <div class="column"  fxLayout="column">
             <div style="padding: 0% 20% 0% 0%">
-                <input matInput style="margin-bottom: 7%" type="text" placeholder="Username" [(ngModel)]="username" [value]="username">
-                <input matInput type="password" placeholder="Password" [(ngModel)]="password" [value]="password">
+                <input matInput style="margin-bottom: 7%" type="text" placeholder="Username" [(ngModel)]="username" [value]="username" autocomplete="new-password">
+                <input matInput type="password" placeholder="Password" [(ngModel)]="password" [value]="password" name="field" autocomplete="nope">
             </div>
 
         </div>

@@ -35,7 +35,6 @@
     "highcharts": "^8.0.4",
     "highcharts-angular": "^2.4.0",
     "jasmine-marbles": "0.6.0",
-    "password-validator": "^5.0.3",
     "rxjs": "6.5.4",
     "tslib": "1.11.1",
     "web-animations-js": "2.3.2",

@@ -21,7 +21,7 @@ import {StatModule} from "../../shared/widgets/stat/stat.module";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, NG_VALIDATORS, ReactiveFormsModule} from "@angular/forms";
 import {MatFabMenuModule} from "@angular-material-extensions/fab-menu";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
@@ -29,6 +29,11 @@ import {MatSnackBarModule} from "@angular/material/snack-bar"
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatPasswordStrengthModule} from "@angular-material-extensions/password-strength";
+import {
+    passwordContainsLowercase, passwordContainsNumbers,
+    passwordMatchValidator, passwordStrong,
+    passwordUppercaseValidator
+} from "../../models/Password-validator";
 
 
 @NgModule({

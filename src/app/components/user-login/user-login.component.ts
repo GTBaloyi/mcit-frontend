@@ -17,7 +17,7 @@ import * as CryptoJS from 'crypto-js';
 export class UserLoginComponent implements OnChanges, OnInit {
 
     private username: string;
-    private password: string;
+    private pass: string;
     private user: User;
     isLoading = new Subject<boolean>();
 

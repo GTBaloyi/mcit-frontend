@@ -9,7 +9,7 @@ import {environment} from "../environments/environment.prod";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 
 
 @NgModule({
