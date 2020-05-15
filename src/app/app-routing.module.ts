@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DefaultComponent } from './components/default/default.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { PostsComponent } from './components/posts/posts.component';
 import {UserLoginComponent} from "./components/user-login/user-login.component";
 import {AuthGuard} from "./services/auth.guard";
 import {ClientRegistrationComponent} from "./components/client-registration/client-registration.component";
 import {LandingPageComponent} from "./components/landing-page/landing-page.component";
 import {PasswordResetComponent} from "./components/password-reset/password-reset.component";
+import {InvoiceComponent} from "./components/invoice/invoice.component";
 
 const routes: Routes = [
     {
@@ -20,9 +20,8 @@ const routes: Routes = [
                 redirectTo: 'dashboard'
             },
             {path: 'dashboard', component: DashboardComponent},
-            {path: 'posts', component: PostsComponent}
+            {path: 'invoice', component: InvoiceComponent}
         ],
-        canActivate: [AuthGuard]
     }
     ,{
         path: 'landing-page',

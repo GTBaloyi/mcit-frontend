@@ -13,7 +13,7 @@ export const passwordMatchValidator: ValidatorFn = (formGroup: FormGroup): Valid
 
 export const passwordContainsLowercase: ValidatorFn = (formGroup: FormGroup): ValidationErrors | null => {
     if(formGroup.get('password') != null){
-        if (formGroup.get('password').value.match(/[a-z]/)? true : false)
+        if (!!formGroup.get('password').value.match(/[a-z]/))
             return null;
         else
             return {passwordNoLowercase: true};
@@ -22,7 +22,7 @@ export const passwordContainsLowercase: ValidatorFn = (formGroup: FormGroup): Va
 
 export const passwordUppercaseValidator: ValidatorFn = (formGroup: FormGroup): ValidationErrors | null => {
     if(formGroup.get('password') != null) {
-        if (formGroup.get('password').value.match(/[A-Z]/) ? true : false)
+        if (!!formGroup.get('password').value.match(/[A-Z]/))
             return null;
         else
             return {passwordNoUppercase: true};
@@ -33,16 +33,10 @@ export const passwordContainsNumbers: ValidatorFn = (formGroup: FormGroup): Vali
 
     if(formGroup.get('password') != null) {
 
-        if (!formGroup.get('password').value.match(/^[^\d]+$/) ? true : false) {
-            console.log('I came in here, ', false);
-
+        if (!!formGroup.get('password').value.match(/^[^\d]+$/))
             return null;
-        }
-        else {
-            console.log('I came in here, ', true);
-
+        else
             return {passwordNoNumbers: true};
-        }
 
     }
 };

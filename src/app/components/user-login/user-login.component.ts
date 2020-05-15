@@ -30,7 +30,7 @@ export class UserLoginComponent implements OnChanges, OnInit {
     }
 
 
-    constructor(public authenticationService: AuthenticationService, public authGuard: AuthGuard, private _snackBar: MatSnackBar, private router: Router) {
+    constructor(private authenticationService: AuthenticationService, private authGuard: AuthGuard, private _snackBar: MatSnackBar, private router: Router) {
 
     }
 
@@ -40,7 +40,7 @@ export class UserLoginComponent implements OnChanges, OnInit {
         });
     }
 
-    signIn(username: string, password: string) {
+    public signIn(username: string, password: string) {
 
         if(username == '' && password == ''){
             this.openSnackBar('Please enter a username and password', 'Ok');
@@ -73,7 +73,7 @@ export class UserLoginComponent implements OnChanges, OnInit {
 
                 },
                 () => {
-                    this.authGuard.userValidation(this.user);
+                    this.authGuard.userValidation(this.user, password, username);
                     this.openSnackBar('login successful', 'Ok');
                     this.isLoading.next(false);
                     this.router.navigateByUrl('/dashboard');

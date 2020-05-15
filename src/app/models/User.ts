@@ -5,6 +5,7 @@ export class User{
     loggedIn: boolean;
     accessLevel: number;
     userStatus: number;
+    accountActive: number
 }
 
 

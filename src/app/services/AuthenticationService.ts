@@ -31,18 +31,12 @@ export class AuthenticationService {
         return throwError(errorMessage);
     }
 
-
-
     login(username: string, password: string): Observable<User> {
 
-        return this.http.get<User>(
-           `${this.baseUrl}/Users/login?username=${username}&password=${password}`).pipe(
-               catchError(this.handleErrorObservable)
-           );
+        return this.http.get<User>(`${this.baseUrl}/Users/login?username=${username}&password=${password}`).pipe(
+            catchError(this.handleErrorObservable)
+        );
     }
-
-
-
 
     register(newUser: Register): Observable<Register> {
 
@@ -51,5 +45,12 @@ export class AuthenticationService {
         );
     }
 
+    //Todo
+    resetPassword(username:string, oldPassword:string, newPassword: string){
+
+        return this.http.put(`${this.baseUrl}/reset-password?username=${username}&oldPassword=${oldPassword}&newPassword=${newPassword}`, '').pipe(
+            catchError(this.handleErrorObservable)
+        );
+    }
 
 }
