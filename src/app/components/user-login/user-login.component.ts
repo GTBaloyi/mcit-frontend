@@ -2,9 +2,10 @@ import {Component, OnChanges, OnInit} from '@angular/core';
 import {AuthenticationService} from "../../services/AuthenticationService";
 import {User} from "../../models/User";
 import {AuthGuard} from "../../services/auth.guard";
-import {MatFabMenu} from "@angular-material-extensions/fab-menu";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import {Subject} from "rxjs";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 
 
 
@@ -13,13 +14,16 @@ import {Router} from "@angular/router";
     templateUrl: './user-login.component.html',
     styleUrls: ['./user-login.component.scss'],
 })
-export class UserLoginComponent implements OnChanges, OnInit{
+export class UserLoginComponent implements OnChanges, OnInit {
 
     private username: string;
-    private password: string;
+    private pass: string;
     private user: User;
+    isLoading = new Subject<boolean>();
+    public dialogRef: MatDialogRef<UserDialogComponent>;
 
-    ngOnInit(){
+
+    ngOnInit() {
 
     }
 
@@ -28,7 +32,7 @@ export class UserLoginComponent implements OnChanges, OnInit{
     }
 
 
-    constructor(public authenticationService: AuthenticationService, public authGuard: AuthGuard, private _snackBar: MatSnackBar,private router: Router) {
+    constructor(public dialog: MatDialog, private authenticationService: AuthenticationService, private authGuard: AuthGuard, private _snackBar: MatSnackBar, private router: Router) {
 
     }
 
@@ -38,56 +42,66 @@ export class UserLoginComponent implements OnChanges, OnInit{
         });
     }
 
-    signIn (username: string, password: string) {
+    public signIn(username: string, password: string) {
 
-        const spinner  = document.getElementById('loading');
-        spinner.style.display = 'flex';
+        if(username == '' && password == ''){
+            this.openSnackBar('Please enter a username and password', 'Ok');
+        }else if(username == ''){
+            this.openSnackBar('Please enter a username', 'Ok');
 
-        this.authenticationService.login(username, password).subscribe(
-            (data: User) => {
-                this.user = data;
-                if(this.user != null){
-                    this.user.loggedIn = true;
-                    localStorage.setItem('currentUser', this.user.name +" "+ this.user.surname);
+        }else if( password == ''){
+            this.openSnackBar('Please enter a password', 'Ok');
+
+        }
+
+        if (username != '' && password != ''){
+            this.isLoading.next(true);
+
+
+            this.authenticationService.login(username, password).subscribe(
+
+                (data: User) => {
+                    this.user = data;
+                    if (this.user != null) {
+                        this.user.loggedIn = true;
+                        sessionStorage.setItem('loginInfo', JSON.stringify(data));
+                    }
+
+                },
+                error => {
+                    console.log(error);
+                    this.openSnackBar('Incorrect username / password', 'Ok');
+                    this.isLoading.next(false);
+
+                },
+                () => {
+                    this.authGuard.userValidation(this.user, password, username);
+                    if(this.user.userStatus == 1){
+                        this.openSnackBar('login successful', 'Ok');
+                    }else if(this.user.userStatus == 3){
+                        this.openDialog();
+                    }
+                    this.isLoading.next(false);
+                    this.router.navigateByUrl('/dashboard');
+
                 }
+            )
+        }
 
-            },
-            error => {
-                console.log(error);
-                this.openSnackBar('Incorrect username / password', 'Ok');
-                spinner.style.display = 'none';
-
-            },
-            () =>{
-                console.log('user information ', this.user);
-                this.authGuard.userValidation(this.user);
-                this.openSnackBar('login successful','Ok');
-                spinner.style.display = 'none';
-                this.router.navigateByUrl('/dashboard');
-
-            }
-        )
     }
 
+    openDialog() {
+        const dialogRef = this.dialog.open(UserDialogComponent);
 
-    fabButtonsRandom: MatFabMenu[] = [
-        {
-            id: 1,
-            icon: 'create'
-        },
-        {
-            id: 2,
-            icon: 'mail'
-        },
-        {
-            id: 3,
-            icon: 'file_copy'
-        },
-        {
-            id: 4,
-            icon: 'phone'
-        },
-    ];
-
-
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
+    }
 }
+
+@Component({
+    selector: 'user-dialog-component',
+    templateUrl: 'user-dialog.component.html',
+    styleUrls: ['./user-login.component.scss'],
+})
+export class UserDialogComponent {}
