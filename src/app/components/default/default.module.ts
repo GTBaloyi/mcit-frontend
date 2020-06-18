@@ -4,7 +4,6 @@ import { DefaultComponent } from './default.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {PostsComponent} from "../posts/posts.component";
 import {DashboardComponent} from "../dashboard/dashboard.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatCardModule} from "@angular/material/card";
@@ -12,7 +11,7 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {DashboardService} from "../../services/dashboard.service";
-import {UserLoginComponent} from "../user-login/user-login.component";
+import {UserDialogComponent, UserLoginComponent} from "../user-login/user-login.component";
 import {ClientRegistrationComponent} from "../client-registration/client-registration.component";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
@@ -25,17 +24,28 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFabMenuModule} from "@angular-material-extensions/fab-menu";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
-import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatSnackBarModule} from "@angular/material/snack-bar"
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatPasswordStrengthModule} from "@angular-material-extensions/password-strength";
+import {PasswordResetComponent} from "../password-reset/password-reset.component";
+import {InvoiceComponent} from "../invoice/invoice.component";
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 @NgModule({
   declarations: [
       DefaultComponent,
       DashboardComponent,
-      PostsComponent,
       UserLoginComponent,
-      ClientRegistrationComponent
-  ],
+      UserDialogComponent,
+      ClientRegistrationComponent,
+      PasswordResetComponent,
+      InvoiceComponent,
+],
   imports: [
+      MatDialogModule,
+      MatAutocompleteModule,
       CommonModule,
       RouterModule,
       SharedModule,
@@ -57,9 +67,14 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
       BrowserAnimationsModule,
       MatProgressBarModule,
       MatSnackBarModule,
-      FlexLayoutModule.withConfig({addFlexToParent: false})
+      MatDialogModule,
+      MatTabsModule,
+      FlexLayoutModule.withConfig({addFlexToParent: false}),
+      MatPasswordStrengthModule.forRoot()
   ],
   exports: [
+      MatDialogModule,
+      MatAutocompleteModule,
       MatFabMenuModule,
       ReactiveFormsModule,
       FormsModule,
@@ -80,7 +95,10 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
       MatInputModule,
       BrowserAnimationsModule,
       MatProgressBarModule,
-      MatSnackBarModule
+      MatSnackBarModule,
+      MatDialogModule,
+      MatTabsModule,
+
   ],
   providers: [
       DashboardService
