@@ -45,10 +45,9 @@ export class AuthenticationService {
         );
     }
 
-    //Todo
     resetPassword(username:string, oldPassword:string, newPassword: string){
 
-        return this.http.put(`${this.baseUrl}/reset-password?username=${username}&oldPassword=${oldPassword}&newPassword=${newPassword}`, '').pipe(
+        return this.http.put(`${this.baseUrl}/Users/reset-password?username=${username}&oldPassword=${oldPassword}&newPassword=${newPassword}&status=1`, '').pipe(
             catchError(this.handleErrorObservable)
         );
     }

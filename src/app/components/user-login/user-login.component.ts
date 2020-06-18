@@ -5,7 +5,7 @@ import {AuthGuard} from "../../services/auth.guard";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {Subject} from "rxjs";
-import * as CryptoJS from 'crypto-js';
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 
 
 
@@ -20,6 +20,8 @@ export class UserLoginComponent implements OnChanges, OnInit {
     private pass: string;
     private user: User;
     isLoading = new Subject<boolean>();
+    public dialogRef: MatDialogRef<UserDialogComponent>;
+
 
     ngOnInit() {
 
@@ -30,7 +32,7 @@ export class UserLoginComponent implements OnChanges, OnInit {
     }
 
 
-    constructor(private authenticationService: AuthenticationService, private authGuard: AuthGuard, private _snackBar: MatSnackBar, private router: Router) {
+    constructor(public dialog: MatDialog, private authenticationService: AuthenticationService, private authGuard: AuthGuard, private _snackBar: MatSnackBar, private router: Router) {
 
     }
 
@@ -74,7 +76,11 @@ export class UserLoginComponent implements OnChanges, OnInit {
                 },
                 () => {
                     this.authGuard.userValidation(this.user, password, username);
-                    this.openSnackBar('login successful', 'Ok');
+                    if(this.user.userStatus == 1){
+                        this.openSnackBar('login successful', 'Ok');
+                    }else if(this.user.userStatus == 3){
+                        this.openDialog();
+                    }
                     this.isLoading.next(false);
                     this.router.navigateByUrl('/dashboard');
 
@@ -83,4 +89,19 @@ export class UserLoginComponent implements OnChanges, OnInit {
         }
 
     }
+
+    openDialog() {
+        const dialogRef = this.dialog.open(UserDialogComponent);
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
+    }
 }
+
+@Component({
+    selector: 'user-dialog-component',
+    templateUrl: 'user-dialog.component.html',
+    styleUrls: ['./user-login.component.scss'],
+})
+export class UserDialogComponent {}

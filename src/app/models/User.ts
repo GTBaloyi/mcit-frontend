@@ -5,17 +5,19 @@ export class User{
     loggedIn: boolean;
     accessLevel: number;
     userStatus: number;
-    accountActive: number
 }
 
 
 export class Register{
      title: string;
-     lastName: string;
+     contactName: string;
+     contactSurname: string;
+     gender: string;
      companyName: string;
-     vatNumber: string;
-     phone: string;
-     email: string;
-     website: string;
-     address: string;
+     companyRegistrationNumber: string;
+     contactNumber: string;
+     contactEmail: string;
+     avatar: string;
+     isCompanyPresent: boolean;
+     companyProfile: string;
 }

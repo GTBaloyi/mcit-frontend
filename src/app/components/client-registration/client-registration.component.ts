@@ -14,21 +14,12 @@ import {Register, User} from "../../models/User";
 })
 export class ClientRegistrationComponent implements OnChanges, OnInit  {
 
-    private title: string;
-    private lastName: string;
-    private companyName: string;
-    private vatNumber: string;
-    private phone: string;
-    private email: string;
-    private website: string;
-    private addressLine1: string;
-    private addressLine2: string;
-    private city: string;
-    private province: string;
-    private postalCode: string;
-    private country: string;
+    private titles: Array<string> = ['Mr', 'Mrs', 'Miss', 'Ms', 'Mx', 'Sir', 'Dr'];
+    private gender: Array<string> = ['Male', 'Female', 'Other'];
+    private companyProfile: Array<string> = ['Small', 'Large', 'HEIs/Science Council', 'Techno/Star-Entrepreneur'];
     isLoading = new Subject<boolean>();
     private result: Register;
+    private user: Register = <Register>{} ;
 
     ngOnInit() {
 
@@ -52,14 +43,13 @@ export class ClientRegistrationComponent implements OnChanges, OnInit  {
 
     singUp() {
 
-        let newUser: Register = null;
+        this.user.isCompanyPresent = true;
+        this.user.avatar = '';
 
         this.isLoading.next(true);
-
-        this.authenticationService.register(newUser).subscribe(
+        this.authenticationService.register(this.user).subscribe(
             (data: Register) => {
                 this.result = data;
-
             },
             error => {
                 console.log(error);
@@ -74,6 +64,5 @@ export class ClientRegistrationComponent implements OnChanges, OnInit  {
             }
         )
     }
-
 }
 

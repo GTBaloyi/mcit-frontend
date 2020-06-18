@@ -20,8 +20,6 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class PasswordResetComponent implements OnInit, OnChanges {
 
-    private minLength = 8;
-    private maxLength = 100;
     private formGroup: FormGroup;
     private user : User;
     private oldPassword : string;
@@ -49,12 +47,7 @@ export class PasswordResetComponent implements OnInit, OnChanges {
         this.user = JSON.parse(sessionStorage.getItem("loginInfo"));
 
         this.formGroup = this.formBuilder.group({
-            password: ['', [
-                Validators.required,
-                Validators.minLength(this.minLength),
-                Validators.maxLength(this.maxLength),
-            ]
-            ],
+            password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(100)]],
             confirmPassword: ['', [Validators.required]]
         }, {
             validator: [
@@ -81,10 +74,12 @@ export class PasswordResetComponent implements OnInit, OnChanges {
 
     onPasswordInput() {
 
+
         if (this.formGroup.hasError('passwordMismatch'))
             this.confirmPassword.setErrors({'passwordMismatch': true});
         else
             this.confirmPassword.setErrors(null);
+
 
         if (this.formGroup.hasError('passwordNoUppercase'))
             this.password.setErrors({'passwordNoUppercase': true});
@@ -124,12 +119,8 @@ export class PasswordResetComponent implements OnInit, OnChanges {
 
         this.authenticationService.resetPassword(this.username, this.oldPassword, this.confirmPassword.value).subscribe(
 
-            (data: User) => {
-                this.user = data;
-                if (this.user != null) {
-                    this.user.loggedIn = true;
-                    sessionStorage.setItem('loginInfo', JSON.stringify(data));
-                }
+            () => {
+
             },
             error => {
                 this.isLoading.next(false);
@@ -138,7 +129,7 @@ export class PasswordResetComponent implements OnInit, OnChanges {
 
             },
             () => {
-                this.user.accountActive = 1;
+                this.user.userStatus = 1;
                 sessionStorage.setItem('loginInfo', JSON.stringify(this.user));
                 this.openSnackBar('password reset successfully', 'Ok');
                 this.isLoading.next(false);

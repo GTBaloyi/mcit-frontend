@@ -1,12 +1,10 @@
 <mat-nav-list class="side-bar">
     <div class="profile-card">
 
-        <div class="profile-card">
-
-            <img  src="../../../../assets/no-profile.jpg">
-            <div class="header">
-                <h3>Hi, themba</h3>
-            </div>
+        <img *ngIf="user.picture == ''" src="../../../../assets/no-profile.jpg">
+        <img *ngIf="user.picture != ''" src="../../../../assets/no-profile.jpg">
+        <div class="header">
+            <h3>Hi, {{user.name}} {{user.surname}}</h3>
         </div>
     </div>
 
