@@ -1,31 +1,53 @@
-<mat-card class="login">
-    <h2 class="login-header">METAL CASTING TECHNOLOGY</h2>
-    <form >
+<div id="video_overlays"></div>
 
-       <!-- <p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
-            <input type="email" placeholder="Email" formControlName="email">
-        </p>
--->
-        <div  class="help-block">
-            <div >Email is required</div>
+<video autoplay muted loop id="myVideo" >
+    <source src="../../../assets/Casting.mp4" type="video/mp4">
+</video>
+
+
+<mat-card class="card">
+
+
+    <div class="header" ></div>
+    <div class="line">
+    </div>
+
+    <mat-card-content >
+        <div class="column" fxLayout="column">
+            <div style="padding: 0 9%">
+                <img style="height: 100%; width: 100%" src="../../../assets/mtc.png">
+            </div>
+        </div>
+        <div class="column"  fxLayout="column">
+            <div style="padding: 0% 20% 0% 0%">
+                <input matInput style="margin-bottom: 7%" type="text" placeholder="Username" [(ngModel)]="username" [value]="username" required>
+                <input matInput type="password" placeholder="Password" [(ngModel)]="password" [value]="password" required>
+            </div>
+
         </div>
 
-        <!--<p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
-            <input type="password" placeholder="Password" formControlName="password">
-        </p>-->
+    </mat-card-content>
 
-        <div  class="help-block">
-            <div >Password is required</div>
-        </div>
+    <mat-card-actions style="display: flex; padding: 0% 5.5% 0% 0%;">
+        <button mat-button style="margin-right: 7%; margin-top: 7%" class="button" (click)="signIn(username, password)"> Login </button>
+        <button mat-button style="margin-top: 7%"  class="button"  > Register </button>
+    </mat-card-actions>
 
-        <p *ngIf="false">
-            <button class="buttonEmp" mat-raised-button>Sign up</button>
 
-        </p>
+    <mat-card-footer style="margin-top: 5.5%" >
+        <a href="#" style="color:white" class="btn">Forgot your password?</a>
+    </mat-card-footer>
 
-        <div *ngIf="true">
-            <button class="button" style="margin-right: 6%; margin-left: 2%" mat-raised-button>Sign in</button>
-            <button class="button" mat-raised-button routerLink="/register">Sign up</button>
-        </div>
-    </form>
 </mat-card>
+
+
+<div class="customer-list">
+    <button mat-fab color="primary" id="add-button" matTooltip="Add customer" mat-menu-item="{{this.fabButtonsRandom}}"><i class="material-icons" >help</i></button>
+</div>
+
+
+<div id="loading" style="display: none">
+    <mat-progress-spinner [mode]="indeterminate">
+    </mat-progress-spinner>
+
+</div>

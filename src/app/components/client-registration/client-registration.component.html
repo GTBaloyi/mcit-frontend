@@ -1,43 +1,41 @@
-<mat-card class="register">
+<mat-card class="card">
+
     <h2 class="register-header">METAL CASTING TECHNOLOGY</h2>
-    <form >
 
-        <!--<p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
-            <input type="text" placeholder="Name" formControlName="name">
-        </p>-->
+    <mat-card-content fxLayout="column"  class="register">
 
-        <div class="help-block">
-            <div >Name is required</div>
-        </div>
-
-       <!-- <p [ngClass]="{ 'has-error': isSubmitted && formControls.surname.errors }">
-            <input type="text" placeholder="Surname" formControlName="surname">
-        </p>-->
-
-        <div class="help-block">
-            <div >Surname is required</div>
-        </div>
+        <mat-form-field class="field">
+            <input type="email" placeholder="Name" formControlName="Name">
+        </mat-form-field>
 
 
-        <!--<p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
-            <input type="email" placeholder="Email" formControlName="email">
-        </p>-->
+        <mat-form-field class="field">
+            <input type="password" placeholder="Surname" formControlName="Surname">
+        </mat-form-field>
 
-        <div class="help-block">
-            <div >Email is required</div>
-        </div>
+        <mat-form-field class="field">
+            <input type="password" placeholder="Email" formControlName="Email">
+        </mat-form-field>
 
-        <!--<p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
+        <mat-form-field class="field">
+            <input type="password" placeholder="Address" formControlName="Address">
+        </mat-form-field>
+
+        <mat-form-field class="field">
             <input type="password" placeholder="Password" formControlName="password">
-        </p>-->
+        </mat-form-field>
 
-        <div  class="help-block">
-            <div>Password is required</div>
-        </div>
+        <mat-form-field class="field">
+            <input type="password" placeholder="Confirm Password" formControlName="Confirm Password">
+        </mat-form-field>
 
-        <div>
-            <button class="button" style="margin-right: 6%; margin-left: 2%" mat-raised-button routerLink="/login">Cancel</button>
+
+        <div >
+            <button class="button" style="margin-right: 6%; margin-left: 2%" mat-raised-button routerLink="/login">back</button>
             <button class="button" mat-raised-button routerLink="/register">Sign up</button>
         </div>
-    </form>
+
+    </mat-card-content>
+
+    <h1 class="register-footer" routerLink="/quote">Request a free quotation</h1>
 </mat-card>
