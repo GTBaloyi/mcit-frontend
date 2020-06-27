@@ -7,7 +7,8 @@ import {AuthGuard} from "./services/auth.guard";
 import {ClientRegistrationComponent} from "./components/client-registration/client-registration.component";
 import {LandingPageComponent} from "./components/landing-page/landing-page.component";
 import {PasswordResetComponent} from "./components/password-reset/password-reset.component";
-import {InvoiceComponent} from "./components/invoice/invoice.component";
+import {ClientsComponent} from "./components/clients/clients.component";
+import {ProfileComponent} from "./components/clients/profile/profile.component";
 
 const routes: Routes = [
     {
@@ -20,7 +21,8 @@ const routes: Routes = [
                 redirectTo: 'dashboard'
             },
             {path: 'dashboard', component: DashboardComponent},
-            {path: 'invoice', component: InvoiceComponent}
+            {path: 'clients', component: ClientsComponent},
+            {path: 'profile', component: ProfileComponent}
         ],
         canActivate: [AuthGuard]
     }

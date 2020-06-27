@@ -1,11 +1,10 @@
 import {Component, OnChanges, OnInit} from '@angular/core';
-import {AuthenticationService} from "../../services/AuthenticationService";
-import {User} from "../../models/User";
 import {AuthGuard} from "../../services/auth.guard";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {Subject} from "rxjs";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {LoginResponseModel, UsersService} from "../../services";
 
 
 
@@ -18,7 +17,7 @@ export class UserLoginComponent implements OnChanges, OnInit {
 
     private username: string;
     private pass: string;
-    private user: User;
+    private user: LoginResponseModel;
     isLoading = new Subject<boolean>();
     public dialogRef: MatDialogRef<UserDialogComponent>;
 
@@ -32,7 +31,7 @@ export class UserLoginComponent implements OnChanges, OnInit {
     }
 
 
-    constructor(public dialog: MatDialog, private authenticationService: AuthenticationService, private authGuard: AuthGuard, private _snackBar: MatSnackBar, private router: Router) {
+    constructor(public dialog: MatDialog, private usersService: UsersService, private authGuard: AuthGuard, private _snackBar: MatSnackBar, private router: Router) {
 
     }
 
@@ -58,9 +57,9 @@ export class UserLoginComponent implements OnChanges, OnInit {
             this.isLoading.next(true);
 
 
-            this.authenticationService.login(username, password).subscribe(
+            this.usersService.apiUsersLoginGet(username, password).subscribe(
 
-                (data: User) => {
+                (data: LoginResponseModel) => {
                     this.user = data;
                     if (this.user != null) {
                         this.user.loggedIn = true;

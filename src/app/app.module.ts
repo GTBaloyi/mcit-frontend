@@ -22,7 +22,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     ],
     declarations: [
         AppComponent,
-        LandingPageComponent
+        LandingPageComponent,
 
     ],
     providers: [

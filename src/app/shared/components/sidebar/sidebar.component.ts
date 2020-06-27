@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
-import {User} from "../../../models/User";
+import {LoginResponseModel} from "../../../services";
 
 @Component({
   selector: 'app-sidebar',
@@ -9,7 +9,7 @@ import {User} from "../../../models/User";
 })
 export class SidebarComponent implements OnInit {
 
-    private user : User;
+    private user : LoginResponseModel;
 
     constructor( private router: Router) {
     }

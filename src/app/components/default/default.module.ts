@@ -29,8 +29,15 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatPasswordStrengthModule} from "@angular-material-extensions/password-strength";
 import {PasswordResetComponent} from "../password-reset/password-reset.component";
-import {InvoiceComponent} from "../invoice/invoice.component";
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {ClientsComponent} from "../clients/clients.component";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {ProfileComponent} from "../clients/profile/profile.component";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -38,12 +45,19 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
       DefaultComponent,
       DashboardComponent,
       UserLoginComponent,
+      ClientsComponent,
       UserDialogComponent,
       ClientRegistrationComponent,
       PasswordResetComponent,
-      InvoiceComponent,
-],
+      ProfileComponent
+  ],
   imports: [
+      MatSelectModule,
+      MatDatepickerModule,
+      MatRadioModule,
+      MatNativeDateModule,
+      MatButtonToggleModule,
+      MatToolbarModule,
       MatDialogModule,
       MatAutocompleteModule,
       CommonModule,
@@ -73,6 +87,12 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
       MatPasswordStrengthModule.forRoot()
   ],
   exports: [
+      MatSelectModule,
+      MatDatepickerModule,
+      MatRadioModule,
+      MatNativeDateModule,
+      MatButtonToggleModule,
+      MatToolbarModule,
       MatDialogModule,
       MatAutocompleteModule,
       MatFabMenuModule,
@@ -101,7 +121,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
   ],
   providers: [
-      DashboardService
+      DashboardService,
+      ProfileComponent
   ]
 })
 export class DefaultModule { }

@@ -5,13 +5,12 @@ import {
     passwordContainsNumbers,
     passwordMatchValidator, passwordStrong,
     passwordUppercaseValidator
-} from "../../models/Password-validator";
-import {User} from "../../models/User";
+} from "../../validations/Password-validator";
 import {Router} from "@angular/router";
-import {AuthenticationService} from "../../services/AuthenticationService";
-import {Subject} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {AuthGuard} from "../../services/auth.guard";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {LoginResponseModel, UsersService} from "../../services";
 
 @Component({
   selector: 'app-password-reset',
@@ -21,7 +20,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class PasswordResetComponent implements OnInit, OnChanges {
 
     private formGroup: FormGroup;
-    private user : User;
+    private user : LoginResponseModel;
     private oldPassword : string;
     private username : string;
     isLoading = new Subject<boolean>();
@@ -30,7 +29,7 @@ export class PasswordResetComponent implements OnInit, OnChanges {
 
     constructor(private formBuilder: FormBuilder,
                 private router: Router,
-                private authenticationService: AuthenticationService,
+                private usersService: UsersService,
                 private authGuard: AuthGuard,
                 private _snackBar: MatSnackBar){
 
@@ -117,16 +116,24 @@ export class PasswordResetComponent implements OnInit, OnChanges {
     resetPassword() {
         this.isLoading.next(true);
 
-        this.authenticationService.resetPassword(this.username, this.oldPassword, this.confirmPassword.value).subscribe(
+        this.usersService.apiUsersResetPasswordPut(this.username, this.oldPassword, this.confirmPassword.value,1).subscribe(
 
-            () => {
-
+            (data: Observable<any>) => {
+                console.log(data)
             },
             error => {
-                this.isLoading.next(false);
-                this.openSnackBar('something went wrong, please try again later', 'Ok');
-                console.log(error);
-
+                if(error.status == 200){
+                    this.user.userStatus = 1;
+                    sessionStorage.setItem('loginInfo', JSON.stringify(this.user));
+                    this.authGuard.userValidation(this.user, this.confirmPassword.value, this.username);
+                    this.openSnackBar('password reset successfully', 'Ok');
+                    this.isLoading.next(false);
+                    this.router.navigateByUrl('/dashboard');
+                }else{
+                    this.isLoading.next(false);
+                    this.openSnackBar('something went wrong, please try again later', 'Ok');
+                    console.log(error);
+                }
             },
             () => {
                 this.user.userStatus = 1;
