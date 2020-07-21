@@ -1,3 +1,4 @@
+/*
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
@@ -13,7 +14,7 @@ import {ProfileComponent} from "./profile/profile.component";
 export class ClientsComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'companyName', 'contactName', 'contactNumber', 'email', 'Address', 'Actions'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource(clients);
   search: string = '';
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -39,7 +40,7 @@ export class ClientsComponent implements OnInit {
 
 }
 
-const ELEMENT_DATA: any= [
+const clients: any= [
     {position: 1, companyName: 'Hydrogen', contactName: 'Hydrogen', contactNumber: 'Hydrogen', email: 'Hydrogen', Address: 'Hydrogen'},
     {position: 2, companyName: 'Hydrogen', contactName: 'Hydrogen', contactNumber: 'Hydrogen', email: 'Hydrogen', Address: 'Hydrogen'},
     {position: 3, companyName: 'Hydrogen', contactName: 'Hydrogen', contactNumber: 'Hydrogen', email: 'Hydrogen', Address: 'Hydrogen'},
@@ -60,3 +61,4 @@ const ELEMENT_DATA: any= [
 ];
 
 
+*/

@@ -40,7 +40,6 @@
 mat-card {
   width: 97%;
   margin: auto;
-  text-align: center;
 }
 
 
@@ -56,4 +55,42 @@ mat-card {
   text-align: -webkit-center;
 }
 
+td{
+  padding: 1.5% !important;
+}
+
+table{
+  width: 100%;
+}
+
+.search {
+  margin-top: 5%;
+  margin-bottom: 3%;
+  width: 50%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 50%;
+  border: 3px solid rgba(36,165,255,0.88);
+  border-right: none;
+  border-top: none;
+  padding: 1.5%;
+  height: 10%;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  font-size: small;
+}
+
+.searchButton {
+  width: 10%;
+  border: 1px solid rgba(36,165,255,0.88);
+  background: #FFFFFF;
+  text-align: center;
+  color: rgba(36,165,255,0.88);
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
 

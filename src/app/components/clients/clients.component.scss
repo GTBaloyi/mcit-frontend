@@ -43,7 +43,7 @@ H4{
 
 .searchTerm {
   width: 50%;
-  border: 3px solid #FFFFFF;
+  border: 3px solid rgba(36,165,255,0.88);
   border-right: none;
   border-top: none;
   padding: 1.5%;
@@ -55,7 +55,7 @@ H4{
 
 .searchButton {
   width: 10%;
-  border: 1px solid #FFFFFF;
+  border: 1px solid rgba(36,165,255,0.88);
   background: #FFFFFF;
   text-align: center;
   color: rgba(36,165,255,0.88);
@@ -63,4 +63,3 @@ H4{
   cursor: pointer;
   font-size: 20px;
 }
-

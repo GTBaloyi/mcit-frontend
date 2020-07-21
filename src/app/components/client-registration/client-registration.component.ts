@@ -1,7 +1,6 @@
 import {Component, OnChanges, OnInit} from '@angular/core';
 import {Subject} from "rxjs";
 import {AuthGuard} from "../../services/auth.guard";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {UsersService} from "../../services";
 import {ClientRegistrationRequestModel} from "../../services/model/models";
@@ -30,15 +29,15 @@ export class ClientRegistrationComponent implements OnChanges, OnInit  {
     }
 
 
-    constructor(public usersService: UsersService, public authGuard: AuthGuard, private _snackBar: MatSnackBar, private router: Router) {
+    constructor(public usersService: UsersService, public authGuard: AuthGuard, private router: Router) {
 
     }
 
 
     openSnackBar(message: string, action: string) {
-        this._snackBar.open(message, action, {
+        /*this._snackBar.open(message, action, {
             duration: 10000,
-        });
+        });*/
     }
 
     singUp() {

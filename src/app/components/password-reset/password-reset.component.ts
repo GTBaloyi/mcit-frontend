@@ -9,7 +9,6 @@ import {
 import {Router} from "@angular/router";
 import {Observable, Subject} from "rxjs";
 import {AuthGuard} from "../../services/auth.guard";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {LoginResponseModel, UsersService} from "../../services";
 
 @Component({
@@ -30,8 +29,7 @@ export class PasswordResetComponent implements OnInit, OnChanges {
     constructor(private formBuilder: FormBuilder,
                 private router: Router,
                 private usersService: UsersService,
-                private authGuard: AuthGuard,
-                private _snackBar: MatSnackBar){
+                private authGuard: AuthGuard){
 
         if(this.router.getCurrentNavigation().extras.state != undefined) {
             this.oldPassword = this.router.getCurrentNavigation().extras.state.password;
@@ -108,9 +106,9 @@ export class PasswordResetComponent implements OnInit, OnChanges {
 
 
     openSnackBar(message: string, action: string) {
-        this._snackBar.open(message, action, {
+       /* this._snackBar.open(message, action, {
             duration: 10000,
-        });
+        });*/
     }
 
     resetPassword() {

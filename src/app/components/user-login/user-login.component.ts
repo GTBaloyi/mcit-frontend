@@ -1,9 +1,7 @@
 import {Component, OnChanges, OnInit} from '@angular/core';
 import {AuthGuard} from "../../services/auth.guard";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {Subject} from "rxjs";
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {LoginResponseModel, UsersService} from "../../services";
 
 
@@ -19,7 +17,9 @@ export class UserLoginComponent implements OnChanges, OnInit {
     private pass: string;
     private user: LoginResponseModel;
     isLoading = new Subject<boolean>();
+/*
     public dialogRef: MatDialogRef<UserDialogComponent>;
+*/
 
 
     ngOnInit() {
@@ -31,14 +31,14 @@ export class UserLoginComponent implements OnChanges, OnInit {
     }
 
 
-    constructor(public dialog: MatDialog, private usersService: UsersService, private authGuard: AuthGuard, private _snackBar: MatSnackBar, private router: Router) {
+    constructor( private usersService: UsersService, private authGuard: AuthGuard, private router: Router) {
 
     }
 
     openSnackBar(message: string, action: string) {
-        this._snackBar.open(message, action, {
+        /*this._snackBar.open(message, action, {
             duration: 10000,
-        });
+        });*/
     }
 
     public signIn(username: string, password: string) {
@@ -90,11 +90,11 @@ export class UserLoginComponent implements OnChanges, OnInit {
     }
 
     openDialog() {
-        const dialogRef = this.dialog.open(UserDialogComponent);
+       /* const dialogRef = this.dialog.open(UserDialogComponent);*/
 
-        dialogRef.afterClosed().subscribe(result => {
+        /*dialogRef.afterClosed().subscribe(result => {
             console.log(`Dialog result: ${result}`);
-        });
+        });*/
     }
 }
 
