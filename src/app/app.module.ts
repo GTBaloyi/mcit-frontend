@@ -8,8 +8,6 @@ import {environment} from "../environments/environment.prod";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {LandingPageComponent } from './components/landing-page/landing-page.component';
-import { ToastComponent } from './components/toast/toast.component';
-
 
 @NgModule({
     imports: [
@@ -22,8 +20,7 @@ import { ToastComponent } from './components/toast/toast.component';
     ],
     declarations: [
         AppComponent,
-        LandingPageComponent,
-        ToastComponent
+        LandingPageComponent
     ],
     providers: [
         {provide: BASE_API_URL, useValue: environment.BASE_API_URL},

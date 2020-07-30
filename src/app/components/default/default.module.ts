@@ -5,11 +5,8 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import {DashboardComponent} from "../dashboard/dashboard.component";
 import {DashboardService} from "../../services/dashboard.service";
-import {UserDialogComponent, UserLoginComponent} from "../user-login/user-login.component";
-import {ClientRegistrationComponent} from "../client-registration/client-registration.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {PasswordResetComponent} from "../password-reset/password-reset.component";
 import {FooterComponent} from "../../shared/footer/footer.component";
 import {SidebarComponent} from "../../shared/sidebar/sidebar.component";
 import {SpinnerComponent} from "../../shared/spinner/spinner.component";
@@ -18,22 +15,38 @@ import {AppRoutingModule} from "../../app-routing.module";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {ChartsModule} from "ng2-charts";
 import {NavbarComponent} from "../../shared/navbar/navbar.component";
-import {ToastModule} from "ng-uikit-pro-standard";
+import {ToastrModule } from 'ngx-toastr';
+import {ForgotPasswordComponent} from "../forgot-password/forgot-password.component";
+import {ChangePasswordComponent} from "../change-password/change-password.component";
+import {RequestQuotationComponent} from "../request-quotation/request-quotation.component";
+import {InvoicesComponent} from "../invoices/invoices.component";
+import {MakePaymentComponent} from "../make-payment/make-payment.component";
+import {ViewReceiptsComponent} from "../view-receipts/view-receipts.component";
+import {CreateQuotationComponent} from "../create-quotation/create-quotation.component";
+import {ViewQuotationComponent} from "../view-quotation/view-quotation.component";
+import {ProjectsComponent} from "../projects/projects.component";
+import {ViewQuotationPdfComponent} from "../view-quotation-pdf/view-quotation-pdf.component";
 
 
 @NgModule({
   declarations: [
       DefaultComponent,
       DashboardComponent,
-      UserLoginComponent,
-      UserDialogComponent,
-      ClientRegistrationComponent,
-      PasswordResetComponent,
       NavbarComponent,
       SidebarComponent,
       FooterComponent,
       DashboardComponent,
-      SpinnerComponent
+      SpinnerComponent,
+      ForgotPasswordComponent,
+      ChangePasswordComponent,
+      RequestQuotationComponent,
+      InvoicesComponent,
+      MakePaymentComponent,
+      ViewReceiptsComponent,
+      CreateQuotationComponent,
+      ViewQuotationComponent,
+      ProjectsComponent,
+      ViewQuotationPdfComponent
   ],
   imports: [
 
@@ -47,8 +60,7 @@ import {ToastModule} from "ng-uikit-pro-standard";
       AppRoutingModule,
       NgbModule,
       ChartsModule,
-      ToastModule
-
+      ToastrModule.forRoot(),
   ],
   exports: [
 
@@ -62,8 +74,7 @@ import {ToastModule} from "ng-uikit-pro-standard";
       AppRoutingModule,
       NgbModule,
       ChartsModule,
-      ToastModule
-
+      ToastrModule
   ],
   providers: [
       DashboardService

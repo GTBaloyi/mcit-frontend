@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
+import {Router} from "@angular/router";
+import {LoginResponseModel} from "../../services";
 
 @Component({
   selector: 'app-navbar',
@@ -10,12 +12,14 @@ import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 export class NavbarComponent implements OnInit {
   public iconOnlyToggled = false;
   public sidebarToggled = false;
-  
-  constructor(config: NgbDropdownConfig) {
+  private user : LoginResponseModel;
+
+  constructor(config: NgbDropdownConfig, private router: Router) {
     config.placement = 'bottom-right';
   }
 
   ngOnInit() {
+    this.user  = JSON.parse(sessionStorage.getItem("loginInfo"));
   }
 
   // toggle sidebar in small devices
@@ -46,6 +50,12 @@ export class NavbarComponent implements OnInit {
   // toggle right sidebar
   toggleRightSidebar() {
     document.querySelector('#right-sidebar').classList.toggle('open');
+  }
+
+  logout() {
+      sessionStorage.removeItem('loginInfo');
+      sessionStorage.removeItem('username');
+      this.router.navigateByUrl('/landing-page');
   }
 
 }

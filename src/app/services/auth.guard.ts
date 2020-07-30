@@ -43,10 +43,10 @@ export class AuthGuard implements CanActivate {
             if (this.loggedIn && this.userStatus == 1 ) {
                 return true;
             }else if(this.loggedIn && this.userStatus == 2){
-                this.router.navigate(['/password-reset'], {state:{password: this.password, username: this.username}});
+                this.router.navigate(['/change-password'], {state:{password: this.password, username: this.username}});
                 return true;
             }else if(this.loggedIn && this.userStatus == 3 || this.loggedIn && this.userStatus == 4 ){
-                this.router.navigate(['/login']);
+                this.router.navigate(['/landing-page']);
                 return false;
             }else {
                 this.router.navigate(['/landing-page']);

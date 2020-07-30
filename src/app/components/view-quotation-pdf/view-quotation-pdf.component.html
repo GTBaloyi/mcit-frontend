@@ -1,0 +1,144 @@
+<div class="page-header">
+    <button type="button" class="btn btn-gradient-primary btn-rounded btn-icon" routerLink="/view-quotation" >
+        <i class="mdi mdi-backspace icon-md"></i>
+    </button>
+
+    <h3 class="page-title">
+    <span class="page-title-icon bg-gradient-primary text-white mr-2">
+      <i class="mdi mdi-file-pdf"></i>
+    </span>
+        View Quotation
+    </h3>
+</div>
+
+
+
+<div class="template-demo mt-4 button">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-outline-secondary" (click)="convertToPDF()" value="Convert">
+            <i class="mdi mdi-download d-block mb-1"></i>
+            Download
+        </button>
+        <button type="button" class="btn btn-outline-secondary">
+            <i class="mdi mdi-file-check d-block mb-1"></i>
+            Accept
+        </button>
+        <button type="button" class="btn btn-outline-secondary">
+            <i class="mdi mdi-alert d-block mb-1"></i>
+            Reject
+        </button>
+    </div>
+</div>
+
+<div #pdfTable id="pdfTable">
+    <div class="card">
+        <div id="invoice">
+
+            <div class="invoice overflow-auto">
+                <div style="min-width: 600px">
+                    <header>
+                        <div class="row">
+                            <div class="col">
+                                <img src="../../../assets/quotationLogo.png" data-holder-rendered="true" />
+                            </div>
+                            <div class="col company-details">
+                                <h3 class="name">
+                                    Metal Casting Technology Station (MCTS)
+                                </h3>
+                                <div>University of Johannesburg 101 John Orr Building Beit Street Doornfontein
+                                    Campus P.O. Box 17001 Doornfontein 2028 VAT No. 4900127681, Johannesburg,
+                                    2094 Gauteng, South Africa</div>
+                                <div>Phone: (+27) 11 559 6290</div>
+                                <div>Email: commuczz@communityengagement.co.za</div>
+                            </div>
+                        </div>
+                    </header>
+
+                    <main>
+                        <div class="row contacts">
+                            <div class="col invoice-to">
+                                <div class="text-gray-light">QUOTATION TO:</div>
+                                <h2 class="to">{{quotation.company_name}}</h2>
+                                <div class="address">{{quotation.bill_address}}</div>
+                                <div class="email"><a href="{{quotation.email}}">{{quotation.email}}</a></div>
+                            </div>
+                            <div class="col invoice-details">
+                                <h1 class="invoice-id">{{quotation.quote_reference}}</h1>
+                                <div class="date">{{quotation.date_generated}}</div>
+                                <div class="date">{{quotation.quote_expiryDate}}</div>
+                            </div>
+                        </div>
+
+
+
+                        <table border="0" cellspacing="0" cellpadding="0" style="margin-top: 5%">
+                            <thead>
+                            <tr>
+                                <th class="text-left">Focus area</th>
+                                <th class="text-right">Product</th>
+                                <th class="text-right">Quantity</th>
+                                <th class="text-right">Unit price</th>
+                                <th class="text-right">TOTAL</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let item of quotation.items">
+                                <td class="no">{{item.focusArea}}</td>
+                                <td class="text-left">{{item.item}}</td>
+                                <td class="unit">{{item.quantity}}</td>
+                                <td class="qty">{{item.unit_Price}}</td>
+                                <td class="total">{{item.total}}</td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                            <!--<tr>
+                                <td colspan="2"></td>
+                                <td colspan="2">SUBTOTAL</td>
+                                <td>$5,200.00</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td colspan="2">TAX 25%</td>
+                                <td>$1,300.00</td>
+                            </tr>-->
+                            <tr>
+                                <td colspan="2"></td>
+                                <td colspan="2">GRAND TOTAL</td>
+                                <td>{{quotation.grand_total}}</td>
+                            </tr>
+                            </tfoot>
+                        </table>
+
+
+                        <div class="notices">
+                            <H5 style="font-weight: bolder">Terms & Conditions</H5>
+                            <div>This quote is valid for 30 days and only relates to the official enquiry quoted above.</div>
+                            <div>Results will be issued in 5 working days or less from the day of receiving samples.</div>
+                            <div>Written acceptance of a quote is required before work can commence. An official order is required before results will be
+                                released.</div>
+                            <div>Results and all information of workdone related to the quote is treated as confidential and will not be revealed to any third
+                                party without authorization in writing.</div>
+                        </div>
+                    </main>
+
+                    <div>
+                        <H5 style="font-weight: bolder">
+                            Acceptance: I hereby accept this quote, subject to the stipulations as specified and guarantee that I am
+                            properly authorized in terms of the resolution.
+                        </H5>
+                    </div>
+
+                    <footer>
+                        Invoice was created on a computer and is valid without the signature and seal.
+                    </footer>
+                </div>
+                <div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

@@ -22,7 +22,6 @@ import { EnquiryResponseModel } from '../model/models';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
-import {BASE_API_URL} from "../../../ApiModule";
 
 
 

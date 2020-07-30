@@ -5,6 +5,8 @@ import {LoginResponseModel, UsersService} from "../../services";
 import {AuthGuard} from "../../services/auth.guard";
 import {Router} from "@angular/router";
 import {ClientRegistrationRequestModel} from "../../services/model/models";
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-landing-page',
@@ -22,29 +24,36 @@ export class LandingPageComponent implements OnInit {
     private companyProfile: Array<string> = ['Small', 'Large', 'HEIs/Science Council', 'Techno/Star-Entrepreneur'];
     private result: ClientRegistrationRequestModel;
     private Newuser: ClientRegistrationRequestModel = <ClientRegistrationRequestModel>{} ;
+    private termsConditions: boolean = false;
 
-    constructor(config: NgbDropdownConfig, private usersService: UsersService, private authGuard: AuthGuard, private router: Router) {
+    constructor(config: NgbDropdownConfig, private usersService: UsersService, private authGuard: AuthGuard, private router: Router,private toastr: ToastrService) {
         config.placement = 'bottom-right';
     }
 
     ngOnInit() {
+        this.Newuser.title = 'Mr';
+        this.Newuser.gender = 'Male';
+        this.Newuser.companyProfile = 'Small';
 
     }
-
 
     public signIn(username: string, password: string) {
 
         if(username == '' && password == ''){
-            //this.showCustomToast('Please enter a username and password');
+            this.toastr.error('Please enter a username and password', 'Missing Fields',{
+                timeOut: 3000,
+            });
+
         }else if(username == ''){
-            //this.showCustomToast('Please enter a username');
+            this.toastr.error('Please enter a username', 'Missing Fields',{
+                timeOut: 3000,
+            });
 
         }else if( password == ''){
-            //this.showCustomToast('Please enter a password');
-
-        }
-
-        if (username != '' && password != ''){
+            this.toastr.error('Please enter a password', 'Missing Fields', {
+                timeOut: 3000,
+            });
+        }else if (username != '' && password != ''){
             this.isLoading.next(true);
 
             this.usersService.apiUsersLoginGet(username, password).subscribe(
@@ -59,17 +68,18 @@ export class LandingPageComponent implements OnInit {
                 },
                 error => {
                     console.log(error);
-                    //this.showError();
+                    this.showError();
                     this.isLoading.next(false);
 
                 },
                 () => {
                     this.authGuard.userValidation(this.user, password, username);
                     if(this.user.userStatus == 1){
-                        //this.showSuccess();
+                        this.showSuccess();
                     }else if(this.user.userStatus == 3){
-                        //this.openDialog();
+                        this.showCustomToast();
                     }
+                    sessionStorage.setItem('username', JSON.stringify(username));
                     this.isLoading.next(false);
                     this.router.navigateByUrl('/dashboard');
 
@@ -81,51 +91,55 @@ export class LandingPageComponent implements OnInit {
 
     singUp() {
 
-        this.Newuser.isCompanyPresent = true;
-        this.Newuser.avatar = '';
+        if(this.termsConditions) {
+            this.Newuser.isCompanyPresent = true;
+            this.Newuser.avatar = '';
 
-        this.isLoading.next(true);
-        this.usersService.apiUsersClientRegistrationPost(this.Newuser).subscribe(
-            (data: any) => {
-                this.result = data;
-            },
-            error => {
-                console.log(error);
-                //this.showError();
-                this.isLoading.next(false);
-            },
-            () => {
-                //this.showSuccess();
-                this.isLoading.next(false);
-                this.router.navigateByUrl('/landing-page');
+            this.isLoading.next(true);
+            this.usersService.apiUsersClientRegistrationPost(this.Newuser).subscribe(
+                (data: any) => {
+                    this.result = data;
+                },
+                error => {
+                    console.log(error);
+                    this.showError();
+                    this.isLoading.next(false);
+                },
+                () => {
+                    this.showSuccess();
+                    this.isLoading.next(false);
+                    this.router.navigateByUrl('/landing-page');
 
-            }
-        )
+                }
+            )
+        }else{
+            this.toastr.error('Please accept our terms and conditions then, try again.', 'Error!!!', {
+                timeOut: 3000,
+            });
+
+        }
     }
 
-    /*showSuccess() {
-        this.toastService.show('Process successfully completed', {
-            classname: 'bg-success text-light',
-            delay: 2000 ,
-            autohide: true,
-            headertext: 'Toast Header'
+    showSuccess() {
+        this.toastr.success('Process successfully completed', 'Success', {
+            timeOut: 3000,
         });
     }
 
     showError() {
-        this.toastService.show('Opps, an error occurred. Please try again.', {
-            classname: 'bg-danger text-light',
-            delay: 2000 ,
-            autohide: true,
-            headertext: 'Error!!!'
+        this.toastr.error('Opps, an error occurred. Please try again.', 'Error!!!', {
+            timeOut: 3000,
         });
     }
 
-    showCustomToast(customTpl) {
-        this.toastService.show(customTpl, {
-            classname: 'bg-info text-light',
-            delay: 3000,
-            autohide: true
+
+    showCustomToast() {
+        this.toastr.info(
+            'Oops, it looks like you account has been deactivated or suspended \n\nPlease contact support to have your account activated.', 'Account Deactivated', {
+            timeOut: 3000,
         });
-    }*/
-}
+    }
+
+    acceptTermsAndConditions(){
+        this.termsConditions = !this.termsConditions;
+    }}

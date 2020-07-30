@@ -1,4 +1,4 @@
-<div class="container-scroller main">
+<div class="container-scroller">
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-image d-flex align-items-center justify-content-center">
             <a class="navbar-brand brand-logo" routerLink="/"><img src="assets/mtc_long.png" alt="logo" /></a>
@@ -6,7 +6,7 @@
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
             <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item dropdown">
-                    <a class="nav-link count-indicator dropdown-toggle">
+                    <a class="nav-link count-indicator dropdown-toggle" routerLink="/request-quotation">
                         <i class="mdi mdi-lead-pencil" style="margin-right: 5px"></i>
                         <H6> Request Quotation</H6>
                     </a>
@@ -17,7 +17,7 @@
                         <H6> Sign in</H6>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" ngbDropdownMenu aria-labelledby="signInDropdown">
-                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                        <div class="auth-form-light text-left py-5 px-4 px-sm-5"  style="background: #f9f9f9">
                             <h6 class="font-weight-light">Sign in to continue.</h6>
                             <form class="pt-3">
                                 <div class="form-group">
@@ -30,7 +30,7 @@
                                     <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" (click)="signIn(username, password)">SIGN IN</a>
                                 </div>
                                 <div class="my-2 d-flex justify-content-between align-items-center">
-                                    <a  class="auth-link text-black">Forgot password?</a>
+                                    <a  class="auth-link text-black" routerLink="/forgot-password">Forgot password?</a>
                                 </div>
                             </form>
                         </div>
@@ -42,48 +42,76 @@
                         <H6> Sign up</H6>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" ngbDropdownMenu aria-labelledby="signUpDropdown">
-                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                        <div class="auth-form-light text-left py-5 px-4 px-sm-5" style="background: #f9f9f9">
+                            <h4>New here?</h4>
                             <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
                             <form class="pt-3">
-
-                                <div class="form-group">
-                                    <select type="text" placeholder="Title" [(ngModel)]="Newuser.title" [value]="Newuser.title"  class="form-control form-control-lg" id="regTitle">
-                                        <option *ngFor="let option of titles" [value]="option">{{option}}</option>
-                                    </select>
-                                </div>
-
-
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Username">
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail2" placeholder="Email">
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control form-control-lg" id="exampleFormControlSelect2">
-                                        <option>Country</option>
-                                        <option>United States of America</option>
-                                        <option>United Kingdom</option>
-                                        <option>India</option>
-                                        <option>Germany</option>
-                                        <option>Argentina</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword2" placeholder="Password">
-                                </div>
-                                <div class="mb-4">
-                                    <div class="form-check">
-                                        <label class="form-check-label text-muted">
-                                            <input type="checkbox" class="form-check-input">
-                                            <i class="input-helper"></i>
-                                            I agree to all Terms & Conditions
-                                        </label>
+                                <div class="row">
+                                    <div class="form-group row" style="margin-right: 0.5%">
+                                        <div class="col-sm-12">
+                                            <select type="text" [(ngModel)]="Newuser.title" [value]="Newuser.title" class="form-control form-control-lg" id="title" [ngModelOptions]="{standalone: true}">
+                                                <option placeholder="Title" *ngFor="let option of titles" [value]="option" value="{{option}}">{{option}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" style="margin-right: 0.5%">
+                                        <div class="col-sm-12">
+                                            <input class="form-control form-control-lg" type="text" placeholder="Name" [(ngModel)]="Newuser.contactName" [value]="Newuser.contactName" [ngModelOptions]="{standalone: true}" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" style="margin-right: 0.5%">
+                                        <div class="col-sm-12">
+                                            <input class="form-control form-control-lg" type="text" placeholder="Surname" [(ngModel)]="Newuser.contactSurname" [value]="Newuser.contactSurname" [ngModelOptions]="{standalone: true}" required>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mt-3">
-                                    <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" routerLink="/dashboard">SIGN UP</a>
+
+                                <div class="row">
+                                    <div class="form-group row" style="margin-left: 0.5%; width: 30%">
+                                        <select class="form-control form-control-lg" id="gender" [(ngModel)]="Newuser.gender" [value]="Newuser.gender" [ngModelOptions]="{standalone: true}">
+                                            <option *ngFor="let option of gender" [value]="option" value="{{option}}">{{option}}</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group row" style="margin-left: 8%; width: 60%">
+                                        <input class="form-control form-control-lg" type="text" placeholder="Contact Number" [(ngModel)]="Newuser.contactNumber" [value]="Newuser.contactNumber" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group row" style="margin-left: 0.5%; width: 94.5%">
+                                        <input type="text" class="form-control form-control-lg" id="companyName" placeholder="Company name" [(ngModel)]="Newuser.companyName" [value]="Newuser.companyName" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group row" style="margin-left: 0.5%; width: 94.5%">
+                                        <input type="text" class="form-control form-control-lg" id="companyNumber" placeholder="Registration number" [(ngModel)]="Newuser.companyRegistrationNumber" [value]="Newuser.companyRegistrationNumber" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group row" style="margin-left: 0.5%; width: 94.5%">
+                                        <input type="text" class="form-control form-control-lg" id="email" placeholder="Contact Email" [(ngModel)]="Newuser.contactEmail" [value]="Newuser.contactEmail" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <select class="form-control form-control-lg"  style="margin-left: 0.5%; width: 94.5%" id="companySize" [(ngModel)]="Newuser.companyProfile" [value]="Newuser.companyProfile" [ngModelOptions]="{standalone: true}">
+                                        <option *ngFor="let option of companyProfile" [value]="option" value="{{option}}">{{option}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-check-label text-muted" style="margin-left: 0.5%; margin-top: 5%">
+                                        <input type="checkbox" class="form-check-input" (change)="acceptTermsAndConditions()">
+                                        <i class="input-helper"></i>
+                                        <a href="https://www.uj.ac.za/about/Pages/TCs.aspx" target="_blank">I agree to all Terms & Conditions</a>
+                                    </label>
+                                </div>
+                                <div class="row">
+                                    <a style="margin-left: 0.5%; width: 94.5%" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" (click)="singUp()">SIGN UP</a>
                                 </div>
                             </form>
                         </div>

@@ -3,8 +3,13 @@ import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
 
+import { ClientsService } from './api/clients.service';
+import { EmployeesService } from './api/employees.service';
 import { EnquiryService } from './api/enquiry.service';
 import { InvoiceService } from './api/invoice.service';
+import { ProductsService } from './api/products.service';
+import { ProjectsService } from './api/projects.service';
+import { QuotationService } from './api/quotation.service';
 import { UsersService } from './api/users.service';
 
 @NgModule({
