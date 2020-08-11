@@ -29,7 +29,7 @@ import { Configuration }                                     from '../configurat
 })
 export class ClientsService {
 
-    protected basePath = 'https://mcit-backend.azurewebsites.net';
+    protected basePath = 'http://localhost';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
@@ -86,16 +86,16 @@ export class ClientsService {
     }
 
     /**
-     * @param companyRegistration 
+     * @param email 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiClientsCompanyRegistrationGet(companyRegistration: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<ClientRegistrationRequestModel>;
-    public apiClientsCompanyRegistrationGet(companyRegistration: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<ClientRegistrationRequestModel>>;
-    public apiClientsCompanyRegistrationGet(companyRegistration: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<ClientRegistrationRequestModel>>;
-    public apiClientsCompanyRegistrationGet(companyRegistration: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<any> {
-        if (companyRegistration === null || companyRegistration === undefined) {
-            throw new Error('Required parameter companyRegistration was null or undefined when calling apiClientsCompanyRegistrationGet.');
+    public apiClientsByEmailEmailGet(email: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<ClientRegistrationRequestModel>;
+    public apiClientsByEmailEmailGet(email: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<ClientRegistrationRequestModel>>;
+    public apiClientsByEmailEmailGet(email: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<ClientRegistrationRequestModel>>;
+    public apiClientsByEmailEmailGet(email: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<any> {
+        if (email === null || email === undefined) {
+            throw new Error('Required parameter email was null or undefined when calling apiClientsByEmailEmailGet.');
         }
 
         let headers = this.defaultHeaders;
@@ -120,7 +120,53 @@ export class ClientsService {
             responseType = 'text';
         }
 
-        return this.httpClient.get<ClientRegistrationRequestModel>(`${this.configuration.basePath}/api/Clients/${encodeURIComponent(String(companyRegistration))}`,
+        return this.httpClient.get<ClientRegistrationRequestModel>(`${this.configuration.basePath}/api/Clients/by-email/${encodeURIComponent(String(email))}`,
+            {
+                responseType: <any>responseType,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * @param companyRegistration 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public apiClientsByRegistrationCompanyRegistrationGet(companyRegistration: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<ClientRegistrationRequestModel>;
+    public apiClientsByRegistrationCompanyRegistrationGet(companyRegistration: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<ClientRegistrationRequestModel>>;
+    public apiClientsByRegistrationCompanyRegistrationGet(companyRegistration: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<ClientRegistrationRequestModel>>;
+    public apiClientsByRegistrationCompanyRegistrationGet(companyRegistration: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<any> {
+        if (companyRegistration === null || companyRegistration === undefined) {
+            throw new Error('Required parameter companyRegistration was null or undefined when calling apiClientsByRegistrationCompanyRegistrationGet.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        let httpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (httpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                'text/plain',
+                'application/json',
+                'text/json'
+            ];
+            httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+
+        let responseType: 'text' | 'json' = 'json';
+        if(httpHeaderAcceptSelected && httpHeaderAcceptSelected.startsWith('text')) {
+            responseType = 'text';
+        }
+
+        return this.httpClient.get<ClientRegistrationRequestModel>(`${this.configuration.basePath}/api/Clients/by-registration/${encodeURIComponent(String(companyRegistration))}`,
             {
                 responseType: <any>responseType,
                 withCredentials: this.configuration.withCredentials,

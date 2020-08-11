@@ -10,7 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:server:serverless": "webpack --config webpack.server.config.js --progress --colors",
-    "aws-deploy": "aws s3 sync dist/ s3://mcp-frontend"
+    "aws-deploy": "aws s3 sync dist/ s3://mcp-frontend",
+    "swagger:generate": "openapi-generator  generate -i src/app/services/swagger.json -g typescript-angular -o ./src/app/services --config angular.json"
   },
   "private": true,
   "dependencies": {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ClientsService, LoginResponseModel} from "../../services";
 
 @Component({
     selector: 'app-dashboard',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-    constructor() { }
+    constructor(private clientService: ClientsService) { }
 
     ngOnInit() {
     }
@@ -158,5 +159,40 @@ export class DashboardComponent implements OnInit {
             ]
         }
     ];
+
+/*
+    public getClientInformation(username: string, password: string) {
+
+        this.clientService.(username, password).subscribe(
+
+            (data: LoginResponseModel) => {
+                this.user = data;
+                if (this.user != null) {
+                    this.user.loggedIn = true;
+                    sessionStorage.setItem('loginInfo', JSON.stringify(data));
+                }
+
+            },
+            error => {
+                console.log(error);
+                this.showError();
+                this.isLoading.next(false);
+
+            },
+            () => {
+                this.authGuard.userValidation(this.user, password, username);
+                if(this.user.userStatus == 1){
+                    this.showSuccess();
+                }else if(this.user.userStatus == 3){
+                    this.showCustomToast();
+                }
+                sessionStorage.setItem('username', JSON.stringify(username));
+                this.isLoading.next(false);
+                this.router.navigateByUrl('/dashboard');
+
+            }
+        );
+    }
+*/
 
 }
