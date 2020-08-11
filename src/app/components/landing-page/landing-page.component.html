@@ -1,47 +1,173 @@
-<div id="video_overlays"></div>
+<div class="container-scroller">
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-image d-flex align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo" routerLink="/"><img src="assets/mtc_long.png" alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+            <ul class="navbar-nav navbar-nav-right">
+                <li class="nav-item dropdown">
+                    <a class="nav-link count-indicator dropdown-toggle" routerLink="/request-quotation">
+                        <i class="mdi mdi-lead-pencil" style="margin-right: 5px"></i>
+                        <H6> Request Quotation</H6>
+                    </a>
+                </li>
+                <li class="nav-item dropdown" ngbDropdown>
+                    <a class="nav-link count-indicator dropdown-toggle" id="signInDropdown" ngbDropdownToggle>
+                        <i class="mdi mdi-login" style="margin-right: 5px"></i>
+                        <H6> Sign in</H6>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" ngbDropdownMenu aria-labelledby="signInDropdown">
+                        <div class="auth-form-light text-left py-5 px-4 px-sm-5"  style="background: #f9f9f9">
+                            <h6 class="font-weight-light">Sign in to continue.</h6>
+                            <form class="pt-3">
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+                                </div>
+                                <div class="mt-3">
+                                    <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" (click)="signIn(username, password)">SIGN IN</a>
+                                </div>
+                                <div class="my-2 d-flex justify-content-between align-items-center">
+                                    <a  class="auth-link text-black" routerLink="/forgot-password">Forgot password?</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown" ngbDropdown>
+                    <a class="nav-link count-indicator dropdown-toggle" id="signUpDropdown" ngbDropdownToggle>
+                        <i class="mdi mdi-lead-pencil" style="margin-right: 5px"ß></i>
+                        <H6> Sign up</H6>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" ngbDropdownMenu aria-labelledby="signUpDropdown">
+                        <div class="auth-form-light text-left py-5 px-4 px-sm-5" style="background: #f9f9f9">
+                            <h4>New here?</h4>
+                            <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
+                            <form class="pt-3">
+                                <div class="row">
+                                    <div class="form-group row" style="margin-right: 0.5%">
+                                        <div class="col-sm-12">
+                                            <select type="text" [(ngModel)]="Newuser.title" [value]="Newuser.title" class="form-control form-control-lg" id="title" [ngModelOptions]="{standalone: true}">
+                                                <option placeholder="Title" *ngFor="let option of titles" [value]="option" value="{{option}}">{{option}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" style="margin-right: 0.5%">
+                                        <div class="col-sm-12">
+                                            <input class="form-control form-control-lg" type="text" placeholder="Name" [(ngModel)]="Newuser.contactName" [value]="Newuser.contactName" [ngModelOptions]="{standalone: true}" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" style="margin-right: 0.5%">
+                                        <div class="col-sm-12">
+                                            <input class="form-control form-control-lg" type="text" placeholder="Surname" [(ngModel)]="Newuser.contactSurname" [value]="Newuser.contactSurname" [ngModelOptions]="{standalone: true}" required>
+                                        </div>
+                                    </div>
+                                </div>
 
-<video autoplay muted loop id="myVideo" >
-    <source src="../../../assets/Casting.mp4" type="video/mp4">
-</video>
+                                <div class="row">
+                                    <div class="form-group row" style="margin-left: 0.5%; width: 30%">
+                                        <select class="form-control form-control-lg" id="gender" [(ngModel)]="Newuser.gender" [value]="Newuser.gender" [ngModelOptions]="{standalone: true}">
+                                            <option *ngFor="let option of gender" [value]="option" value="{{option}}">{{option}}</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group row" style="margin-left: 8%; width: 60%">
+                                        <input class="form-control form-control-lg" type="text" placeholder="Contact Number" [(ngModel)]="Newuser.contactNumber" [value]="Newuser.contactNumber" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group row" style="margin-left: 0.5%; width: 94.5%">
+                                        <input type="text" class="form-control form-control-lg" id="companyName" placeholder="Company name" [(ngModel)]="Newuser.companyName" [value]="Newuser.companyName" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group row" style="margin-left: 0.5%; width: 94.5%">
+                                        <input type="text" class="form-control form-control-lg" id="companyNumber" placeholder="Registration number" [(ngModel)]="Newuser.companyRegistrationNumber" [value]="Newuser.companyRegistrationNumber" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group row" style="margin-left: 0.5%; width: 94.5%">
+                                        <input type="text" class="form-control form-control-lg" id="email" placeholder="Contact Email" [(ngModel)]="Newuser.contactEmail" [value]="Newuser.contactEmail" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
 
 
+                                <div class="row">
+                                    <select class="form-control form-control-lg"  style="margin-left: 0.5%; width: 94.5%" id="companySize" [(ngModel)]="Newuser.companyProfile" [value]="Newuser.companyProfile" [ngModelOptions]="{standalone: true}">
+                                        <option *ngFor="let option of companyProfile" [value]="option" value="{{option}}">{{option}}</option>
+                                    </select>
+                                </div>
 
-<mat-card class="body">
+                                <div class="mb-4">
+                                    <label class="form-check-label text-muted" style="margin-left: 0.5%; margin-top: 5%">
+                                        <input type="checkbox" class="form-check-input" (change)="acceptTermsAndConditions()">
+                                        <i class="input-helper"></i>
+                                        <a href="https://www.uj.ac.za/about/Pages/TCs.aspx" target="_blank">I agree to all Terms & Conditions</a>
+                                    </label>
+                                </div>
+                                <div class="row">
+                                    <a style="margin-left: 0.5%; width: 94.5%" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" (click)="singUp()">SIGN UP</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
+    <div class="rowLadingPage">
+        <div class="col-md-4 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">About</h4>
+                    <h5>The University of Johannesburg’s Metal Casting Technology Station (MCTS) is an initiative of the then [LN1]
+                        Department of Science and Technology (now Department of Science and Innovation - DSI) under the Technology
+                        Innovation Agency (TIA).</h5>
 
-    <div class="header" ></div>
-    <div class="line">
+                    <h5>The MCTS operates under the Faculty of Engineering and the Built Environment in
+                        partnership with the Department of Metallurgy.</h5>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Product</h4>
+                    <h5> The MCTS supports and assists the Metal Casting industry; Foundries, Suppliers and related industries, to improve the sectors
+                        innovation ability for increased competitiveness and sustainability, with the following FOCUS AREAS:</h5>
+                    <ul class="list-arrow">
+                        <li>Physical Metallurgy</li>
+                        <li>Moulding Technology</li>
+                        <li>Foundry Technology</li>
+                        <li>Support services.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Contacts</h4>
+                    <p>Contact the MCST:</p>
+                    <p>MCTS Manager: Kulani Mageza</p>
+                    <p>Tel: +27 11 559 6952</p>
+                    <p>+27 11 559 6019</p>
+                    <p>Email address: kmageza@uj.ac.za</p>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 
-    <mat-card-content >
-        <div class="column" fxLayout="column">
-            <div style="padding: 0 9%">
-                <img style="height: 100%; width: 100%" src="../../../assets/mtc.png">
-            </div>
-        </div>
-        <div class="column"  fxLayout="column">
-
-            <div style="padding: 0% 30% 0% 0%">
-                <button mat-button class="button" routerLink="#" >
-                    <mat-icon>library_books</mat-icon>
-                    Request Quotation
-                </button>
-            </div>
-            <div style="padding: 0% 30% 0% 0%">
-                <button mat-button class="button" routerLink="/login" >
-                    <mat-icon>directions</mat-icon>
-                    Login
-                </button>
-            </div>
-            <div style="padding: 0% 30% 0% 0%">
-                <button mat-button class="button" routerLink="/register" >
-                    <mat-icon>how_to_reg</mat-icon>
-                    Register
-                </button>
-            </div>
-
-        </div>
-
-    </mat-card-content>
-
-</mat-card>
+<div *ngIf="isLoading | async" class="overlay">
+    <div class="spinner">
+        <img class="loader" src="../../../assets/wheel.gif">
+    </div>
+</div>

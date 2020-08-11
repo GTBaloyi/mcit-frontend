@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import {User} from "../models/User";
+import {LoginResponseModel} from "./index";
 
 
 @Injectable({
@@ -8,9 +8,9 @@ import {User} from "../models/User";
 })
 export class AuthGuard implements CanActivate {
 
-    private loggedIn: boolean = false;
-    private userStatus: number = 0;
-    private loginInfo: User = null;
+    private loggedIn: boolean;
+    private userStatus: number;
+    private loginInfo: LoginResponseModel = null;
     private password: string;
     private username: string;
 
@@ -19,9 +19,7 @@ export class AuthGuard implements CanActivate {
     }
 
 
-
-
-    userValidation(user: User, password: string, username: string){
+    userValidation(user: LoginResponseModel, password: string, username: string){
         this.loggedIn = user.loggedIn;
         this.password = password;
         this.username =  username;
@@ -30,19 +28,26 @@ export class AuthGuard implements CanActivate {
 
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        this.loginInfo  = JSON.parse(sessionStorage.getItem("loginInfo"));
+        this.loginInfo = JSON.parse(sessionStorage.getItem("loginInfo"));
 
-         if(this.loginInfo != null) {
-            this.loggedIn = this.loginInfo.loggedIn;
+        if(this.loginInfo != null) {
+
+            if(this.userStatus == null){
+                this.userStatus = this.loginInfo.userStatus;
+            }
+
+            if(this.loggedIn == null){
+                this.loggedIn = this.loginInfo.loggedIn;
+            }
 
             if (this.loggedIn && this.userStatus == 1 ) {
                 return true;
             }else if(this.loggedIn && this.userStatus == 2){
-                this.router.navigate(['/password-reset'], {state:{password: this.password, username: this.username}});
+                this.router.navigate(['/change-password'], {state:{password: this.password, username: this.username}});
                 return true;
             }else if(this.loggedIn && this.userStatus == 3 || this.loggedIn && this.userStatus == 4 ){
-                this.router.navigate(['/login']);
-                return true;
+                this.router.navigate(['/landing-page']);
+                return false;
             }else {
                 this.router.navigate(['/landing-page']);
                 return false;

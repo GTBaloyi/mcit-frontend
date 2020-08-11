@@ -1,28 +1,179 @@
-<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="10px">
-    <div fxFlex>
-        <app-stat [bgClass]="'P-Invoice-Value-Added'" [icon]="'dashboard'" [count]="1858.97" [label]="'Invoice value added per day'"></app-stat>
+<div class="page-header">
+    <h3 class="page-title">
+    <span class="page-title-icon bg-gradient-primary text-white mr-2">
+      <i class="mdi mdi-home"></i>
+    </span>
+        Dashboard
+    </h3>
+</div>
+<div class="row container-scroller">
+    <div class="col-md-4 stretch-card grid-margin">
+        <div class="card bg-gradient-danger card-img-holder text-white">
+            <div class="card-body">
+                <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image"/>
+                <h4 class="font-weight-normal mb-3">Paid Invoices
+                    <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                </h4>
+                <h2 class="mb-5">R 15,0000</h2>
+            </div>
+        </div>
     </div>
-    <div fxFlex>
-        <app-stat [bgClass]="'A-Invoice-Value-Added'" [icon]="'view_list'" [count]="50.56" [label]="'On-time deliveries'"></app-stat>
+    <div class="col-md-4 stretch-card grid-margin">
+        <div class="card bg-gradient-info card-img-holder text-white">
+            <div class="card-body">
+                <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image"/>
+                <h4 class="font-weight-normal mb-3">Unpaid Invoices
+                    <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                </h4>
+                <h2 class="mb-5">R 4,6334</h2>
+            </div>
+        </div>
     </div>
-    <div fxFlex>
-        <app-stat [bgClass]="'On-Time-Deliveries'" [icon]="'shopping_cart'" [count]="71.23" [label]="'In-budget projects'"></app-stat>
-    </div>
-    <div fxFlex>
-        <app-stat [bgClass]="'In-Budget-Projects'" [icon]="'contact_support'" [count]="73.87" [label]="'Invoice value budget value'"></app-stat>
-    </div>
-    <div fxFlex>
-        <app-stat [bgClass]="'Customer-Satisfaction'" [icon]="'contact_support'" [count]="0.00" [label]="'Customer satisfaction'"></app-stat>
+    <div class="col-md-4 stretch-card grid-margin">
+        <div class="card bg-gradient-success card-img-holder text-white">
+            <div class="card-body">
+                <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image"/>
+                <h4 class="font-weight-normal mb-3">Overdue Invoices
+                    <i class="mdi mdi-diamond mdi-24px float-right"></i>
+                </h4>
+                <h2 class="mb-5">R 5,5741</h2>
+            </div>
+        </div>
     </div>
 </div>
 
-<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-
-    <div fxFlex="49">
-        <app-widget-pie [data]="pieChart"></app-widget-pie>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Project Status</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Due Date
+                            </th>
+                            <th>
+                                Progress
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                Project 1
+                            </td>
+                            <td>
+                                May 15, 2015
+                            </td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                2
+                            </td>
+                            <td>
+                                Project 2
+                            </td>
+                            <td>
+                                Jul 01, 2015
+                            </td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                3
+                            </td>
+                            <td>
+                                Project 3
+                            </td>
+                            <td>
+                                Apr 12, 2015
+                            </td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar bg-gradient-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                4
+                            </td>
+                            <td>
+                                Project 4
+                            </td>
+                            <td>
+                                May 15, 2015
+                            </td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar bg-gradient-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                5
+                            </td>
+                            <td>
+                                Project 5
+                            </td>
+                            <td>
+                                May 03, 2015
+                            </td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                5
+                            </td>
+                            <td>
+                                Project 6
+                            </td>
+                            <td>
+                                Jun 05, 2015
+                            </td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-    <div fxFlex="49">
-        <app-widget-pie [data]="pieChart"></app-widget-pie>
-    </div>
+   <!-- <div class="col-md-5 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Todo</h4>
+                <app-todo></app-todo>
+            </div>
+        </div>
+    </div>-->
 </div>
-
