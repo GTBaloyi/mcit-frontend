@@ -36,8 +36,6 @@ export class RequestQuotationComponent implements OnInit, OnChanges {
         this.selectedQuantity = 1;
 
         this.getFocusArea();
-        this.newProduct = {id:0, focusArea: this.selectedFocusArea, item: this.selectedProduct, description: '',unit_Price:'', quantity: this.selectedQuantity, total: 0};
-        this.productsArray.push(this.newProduct);
         this.getProducts(this.selectedFocusArea);
     }
 
