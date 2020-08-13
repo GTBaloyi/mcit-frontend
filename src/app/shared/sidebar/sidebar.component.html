@@ -20,12 +20,6 @@
         <i class="menu-arrow"></i>
         <i class="mdi mdi-currency-usd menu-icon"></i>
       </a>
-      <div class="collapse" id="ui" [ngbCollapse]="!paymentsCollapsed">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" routerLink="/make-payment" routerLinkActive="active" #make_payment="routerLinkActive">Make Payment</a></li>
-          <li class="nav-item"> <a class="nav-link" routerLink="/view-receipts" routerLinkActive="active" #viee_receipts="routerLinkActive">View Receipts</a></li>
-        </ul>
-      </div>
     </li>
     <li class="nav-item" [ngClass]="{'active' : Create.isActive || View.isActive  }">
       <a class="nav-link" (click)="quotationsCollapsed = !quotationsCollapsed" [attr.aria-expanded]="quotationsCollapsed" aria-controls="ui-basic">

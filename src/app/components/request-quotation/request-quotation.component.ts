@@ -1,9 +1,9 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
-import {ProductsService, QuotationModel, QuotationResponseModel, QuotationService} from "../../services";
+import {ProductsService, QuotationModel, QuotationService} from "../../services";
 import {Subject} from "rxjs";
-import {QuotationItemEntity} from "../../services/model/quotationItemEntity";
+import {QuotationItemEntity} from "../../services";
 import moment = require('moment');
 
 
@@ -23,11 +23,11 @@ export class RequestQuotationComponent implements OnInit, OnChanges {
     private selectedQuantity: number;
     private termsConditions: boolean = false;
     private quotation: QuotationModel= <QuotationModel> {};
-
     private productsArray: Array<QuotationItemEntity> = [];
     private newProduct: QuotationItemEntity  = {};
 
-    constructor(private quotationService: QuotationService, private productsService: ProductsService, private router: Router,private toastr: ToastrService) { }
+    constructor(private quotationService: QuotationService, private productsService: ProductsService, private router: Router,private toastr: ToastrService) {
+    }
 
 
     ngOnInit() {

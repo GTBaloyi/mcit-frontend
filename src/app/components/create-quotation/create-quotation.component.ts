@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Subject} from "rxjs";
-import {ProductsService, QuotationModel, QuotationService} from "../../services";
+import {ClientRegistrationRequestModel, ProductsService, QuotationModel, QuotationService} from "../../services";
 import {QuotationItemEntity} from "../../services/model/quotationItemEntity";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
@@ -19,18 +19,25 @@ export class CreateQuotationComponent implements OnInit {
     private products: Array<any> = [];
     private selectedProduct: string;
     private selectedQuantity: number;
-    private quotation: QuotationModel= <QuotationModel> {};
-
-    private productsArray: Array<QuotationItemEntity> = [];
     private newProduct: QuotationItemEntity  = {};
+    private quotation: QuotationModel= <QuotationModel> {};
+    private productsArray: Array<QuotationItemEntity> = [];
+    private userInformation : ClientRegistrationRequestModel = <ClientRegistrationRequestModel> {};
 
-    constructor(private quotationService: QuotationService, private productsService: ProductsService, private router: Router,private toastr: ToastrService) { }
+
+    constructor(private quotationService: QuotationService, private productsService: ProductsService, private router: Router,private toastr: ToastrService) {
+        this.userInformation  = JSON.parse(sessionStorage.getItem("userInformation"));
+    }
 
 
     ngOnInit() {
         this.selectedFocusArea = 'Physical Metallurgy';
         this.selectedProduct = 'Non Testing Act (Phys)';
         this.selectedQuantity = 1;
+
+        this.quotation.company_name = this.userInformation.companyName;
+        this.quotation.phone_number = this.userInformation.contactNumber;
+        this.quotation.email = this.userInformation.contactEmail;
 
         this.getFocusArea();
         this.newProduct = {id:0, focusArea: this.selectedFocusArea, item: this.selectedProduct, description: '',unit_Price:'', quantity: this.selectedQuantity, total: 0};

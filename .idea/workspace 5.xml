@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a32c9bf2-7d9a-450a-9ad2-e14383b58691" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/components/change-password/change-password.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/change-password/change-password.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/change-password/change-password.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/change-password/change-password.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/create-quotation/create-quotation.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/create-quotation/create-quotation.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/create-quotation/create-quotation.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/create-quotation/create-quotation.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/forgot-password/forgot-password.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/forgot-password/forgot-password.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/forgot-password/forgot-password.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/forgot-password/forgot-password.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/invoices/invoices.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/invoices/invoices.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/invoices/invoices.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/invoices/invoices.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/make-payment/make-payment.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/make-payment/make-payment.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/make-payment/make-payment.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/make-payment/make-payment.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/projects/projects.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/projects/projects.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/projects/projects.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/request-quotation/request-quotation.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/request-quotation/request-quotation.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/request-quotation/request-quotation.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/request-quotation/request-quotation.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/view-quotation-pdf/view-quotation-pdf.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/view-quotation-pdf/view-quotation-pdf.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/view-quotation-pdf/view-quotation-pdf.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/view-quotation-pdf/view-quotation-pdf.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/view-quotation/view-quotation.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/view-quotation/view-quotation.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/view-quotation/view-quotation.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/view-receipts/view-receipts.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/view-receipts/view-receipts.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/view-receipts/view-receipts.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/view-receipts/view-receipts.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/services/api/clients.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/services/api/employees.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/services/api/products.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/services/api/projects.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/services/api/quotation.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/services/model/allProductsResponseModel.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/services/model/employeeRequestModel.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/services/model/employeeResponseModel.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/services/model/employeesPositionEntity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/services/model/focusAreaModel.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/services/model/quotationItemEntity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/services/model/quotationModel.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/services/model/quotationResponseModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/client-registration/client-registration.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/client-registration/client-registration.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/client-registration/client-registration.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/clients/clients.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/clients/clients.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/clients/clients.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/projects/projects.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/clients/clients.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/clients/profile/profile.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/clients/profile/profile.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/clients/profile/profile.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/dashboard/dashboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/dashboard/dashboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/default/default.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/default/default.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/default/default.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/default/default.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/default/default.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/default/default.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/landing-page/landing-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/landing-page/landing-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/landing-page/landing-page.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/landing-page/landing-page.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/landing-page/landing-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/landing-page/landing-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/password-reset/password-reset.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/password-reset/password-reset.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/password-reset/password-reset.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/view-quotation/view-quotation.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/password-reset/password-reset.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/user-login/user-dialog.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/user-login/user-login.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/user-login/user-login.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/user-login/user-login.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/enquiry.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/enquiry.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/auth.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/model/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/model/models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/footer/footer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/footer/footer.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/navbar/navbar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/navbar/navbar.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/navbar/navbar.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/navbar/navbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/navbar/navbar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/sidebar/sidebar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/sidebar/sidebar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/sidebar/sidebar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/_misc.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_misc.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.scss" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/dist/" />
+    <ignored path="$PROJECT_DIR$/node_modules/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1212818961">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="15" />
+          <entry key="project.open.time.1" value="2" />
+          <entry key="project.open.time.17" value="1" />
+          <entry key="project.open.time.19" value="1" />
+          <entry key="project.open.time.20" value="3" />
+          <entry key="project.open.time.26" value="2" />
+          <entry key="project.open.time.28" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.33" value="1" />
+          <entry key="project.open.time.40" value="1" />
+          <entry key="project.open.time.44" value="1" />
+          <entry key="project.open.time.48" value="1" />
+          <entry key="project.open.time.54" value="1" />
+          <entry key="project.opened" value="16" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts">
+        <counts>
+          <entry key="Angular2LanguageService" value="16" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="css" value="13" />
+          <entry key="gif" value="1" />
+          <entry key="gitignore" value="1" />
+          <entry key="html" value="173" />
+          <entry key="jpg" value="5" />
+          <entry key="js" value="1" />
+          <entry key="json" value="28" />
+          <entry key="mp4" value="1" />
+          <entry key="openapi-generator-ignore" value="2" />
+          <entry key="png" value="13" />
+          <entry key="rnc" value="7" />
+          <entry key="scss" value="181" />
+          <entry key="svg" value="2" />
+          <entry key="ts" value="376" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CSS" value="13" />
+          <entry key="HTML" value="173" />
+          <entry key="Image" value="19" />
+          <entry key="JSON" value="26" />
+          <entry key="JavaScript" value="1" />
+          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="RNG Compact" value="7" />
+          <entry key="SCSS" value="181" />
+          <entry key="SVG" value="2" />
+          <entry key="TypeScript" value="376" />
+          <entry key="tsconfig" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="html" value="6425" />
+          <entry key="json" value="23" />
+          <entry key="scss" value="1496" />
+          <entry key="ts" value="6892" />
+          <entry key="txt" value="62" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="HTML" value="6424" />
+          <entry key="JSON" value="23" />
+          <entry key="JavaScript" value="1" />
+          <entry key="PLAIN_TEXT" value="62" />
+          <entry key="SCSS" value="1496" />
+          <entry key="TypeScript" value="6892" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.checkout.local" value="2" />
+          <entry key="git.branch.create.new" value="2" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="angular-metal-casting-system" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/components/view-quotation-pdf/view-quotation-pdf.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-140">
+              <caret line="1" column="19" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/components/view-quotation-pdf/view-quotation-pdf.component.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="74">
+              <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/components/view-quotation-pdf/view-quotation-pdf.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="39" column="36" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#71#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/components/request-quotation/request-quotation.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="83" column="12" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="53" />
+              <folding>
+                <element signature="e#0#74#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/components/default/default.module.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="279">
+              <caret line="63" selection-start-line="63" selection-end-line="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>I came in here</find>
+      <find>getSVG(chartOptions?: Options): string;</find>
+      <find>highcharts</find>
+      <find>UserLoginComponent</find>
+      <find>margin</find>
+      <find>hammerjs</find>
+      <find>showNavbar</find>
+      <find>AuthGuard</find>
+      <find>NavbarComponent</find>
+      <find>app-toasts</find>
+      <find>loader</find>
+      <find>'../../services/toast.service'</find>
+      <find>body</find>
+      <find>core-js 2</find>
+      <find>$content-bg</find>
+      <find>F2EDF3</find>
+      <find>&lt;/nav&gt;</find>
+      <find>moment</find>
+    </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/src/app/components/default</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/clients_screens" />
+      </map>
+    </option>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/feature/login_screen" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/app/components/forgot-password/forgot-password.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/components/forgot-password/forgot-password.component.html" />
+        <option value="$PROJECT_DIR$/src/app/components/change-password/change-password.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/components/change-password/change-password.component.html" />
+        <option value="$PROJECT_DIR$/src/styles.scss" />
+        <option value="$PROJECT_DIR$/src/app/components/forgot-password/forgot-password.component.scss" />
+        <option value="$PROJECT_DIR$/src/app/components/change-password/change-password.component.scss" />
+        <option value="$PROJECT_DIR$/src/app/components/landing-page/landing-page.component.scss" />
+        <option value="$PROJECT_DIR$/node_modules/@mdi/font/css/materialdesignicons.css" />
+        <option value="$PROJECT_DIR$/src/app/components/request-quotation/request-quotation.component.scss" />
+        <option value="$PROJECT_DIR$/src/app/components/landing-page/landing-page.component.html" />
+        <option value="$PROJECT_DIR$/src/app/shared/sidebar/sidebar.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/shared/footer/footer.component.html" />
+        <option value="$PROJECT_DIR$/src/assets/scss/_variables.scss" />
+        <option value="$PROJECT_DIR$/src/app/components/default/default.component.scss" />
+        <option value="$PROJECT_DIR$/src/app/components/dashboard/dashboard.component.html" />
+        <option value="$PROJECT_DIR$/src/index.html" />
+        <option value="$PROJECT_DIR$/src/app/shared/navbar/navbar.component.scss" />
+        <option value="$PROJECT_DIR$/src/app/components/default/default.component.html" />
+        <option value="$PROJECT_DIR$/src/assets/scss/_misc.scss" />
+        <option value="$PROJECT_DIR$/src/app/components/invoices/invoices.component.html" />
+        <option value="$PROJECT_DIR$/src/app/components/make-payment/make-payment.component.html" />
+        <option value="$PROJECT_DIR$/src/app/components/projects/projects.component.html" />
+        <option value="$PROJECT_DIR$/src/app/components/view-receipts/view-receipts.component.html" />
+        <option value="$PROJECT_DIR$/src/app/components/request-quotation/request-quotation.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/shared/sidebar/sidebar.component.html" />
+        <option value="$PROJECT_DIR$/src/app/components/create-quotation/create-quotation.component.scss" />
+        <option value="$PROJECT_DIR$/src/app/shared/navbar/navbar.component.html" />
+        <option value="$PROJECT_DIR$/src/app/components/view-quotation/view-quotation.component.scss" />
+        <option value="$PROJECT_DIR$/src/app/services/api/users.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/services/api/quotation.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/services/api/projects.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/services/api/products.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/services/api/invoice.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/services/api/enquiry.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/services/api/employees.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/services/api/clients.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/components/landing-page/landing-page.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/components/view-quotation/view-quotation.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/shared/navbar/navbar.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/src/app/app-routing.module.ts" />
+        <option value="$PROJECT_DIR$/src/app/components/create-quotation/create-quotation.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/components/request-quotation/request-quotation.component.html" />
+        <option value="$PROJECT_DIR$/src/app/components/create-quotation/create-quotation.component.html" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/app/components/default/default.module.ts" />
+        <option value="$PROJECT_DIR$/src/app/components/view-quotation/view-quotation.component.html" />
+        <option value="$PROJECT_DIR$/src/app/components/view-quotation-pdf/view-quotation-pdf.component.html" />
+        <option value="$PROJECT_DIR$/src/app/components/view-quotation-pdf/view-quotation-pdf.component.scss" />
+        <option value="$PROJECT_DIR$/src/app/components/view-quotation-pdf/view-quotation-pdf.component.ts" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="angular-metal-casting-system" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="angular-metal-casting-system" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="angular-metal-casting-system" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="angular-metal-casting-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="angular-metal-casting-system" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="angular-metal-casting-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="angular-metal-casting-system" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="angular-metal-casting-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="angular-metal-casting-system" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="angular-metal-casting-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="angular-metal-casting-system" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="angular-metal-casting-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="angular-metal-casting-system" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="default" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="angular-metal-casting-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="angular-metal-casting-system" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="request-quotation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="angular-metal-casting-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="angular-metal-casting-system" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="view-quotation-pdf" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1596119853685" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets" />
+      <recent name="$PROJECT_DIR$/src/app/services" />
+      <recent name="$PROJECT_DIR$/src/app/shared" />
+      <recent name="$PROJECT_DIR$/src/app/components/user-login" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/components" />
+      <recent name="$PROJECT_DIR$/src/assets" />
+      <recent name="$PROJECT_DIR$/src/app/shared" />
+      <recent name="$PROJECT_DIR$/src/app/components/clients" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a32c9bf2-7d9a-450a-9ad2-e14383b58691" name="Default Changelist" comment="" />
+      <created>1583953473489</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583953473489</updated>
+      <workItem from="1583953478327" duration="259000" />
+      <workItem from="1583953805017" duration="488000" />
+      <workItem from="1584008083320" duration="1545000" />
+      <workItem from="1584011663757" duration="1256000" />
+      <workItem from="1584013884664" duration="373000" />
+      <workItem from="1584014635237" duration="10386000" />
+      <workItem from="1584079984191" duration="3402000" />
+      <workItem from="1584094942188" duration="2480000" />
+      <workItem from="1584097809028" duration="17733000" />
+      <workItem from="1584205959753" duration="5253000" />
+      <workItem from="1584211764746" duration="5065000" />
+      <workItem from="1584217944864" duration="345000" />
+      <workItem from="1584218489184" duration="16915000" />
+      <workItem from="1584302331806" duration="235000" />
+      <workItem from="1584302735998" duration="723000" />
+      <workItem from="1584379870604" duration="603000" />
+      <workItem from="1584462055194" duration="5000" />
+      <workItem from="1584861583865" duration="4960000" />
+      <workItem from="1584887035927" duration="2016000" />
+      <workItem from="1584891245544" duration="1814000" />
+      <workItem from="1584896680236" duration="1427000" />
+      <workItem from="1585066505556" duration="639000" />
+      <workItem from="1585339722350" duration="24576000" />
+      <workItem from="1585425188943" duration="12511000" />
+      <workItem from="1585489318318" duration="7219000" />
+      <workItem from="1585509662076" duration="90000" />
+      <workItem from="1585509819481" duration="30043000" />
+      <workItem from="1585683411355" duration="23945000" />
+      <workItem from="1586071799009" duration="3581000" />
+      <workItem from="1586443813885" duration="2083000" />
+      <workItem from="1586623258497" duration="1278000" />
+      <workItem from="1586716946106" duration="330000" />
+      <workItem from="1586793168490" duration="2996000" />
+      <workItem from="1587219945104" duration="17447000" />
+      <workItem from="1587649578488" duration="21358000" />
+      <workItem from="1588179885904" duration="1088000" />
+      <workItem from="1588781148813" duration="664000" />
+      <workItem from="1588959859800" duration="48446000" />
+      <workItem from="1589480741691" duration="1021000" />
+      <workItem from="1589482735614" duration="15000" />
+      <workItem from="1589482753705" duration="20000" />
+      <workItem from="1589482776747" duration="58000" />
+      <workItem from="1589482849723" duration="15042000" />
+      <workItem from="1589723166597" duration="1837000" />
+      <workItem from="1590171410673" duration="7113000" />
+      <workItem from="1590576209633" duration="221000" />
+      <workItem from="1592467215571" duration="17746000" />
+      <workItem from="1592550024952" duration="107564000" />
+      <workItem from="1595171352462" duration="10486000" />
+      <workItem from="1595331154365" duration="20104000" />
+      <workItem from="1595673945042" duration="1310000" />
+      <workItem from="1595675538086" duration="34808000" />
+      <workItem from="1595781317188" duration="11637000" />
+      <workItem from="1595872360231" duration="57135000" />
+      <workItem from="1596053237244" duration="5978000" />
+      <workItem from="1596059437936" duration="796000" />
+      <workItem from="1596100980507" duration="10514000" />
+    </task>
+    <task id="LOCAL-00001" summary="forgot password screen in progress">
+      <created>1589561420978</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589561420978</updated>
+    </task>
+    <task id="LOCAL-00002" summary="forgot password screen done">
+      <created>1592500154612</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1592500154612</updated>
+    </task>
+    <task id="LOCAL-00003" summary="client profile screen in progress">
+      <created>1593258669369</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1593258669370</updated>
+    </task>
+    <task id="LOCAL-00004" summary="client profile screen in progress">
+      <created>1595351634859</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1595351634860</updated>
+    </task>
+    <task id="LOCAL-00005" summary="redesign in progress">
+      <created>1596104015629</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1596104015629</updated>
+    </task>
+    <task id="LOCAL-00006" summary="registration screen design">
+      <created>1584343661783</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1584343661783</updated>
+    </task>
+    <task id="LOCAL-00007" summary="registration screen design">
+      <created>1585392188038</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1585392188038</updated>
+    </task>
+    <task id="LOCAL-00008" summary="registration screen design">
+      <created>1585392581496</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1585392581496</updated>
+    </task>
+    <task id="LOCAL-00009" summary="registration screen design">
+      <created>1585484689918</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1585484689918</updated>
+    </task>
+    <task id="LOCAL-00010" summary="login screen design">
+      <created>1586339300503</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1586339300503</updated>
+    </task>
+    <task id="LOCAL-00011" summary="registration screen design">
+      <created>1587224171946</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1587224171947</updated>
+    </task>
+    <task id="LOCAL-00012" summary="registration screen design">
+      <created>1587224352302</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1587224352302</updated>
+    </task>
+    <task id="LOCAL-00013" summary="registration screen design">
+      <created>1587862346403</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1587862346404</updated>
+    </task>
+    <task id="LOCAL-00014" summary="registration screen design">
+      <created>1587864172485</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1587864172485</updated>
+    </task>
+    <task id="LOCAL-00015" summary="forgot password screen in progress">
+      <created>1589117454812</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1589117454812</updated>
+    </task>
+    <task id="LOCAL-00016" summary="forgot password screen in progress">
+      <created>1589117503299</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1589117503299</updated>
+    </task>
+    <task id="LOCAL-00017" summary="forgot password screen in progress">
+      <created>1589480828095</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1589480828095</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="302360000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49408984" visible="true" weight="0.27181688" />
+      <window_info id="Structure" order="1" sideWeight="0.50591016" side_tool="true" weight="0.26586103" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" sideWeight="0.5027726" side_tool="true" weight="0.2546495" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32961586" />
+      <window_info anchor="bottom" id="Terminal" order="2" sideWeight="0.49928468" weight="0.44237918" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49928468" visible="true" weight="0.33333334" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.39900866" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.32961586" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007153" side_tool="true" weight="0.33333334" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.3283767" />
+      <window_info anchor="bottom" id="TypeScript" order="11" weight="0.24783148" />
+      <window_info anchor="bottom" id="Thumbnails" order="12" weight="0.32961586" />
+      <window_info anchor="bottom" id="Messages" order="13" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" weight="0.3297568" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <MESSAGE value="first  initial commit" />
+    <MESSAGE value="second design" />
+    <MESSAGE value="login screen design" />
+    <MESSAGE value="registration screen design" />
+    <MESSAGE value="forgot password screen in progress" />
+    <MESSAGE value="forgot password screen done" />
+    <MESSAGE value="client profile screen in progress" />
+    <MESSAGE value="redesign in progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="redesign in progress" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/assets/scss/_variables.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="68" column="13" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/dashboard/dashboard.component.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/bootstrap/scss/_navbar.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="35" column="3" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/scss/_misc.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="48" column="10" lean-forward="true" selection-start-line="48" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/default/default.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-245">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/default/default.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/default/default.component.scss">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/dashboard/dashboard.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/invoices/invoices.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/make-payment/make-payment.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/projects/projects.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/view-receipts/view-receipts.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/request-quotation/request-quotation.component.spec.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/sidebar/sidebar.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="143" selection-start-line="37" selection-start-column="143" selection-end-line="37" selection-end-column="143" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/request-quotation/request-quotation.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="1" selection-end-line="25" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/view-quotation/view-quotation.component.scss">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/environments/environment.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/api/users.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="33" column="25" lean-forward="true" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/api/products.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="32" column="65" selection-start-line="32" selection-start-column="65" selection-end-line="32" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/api/invoice.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="32" column="65" selection-start-line="32" selection-start-column="65" selection-end-line="32" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/api/enquiry.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="32" column="65" selection-start-line="32" selection-start-column="65" selection-end-line="32" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/api/employees.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="33" column="65" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/api/clients.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="31" column="65" selection-start-line="31" selection-start-column="65" selection-end-line="31" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/api/api.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/navbar/navbar.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3812">
+          <caret line="114" column="9" lean-forward="true" selection-start-line="114" selection-start-column="9" selection-end-line="114" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/api/projects.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="30" column="65" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/navbar/navbar.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="14" lean-forward="true" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/navbar/navbar.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="56" column="41" selection-start-line="56" selection-start-column="41" selection-end-line="56" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/landing-page/landing-page.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="81" column="43" selection-start-line="81" selection-end-line="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/api/quotation.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="191" column="11" selection-start-line="191" selection-start-column="11" selection-end-line="191" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/landing-page/landing-page.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="32" column="98" selection-start-line="32" selection-start-column="69" selection-end-line="32" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/landing-page/landing-page.component.scss">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/view-quotation/view-quotation.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/create-quotation/create-quotation.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/forgot-password/forgot-password.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="50" lean-forward="true" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/create-quotation/create-quotation.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#3;n#form#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#3;n#form#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#3;n#form#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#3;n#form#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#3;n#form#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#4;n#form#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/create-quotation/create-quotation.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/request-quotation/request-quotation.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#5;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#5;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/view-quotation-pdf/view-quotation-pdf.component.spec.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/app-routing.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-49">
+          <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/default/default.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/request-quotation/request-quotation.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="83" column="12" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/view-quotation/view-quotation.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="63" column="46" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/view-quotation-pdf/view-quotation-pdf.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/view-quotation-pdf/view-quotation-pdf.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-140">
+          <caret line="1" column="19" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/view-quotation-pdf/view-quotation-pdf.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="39" column="36" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

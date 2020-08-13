@@ -13,13 +13,13 @@
         <form class="pt-3">
             <div class="row">
                 <div class="form-group row" style="margin-left: 5%; width: 90%">
-                    <input type="text" class="form-control form-control-lg" placeholder="Company name" [(ngModel)]="quotation.company_name" [ngModelOptions]="{standalone: true}">
+                    <input type="text" class="form-control form-control-lg" placeholder="Company name" [(ngModel)]="quotation.company_name" [value]="quotation.company_name" [ngModelOptions]="{standalone: true}" disabled>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group row" style="margin-left: 5%; width: 44%">
-                    <input type="text" class="form-control form-control-lg" placeholder="Email address" [(ngModel)]="quotation.email" [ngModelOptions]="{standalone: true}">
+                    <input type="text" class="form-control form-control-lg" placeholder="Email address" [(ngModel)]="quotation.email" [ngModelOptions]="{standalone: true}" disabled>
                 </div>
 
                 <div class="form-group row" style="margin-left: 5%; width: 44%" >
