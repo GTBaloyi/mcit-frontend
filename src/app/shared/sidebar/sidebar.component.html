@@ -15,10 +15,9 @@
       </a>
     </li>
     <li class="nav-item" [ngClass]="{ 'active': make_payment.isActive }">
-      <a class="nav-link" (click)="paymentsCollapsed = !paymentsCollapsed" [attr.aria-expanded]="paymentsCollapsed" aria-controls="ui-basic">
-        <span class="menu-title">Payments</span>
-        <i class="menu-arrow"></i>
-        <i class="mdi mdi-currency-usd menu-icon"></i>
+      <a class="nav-link" routerLink="/make-payment" routerLinkActive="active" #make_payment="routerLinkActive">
+        <span class="menu-title">Make Payment</span>
+        <i class="mdi mdi-file-pdf menu-icon"></i>
       </a>
     </li>
     <li class="nav-item" [ngClass]="{'active' : Create.isActive || View.isActive  }">
