@@ -14,7 +14,7 @@
         <i class="mdi mdi-receipt menu-icon"></i>
       </a>
     </li>
-    <li class="nav-item" [ngClass]="{'active' : make_payment.isActive || viee_receipts.isActive}">
+    <li class="nav-item" [ngClass]="{ 'active': make_payment.isActive }">
       <a class="nav-link" (click)="paymentsCollapsed = !paymentsCollapsed" [attr.aria-expanded]="paymentsCollapsed" aria-controls="ui-basic">
         <span class="menu-title">Payments</span>
         <i class="menu-arrow"></i>
