@@ -41,7 +41,7 @@ $colors: (
 
 
 $theme-colors: (
-  primary:         #b66dff,
+  primary:         #FFFFFF,
   secondary:       #d8d8d8,
   success:         #1bcfb4,
   info:            #198ae3,
@@ -51,8 +51,10 @@ $theme-colors: (
   dark:            #3e4b5b
 );
 
+$theme-gradient: linear-gradient(to right, #3989c6, #23275b);
+
 $theme-gradient-colors: (
-  primary:         linear-gradient(to right, #da8cff, #9a55ff),
+  primary:         linear-gradient(to right, #3989c6, #23275b),
   secondary:       linear-gradient(to right, #e7ebf0, #868e96),
   success:         linear-gradient(to right, #84d9d2, #07cdae),
   info:            linear-gradient(to right, #90caf9, #047edf 99%),
@@ -112,11 +114,11 @@ $sidebar-width-mini: 185px;
 $sidebar-width-icon: 70px;
 
 $sidebar-bg: $white;
-$sidebar-menu-color: #3e4b5b;
+$sidebar-menu-color: #23275b;
 $sidebar-submenu-color: #888;
 $sidebar-menu-active-bg: $white;
-$sidebar-menu-active-color: theme-color(primary);
-$sidebar-menu-hover-bg: darken($sidebar-bg, 1%);
+$sidebar-menu-active-color: #ffffff;
+$sidebar-menu-hover-bg: #3989c6;
 $sidebar-menu-hover-color: darken($sidebar-menu-color, 10%);
 $sidebar-submenu-hover-color: darken($sidebar-submenu-color, 20%);
 $sidebar-menu-icon-color: #bba8bff5;

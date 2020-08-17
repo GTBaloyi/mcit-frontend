@@ -5,37 +5,37 @@
             <div class="text-center navbar-brand-image d-flex align-items-center justify-content-center">
                 <a class="navbar-brand brand-logo" routerLink="/"><img src="assets/mtc_long.png" alt="logo" /></a>
             </div>
-            <h4>Want a quotation?</h4>
-            <h6 class="font-weight-light">Please fill out the form. It only takes a few steps</h6>
+            <h4 style="color: #fff;margin-left: 5%;">Want a quotation?</h4>
+            <h6 style="color: #fff;margin-left: 5%;" class="font-weight-light">Please fill out the form. It only takes a few steps</h6>
 
             <form class="pt-3">
 
                 <div class="row">
                     <div class="form-group row" style="margin-left: 5%; width: 90%">
-                        <input type="text" class="form-control form-control-lg" placeholder="Company name" [(ngModel)]="quotation.company_name" [ngModelOptions]="{standalone: true}">
+                        <input style="border: solid  #23275b 1px"  type="text" class="form-control form-control-lg" placeholder="Company name" [(ngModel)]="quotation.company_name" [ngModelOptions]="{standalone: true}">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-group row" style="margin-left: 5%; width: 44%">
-                        <input type="text" class="form-control form-control-lg" placeholder="Email address" [(ngModel)]="quotation.email" [ngModelOptions]="{standalone: true}">
+                        <input style="border: solid  #23275b 1px"  type="text" class="form-control form-control-lg" placeholder="Email address" [(ngModel)]="quotation.email" [ngModelOptions]="{standalone: true}">
                     </div>
 
                     <div class="form-group row" style="margin-left: 5%; width: 44%" >
-                        <input type="text" class="form-control form-control-lg"  placeholder="Contact number" [(ngModel)]="quotation.phone_number" [ngModelOptions]="{standalone: true}">
+                        <input style="border: solid  #23275b 1px"  type="text" class="form-control form-control-lg"  placeholder="Contact number" [(ngModel)]="quotation.phone_number" [ngModelOptions]="{standalone: true}">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-group row" style="margin-left: 5%; width: 90%">
-                        <input type="text" class="form-control form-control-lg"  placeholder="Address" [(ngModel)]="quotation.bill_address" [ngModelOptions]="{standalone: true}">
+                        <input style="border: solid  #23275b 1px"  type="text" class="form-control form-control-lg"  placeholder="Address" [(ngModel)]="quotation.bill_address" [ngModelOptions]="{standalone: true}">
                     </div>
                 </div>
 
 
                 <div class="table-responsive" style="margin-left: 2.5%; width: 95%">
 
-                    <table class="table" style="background: #f9f9f9;">
+                    <table class="table" style="background: #FFF;">
                         <thead>
                             <tr>
                                 <th colspan="4">Add products to the table.</th>
@@ -52,10 +52,10 @@
                                 <td style="width: 40%">
                                     {{product.focusArea}}
                                 </td>
-                                <td style="width: 35%" class="text-success">
+                                <td style="width: 35%; color: #3498db" >
                                     {{product.item}}
                                 </td>
-                                <td style="width: 15%" class="text-danger">
+                                <td style="width: 15%; color: #3498db">
                                     {{product.quantity}}
                                 </td>
                                 <td style="width: 10%">
@@ -67,17 +67,17 @@
 
                             <tr>
                                 <td style="width: 40%">
-                                    <select class="form-control form-control-lg" [ngModel]="selectedFocusArea"  (change)="getProducts($event.target.value)" [ngModelOptions]="{standalone: true}">
+                                    <select style="border: solid  #23275b 1px" class="form-control form-control-lg" [ngModel]="selectedFocusArea"  (change)="getProducts($event.target.value)" [ngModelOptions]="{standalone: true}">
                                         <option *ngFor="let focusArea of focusAreas" [value]="focusArea.name">{{focusArea.name}}</option>
                                     </select>
                                 </td>
                                 <td style="width: 35%">
-                                    <select class="form-control form-control-lg" [ngModel]="selectedProduct" [ngModelOptions]="{standalone: true}" (change)="changeProduct($event.target.value)">
+                                    <select style="border: solid  #23275b 1px" class="form-control form-control-lg" [ngModel]="selectedProduct" [ngModelOptions]="{standalone: true}" (change)="changeProduct($event.target.value)">
                                         <option *ngFor="let product of products" [value]="product.item">{{product.item}}</option>
                                     </select>
                                 </td>
                                 <td style="width: 15%">
-                                    <input type="number" class="form-control" [ngModel]="selectedQuantity" [ngModelOptions]="{standalone: true}" (change)="changeQuantity($event.target.value)"/>
+                                    <input style="border: solid  #23275b 1px" type="number" class="form-control" [ngModel]="selectedQuantity" [ngModelOptions]="{standalone: true}" (change)="changeQuantity($event.target.value)"/>
                                 </td>
                                 <td style="width: 10%">
                                     <button type="button" class="btn btn-gradient-primary btn-rounded btn-icon" (click)="addItem()">
@@ -92,19 +92,17 @@
                 </div>
 
                 <div class="mb-4" >
-                    <label class="form-check-label text-muted" style="margin-left: 5%; margin-top: 5%" >
+                    <label class="form-check-label text-muted" style="margin-left: 5%; margin-top: 5%; width: 100%" >
                         <input type="checkbox" class="form-check-input" (change)="acceptTermsAndConditions()">
                         <i class="input-helper"></i>
-                        <a href="https://www.uj.ac.za/about/Pages/TCs.aspx" target="_blank">I agree to all Terms & Conditions</a>
+                        <a style="color: #fff;" href="https://www.uj.ac.za/about/Pages/TCs.aspx" target="_blank">I agree to all Terms & Conditions</a>
                     </label>
                 </div>
                 <div class="row">
-                    <a style="margin-left: 5%; width: 40%; margin-bottom: 2%" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" routerLink="/landing-page" >Cancel</a>
+                    <a style="margin-left: 5%; margin-top: 1%; width: 40%; height: 50%; margin-bottom: 2%; background-color: #fff; color: #23275b" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" routerLink="/landing-page" >Cancel</a>
 
-                    <a style="margin-left: 5%; width: 40%; margin-bottom: 2%" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" (click)="requestQuotation()" >Submit</a>
+                    <a style="margin-left: 5%; width: 40%; height: 50%; margin-bottom: 2%; background-color: #fff; color: #23275b" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" (click)="requestQuotation()" >Submit</a>
                 </div>
-
-
             </form>
         </div>
     </div>

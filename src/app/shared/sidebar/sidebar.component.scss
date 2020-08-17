@@ -3,7 +3,7 @@
 @import '../../../styles.scss';
 .sidebar {
   min-height: calc(100vh - #{$navbar-height});
-  background: $sidebar-bg;
+  background: $theme-gradient;
   font-family: $type1-regular;
   padding: 0;
   width: $sidebar-width-lg;
@@ -36,7 +36,7 @@
         @include align-items(center);
         white-space: nowrap;
         padding:$sidebar-menu-padding-y 0 $sidebar-menu-padding-y 0;
-        color: $sidebar-menu-color;
+        color: #ffffff;
         @include transition-duration(0.45s);
         transition-property: color;
         -webkit-transition-property: color;
@@ -53,7 +53,7 @@
               margin-left: 0;
               margin-right: auto;
             }
-            color: $sidebar-menu-icon-color;
+            color: #ffffff;
             &:before {
               vertical-align: middle;
             }
@@ -68,7 +68,7 @@
               margin-left: 0;
               margin-right: auto;
             }
-            color: $sidebar-menu-arrow-color;
+            color: #ffffff;
             &:before{
               content: "\f141";
               font-size: inherit;
@@ -88,7 +88,9 @@
         .menu-title {
           color: inherit;
           display: inline-block;
-          font-size: $sidebar-menu-font-size;
+          font-size: larger;
+          font-weight: normal;
+          padding-bottom: 10%;
           line-height: 1;
           vertical-align: middle;
         }
@@ -110,8 +112,10 @@
       &.active {
         .nav-link {
           .menu-title {
+            font-weight: bolder;
+            font-style: italic;
             color: $sidebar-menu-active-color;
-            font-family: $type1-medium;            
+            font-family: $type1-medium;
           }
           i {
             color: theme-color(primary);
@@ -191,7 +195,7 @@
       .nav-item {
         padding: 0;
         .nav-link {
-          color: $sidebar-submenu-color;
+          color: #FFFFFF;
           padding: $sidebar-submenu-item-padding;
           position: relative;
           font-size: $sidebar-submenu-font-size;
@@ -210,7 +214,7 @@
             }
             top:50%;
             @include transform(translateY(-50%));
-            color: lighten($sidebar-submenu-color, 10%);
+            color: #FFFFFF;
             font-size: .75rem;
           }
           &.active {
@@ -255,6 +259,7 @@
             .menu-title {
               @include border-radius(0 5px 5px 0px);
               background: $sidebar-menu-hover-bg;
+              font-size: larger;
             }
             i {
               &.menu-icon {
@@ -280,7 +285,6 @@
               .menu-title {
                 @include display-flex;
                 @include align-items(center);
-                background: $sidebar-menu-hover-bg;
                 padding: 0.5rem 1.4rem;
                 left: $sidebar-width-icon;
                 position: absolute;

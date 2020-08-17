@@ -74,7 +74,7 @@
 
 .invoice .invoice-details .invoice-id {
   margin-top: 0;
-  color: #3989c6
+  color: #23275b
 }
 
 .invoice main {
@@ -130,7 +130,7 @@
 .invoice table .no {
   color: #fff;
   font-size: 1.6em;
-  background: #3989c6
+  background: $theme-gradient
 }
 
 .invoice table .unit {
@@ -138,7 +138,7 @@
 }
 
 .invoice table .total {
-  background: #3989c6;
+  background: $theme-gradient;
   color: #fff
 }
 
@@ -161,7 +161,7 @@
 }
 
 .invoice table tfoot tr:last-child td {
-  color: #3989c6;
+  color: $theme-gradient;
   font-size: 1.4em;
   border-top: 1px solid #3989c6
 }
