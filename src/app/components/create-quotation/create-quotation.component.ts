@@ -38,6 +38,7 @@ export class CreateQuotationComponent implements OnInit {
         this.quotation.company_name = this.userInformation.companyName;
         this.quotation.phone_number = this.userInformation.contactNumber;
         this.quotation.email = this.userInformation.contactEmail;
+        this.quotation.company_Registration = this.userInformation.companyRegistrationNumber;
 
         this.getFocusArea();
         this.getProducts(this.selectedFocusArea);
@@ -139,7 +140,7 @@ export class CreateQuotationComponent implements OnInit {
 
     addItem() {
 
-        this.newProduct = {id:0, focusArea: this.selectedFocusArea, item: this.selectedProduct, description: '',unit_Price:'', quantity: this.selectedQuantity, total: 0};
+        this.newProduct = {id:0, focusArea: this.selectedFocusArea, item: this.selectedProduct, quantity: this.selectedQuantity, total: 0};
         this.productsArray.push(this.newProduct);
         this.toastr.success('New row added successfully', 'New product');
         return true;

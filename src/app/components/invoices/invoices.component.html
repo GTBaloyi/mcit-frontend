@@ -10,6 +10,9 @@
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
+            <div class="form-group">
+                <input style="border: solid  #05b5d4 1px" type="text" class="form-control" placeholder="Search Here" [(ngModel)]="filter">
+            </div>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -21,19 +24,19 @@
                         <th>Action</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <div *ngIf="Invoices.length != 0">
-                        <tr *ngFor="let invoice of Invoices">
+                    <tbody *ngIf="Invoices.length != 0">
+                        <tr *ngFor="let invoice of Invoices | paginate: config | filter: filter">
                             <td>
                                 {{invoice.reference}}
                             </td>
                             <td>
-                                {{invoice.invoice_date}}
+                                {{invoice.invoice_date | date:'MMMM d, y'}}
                             </td>
                             <td>
-                                R {{invoice.total_due}}
+                                R {{invoice.quotation_Reference}}
                             </td>
                             <td>
+                                {{invoice.grand_total}}
                             </td>
                             <td>
                                 <div class="template-demo">
@@ -44,7 +47,6 @@
                                 </div>
                             </td>
                         </tr>
-                    </div>
                     </tbody>
                 </table>
                 <div class="text" *ngIf="Invoices.length == 0">
@@ -52,5 +54,6 @@
                 </div>
             </div>
         </div>
+        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
 </div>

@@ -11,6 +11,9 @@
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
+            <div class="form-group">
+                <input style="border: solid  #05b5d4 1px" type="text" class="form-control" placeholder="Search Here" [(ngModel)]="filter">
+            </div>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -23,37 +26,87 @@
                         <th>Action</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr *ngFor="let quotation of quotationsArray">
-                        <td>
-                            {{quotation.quote_reference}}
-                        </td>
-                        <td>
-                           {{quotation.date_generated}}
-                        </td>
-                        <td>
-                           {{quotation.quote_expiryDate}}
-                        </td>
-                        <td>
-                           R {{quotation.grand_total}}
-                        </td>
-                        <td>
-                            {{quotation.status}}
-                        </td>
-                        <td>
-                            <div class="template-demo">
-                                <button type="button" class="btn btn-gradient-primary btn-icon-text" (click)="viewPDF(quotation)">
-                                    <i class="mdi mdi-file-check btn-icon-prepend"></i>
-                                    Edit
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
+                    <tbody *ngIf="quotationsArray.length != 0">
+                        <tr *ngFor="let quotation of quotationsArray | paginate: config | filter: filter">
+                            <td>
+                                {{ quotation.quote_reference }}
+                            </td>
+                            <td>
+                               {{quotation.date_generated | date:'MMMM d, y'}}
+                            </td>
+                            <td>
+                               {{quotation.quote_expiryDate | date:'MMMM d, y'}}
+                            </td>
+                            <td>
+                               R {{quotation.grand_total}}
+                            </td>
+                            <td>
+                                {{quotation.status}}
+                            </td>
+                            <td>
+                                <div class="template-demo">
+                                    <button type="button" class="btn btn-gradient-primary btn-rounded btn-icon"
+                                            (click)="viewPDF(quotation)"
+                                            [disabled]=" disableButton(quotation.status)">
+                                        <i class="mdi mdi-eye icon-md"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-gradient-success btn-rounded btn-icon"
+                                            (click)="acceptQuotation(quotation)"
+                                            [disabled]="quotation.status !== 'Pending Client Approval'">
+                                        <i class="mdi mdi-check-circle icon-md"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-gradient-danger btn-rounded btn-icon"
+                                            (click) = "show()"
+                                            [disabled]="quotation.status !== 'Pending Client Approval'">
+                                        <i class="mdi mdi-close-circle icon-md"></i>
+                                    </button>
+
+                                    <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content"  style="background-color: #ffffff; -webkit-box-shadow: inset 0 0 10px #23275b;box-shadow: inset 0 0 10px #23275b;">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="myModalLabel" style="font-weight: bolder" >Reason for rejecting quotation</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="pt-3" #quoteReasonForm="ngForm" (ngSubmit)="quoteReasonForm.form.valid && rejectQuotation(quotation)">
+
+                                                        <div class="form-group" >
+                                                            <input style="border: solid  #23275b 1px" class="form-control form-control-lg" type="text" placeholder="Registration number"
+                                                                   [(ngModel)]="quotation.reason"
+                                                                   name="companyRegistrationNumber"
+                                                                   #comment="ngModel"
+                                                                   [ngClass]="{ 'is-invalid': quoteReasonForm.submitted && comment.invalid }"
+                                                                   required>
+                                                            <div *ngIf="quoteReasonForm.submitted && comment.invalid" class="invalid-feedback">
+                                                                <div *ngIf="comment.errors.required">Reason is required</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-gradient-danger" data-dismiss="modal" (click) = "hide()">Cancel</button>
+                                                            <button type="submit" class="btn btn-gradient-primary" data-dismiss="modal">Submit</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
+                <div class="text" *ngIf="quotationsArray.length == 0">
+                    No Records Found!
+                </div>
             </div>
         </div>
+        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax" ></script>
+<div *ngIf="isLoading | async" class="overlay">
+    <div class="spinner">
+        <img class="loader" src="../../../assets/wheel.gif">
+    </div>
+</div>

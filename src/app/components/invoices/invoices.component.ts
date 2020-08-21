@@ -12,10 +12,22 @@ import {InvoiceRequestModel} from "../../services/model/models";
 export class InvoicesComponent implements OnInit {
 
     private Invoices: Array<InvoiceRequestModel> = [];
+    private filter : string;
+    private config: any;
 
     constructor( private router: Router,private toastr: ToastrService, private invoiceService: InvoiceService) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+
+        this.config = {
+            itemsPerPage: 5,
+            currentPage: 1,
+            totalItems: this.Invoices.length
+        };
+    }
+
+    pageChanged(event){
+        this.config.currentPage = event;
+    }
 
 }

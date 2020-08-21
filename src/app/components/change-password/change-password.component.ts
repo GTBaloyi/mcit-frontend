@@ -20,8 +20,6 @@ export class ChangePasswordComponent implements OnInit {
     private username : string;
     isLoading = new Subject<boolean>();
 
-
-
     constructor(private formBuilder: FormBuilder,
                 private router: Router,
                 private usersService: UsersService,
@@ -36,23 +34,17 @@ export class ChangePasswordComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
         this.user = JSON.parse(sessionStorage.getItem("loginInfo"));
-
-        this.formGroup = this.formBuilder.group({
-            password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(100)]],
-            confirmPassword: ['', [Validators.required]]
-        });
     }
 
     ngOnChanges(changes: SimpleChanges): void {
 
     }
 
-    changePassword() {
+    changePassword(changePasswordForm) {
         this.isLoading.next(true);
 
-        this.usersService.apiUsersResetPasswordPut(this.username, this.oldPassword, this.newPassword,1).subscribe(
+        this.usersService.apiUsersResetPasswordPut(this.username, this.oldPassword, changePasswordForm.value.newPassword,1).subscribe(
 
             (data: Observable<any>) => {
                 console.log(data)

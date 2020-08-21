@@ -76,45 +76,53 @@ export class RequestQuotationComponent implements OnInit, OnChanges {
     }
 
     requestQuotation(){
-        if(this.termsConditions){
-            this.isLoading.next(true);
 
-            let date = moment().format("YYYY-MM-DD");
+        if(this.quotation.company_name != null && this.quotation.email != null && this.quotation.phone_number != null && this.quotation.bill_address != null&& this.quotation.company_registration != null) {
 
-            this.quotation.quote_reference = '';
-            this.quotation.date_generated = date.toString();
-            this.quotation.quote_expiryDate = date.toString();
-            this.quotation.subTotal = 0;
-            this.quotation.globalDiscount = 0;
-            this.quotation.globalTax = 0;
-            this.quotation.grand_total = 0;
-            this.quotation.items = this.productsArray;
-            this.quotation.status = 'Pending';
+            if (this.termsConditions) {
+                this.isLoading.next(true);
 
-            this.quotationService.apiQuotationCreateQuotePost(this.quotation).subscribe (
-                (data: any) => {
-                    data;
-                },
-                error => {
-                    if(error.status == 200){
+                let date = moment().format("YYYY-MM-DD");
+
+                this.quotation.quote_reference = '';
+                this.quotation.date_generated = date.toString();
+                this.quotation.quote_expiryDate = date.toString();
+                this.quotation.subTotal = 0;
+                this.quotation.globalDiscount = 0;
+                this.quotation.globalTax = 0;
+                this.quotation.grand_total = 0;
+                this.quotation.items = this.productsArray;
+                this.quotation.status = 'Pending';
+
+                this.quotationService.apiQuotationCreateQuotePost(this.quotation).subscribe(
+                    (data: any) => {
+                        data;
+                    },
+                    error => {
+                        if (error.status == 200) {
+                            this.isLoading.next(false);
+                            this.showSuccess();
+                            this.router.navigateByUrl('/landing-page');
+
+                        } else {
+                            console.log(error);
+                            this.isLoading.next(false);
+                            this.showError();
+                        }
+                    },
+                    () => {
                         this.isLoading.next(false);
                         this.showSuccess();
                         this.router.navigateByUrl('/landing-page');
-
-                    }else{
-                        console.log(error);
-                        this.isLoading.next(false);
-                        this.showError();
                     }
-                },
-                () => {
-                    this.isLoading.next(false);
-                    this.showSuccess();
-                    this.router.navigateByUrl('/landing-page');
-                }
-            )
+                )
+            } else {
+                this.toastr.error('Please accept our terms and conditions then, try again.', 'Error!!!', {
+                    timeOut: 3000,
+                });
+            }
         }else{
-            this.toastr.error('Please accept our terms and conditions then, try again.', 'Error!!!', {
+            this.toastr.error('Please fill in all the required information', 'Error!!!', {
                 timeOut: 3000,
             });
         }
@@ -143,7 +151,7 @@ export class RequestQuotationComponent implements OnInit, OnChanges {
 
     addItem() {
 
-        this.newProduct = {id:0, focusArea: this.selectedFocusArea, item: this.selectedProduct, description: '',unit_Price:'', quantity: this.selectedQuantity, total: 0};
+        this.newProduct = {id:0, focusArea: this.selectedFocusArea, item: this.selectedProduct ,unit_Price:0, quantity: this.selectedQuantity, total: 0};
         this.productsArray.push(this.newProduct);
         this.toastr.success('New row added successfully', 'New product');
         return true;

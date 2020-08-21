@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android" name="Android">
+      <configuration>
+        <option name="GEN_FOLDER_RELATIVE_PATH_APT" value="/../../angular-metal-casting-system/gen" />
+        <option name="GEN_FOLDER_RELATIVE_PATH_AIDL" value="/../../angular-metal-casting-system/gen" />
+        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/../../angular-metal-casting-system/AndroidManifest.xml" />
+        <option name="RES_FOLDER_RELATIVE_PATH" value="/../../angular-metal-casting-system/res" />
+        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/../../angular-metal-casting-system/assets" />
+        <option name="LIBS_FOLDER_RELATIVE_PATH" value="/../../angular-metal-casting-system/libs" />
+        <option name="PROGUARD_LOGS_FOLDER_RELATIVE_PATH" value="/../../angular-metal-casting-system/proguard_logs" />
+      </configuration>
+    </facet>
+  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/dist" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
     </content>
-    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

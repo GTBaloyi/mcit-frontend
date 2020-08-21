@@ -22,9 +22,9 @@ export class ForgotPasswordComponent implements OnInit {
     }
 
 
-    reset(companyRegistration: string, email: string, contactNumber: string ) {
+    reset(resetPasswordForm) {
 
-        this.usersService.apiUsersForgotPasswordPut(companyRegistration, email, contactNumber).subscribe(
+        this.usersService.apiUsersForgotPasswordPut(resetPasswordForm.value.companyRegistration, resetPasswordForm.value.email, resetPasswordForm.value.contactNumber).subscribe(
 
             () => {
 

@@ -26,6 +26,8 @@ import {CreateQuotationComponent} from "../create-quotation/create-quotation.com
 import {ViewQuotationComponent} from "../view-quotation/view-quotation.component";
 import {ProjectsComponent} from "../projects/projects.component";
 import {ViewQuotationPdfComponent} from "../view-quotation-pdf/view-quotation-pdf.component";
+import {NgxPaginationModule} from "ngx-pagination";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 
 @NgModule({
@@ -48,20 +50,23 @@ import {ViewQuotationPdfComponent} from "../view-quotation-pdf/view-quotation-pd
       ProjectsComponent,
       ViewQuotationPdfComponent
   ],
-  imports: [
+    imports: [
 
-      CommonModule,
-      RouterModule,
-      SharedModule,
-      FormsModule,
-      ReactiveFormsModule,
-      BrowserAnimationsModule,
-      BrowserModule,
-      AppRoutingModule,
-      NgbModule,
-      ChartsModule,
-      ToastrModule.forRoot(),
-  ],
+        CommonModule,
+        RouterModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        AppRoutingModule,
+        NgbModule,
+        ChartsModule,
+        ToastrModule.forRoot(),
+        FormsModule,
+        NgxPaginationModule,
+        Ng2SearchPipeModule
+    ],
   exports: [
 
       ReactiveFormsModule,

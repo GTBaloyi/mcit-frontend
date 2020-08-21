@@ -2,7 +2,6 @@
 
 @import '../../../styles.scss';
 .sidebar {
-  min-height: calc(100vh - #{$navbar-height});
   background: $theme-gradient;
   font-family: $type1-regular;
   padding: 0;
@@ -113,7 +112,6 @@
         .nav-link {
           .menu-title {
             font-weight: bolder;
-            font-style: italic;
             color: $sidebar-menu-active-color;
             font-family: $type1-medium;
           }
@@ -124,7 +122,8 @@
       }
 
       &:hover{
-        background: $sidebar-menu-hover-bg;
+        background: $sidebar-menu-hover-color;
+        color: $sidebar-menu-active-color!important;
       }
       &.nav-profile {
         .nav-link {
@@ -181,7 +180,8 @@
         &:hover {
           &:not(.nav-category):not(.nav-profile) {
             > .nav-link {
-              color: $sidebar-menu-hover-color;
+              background: $sidebar-menu-hover-color;
+              color: $sidebar-menu-active-color!important;
             }
           }
         }
@@ -304,7 +304,7 @@
             .collapse,
             .collapsing {
               display: block;
-              background: $icon-only-menu-bg-light;
+              background: $black;
               @include border-radius(0 0 5px 0);
               position: absolute;
               left: $sidebar-width-icon;
@@ -369,4 +369,13 @@
       right: 0;
     }
   }
+}
+
+.style18 {
+  margin-top: 2%;
+  height: 100%;
+  border-style: solid;
+  border-color: #23275b;
+  border-width: 1px 0 0 0;
+  border-radius: 20px;
 }

@@ -12,7 +12,7 @@ $green:             #46c35f;
 $teal:              #58d8a3;
 $cyan:              #57c7d4;
 $black:             #000;
-$white:             #ffffff;
+$white: #fff;
 $white-smoke:       #f2f7f8;
 $violet:            #41478a;
 $darkslategray :    #2e383e;
@@ -43,10 +43,10 @@ $colors: (
 $theme-colors: (
   primary:         #FFFFFF,
   secondary:       #d8d8d8,
-  success:         #1bcfb4,
-  info:            #198ae3,
-  warning:         #fed713,
-  danger:          #fe7c96,
+  success: #036e5e,
+  info: #047edf,
+  warning: #f8cf06,
+  danger: #f50443,
   light:           #f8f9fa,
   dark:            #3e4b5b
 );
@@ -56,13 +56,26 @@ $theme-gradient: linear-gradient(to right, #3989c6, #23275b);
 $theme-gradient-colors: (
   primary:         linear-gradient(to right, #3989c6, #23275b),
   secondary:       linear-gradient(to right, #e7ebf0, #868e96),
-  success:         linear-gradient(to right, #84d9d2, #07cdae),
+  success:         linear-gradient(to right, #84d9d2, #036e5e),
   info:            linear-gradient(to right, #90caf9, #047edf 99%),
-  warning:         linear-gradient(to right, #f6e384, #ffd500),
-  danger:          linear-gradient(to right, #ffbf96, #fe7096),
+  warning:         linear-gradient(to right, #f6e384, #f8cf06),
+  danger:          linear-gradient(to right, #ffbf96, #f50443),
   light:           linear-gradient(to bottom, #f4f4f4, #e4e4e9),
   dark:            linear-gradient(89deg, #5e7188, #3e4b5b)
 );
+
+.toast-success {
+  background-color: #06ae06;
+}
+.toast-error {
+  background-color: #8f0a03;
+}
+.toast-info {
+  background-color: #034e64;
+}
+.toast-warning {
+  background-color: #804b01;
+}
 
 
 ////////// COLOR SYSTEM //////////

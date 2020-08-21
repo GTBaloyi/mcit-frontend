@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgbDropdownConfig} from "@ng-bootstrap/ng-bootstrap";
 import {Subject} from "rxjs";
 import {LoginResponseModel, UsersService} from "../../services";
@@ -6,8 +6,25 @@ import {AuthGuard} from "../../services/auth.guard";
 import {Router} from "@angular/router";
 import {ClientRegistrationRequestModel} from "../../services/model/models";
 import { ToastrService } from 'ngx-toastr';
+import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
 
-
+export interface LoginForm {
+    email: string;
+    password: any;
+}
+export interface RegistrationForm {
+    contactName: string;
+    contactSurname: string;
+    title: string;
+    gender: string;
+    contactEmail: string;
+    contactNumber: string;
+    avatar: string;
+    companyName: string;
+    companyRegistrationNumber: string;
+    isCompanyPresent: boolean;
+    companyProfile: string;
+}
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -16,87 +33,65 @@ import { ToastrService } from 'ngx-toastr';
 export class LandingPageComponent implements OnInit {
 
     isLoading = new Subject<boolean>();
-    private username: string;
-    private password: string;
     private user: LoginResponseModel;
     private titles: Array<string> = ['Mr', 'Mrs', 'Miss', 'Ms', 'Sir', 'Dr'];
-    private gender: Array<string> = ['Male', 'Female', 'Other'];
-    private companyProfile: Array<string> = ['Small', 'Large', 'HEIs/Science Council', 'Techno/Star-Entrepreneur'];
+    private genders: Array<string> = ['Male', 'Female', 'Other'];
+    private companyProfiles: Array<string> = ['Small', 'Large', 'HEIs/Science Council', 'Techno/Star-Entrepreneur'];
     private result: ClientRegistrationRequestModel;
-    private Newuser: ClientRegistrationRequestModel = <ClientRegistrationRequestModel>{} ;
     private termsConditions: boolean = false;
+    private login: LoginForm = <LoginForm>{};
+    private registration: RegistrationForm =<RegistrationForm>{};
 
-    constructor(config: NgbDropdownConfig, private usersService: UsersService, private authGuard: AuthGuard, private router: Router,private toastr: ToastrService) {
+    constructor(config: NgbDropdownConfig,
+                private usersService: UsersService,
+                private authGuard: AuthGuard,
+                private router: Router,
+                private toastr: ToastrService) {
         config.placement = 'bottom-right';
     }
 
     ngOnInit() {
-        this.Newuser.title = 'Mr';
-        this.Newuser.gender = 'Male';
-        this.Newuser.companyProfile = 'Small';
-
+        this.registration.title = 'Mr';
+        this.registration.gender = 'Male';
+        this.registration.companyProfile = 'Small';
     }
 
-    public signIn(username: string, password: string) {
-
-        if(username == '' && password == ''){
-            this.toastr.error('Please enter a username and password', 'Missing Fields',{
-                timeOut: 3000,
-            });
-
-        }else if(username == ''){
-            this.toastr.error('Please enter a username', 'Missing Fields',{
-                timeOut: 3000,
-            });
-
-        }else if( password == ''){
-            this.toastr.error('Please enter a password', 'Missing Fields', {
-                timeOut: 3000,
-            });
-        }else if (username != '' && password != ''){
-            this.isLoading.next(true);
-
-            this.usersService.apiUsersLoginGet(username, password).subscribe(
-
-                (data: LoginResponseModel) => {
-                    this.user = data;
-                    if (this.user != null) {
-                        this.user.loggedIn = true;
-                        sessionStorage.setItem('loginInfo', JSON.stringify(data));
-                    }
-
-                },
-                error => {
-                    console.log(error);
-                    this.showError();
-                    this.isLoading.next(false);
-
-                },
-                () => {
-                    this.authGuard.userValidation(this.user, password, username);
-                    if(this.user.userStatus == 1){
-                        this.showSuccess();
-                    }else if(this.user.userStatus == 3){
-                        this.showCustomToast();
-                    }
-                    sessionStorage.setItem('username', JSON.stringify(username));
-                    this.isLoading.next(false);
-                    this.router.navigateByUrl('/dashboard');
-
+    public signIn(loginForm: NgForm) {
+        this.isLoading.next(true);
+        this.usersService.apiUsersLoginGet(loginForm.value.email, loginForm.value.password).subscribe(
+            (data: LoginResponseModel) => {
+                this.user = data;
+                if (this.user != null) {
+                    this.user.loggedIn = true;
+                    sessionStorage.setItem('loginInfo', JSON.stringify(data));
                 }
-            )
-        }
-
+            },
+            error => {
+                console.log(error);
+                this.showError();
+                this.isLoading.next(false);
+            },
+            () => {
+                this.authGuard.userValidation(this.user,loginForm.value.password, loginForm.value.email);
+                if(this.user.userStatus == 1){
+                    this.showSuccess();
+                }else if(this.user.userStatus == 3){
+                    this.showCustomToast();
+                }
+                sessionStorage.setItem('username', JSON.stringify(loginForm.value.email));
+                this.isLoading.next(false);
+                this.router.navigateByUrl('/dashboard');
+            }
+        );
     }
 
-    singUp() {
+    signUp(registrationForm) {
 
         if(this.termsConditions) {
-            this.Newuser.isCompanyPresent = true;
-            this.Newuser.avatar = '';
-
+            registrationForm.value.isCompanyPresent = true;
+            registrationForm.value.avatar = '';
             this.isLoading.next(true);
-            this.usersService.apiUsersClientRegistrationPost(this.Newuser).subscribe(
+            this.usersService.apiUsersClientRegistrationPost(registrationForm.value).subscribe(
                 (data: any) => {
                     this.result = data;
                 },
@@ -142,4 +137,5 @@ export class LandingPageComponent implements OnInit {
 
     acceptTermsAndConditions(){
         this.termsConditions = !this.termsConditions;
-    }}
+    }
+}
