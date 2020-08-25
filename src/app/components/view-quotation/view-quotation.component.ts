@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {Subject} from "rxjs";
-import {LoginResponseModel, ProductsService, QuotationModel, QuotationService} from "../../services";
-import {QuotationItemEntity} from "../../services/model/quotationItemEntity";
+import {
+    ClientRegistrationRequestModel,
+    InvoiceRequestModel,
+    InvoiceService,
+    ProductsService,
+    QuotationService
+} from "../../services";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
+import moment = require('moment');
 import {QuotationResponseModel} from "../../services/model/models";
 
 @Component({
@@ -13,18 +19,35 @@ import {QuotationResponseModel} from "../../services/model/models";
 })
 export class ViewQuotationComponent implements OnInit {
 
-  isLoading = new Subject<boolean>();
-  private quotationsArray: Array<QuotationResponseModel> = [];
-  private username : any;
+    isLoading = new Subject<boolean>();
+    private invoice : InvoiceRequestModel;
+    private userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;
+    private quotationsArray: Array<QuotationResponseModel> = [];
+    private username : any;
+    private filter : string;
+    private config: any;
+    private showModal: boolean;
 
-  constructor(private quotationService: QuotationService, private productsService: ProductsService, private router: Router,private toastr: ToastrService) { }
 
-  ngOnInit() {
-      this.username  = JSON.parse(sessionStorage.getItem("username"));
-      this.getQuotation();
-  }
+    constructor(private quotationService: QuotationService,
+                private productsService: ProductsService,
+                private router: Router,
+                private toastr: ToastrService,
+                private invoiceService: InvoiceService) {
+    }
 
-  getQuotation(){
+    ngOnInit() {
+        this.username  = JSON.parse(sessionStorage.getItem("username"));
+        this.getQuotation();
+
+        this.config = {
+            itemsPerPage: 5,
+            currentPage: 1,
+            totalItems: this.quotationsArray.length
+        };
+    }
+
+    getQuotation(){
       this.isLoading.next(true);
 
       this.quotationService.apiQuotationQuotesEmailGet(this.username).subscribe (
@@ -42,25 +65,127 @@ export class ViewQuotationComponent implements OnInit {
             this.isLoading.next(false);
             this.showSuccess();
           }
-      )
+      );
 
-  }
+    }
 
-  viewPDF(quotation : QuotationResponseModel){
+    show() {
+        this.showModal = true;
+    }
+
+    hide() {
+        this.showModal = false;
+    }
+
+
+    acceptQuotation(quotation : QuotationResponseModel){
+        quotation.status = "Accepted";
+
+        this.isLoading.next(true);
+        this.quotationService.apiQuotationUpdateQuotePut(quotation).subscribe (
+            () => {
+            },
+            error => {
+                console.log(error);
+                this.isLoading.next(false);
+                this.showError();
+
+            },
+            () => {
+                this.isLoading.next(false);
+                this.generateInvoice(quotation);
+                this.getQuotation();
+            }
+        );
+    }
+
+    rejectQuotation(quotation : QuotationResponseModel){
+        quotation.status = "Rejected";
+
+        this.isLoading.next(true);
+        this.quotationService.apiQuotationUpdateQuotePut(quotation).subscribe (
+            () => {
+            },
+            error => {
+                console.log(error);
+                this.isLoading.next(false);
+                this.showError();
+            },
+            () => {
+                this.isLoading.next(false);
+                this.hide();
+                this.getQuotation();
+            }
+        );
+    }
+
+    generateInvoice(quotation : QuotationResponseModel){
+        let date = moment().format("YYYY-MM-DD");
+        this.userInformation  = JSON.parse(sessionStorage.getItem("userInformation"));
+
+        this.invoice.id = 0;
+        this.invoice.reference = '';
+        this.invoice.invoice_date = date;
+        this.invoice.date_due = date;
+        this.invoice.daysBeforeExpiry = 30;
+        this.invoice.quotation_Reference = quotation.quote_reference;
+        this.invoice.vat_percentage = quotation.vat;
+        this.invoice.bill_address = quotation.bill_address;
+        this.invoice.vat = quotation.vat_Amount;
+        this.invoice.discount = quotation.discount;
+        this.invoice.subtotal = quotation.sub_Total;
+        this.invoice.grand_total = quotation.grand_total;
+        this.invoice.company_registration = this.userInformation.companyRegistrationNumber;
+        this.invoice.generatedBy = '';
+        this.invoice.approvedBy = '';
+
+        this.isLoading.next(true);
+        this.invoiceService.apiInvoiceGenerateInvoicePost(this.invoice).subscribe (
+            () => {
+            },
+            error => {
+                console.log(error);
+                this.isLoading.next(false);
+                this.showError();
+            },
+            () => {
+                this.isLoading.next(false);
+                this.showSuccess();
+            }
+        );
+
+    }
+
+    viewPDF(quotation : QuotationResponseModel){
       this.router.navigate(['/view-quotation-pdf'], {state:{quotation: quotation}});
-  }
+    }
+
+    pageChanged(event){
+        this.config.currentPage = event;
+    }
+
+    disableButton ( value: string): boolean {
+        if(value == 'Accepted' ||
+            value == 'Rejected'||
+            value == 'Pending Client Approval'){
+            return false;
+        }else {
+            return true;
+        }
+
+    }
 
 
-  showSuccess() {
+    showSuccess() {
       this.toastr.success('Process successfully completed', 'Success', {
           timeOut: 3000,
       });
-  }
+    }
 
-  showError() {
-      this.toastr.error('Opps, an error occurred. Please try again.', 'Error!!!', {
+    showError() {
+      this.toastr.error('Ops, an error occurred. Please try again.', 'Error!!!', {
           timeOut: 3000,
       });
-  }
+    }
 
 }

@@ -55,6 +55,7 @@ export class NavbarComponent implements OnInit {
   logout() {
       sessionStorage.removeItem('loginInfo');
       sessionStorage.removeItem('username');
+      sessionStorage.removeItem('userInformation');
       this.router.navigateByUrl('/landing-page');
   }
 

@@ -22,9 +22,9 @@ export class ForgotPasswordComponent implements OnInit {
     }
 
 
-    reset(companyRegistration: string, email: string, contactNumber: string ) {
+    reset(resetPasswordForm) {
 
-        this.usersService.apiUsersForgotPasswordPut(companyRegistration, email, contactNumber).subscribe(
+        this.usersService.apiUsersForgotPasswordPut(resetPasswordForm.value.companyRegistration, resetPasswordForm.value.email, resetPasswordForm.value.contactNumber).subscribe(
 
             () => {
 
@@ -49,7 +49,7 @@ export class ForgotPasswordComponent implements OnInit {
     }
 
     showError() {
-        this.toastr.error('Opps, an error occurred. Please try again.', 'Error!!!', {
+        this.toastr.error('Ops, an error occurred. Please try again.', 'Error!!!', {
             timeOut: 3000,
         });
     }

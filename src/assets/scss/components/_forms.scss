@@ -6,13 +6,13 @@
 
 .input-group-append,
 .input-group-prepend {
-  color: $input-placeholder-color;
+  color: $body-color;
   width: auto;
   border: none;
   .input-group-text {
     border-color: $border-color;
     padding: 0.575rem 0.75rem;
-    color: $input-placeholder-color;
+    color: $body-color;
   }
   button {
     height: 33.5px;
@@ -39,7 +39,7 @@ select {
     padding: .4375rem .75rem;
     border: 0;
     outline: 1px solid $border-color;
-    color: $input-placeholder-color;
+    color: $body-color;
     &:focus {
       outline: 1px solid $border-color;
     }

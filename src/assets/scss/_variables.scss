@@ -12,55 +12,70 @@ $green:             #46c35f;
 $teal:              #58d8a3;
 $cyan:              #57c7d4;
 $black:             #000;
-$white:             #ffffff;
+$white: #fff;
 $white-smoke:       #f2f7f8;
 $violet:            #41478a;
 $darkslategray :    #2e383e;
-$dodger-blue :      #3498db;
+$dodger-blue :      #047edf;
 
 
 $colors: (
-  blue:             $blue,
-  indigo:           $indigo,
-  purple:           $purple,
-  pink:             $pink,
-  red:              $red,
-  orange:           $orange,
-  yellow:           $yellow,
-  green:            $green,
-  teal:             $teal,
-  cyan:             $cyan,
-  white:            $white,
-  gray:             #434a54,
-  gray-light:       #aab2bd,
-  gray-lighter:     #e8eff4,
-  gray-lightest:    #e6e9ed,
-  gray-dark:        #0f1531,
-  black:            #000000
+        blue:             $blue,
+        indigo:           $indigo,
+        purple:           $purple,
+        pink:             $pink,
+        red:              $red,
+        orange:           $orange,
+        yellow:           $yellow,
+        green:            $green,
+        teal:             $teal,
+        cyan:             $cyan,
+        white:            $white,
+        gray:             #434a54,
+        gray-light:       #aab2bd,
+        gray-lighter:     #e8eff4,
+        gray-lightest:    #e6e9ed,
+        gray-dark:        #0f1531,
+        black:            #000000
 );
 
 
 $theme-colors: (
-  primary:         #b66dff,
-  secondary:       #d8d8d8,
-  success:         #1bcfb4,
-  info:            #198ae3,
-  warning:         #fed713,
-  danger:          #fe7c96,
-  light:           #f8f9fa,
-  dark:            #3e4b5b
+        primary:         #FFFFFF,
+        secondary:       #d8d8d8,
+        success: #036e5e,
+        info: #047edf,
+        warning: #f8cf06,
+        danger: #f50443,
+        light:           #f8f9fa,
+        dark:            #3e4b5b
 );
 
+$theme-gradient: linear-gradient(to right, #3989c6, #23275b);
+
 $theme-gradient-colors: (
-  primary:         linear-gradient(to right, #da8cff, #9a55ff),
-  secondary:       linear-gradient(to right, #e7ebf0, #868e96),
-  success:         linear-gradient(to right, #84d9d2, #07cdae),
-  info:            linear-gradient(to right, #90caf9, #047edf 99%),
-  warning:         linear-gradient(to right, #f6e384, #ffd500),
-  danger:          linear-gradient(to right, #ffbf96, #fe7096),
-  light:           linear-gradient(to bottom, #f4f4f4, #e4e4e9),
-  dark:            linear-gradient(89deg, #5e7188, #3e4b5b)
+        primary:         linear-gradient(to right, #3989c6, #23275b),
+        secondary:       linear-gradient(to right, #e7ebf0, #868e96),
+        success:         linear-gradient(to right, #84d9d2, #036e5e),
+        info:            linear-gradient(to right, #90caf9, #047edf 99%),
+        warning:         linear-gradient(to right, #f6e384, #f8cf06),
+        danger:          linear-gradient(to right, #ffbf96, #f50443),
+        light:           linear-gradient(to bottom, #f4f4f4, #e4e4e9),
+        dark:            linear-gradient(89deg, #5e7188, #3e4b5b)
 );
+
+.toast-success {
+  background-color: #06ae06;
+}
+.toast-error {
+  background-color: #8f0a03;
+}
+.toast-info {
+  background-color: #034e64;
+}
+.toast-warning {
+  background-color: #804b01;
+}
 
 
 ////////// COLOR SYSTEM //////////
@@ -78,16 +93,16 @@ $border-color: #ffffff;
 ////////// SOCIAL COLORS //////////
 
 $social-colors: (
-  twitter: #2caae1,
-  facebook: #3b579d,
-  google: #dc4a38,
-  linkedin: #0177b5,
-  pinterest: #cc2127,
-  youtube: #e52d27,
-  github: #333333,
-  behance: #1769ff,
-  dribbble: #ea4c89,
-  reddit: #ff4500
+        twitter: #2caae1,
+        facebook: #3b579d,
+        google: #dc4a38,
+        linkedin: #0177b5,
+        pinterest: #cc2127,
+        youtube: #e52d27,
+        github: #333333,
+        behance: #1769ff,
+        dribbble: #ea4c89,
+        reddit: #ff4500
 );
 
 ////////// SOCIAL COLORS //////////
@@ -107,23 +122,23 @@ $body-color: #000000;
 ////////// FONT VARIABLES //////////
 
 ////////// SIDEBAR ////////
-$sidebar-width-lg: 260px;
+$sidebar-width-lg: 270px;
 $sidebar-width-mini: 185px;
 $sidebar-width-icon: 70px;
 
 $sidebar-bg: $white;
-$sidebar-menu-color: #3e4b5b;
-$sidebar-submenu-color: #888;
+$sidebar-menu-color: #23275b;
+$sidebar-submenu-color: #3989c6;
 $sidebar-menu-active-bg: $white;
-$sidebar-menu-active-color: theme-color(primary);
-$sidebar-menu-hover-bg: darken($sidebar-bg, 1%);
+$sidebar-menu-active-color: #ffffff;
+$sidebar-menu-hover-bg: #3989c6;
 $sidebar-menu-hover-color: darken($sidebar-menu-color, 10%);
-$sidebar-submenu-hover-color: darken($sidebar-submenu-color, 20%);
+$sidebar-submenu-hover-color: darken(#3989c6, 20%);
 $sidebar-menu-icon-color: #bba8bff5;
 $sidebar-menu-arrow-color: #9e9da0;
 $sidebar-menu-border-color: #f2edf3;
 
-$sidebar-menu-font-size: $default-font-size;
+$sidebar-menu-font-size: 20px;
 $sidebar-menu-padding-y: 1.125rem;
 $sidebar-menu-padding-x: 2.25rem;
 

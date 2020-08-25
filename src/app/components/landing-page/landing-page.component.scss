@@ -6,7 +6,7 @@
 
 .navbar {
   font-family: $type1-light;
-  background: $navbar-bg;
+  background: #23275b;
   transition:background $action-transition-duration $action-transition-timing-function;
   -webkit-transition:background $action-transition-duration $action-transition-timing-function;
   -moz-transition:background $action-transition-duration $action-transition-timing-function;
@@ -24,7 +24,8 @@
       width: 60px;
     }
     .navbar-brand {
-      color: lighten(color(gray-dark), 20%);
+      font-weight: bolder;
+      color: #FFF;
       font-size: 1.5rem;
       line-height: 48px;
       margin-right: 0;
@@ -34,7 +35,7 @@
       &:active,
       &:focus,
       &:hover {
-        color: lighten(color(gray-dark), 10%);
+        color: #000;
       }
 
       img {
@@ -78,7 +79,7 @@
     -webkit-transition: width $action-transition-duration $action-transition-timing-function;
     -moz-transition: width $action-transition-duration $action-transition-timing-function;
     -ms-transition: width $action-transition-duration $action-transition-timing-function;
-    color: $navbar-menu-color;
+    color: #FFF;
     padding-left: 24px;
     padding-right: 24px;
     width: calc(100% - #{$sidebar-width-lg});
@@ -367,4 +368,22 @@
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
+}
+
+
+.form-control.ng-touched.ng-invalid{
+  border-color: #dc3545;
+}
+
+.custom-control-input.ng-invalid.ng-touched + label.custom-control-label{
+  color: #dc3545;
+}
+
+.custom-control-input.ng-invalid.ng-touched + label.custom-control-label:before,
+.custom-control-input.ng-invalid.ng-touched + label.custom-control-label:after
+{
+  border-color: #dc3545;
+}
+.custom-control-input.ng-invalid.ng-touched:focus~label.custom-control-label:before{
+  box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25);
 }

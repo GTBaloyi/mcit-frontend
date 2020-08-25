@@ -1,9 +1,9 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
-import {ProductsService, QuotationModel, QuotationResponseModel, QuotationService} from "../../services";
+import {ProductsService, QuotationModel, QuotationService} from "../../services";
 import {Subject} from "rxjs";
-import {QuotationItemEntity} from "../../services/model/quotationItemEntity";
+import {QuotationItemEntity} from "../../services";
 import moment = require('moment');
 
 
@@ -23,11 +23,11 @@ export class RequestQuotationComponent implements OnInit, OnChanges {
     private selectedQuantity: number;
     private termsConditions: boolean = false;
     private quotation: QuotationModel= <QuotationModel> {};
-
     private productsArray: Array<QuotationItemEntity> = [];
     private newProduct: QuotationItemEntity  = {};
 
-    constructor(private quotationService: QuotationService, private productsService: ProductsService, private router: Router,private toastr: ToastrService) { }
+    constructor(private quotationService: QuotationService, private productsService: ProductsService, private router: Router,private toastr: ToastrService) {
+    }
 
 
     ngOnInit() {
@@ -36,8 +36,6 @@ export class RequestQuotationComponent implements OnInit, OnChanges {
         this.selectedQuantity = 1;
 
         this.getFocusArea();
-        this.newProduct = {id:0, focusArea: this.selectedFocusArea, item: this.selectedProduct, description: '',unit_Price:'', quantity: this.selectedQuantity, total: 0};
-        this.productsArray.push(this.newProduct);
         this.getProducts(this.selectedFocusArea);
     }
 
@@ -78,7 +76,7 @@ export class RequestQuotationComponent implements OnInit, OnChanges {
     }
 
     requestQuotation(){
-        if(this.termsConditions){
+        if (this.termsConditions) {
             this.isLoading.next(true);
 
             let date = moment().format("YYYY-MM-DD");
@@ -93,17 +91,17 @@ export class RequestQuotationComponent implements OnInit, OnChanges {
             this.quotation.items = this.productsArray;
             this.quotation.status = 'Pending';
 
-            this.quotationService.apiQuotationCreateQuotePost(this.quotation).subscribe (
+            this.quotationService.apiQuotationCreateQuotePost(this.quotation).subscribe(
                 (data: any) => {
                     data;
                 },
                 error => {
-                    if(error.status == 200){
+                    if (error.status == 200) {
                         this.isLoading.next(false);
                         this.showSuccess();
                         this.router.navigateByUrl('/landing-page');
 
-                    }else{
+                    } else {
                         console.log(error);
                         this.isLoading.next(false);
                         this.showError();
@@ -115,13 +113,12 @@ export class RequestQuotationComponent implements OnInit, OnChanges {
                     this.router.navigateByUrl('/landing-page');
                 }
             )
-        }else{
+        } else {
             this.toastr.error('Please accept our terms and conditions then, try again.', 'Error!!!', {
                 timeOut: 3000,
             });
         }
     }
-
 
     showSuccess() {
         this.toastr.success('Process successfully completed', 'Success', {
@@ -130,7 +127,7 @@ export class RequestQuotationComponent implements OnInit, OnChanges {
     }
 
     showError() {
-        this.toastr.error('Opps, an error occurred. Please try again.', 'Error!!!', {
+        this.toastr.error('Ops, an error occurred. Please try again.', 'Error!!!', {
             timeOut: 3000,
         });
     }
@@ -144,22 +141,16 @@ export class RequestQuotationComponent implements OnInit, OnChanges {
     }
 
     addItem() {
-
-        this.newProduct = {id:0, focusArea: this.selectedFocusArea, item: this.selectedProduct, description: '',unit_Price:'', quantity: this.selectedQuantity, total: 0};
+        this.newProduct = {id:0, focusArea: this.selectedFocusArea, item: this.selectedProduct ,unit_Price:0, quantity: this.selectedQuantity, total: 0};
         this.productsArray.push(this.newProduct);
         this.toastr.success('New row added successfully', 'New product');
         return true;
     }
 
     deleteItem(index) {
-        if(this.productsArray.length ==1) {
-            this.toastr.error("Can't delete the product when there is only one row", 'Warning');
-            return false;
-        } else {
-            this.productsArray.splice(index, 1);
-            this.toastr.warning('Product deleted successfully', 'Delete product');
-            return true;
-        }
+        this.productsArray.splice(index, 1);
+        this.toastr.warning('Product deleted successfully', 'Delete product');
+        return true;
     }
 
     acceptTermsAndConditions(){

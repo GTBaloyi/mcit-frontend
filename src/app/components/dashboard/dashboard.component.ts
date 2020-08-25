@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ClientsService, LoginResponseModel} from "../../services";
+import {ClientRegistrationRequestModel} from "../../services/model/models";
 
 @Component({
     selector: 'app-dashboard',
@@ -8,191 +9,33 @@ import {ClientsService, LoginResponseModel} from "../../services";
 })
 export class DashboardComponent implements OnInit {
 
+    private emailAddress : string;
+    private userInformation : ClientRegistrationRequestModel;
+
+
     constructor(private clientService: ClientsService) { }
 
+
     ngOnInit() {
+        this.emailAddress  = JSON.parse(sessionStorage.getItem("username"));
+        this.getClientInformation(this.emailAddress);
     }
 
-    date: Date = new Date();
 
-    visitSaleChartData = [{
-        label: 'CHN',
-        data: [20, 40, 15, 35, 25, 50, 30, 20],
-        borderWidth: 1,
-        fill: false,
-    },
-        {
-            label: 'USA',
-            data: [40, 30, 20, 10, 50, 15, 35, 40],
-            borderWidth: 1,
-            fill: false,
-        },
-        {
-            label: 'UK',
-            data: [70, 10, 30, 40, 25, 50, 15, 30],
-            borderWidth: 1,
-            fill: false,
-        }];
+    public getClientInformation(email: string) {
 
-    visitSaleChartLabels = ["2013", "2014", "2014", "2015", "2016", "2017"];
+        this.clientService.apiClientsByEmailEmailGet(email).subscribe(
 
-    visitSaleChartOptions = {
-        responsive: true,
-        legend: false,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    display: false,
-                    min: 0,
-                    stepSize: 20,
-                    max: 80
-                },
-                gridLines: {
-                    drawBorder: false,
-                    color: 'rgba(235,237,242,1)',
-                    zeroLineColor: 'rgba(235,237,242,1)'
-                }
-            }],
-            xAxes: [{
-                gridLines: {
-                    display:false,
-                    drawBorder: false,
-                    color: 'rgba(0,0,0,1)',
-                    zeroLineColor: 'rgba(235,237,242,1)'
-                },
-                ticks: {
-                    padding: 20,
-                    fontColor: "#9c9fa6",
-                    autoSkip: true,
-                },
-                categoryPercentage: 0.4,
-                barPercentage: 0.4
-            }]
-        }
-    };
-
-    visitSaleChartColors = [
-        {
-            backgroundColor: [
-                'rgba(154, 85, 255, 1)',
-                'rgba(154, 85, 255, 1)',
-                'rgba(154, 85, 255, 1)',
-                'rgba(154, 85, 255, 1)',
-                'rgba(154, 85, 255, 1)',
-                'rgba(154, 85, 255, 1)',
-            ],
-            borderColor: [
-                'rgba(154, 85, 255, 1)',
-                'rgba(154, 85, 255, 1)',
-                'rgba(154, 85, 255, 1)',
-                'rgba(154, 85, 255, 1)',
-                'rgba(154, 85, 255, 1)',
-                'rgba(154, 85, 255, 1)',
-            ]
-        },
-        {
-            backgroundColor: [
-                'rgba(254, 112, 150, 1)',
-                'rgba(254, 112, 150, 1)',
-                'rgba(254, 112, 150, 1)',
-                'rgba(254, 112, 150, 1)',
-                'rgba(254, 112, 150, 1)',
-                'rgba(254, 112, 150, 1)',
-            ],
-            borderColor: [
-                'rgba(254, 112, 150, 1)',
-                'rgba(254, 112, 150, 1)',
-                'rgba(254, 112, 150, 1)',
-                'rgba(254, 112, 150, 1)',
-                'rgba(254, 112, 150, 1)',
-                'rgba(254, 112, 150, 1)',
-            ]
-        },
-        {
-            backgroundColor: [
-                'rgba(177, 148, 250, 1)',
-                'rgba(177, 148, 250, 1)',
-                'rgba(177, 148, 250, 1)',
-                'rgba(177, 148, 250, 1)',
-                'rgba(177, 148, 250, 1)',
-                'rgba(177, 148, 250, 1)',
-            ],
-            borderColor: [
-                'rgba(177, 148, 250, 1)',
-                'rgba(177, 148, 250, 1)',
-                'rgba(177, 148, 250, 1)',
-                'rgba(177, 148, 250, 1)',
-                'rgba(177, 148, 250, 1)',
-                'rgba(177, 148, 250, 1)',
-            ]
-        },
-    ];
-
-    trafficChartData = [
-        {
-            data: [30, 30, 40],
-        }
-    ];
-
-    trafficChartLabels = ["Search Engines", "Direct Click", "Bookmarks Click"];
-
-    trafficChartOptions = {
-        responsive: true,
-        animation: {
-            animateScale: true,
-            animateRotate: true
-        },
-        legend: false,
-    };
-
-    trafficChartColors = [
-        {
-            backgroundColor: [
-                'rgba(177, 148, 250, 1)',
-                'rgba(254, 112, 150, 1)',
-                'rgba(132, 217, 210, 1)'
-            ],
-            borderColor: [
-                'rgba(177, 148, 250, .2)',
-                'rgba(254, 112, 150, .2)',
-                'rgba(132, 217, 210, .2)'
-            ]
-        }
-    ];
-
-/*
-    public getClientInformation(username: string, password: string) {
-
-        this.clientService.(username, password).subscribe(
-
-            (data: LoginResponseModel) => {
-                this.user = data;
-                if (this.user != null) {
-                    this.user.loggedIn = true;
-                    sessionStorage.setItem('loginInfo', JSON.stringify(data));
-                }
-
+            (data: ClientRegistrationRequestModel) => {
+                this.userInformation = data;
             },
             error => {
-                console.log(error);
-                this.showError();
-                this.isLoading.next(false);
 
             },
             () => {
-                this.authGuard.userValidation(this.user, password, username);
-                if(this.user.userStatus == 1){
-                    this.showSuccess();
-                }else if(this.user.userStatus == 3){
-                    this.showCustomToast();
-                }
-                sessionStorage.setItem('username', JSON.stringify(username));
-                this.isLoading.next(false);
-                this.router.navigateByUrl('/dashboard');
-
+                sessionStorage.setItem('userInformation', JSON.stringify(this.userInformation));
             }
         );
     }
-*/
 
 }

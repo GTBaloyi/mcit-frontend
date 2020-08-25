@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Subject} from "rxjs";
-import {ProductsService, QuotationModel, QuotationService} from "../../services";
+import {ClientRegistrationRequestModel, ProductsService, QuotationModel, QuotationService} from "../../services";
 import {QuotationItemEntity} from "../../services/model/quotationItemEntity";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
@@ -19,12 +19,15 @@ export class CreateQuotationComponent implements OnInit {
     private products: Array<any> = [];
     private selectedProduct: string;
     private selectedQuantity: number;
-    private quotation: QuotationModel= <QuotationModel> {};
-
-    private productsArray: Array<QuotationItemEntity> = [];
     private newProduct: QuotationItemEntity  = {};
+    private quotation: QuotationModel= <QuotationModel> {};
+    private productsArray: Array<QuotationItemEntity> = [];
+    private userInformation : ClientRegistrationRequestModel = <ClientRegistrationRequestModel> {};
 
-    constructor(private quotationService: QuotationService, private productsService: ProductsService, private router: Router,private toastr: ToastrService) { }
+
+    constructor(private quotationService: QuotationService, private productsService: ProductsService, private router: Router,private toastr: ToastrService) {
+        this.userInformation  = JSON.parse(sessionStorage.getItem("userInformation"));
+    }
 
 
     ngOnInit() {
@@ -32,9 +35,12 @@ export class CreateQuotationComponent implements OnInit {
         this.selectedProduct = 'Non Testing Act (Phys)';
         this.selectedQuantity = 1;
 
+        this.quotation.company_name = this.userInformation.companyName;
+        this.quotation.phone_number = this.userInformation.contactNumber;
+        this.quotation.email = this.userInformation.contactEmail;
+        this.quotation.company_Registration = this.userInformation.companyRegistrationNumber;
+
         this.getFocusArea();
-        this.newProduct = {id:0, focusArea: this.selectedFocusArea, item: this.selectedProduct, description: '',unit_Price:'', quantity: this.selectedQuantity, total: 0};
-        this.productsArray.push(this.newProduct);
         this.getProducts(this.selectedFocusArea);
     }
 
@@ -119,7 +125,7 @@ export class CreateQuotationComponent implements OnInit {
     }
 
     showError() {
-        this.toastr.error('Opps, an error occurred. Please try again.', 'Error!!!', {
+        this.toastr.error('Ops, an error occurred. Please try again.', 'Error!!!', {
             timeOut: 3000,
         });
     }
@@ -133,21 +139,14 @@ export class CreateQuotationComponent implements OnInit {
     }
 
     addItem() {
-
-        this.newProduct = {id:0, focusArea: this.selectedFocusArea, item: this.selectedProduct, description: '',unit_Price:'', quantity: this.selectedQuantity, total: 0};
+        this.newProduct = {id:0, focusArea: this.selectedFocusArea, item: this.selectedProduct, quantity: this.selectedQuantity, total: 0};
         this.productsArray.push(this.newProduct);
         this.toastr.success('New row added successfully', 'New product');
         return true;
     }
 
     deleteItem(index) {
-        if(this.productsArray.length ==1) {
-            this.toastr.error("Can't delete the product when there is only one row", 'Warning');
-            return false;
-        } else {
-            this.productsArray.splice(index, 1);
-            this.toastr.warning('Product deleted successfully', 'Delete product');
-            return true;
-        }
-    }
-}
+        this.productsArray.splice(index, 1);
+        this.toastr.warning('Product deleted successfully', 'Delete product');
+        return true;
+    }}
