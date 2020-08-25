@@ -87,9 +87,7 @@
         .menu-title {
           color: inherit;
           display: inline-block;
-          font-size: larger;
-          font-weight: normal;
-          padding-bottom: 10%;
+          font-size: $sidebar-menu-font-size;
           line-height: 1;
           vertical-align: middle;
         }
@@ -111,7 +109,6 @@
       &.active {
         .nav-link {
           .menu-title {
-            font-weight: bolder;
             color: $sidebar-menu-active-color;
             font-family: $type1-medium;
           }
@@ -249,7 +246,7 @@
           .nav-link {
             display: block;
             padding-left: .5rem;
-            padding-right: .5rem;            
+            padding-right: .5rem;
             text-align: center;
             position: static;
             .menu-title,
@@ -259,7 +256,6 @@
             .menu-title {
               @include border-radius(0 5px 5px 0px);
               background: $sidebar-menu-hover-bg;
-              font-size: larger;
             }
             i {
               &.menu-icon {
@@ -295,7 +291,7 @@
                 z-index: 1;
                 line-height: 1.8;
                 -webkit-box-shadow: 4px 0px 7px 0px rgba(182, 185, 189, 0.25);
-                        box-shadow: 4px 0px 7px 0px rgba(182, 185, 189, 0.25);              
+                box-shadow: 4px 0px 7px 0px rgba(182, 185, 189, 0.25);
                 &:after {
                   display: none;
                 }
@@ -310,7 +306,7 @@
               left: $sidebar-width-icon;
               width: $icon-only-collapse-width;
               -webkit-box-shadow: 4px 4px 7px 0px rgba(182, 185, 189, 0.25);
-                      box-shadow: 4px 4px 7px 0px rgba(182, 185, 189, 0.25);
+              box-shadow: 4px 4px 7px 0px rgba(182, 185, 189, 0.25);
             }
           }
           &.nav-profile {
@@ -350,8 +346,6 @@
     }
   }
 }
-// Sidebar icon only layout end
-
 
 /* style for off-canvas menu*/
 @media screen and (max-width: 991px) {

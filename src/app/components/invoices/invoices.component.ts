@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
-import {InvoiceService} from "../../services";
+import {ClientRegistrationRequestModel, InvoiceService} from "../../services";
 import {InvoiceRequestModel} from "../../services/model/models";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-invoices',
@@ -11,23 +12,63 @@ import {InvoiceRequestModel} from "../../services/model/models";
 })
 export class InvoicesComponent implements OnInit {
 
-    private Invoices: Array<InvoiceRequestModel> = [];
+    isLoading = new Subject<boolean>();
+    private invoices: Array<InvoiceRequestModel> = [];
+    private userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;
     private filter : string;
     private config: any;
 
     constructor( private router: Router,private toastr: ToastrService, private invoiceService: InvoiceService) { }
 
     ngOnInit() {
+        this.userInformation  = JSON.parse(sessionStorage.getItem("userInformation"));
+        this.getInvoices();
 
         this.config = {
             itemsPerPage: 5,
             currentPage: 1,
-            totalItems: this.Invoices.length
+            totalItems: this.invoices.length
         };
+    }
+
+    getInvoices(){
+        this.isLoading.next(true);
+
+        this.invoiceService.apiInvoiceInvoiceCompanyRegistrationGet(this.userInformation.companyRegistrationNumber).subscribe (
+            (data: any) => {
+                this.invoices = data;
+            },
+            error => {
+
+                console.log(error);
+                this.isLoading.next(false);
+                this.showError();
+
+            },
+            () => {
+                this.isLoading.next(false);
+                this.showSuccess();
+            }
+        );
+
     }
 
     pageChanged(event){
         this.config.currentPage = event;
     }
+
+
+    showSuccess() {
+        this.toastr.success('Process successfully completed', 'Success', {
+            timeOut: 3000,
+        });
+    }
+
+    showError() {
+        this.toastr.error('Ops, an error occurred. Please try again.', 'Error!!!', {
+            timeOut: 3000,
+        });
+    }
+
 
 }

@@ -10,39 +10,83 @@
 
 <div class="container-scroller">
     <div class="card">
-        <form class="pt-3">
+        <form class="pt-3" #quotationForm="ngForm" (ngSubmit)="quotationForm.form.valid && requestQuotation()">
             <div class="row">
                 <div class="form-group row" style="margin-left: 5%; width: 90%">
-                    <input style="border: solid  #23275b 1px" type="text" class="form-control form-control-lg" placeholder="Company name" [(ngModel)]="quotation.company_name" [value]="quotation.company_name" [ngModelOptions]="{standalone: true}" disabled>
+                    <input style="border: solid  #23275b 1px; color: #000" type="text" class="form-control form-control-lg" placeholder="Company name"
+                           name="company_name"
+                           [(ngModel)]="quotation.company_name"
+                           #companyName="ngModel"
+                           [ngClass]="{ 'is-invalid': quotationForm.submitted && companyName.invalid }"
+                           disabled
+                           required>
+                    <div *ngIf="quotationForm.submitted && companyName.invalid" class="invalid-feedback">
+                        <div *ngIf=" companyName.errors.required">Company name is required</div>
+                    </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="form-group row" style="margin-left: 5%; width: 44%">
-                    <input style="border: solid  #23275b 1px" type="text" class="form-control form-control-lg" placeholder="Email address" [(ngModel)]="quotation.email" [ngModelOptions]="{standalone: true}" disabled>
+                <div class="form-group row" style="margin-left: 5%; width: 43.5%">
+                    <input style="border: solid  #23275b 1px; color: #000" type="text" class="form-control form-control-lg" placeholder="Email address"
+                           name="email"
+                           [(ngModel)]="quotation.email"
+                           #contactEmail="ngModel"
+                           [ngClass]="{ 'is-invalid': quotationForm.submitted && contactEmail.invalid }"
+                           disabled
+                           required>
+                    <div *ngIf="quotationForm.submitted && contactEmail.invalid" class="invalid-feedback">
+                        <div *ngIf=" contactEmail.errors.required">Email is required</div>
+                    </div>
                 </div>
 
-                <div class="form-group row" style="margin-left: 5%; width: 44%" >
-                    <input style="border: solid  #23275b 1px" type="text" class="form-control form-control-lg"  placeholder="Contact number" [(ngModel)]="quotation.phone_number" [ngModelOptions]="{standalone: true}">
+                <div class="form-group row" style="margin-left: 5%; width: 43.5%" >
+                    <input style="border: solid  #23275b 1px" type="text" class="form-control form-control-lg"  placeholder="Contact number"
+                           [(ngModel)]="quotation.phone_number"
+                           name="phone_number"
+                           #contactEmail="ngModel"
+                           [ngClass]="{ 'is-invalid': quotationForm.submitted && contactEmail.invalid }"
+                           disabled
+                           required>
+                    <div *ngIf="quotationForm.submitted && contactEmail.invalid" class="invalid-feedback">
+                        <div *ngIf=" contactEmail.errors.required">Phone number is required</div>
+                    </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group row" style="margin-left: 5%; width: 90%">
-                    <input type="text" class="form-control form-control-lg"  placeholder="Company registration" [(ngModel)]="quotation.company_Registration" [ngModelOptions]="{standalone: true}">
+                    <input style="border: solid  #23275b 1px; color: #000" type="text" class="form-control form-control-lg"  placeholder="Company registration"
+                           [(ngModel)]="quotation.company_Registration"
+                           name="company_Registration"
+                           #companyReg="ngModel"
+                           [ngClass]="{ 'is-invalid': quotationForm.submitted && companyReg.invalid }"
+                           disabled
+                           required>
+                    <div *ngIf="quotationForm.submitted && companyReg.invalid" class="invalid-feedback">
+                        <div *ngIf=" companyReg.errors.required">Company registration is required</div>
+                    </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group row" style="margin-left: 5%; width: 90%">
-                    <input type="text" class="form-control form-control-lg"  placeholder="Address" [(ngModel)]="quotation.bill_address" [ngModelOptions]="{standalone: true}">
+                    <input style="border: solid  #23275b 1px; color: #000" type="text" class="form-control form-control-lg"  placeholder="Address"
+                           [(ngModel)]="quotation.bill_address"
+                           name="bill_address"
+                           #billAddress="ngModel"
+                           [ngClass]="{ 'is-invalid': quotationForm.submitted && billAddress.invalid }"
+                           required>
+                    <div *ngIf="quotationForm.submitted && billAddress.invalid" class="invalid-feedback">
+                        <div *ngIf=" billAddress.errors.required">Bill address is required</div>
+                    </div>
                 </div>
             </div>
 
 
-            <div class="table-responsive" style="margin-left: 2.5%; width: 95%">
+            <div class="table-responsive" style="margin-left: 3%; width: 94%">
 
-                <table class="table" >
+                <table class="table table table-striped" >
                     <thead>
                     <tr>
                         <th colspan="4">Add products to the table.</th>
@@ -56,37 +100,61 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let product of productsArray; let i = index;">
-                            <td style="width: 40%; border: solid  #23275b 1px">
+                            <td style="width: 40%; border: solid  #fff 1px">
                                 {{product.focusArea}}
                             </td>
-                            <td style="width: 35%; border: solid  #23275b 1px" class="text-success">
+                            <td style="width: 35%; border: solid  #fff 1px" class="text-success">
                                 {{product.item}}
                             </td>
-                            <td style="width: 15%; border: solid  #23275b 1px" class="text-danger">
+                            <td style="width: 15%; border: solid  #fff 1px" class="text-danger">
                                 {{product.quantity}}
                             </td>
                             <td style="width: 10%">
-                                <button type="button" class="btn btn-gradient-primary btn-rounded btn-icon" (click)="deleteItem(i)">
+                                <button type="button" class="btn btn-gradient-danger btn-rounded btn-icon" (click)="deleteItem(i)">
                                     <i class="mdi mdi-delete icon-md"></i>
                                 </button>
                             </td>
                         </tr>
 
                         <tr>
-                            <td>
-                                <select class="form-control form-control-lg" [ngModel]="selectedFocusArea"  (change)="getProducts($event.target.value)" [ngModelOptions]="{standalone: true}">
+                            <td style="width: 40%; border: solid  #fff 1px">
+                                <select class="form-control form-control-lg"
+                                        [(ngModel)]="selectedFocusArea"
+                                        name="selectedFocusArea"
+                                        #focusArea="ngModel"
+                                        [ngClass]="{ 'is-invalid': quotationForm.submitted && focusArea.invalid }"
+                                        required>
                                     <option *ngFor="let focusArea of focusAreas" [value]="focusArea.name">{{focusArea.name}}</option>
+                                    <div *ngIf="quotationForm.submitted && focusArea.invalid" class="invalid-feedback">
+                                        <div *ngIf=" focusArea.errors.required">Focus area is required</div>
+                                    </div>
                                 </select>
                             </td>
-                            <td>
-                                <select class="form-control form-control-lg" [ngModel]="selectedProduct" [ngModelOptions]="{standalone: true}" (change)="changeProduct($event.target.value)">
+                            <td style="width: 35%; border: solid  #fff 1px">
+                                <select class="form-control form-control-lg"
+                                        [(ngModel)]="selectedProduct"
+                                        name="selectedProduct"
+                                        #product="ngModel"
+                                        [ngClass]="{ 'is-invalid': quotationForm.submitted && product.invalid }"
+                                        required>
                                     <option *ngFor="let product of products" [value]="product.item">{{product.item}}</option>
+                                    <div *ngIf="quotationForm.submitted && product.invalid" class="invalid-feedback">
+                                        <div *ngIf=" product.errors.required">Product is required</div>
+                                    </div>
                                 </select>
                             </td>
-                            <td>
-                                <input type="number" class="form-control" [ngModel]="selectedQuantity" [ngModelOptions]="{standalone: true}" (change)="changeQuantity($event.target.value)"/>
+                            <td style="width: 15%; border: solid  #fff 1px">
+                                <input type="number" class="form-control"
+                                       [ngModel]="selectedQuantity"
+                                       name="selectedQuantity"
+                                       #quantity="ngModel"
+                                       [ngClass]="{ 'is-invalid': quotationForm.submitted && quantity.invalid }"
+                                       required>
+                                <div *ngIf="quotationForm.submitted && quantity.invalid" class="invalid-feedback">
+                                    <div *ngIf=" quantity.errors.required">Quantity is required</div>
+                                </div>
                             </td>
-                            <td>
+                            <td style="width: 10%; border: solid  #fff 1px">
                                 <button type="button" class="btn btn-gradient-primary btn-rounded btn-icon" (click)="addItem()">
                                     <i class="mdi mdi-plus-box icon-md"></i>
                                 </button>
@@ -96,7 +164,24 @@
                 </table>
             </div>
             <div class="row">
-                <a style="margin-left: 5%; width: 90%; margin-bottom: 2%; background-color: #23275b; color: #fff" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn"  (click)="requestQuotation()" >Submit</a>
+                <div class="form-group row" style="margin-left: 5%; width: 90%; margin-top: 5%">
+                        <textarea style="border: solid  #23275b 1px" type="text" class="form-control form-control-lg"  placeholder="Quotation description"
+                                  [(ngModel)]="quotation.description"
+                                  name="description"
+                                  #description="ngModel"
+                                  [ngClass]="{ 'is-invalid': quotationForm.submitted && description.invalid }"
+                                  [required]="productsArray.length <= 0">
+                        </textarea>
+                    <div *ngIf="quotationForm.submitted && description.invalid" class="invalid-feedback">
+                        <div *ngIf=" description.errors.required">Please provide a description of the quote</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <button style="margin-left: 5%; width: 90%; margin-bottom: 2%; background-color: #23275b; color: #fff" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" type="submit">
+                    Submit
+                </button>
             </div>
         </form>
     </div>

@@ -26,6 +26,9 @@ import {LandingPageComponent } from './components/landing-page/landing-page.comp
         {provide: BASE_API_URL, useValue: environment.BASE_API_URL},
 
     ],
+    exports: [
+        AppComponent
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

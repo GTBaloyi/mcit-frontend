@@ -90,6 +90,7 @@ export class LandingPageComponent implements OnInit {
         if(this.termsConditions) {
             registrationForm.value.isCompanyPresent = true;
             registrationForm.value.avatar = '';
+
             this.isLoading.next(true);
             this.usersService.apiUsersClientRegistrationPost(registrationForm.value).subscribe(
                 (data: any) => {
@@ -122,7 +123,7 @@ export class LandingPageComponent implements OnInit {
     }
 
     showError() {
-        this.toastr.error('Opps, an error occurred. Please try again.', 'Error!!!', {
+        this.toastr.error('Ops, an error occurred. Please try again.', 'Error!!!', {
             timeOut: 3000,
         });
     }

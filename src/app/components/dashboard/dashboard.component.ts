@@ -21,8 +21,6 @@ export class DashboardComponent implements OnInit {
         this.getClientInformation(this.emailAddress);
     }
 
-    date: Date = new Date();
-
 
     public getClientInformation(email: string) {
 

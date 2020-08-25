@@ -94,6 +94,7 @@ export class ViewQuotationComponent implements OnInit {
             () => {
                 this.isLoading.next(false);
                 this.generateInvoice(quotation);
+                this.getQuotation();
             }
         );
     }
@@ -112,8 +113,8 @@ export class ViewQuotationComponent implements OnInit {
             },
             () => {
                 this.isLoading.next(false);
-                this.showSuccess();
                 this.hide();
+                this.getQuotation();
             }
         );
     }
@@ -182,7 +183,7 @@ export class ViewQuotationComponent implements OnInit {
     }
 
     showError() {
-      this.toastr.error('Opps, an error occurred. Please try again.', 'Error!!!', {
+      this.toastr.error('Ops, an error occurred. Please try again.', 'Error!!!', {
           timeOut: 3000,
       });
     }

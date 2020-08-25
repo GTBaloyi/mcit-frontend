@@ -43,22 +43,22 @@
                             <td>
                                 {{quotation.status}}
                             </td>
-                            <td>
+                            <td style="width: 230px">
                                 <div class="template-demo">
-                                    <button type="button" class="btn btn-gradient-primary btn-rounded btn-icon"
+                                    <button type="button" class="btn btn-social-icon btn-outline-facebook"
                                             (click)="viewPDF(quotation)"
                                             [disabled]=" disableButton(quotation.status)">
-                                        <i class="mdi mdi-eye icon-md"></i>
+                                        <i class="mdi mdi-eye"></i>
                                     </button>
-                                    <button type="button" class="btn btn-gradient-success btn-rounded btn-icon"
+                                    <button type="button" class="btn btn-social-icon btn-outline-twitter"
                                             (click)="acceptQuotation(quotation)"
                                             [disabled]="quotation.status !== 'Pending Client Approval'">
-                                        <i class="mdi mdi-check-circle icon-md"></i>
+                                        <i class="mdi mdi-check-circle"></i>
                                     </button>
-                                    <button type="button" class="btn btn-gradient-danger btn-rounded btn-icon"
+                                    <button type="button" class="btn btn-social-icon btn-outline-youtube"
                                             (click) = "show()"
                                             [disabled]="quotation.status !== 'Pending Client Approval'">
-                                        <i class="mdi mdi-close-circle icon-md"></i>
+                                        <i class="mdi mdi-close-circle"></i>
                                     </button>
 
                                     <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -71,9 +71,9 @@
                                                     <form class="pt-3" #quoteReasonForm="ngForm" (ngSubmit)="quoteReasonForm.form.valid && rejectQuotation(quotation)">
 
                                                         <div class="form-group" >
-                                                            <input style="border: solid  #23275b 1px" class="form-control form-control-lg" type="text" placeholder="Registration number"
+                                                            <input style="border: solid  #23275b 1px" class="form-control form-control-lg" type="text" placeholder="Reason for rejection"
                                                                    [(ngModel)]="quotation.reason"
-                                                                   name="companyRegistrationNumber"
+                                                                   name="reason"
                                                                    #comment="ngModel"
                                                                    [ngClass]="{ 'is-invalid': quoteReasonForm.submitted && comment.invalid }"
                                                                    required>

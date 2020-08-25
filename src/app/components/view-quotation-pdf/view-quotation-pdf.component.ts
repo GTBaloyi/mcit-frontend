@@ -45,7 +45,6 @@ export class ViewQuotationPdfComponent implements OnInit {
 
     ngOnInit() {
 
-        console.log('checking  if quote has value: ', this.quotation)
     }
 
 
@@ -79,7 +78,7 @@ export class ViewQuotationPdfComponent implements OnInit {
 
 
     acceptQuotation(quotation){
-
+        quotation.status = "Accepted";
         this.isLoading.next(true);
         this.quotationService.apiQuotationUpdateQuotePut(quotation).subscribe (
             () => {
@@ -92,7 +91,8 @@ export class ViewQuotationPdfComponent implements OnInit {
             },
             () => {
                 this.isLoading.next(false);
-                this.generateInvoice(quotation)
+                this.generateInvoice(quotation);
+                this.router.navigateByUrl('/view-quotation');
             }
         );
     }
@@ -113,6 +113,7 @@ export class ViewQuotationPdfComponent implements OnInit {
                 this.isLoading.next(false);
                 this.showSuccess();
                 this.hide();
+                this.router.navigateByUrl('/view-quotation');
             }
         );
     }
@@ -173,7 +174,7 @@ export class ViewQuotationPdfComponent implements OnInit {
     }
 
     showError() {
-        this.toastr.error('Opps, an error occurred. Please try again.', 'Error!!!', {
+        this.toastr.error('Ops, an error occurred. Please try again.', 'Error!!!', {
             timeOut: 3000,
         });
     }

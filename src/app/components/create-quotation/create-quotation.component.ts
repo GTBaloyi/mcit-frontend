@@ -125,7 +125,7 @@ export class CreateQuotationComponent implements OnInit {
     }
 
     showError() {
-        this.toastr.error('Opps, an error occurred. Please try again.', 'Error!!!', {
+        this.toastr.error('Ops, an error occurred. Please try again.', 'Error!!!', {
             timeOut: 3000,
         });
     }
@@ -139,7 +139,6 @@ export class CreateQuotationComponent implements OnInit {
     }
 
     addItem() {
-
         this.newProduct = {id:0, focusArea: this.selectedFocusArea, item: this.selectedProduct, quantity: this.selectedQuantity, total: 0};
         this.productsArray.push(this.newProduct);
         this.toastr.success('New row added successfully', 'New product');
@@ -147,13 +146,7 @@ export class CreateQuotationComponent implements OnInit {
     }
 
     deleteItem(index) {
-        if(this.productsArray.length ==1) {
-            this.toastr.error("Can't delete the product when there is only one row", 'Warning');
-            return false;
-        } else {
-            this.productsArray.splice(index, 1);
-            this.toastr.warning('Product deleted successfully', 'Delete product');
-            return true;
-        }
-    }
-}
+        this.productsArray.splice(index, 1);
+        this.toastr.warning('Product deleted successfully', 'Delete product');
+        return true;
+    }}

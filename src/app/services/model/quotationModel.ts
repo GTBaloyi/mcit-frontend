@@ -30,5 +30,7 @@ export interface QuotationModel {
     grand_total?: number;
     status?: string | null;
     reason?: string | null;
+    generatedBy?: string | null;
+    approvedBy?: string | null;
 }
 

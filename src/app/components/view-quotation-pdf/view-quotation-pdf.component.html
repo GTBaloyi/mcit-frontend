@@ -120,7 +120,7 @@
                             <div>Results will be issued in 5 working days or less from the day of receiving samples.</div>
                             <div>Written acceptance of a quote is required before work can commence. An official order is required before results will be
                                 released.</div>
-                            <div>Results and all information of workdone related to the quote is treated as confidential and will not be revealed to any third
+                            <div>Results and all information of work done related to the quote is treated as confidential and will not be revealed to any third
                                 party without authorization in writing.</div>
                         </div>
                     </main>
@@ -153,9 +153,9 @@
                 <form class="pt-3" #quoteReasonForm="ngForm" (ngSubmit)="quoteReasonForm.form.valid && rejectQuotation(quotation)">
 
                     <div class="form-group" >
-                        <input style="border: solid  #23275b 1px" class="form-control form-control-lg" type="text" placeholder="Registration number"
+                        <input style="border: solid  #23275b 1px" class="form-control form-control-lg" type="text" placeholder="Reason for rejection"
                                [(ngModel)]="quotation.reason"
-                               name="companyRegistrationNumber"
+                               name="reason"
                                #comment="ngModel"
                                [ngClass]="{ 'is-invalid': quoteReasonForm.submitted && comment.invalid }"
                                required>

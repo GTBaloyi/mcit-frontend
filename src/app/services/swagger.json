@@ -1428,6 +1428,14 @@
           "companyProfile": {
             "type": "string",
             "nullable": true
+          },
+          "dateGenerated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "userStatus": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -1922,6 +1930,14 @@
             "nullable": true
           },
           "reason": {
+            "type": "string",
+            "nullable": true
+          },
+          "generatedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "approvedBy": {
             "type": "string",
             "nullable": true
           }
