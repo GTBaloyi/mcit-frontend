@@ -8,6 +8,7 @@ import {environment} from "../environments/environment.prod";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {LandingPageComponent } from './components/landing-page/landing-page.component';
+import { ViewInvoicePdfComponent } from './components/view-invoice-pdf/view-invoice-pdf.component';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import {LandingPageComponent } from './components/landing-page/landing-page.comp
     ],
     declarations: [
         AppComponent,
-        LandingPageComponent
+        LandingPageComponent,
+        ViewInvoicePdfComponent
     ],
     providers: [
         {provide: BASE_API_URL, useValue: environment.BASE_API_URL},

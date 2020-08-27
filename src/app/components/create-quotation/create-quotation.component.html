@@ -121,6 +121,7 @@
                                 <select class="form-control form-control-lg"
                                         [(ngModel)]="selectedFocusArea"
                                         name="selectedFocusArea"
+                                        (ngModelChange)="getProducts(selectedFocusArea)"
                                         #focusArea="ngModel"
                                         [ngClass]="{ 'is-invalid': quotationForm.submitted && focusArea.invalid }"
                                         required>
@@ -147,6 +148,7 @@
                                 <input type="number" class="form-control"
                                        [ngModel]="selectedQuantity"
                                        name="selectedQuantity"
+                                       [min]="1"
                                        #quantity="ngModel"
                                        [ngClass]="{ 'is-invalid': quotationForm.submitted && quantity.invalid }"
                                        required>

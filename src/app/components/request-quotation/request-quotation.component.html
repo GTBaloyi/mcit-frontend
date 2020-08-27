@@ -115,6 +115,7 @@
                                     <select class="form-control form-control-lg"
                                             [(ngModel)]="selectedFocusArea"
                                             name="selectedFocusArea"
+                                            (ngModelChange)="getProducts(selectedFocusArea)"
                                             #focusArea="ngModel"
                                             [ngClass]="{ 'is-invalid': quotationForm.submitted && focusArea.invalid }"
                                             required>
@@ -139,9 +140,10 @@
                                 </td>
                                 <td style="width: 15%; border: solid  #fff 1px">
                                     <input type="number" class="form-control"
-                                           [ngModel]="selectedQuantity"
+                                           [(ngModel)]="selectedQuantity"
                                            name="selectedQuantity"
                                            #quantity="ngModel"
+                                           [min]="1"
                                            [ngClass]="{ 'is-invalid': quotationForm.submitted && quantity.invalid }"
                                            required>
                                     <div *ngIf="quotationForm.submitted && quantity.invalid" class="invalid-feedback">

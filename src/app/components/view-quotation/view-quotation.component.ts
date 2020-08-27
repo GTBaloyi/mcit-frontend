@@ -57,16 +57,12 @@ export class ViewQuotationComponent implements OnInit {
           error => {
 
             console.log(error);
-            this.isLoading.next(false);
             this.showError();
-
           },
           () => {
-            this.isLoading.next(false);
             this.showSuccess();
           }
       );
-
     }
 
     show() {
@@ -87,12 +83,10 @@ export class ViewQuotationComponent implements OnInit {
             },
             error => {
                 console.log(error);
-                this.isLoading.next(false);
                 this.showError();
 
             },
             () => {
-                this.isLoading.next(false);
                 this.generateInvoice(quotation);
                 this.getQuotation();
             }
@@ -108,11 +102,9 @@ export class ViewQuotationComponent implements OnInit {
             },
             error => {
                 console.log(error);
-                this.isLoading.next(false);
                 this.showError();
             },
             () => {
-                this.isLoading.next(false);
                 this.hide();
                 this.getQuotation();
             }
@@ -120,7 +112,7 @@ export class ViewQuotationComponent implements OnInit {
     }
 
     generateInvoice(quotation : QuotationResponseModel){
-        let date = moment().format("YYYY-MM-DD");
+        let date = moment().format("yyyy-MM-DD");
         this.userInformation  = JSON.parse(sessionStorage.getItem("userInformation"));
 
         this.invoice.id = 0;
@@ -145,11 +137,9 @@ export class ViewQuotationComponent implements OnInit {
             },
             error => {
                 console.log(error);
-                this.isLoading.next(false);
                 this.showError();
             },
             () => {
-                this.isLoading.next(false);
                 this.showSuccess();
             }
         );
@@ -157,7 +147,8 @@ export class ViewQuotationComponent implements OnInit {
     }
 
     viewPDF(quotation : QuotationResponseModel){
-      this.router.navigate(['/view-quotation-pdf'], {state:{quotation: quotation}});
+        sessionStorage.setItem('viewQuotation', JSON.stringify(quotation));
+        this.router.navigateByUrl('/view-quotation-pdf');
     }
 
     pageChanged(event){
@@ -180,12 +171,14 @@ export class ViewQuotationComponent implements OnInit {
       this.toastr.success('Process successfully completed', 'Success', {
           timeOut: 3000,
       });
+      this.isLoading.next(false);
     }
 
     showError() {
       this.toastr.error('Ops, an error occurred. Please try again.', 'Error!!!', {
           timeOut: 3000,
       });
+      this.isLoading.next(false);
     }
 
 }

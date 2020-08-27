@@ -56,6 +56,8 @@ export class NavbarComponent implements OnInit {
       sessionStorage.removeItem('loginInfo');
       sessionStorage.removeItem('username');
       sessionStorage.removeItem('userInformation');
+      sessionStorage.removeItem('viewQuotation');
+      sessionStorage.removeItem('viewInvoice');
       this.router.navigateByUrl('/landing-page');
   }
 

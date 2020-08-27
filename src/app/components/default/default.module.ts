@@ -28,6 +28,8 @@ import {ProjectsComponent} from "../projects/projects.component";
 import {ViewQuotationPdfComponent} from "../view-quotation-pdf/view-quotation-pdf.component";
 import {NgxPaginationModule} from "ngx-pagination";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
+import {TodoComponent} from "../../shared/todo-list/todo/todo.component";
+import {TodoListComponent} from "../../shared/todo-list/todo-list.component";
 
 
 @NgModule({
@@ -48,7 +50,8 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
       CreateQuotationComponent,
       ViewQuotationComponent,
       ProjectsComponent,
-      ViewQuotationPdfComponent
+      ViewQuotationPdfComponent,
+      TodoComponent
   ],
     imports: [
 

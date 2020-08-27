@@ -11,34 +11,31 @@
     </h3>
 </div>
 
-
-
-<div class="template-demo mt-4 button">
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-gradient-primary" (click)="convertToPDF()" value="Convert">
-            <i class="mdi mdi-download d-block mb-1"></i>
-            Download
-        </button>
-        <button type="button" class="btn btn-gradient-success"
-                (click)="acceptQuotation(quotation)"
-                [disabled]=" disableButton(quotation.status)">
-            <i class="mdi mdi-check-circle d-block mb-1"></i>
-            Accept
-        </button>
-        <button type="button" class="btn btn-gradient-danger"
-                (click)="show()"
-                [disabled]=" disableButton(quotation.status)">
-            <i class="mdi mdi-close-circle d-block mb-1"></i>
-            Reject
-        </button>
-    </div>
-</div>
-
-<div #pdfTable id="pdfTable">
+<div>
     <div class="card">
-        <div id="invoice">
-
-            <div class="invoice overflow-auto">
+        <div class="invoice">
+            <div class="toolbar hidden-print">
+                <div class="text-right">
+                    <button type="button" class="btn btn-gradient-primary" (click)="convertToPDF()" value="Convert">
+                        <i class="mdi mdi-download d-block mb-1"></i>
+                        Download
+                    </button>
+                    <button type="button" class="btn btn-gradient-success"
+                            (click)="acceptQuotation(quotation)"
+                            [disabled]=" disableButton(quotation.status)">
+                        <i class="mdi mdi-check-circle d-block mb-1"></i>
+                        Accept
+                    </button>
+                    <button type="button" class="btn btn-gradient-danger"
+                            (click)="show()"
+                            [disabled]=" disableButton(quotation.status)">
+                        <i class="mdi mdi-close-circle d-block mb-1"></i>
+                        Reject
+                    </button>
+                </div>
+                <hr>
+            </div>
+            <div class="invoice overflow-auto" #pdfTable id="pdfTable">
                 <div style="min-width: 600px">
                     <header>
                         <div class="row">
@@ -63,13 +60,13 @@
                             <div class="col invoice-to">
                                 <div class="text-gray-light">QUOTATION TO:</div>
                                 <h2 class="to">{{quotation.company_name}}</h2>
-                                <div class="address">{{quotation.bill_address}}</div>
-                                <div class="email"><a href="{{quotation.email}}">{{quotation.email}}</a></div>
+                                <div class="address">Bill address: {{quotation.bill_address}}</div>
+                                <div class="email"><a href="{{quotation.email}}">Email address: {{quotation.email}}</a></div>
                             </div>
                             <div class="col invoice-details">
                                 <h1 class="invoice-id">{{quotation.quote_reference}}</h1>
-                                <div class="date">{{quotation.date_generated}}</div>
-                                <div class="date">{{quotation.quote_expiryDate}}</div>
+                                <div class="date">Date generated: {{quotation.date_generated | date:'yyyy-MM-dd'}}</div>
+                                <div class="date">Expiry date: {{quotation.quote_expiryDate| date:'yyyy-MM-dd'}}</div>
                             </div>
                         </div>
 
@@ -95,16 +92,6 @@
                             </tr>
                             </tbody>
                             <tfoot>
-                           <!-- <tr>
-                                <td colspan="2"></td>
-                                <td colspan="2">SUBTOTAL</td>
-                                <td>$5,200.00</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"></td>
-                                <td colspan="2">TAX 25%</td>
-                                <td>$1,300.00</td>
-                            </tr>-->
                             <tr>
                                 <td colspan="2"></td>
                                 <td colspan="2">GRAND TOTAL</td>
@@ -133,7 +120,7 @@
                     </div>
 
                     <footer>
-                        Invoice was created on a computer and is valid without the signature and seal.
+                        Quotation was created on a computer and is valid without the signature and seal.
                     </footer>
                 </div>
 
@@ -172,5 +159,9 @@
         </div>
     </div>
 </div>
-
+<div *ngIf="isLoading | async" class="overlay">
+    <div class="spinner">
+        <img class="loader" src="../../../assets/wheel.gif">
+    </div>
+</div>
 

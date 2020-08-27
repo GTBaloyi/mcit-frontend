@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
-import {ClientRegistrationRequestModel, InvoiceService} from "../../services";
+import {ClientRegistrationRequestModel, InvoiceService, QuotationResponseModel} from "../../services";
 import {InvoiceRequestModel} from "../../services/model/models";
 import {Subject} from "rxjs";
 
@@ -18,7 +18,9 @@ export class InvoicesComponent implements OnInit {
     private filter : string;
     private config: any;
 
-    constructor( private router: Router,private toastr: ToastrService, private invoiceService: InvoiceService) { }
+    constructor( private router: Router,private toastr: ToastrService, private invoiceService: InvoiceService) {
+        sessionStorage.removeItem('viewInvoice');
+    }
 
     ngOnInit() {
         this.userInformation  = JSON.parse(sessionStorage.getItem("userInformation"));
@@ -70,5 +72,9 @@ export class InvoicesComponent implements OnInit {
         });
     }
 
+    viewPDF(invoice : InvoiceRequestModel){
+        sessionStorage.setItem('viewInvoice', JSON.stringify(invoice));
+        this.router.navigateByUrl('/view-invoice-pdf');
+    }
 
 }

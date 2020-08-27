@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ClientsService, LoginResponseModel} from "../../services";
+import {ClientsService, LoginResponseModel, ProjectInformationResponseModel, ProjectsService} from "../../services";
 import {ClientRegistrationRequestModel} from "../../services/model/models";
+import {Subject} from "rxjs";
+import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
     selector: 'app-dashboard',
@@ -8,17 +11,32 @@ import {ClientRegistrationRequestModel} from "../../services/model/models";
     styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-
+    isLoading = new Subject<boolean>();
     private emailAddress : string;
     private userInformation : ClientRegistrationRequestModel;
+    private projects: Array<ProjectInformationResponseModel> = [];
+    private filter : string;
+    private config: any;
 
-
-    constructor(private clientService: ClientsService) { }
+    constructor(private projectsService: ProjectsService,
+                private router: Router,
+                private toastr: ToastrService,
+                private clientService: ClientsService) {
+        this.userInformation  = JSON.parse(sessionStorage.getItem("userInformation"));
+    }
 
 
     ngOnInit() {
+
         this.emailAddress  = JSON.parse(sessionStorage.getItem("username"));
         this.getClientInformation(this.emailAddress);
+
+        this.getProjects();
+        this.config = {
+            itemsPerPage: 5,
+            currentPage: 1,
+            totalItems: this.projects.length
+        };
     }
 
 
@@ -38,4 +56,22 @@ export class DashboardComponent implements OnInit {
         );
     }
 
+    getProjects(){
+        this.projectsService.apiProjectsAllProjectsGet().subscribe (
+            (data: any) => {
+                this.projects = data
+                console.log('projects: ', data);
+            },
+            error => {
+                console.log(error);
+            },
+            () => {
+            }
+        )
+
+    }
+
+    pageChanged(event){
+        this.config.currentPage = event;
+    }
 }

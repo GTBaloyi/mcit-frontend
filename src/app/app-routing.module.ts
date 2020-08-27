@@ -14,6 +14,7 @@ import {ViewQuotationComponent} from "./components/view-quotation/view-quotation
 import {CreateQuotationComponent} from "./components/create-quotation/create-quotation.component";
 import {ProjectsComponent} from "./components/projects/projects.component";
 import {ViewQuotationPdfComponent} from "./components/view-quotation-pdf/view-quotation-pdf.component";
+import {ViewInvoicePdfComponent} from "./components/view-invoice-pdf/view-invoice-pdf.component";
 
 const routes: Routes = [
     {
@@ -33,6 +34,7 @@ const routes: Routes = [
             {path: 'create-quotation', component: CreateQuotationComponent},
             {path: 'projects', component: ProjectsComponent},
             {path: 'view-quotation-pdf', component: ViewQuotationPdfComponent},
+            {path: 'view-invoice-pdf', component: ViewInvoicePdfComponent},
         ],
         canActivate: [AuthGuard]
     }

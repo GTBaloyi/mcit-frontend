@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-view-receipts',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-receipts.component.scss']
 })
 export class ViewReceiptsComponent implements OnInit {
+  isLoading = new Subject<boolean>();
 
   constructor() { }
 

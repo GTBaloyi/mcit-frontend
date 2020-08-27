@@ -19,14 +19,14 @@ export class CreateQuotationComponent implements OnInit {
     private products: Array<any> = [];
     private selectedProduct: string;
     private selectedQuantity: number;
-    private newProduct: QuotationItemEntity  = {};
-    private quotation: QuotationModel= <QuotationModel> {};
+    private newProduct: QuotationItemEntity = {};
+    private quotation: QuotationModel = <QuotationModel>{};
     private productsArray: Array<QuotationItemEntity> = [];
-    private userInformation : ClientRegistrationRequestModel = <ClientRegistrationRequestModel> {};
+    private userInformation: ClientRegistrationRequestModel = <ClientRegistrationRequestModel>{};
 
 
-    constructor(private quotationService: QuotationService, private productsService: ProductsService, private router: Router,private toastr: ToastrService) {
-        this.userInformation  = JSON.parse(sessionStorage.getItem("userInformation"));
+    constructor(private quotationService: QuotationService, private productsService: ProductsService, private router: Router, private toastr: ToastrService) {
+        this.userInformation = JSON.parse(sessionStorage.getItem("userInformation"));
     }
 
 
@@ -45,8 +45,8 @@ export class CreateQuotationComponent implements OnInit {
     }
 
 
-    getFocusArea(){
-        this.productsService.apiProductsFocusAreasGet().subscribe (
+    getFocusArea() {
+        this.productsService.apiProductsFocusAreasGet().subscribe(
             (data: any) => {
                 this.focusAreas = data
             },
@@ -59,14 +59,14 @@ export class CreateQuotationComponent implements OnInit {
 
     }
 
-    getProducts(focusArea: any){
+    getProducts(focusArea: any) {
 
         this.selectedFocusArea = focusArea;
         this.products = [];
 
 
-        this.productsService.apiProductsProductsFocusAreaGet(focusArea).subscribe (
-            (data: any ) => {
+        this.productsService.apiProductsProductsFocusAreaGet(focusArea).subscribe(
+            (data: any) => {
                 this.products = data
             },
             error => {
@@ -77,32 +77,32 @@ export class CreateQuotationComponent implements OnInit {
         )
     }
 
-    requestQuotation(){
+    requestQuotation() {
         this.isLoading.next(true);
 
-        let date = moment().format("YYYY-MM-DD");
+        let date = moment().format("yyyy-MM-DD");
 
         this.quotation.quote_reference = '';
         this.quotation.date_generated = date.toString();
         this.quotation.quote_expiryDate = date.toString();
         this.quotation.subTotal = 0;
-        this.quotation.globalDiscount = 0;
-        this.quotation.globalTax = 0;
+        this.quotation.discount = 0;
+        this.quotation.vatAmount = 0;
         this.quotation.grand_total = 0;
         this.quotation.items = this.productsArray;
         this.quotation.status = 'Pending';
 
-        this.quotationService.apiQuotationCreateQuotePost(this.quotation).subscribe (
+        this.quotationService.apiQuotationCreateQuotePost(this.quotation).subscribe(
             (data: any) => {
                 data;
             },
             error => {
-                if(error.status == 200){
+                if (error.status == 200) {
                     this.isLoading.next(false);
                     this.showSuccess();
                     this.router.navigateByUrl('/view-quotation');
 
-                }else{
+                } else {
                     console.log(error);
                     this.isLoading.next(false);
                     this.showError();
@@ -130,16 +130,25 @@ export class CreateQuotationComponent implements OnInit {
         });
     }
 
-    changeProduct(value){
+    changeProduct(value) {
         this.selectedProduct = value;
     }
 
-    changeQuantity(value){
+    changeQuantity(value) {
         this.selectedQuantity = Number(value);
     }
 
     addItem() {
-        this.newProduct = {id:0, focusArea: this.selectedFocusArea, item: this.selectedProduct, quantity: this.selectedQuantity, total: 0};
+        this.newProduct = {
+            id:0,
+            focusArea: this.selectedFocusArea,
+            item: this.selectedProduct,
+            numberOfTests: 0,
+            unit_Price: 0,
+            quantity: this.selectedQuantity,
+            total: 0,
+            quote_reference: ''
+        };
         this.productsArray.push(this.newProduct);
         this.toastr.success('New row added successfully', 'New product');
         return true;
@@ -149,4 +158,5 @@ export class CreateQuotationComponent implements OnInit {
         this.productsArray.splice(index, 1);
         this.toastr.warning('Product deleted successfully', 'Delete product');
         return true;
-    }}
+    }
+}

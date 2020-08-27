@@ -1,7 +1,7 @@
 <div class="page-header">
     <h3 class="page-title">
     <span class="page-title-icon bg-gradient-primary text-white mr-2">
-      <i class="mdi mdi-database"></i>
+      <i class="mdi mdi-currency-usd"></i>
     </span>
         Projects
     </h3>
@@ -11,126 +11,48 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Project Status</h4>
+                <div class="form-group">
+                    <input style="border: solid  #05b5d4 1px" type="text" class="form-control" placeholder="Search Here" [(ngModel)]="filter">
+                </div>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>
-                                #
-                            </th>
-                            <th>
-                                Name
-                            </th>
-                            <th>
-                                Due Date
-                            </th>
-                            <th>
-                                Progress
-                            </th>
+                            <th>#</th>
+                            <th>Date created</th>
+                            <th>Project name</th>
+                            <th>Project number</th>
+                            <th>Progress</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <td>
-                                1
-                            </td>
-                            <td>
-                                Project 1
-                            </td>
-                            <td>
-                                May 15, 2015
-                            </td>
-                            <td>
-                                <div class="progress">
-                                    <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                2
-                            </td>
-                            <td>
-                                Project 2
-                            </td>
-                            <td>
-                                Jul 01, 2015
-                            </td>
-                            <td>
-                                <div class="progress">
-                                    <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                3
-                            </td>
-                            <td>
-                                Project 3
-                            </td>
-                            <td>
-                                Apr 12, 2015
-                            </td>
-                            <td>
-                                <div class="progress">
-                                    <div class="progress-bar bg-gradient-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                4
-                            </td>
-                            <td>
-                                Project 4
-                            </td>
-                            <td>
-                                May 15, 2015
-                            </td>
-                            <td>
-                                <div class="progress">
-                                    <div class="progress-bar bg-gradient-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                5
-                            </td>
-                            <td>
-                                Project 5
-                            </td>
-                            <td>
-                                May 03, 2015
-                            </td>
-                            <td>
-                                <div class="progress">
-                                    <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                5
-                            </td>
-                            <td>
-                                Project 6
-                            </td>
-                            <td>
-                                Jun 05, 2015
-                            </td>
-                            <td>
-                                <div class="progress">
-                                    <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                        <tbody *ngIf="projects.length != 0">
+                        <tr *ngFor="let project of projects | paginate: config | filter: filter ; let i = index">
+                            <td>{{i}}</td>
+                            <td>{{project.createdOn}}</td>
+                            <td>{{project.projectName}}</td>
+                            <td>{{project.projectNumber}}</td>
+                            <td style="color: #000">
+                                10%
+                                <div class="progress" >
+                                    <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </td>
                         </tr>
                         </tbody>
                     </table>
+                    <div class="text" *ngIf="projects.length == 0">
+                        No Records Found!
+                    </div>
                 </div>
             </div>
+            <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
         </div>
+    </div>
+</div>
+
+
+<div *ngIf="isLoading | async" class="overlay">
+    <div class="spinner">
+        <img class="loader" src="../../../assets/wheel.gif">
     </div>
 </div>

@@ -7,54 +7,59 @@
     </h3>
 </div>
 
-    <div class="card">
-        <div class="card-body">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Bank name</span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Bank name">
+<div class="card">
+    <div class="card-body">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Bank name</span>
                 </div>
+                <input type="text" class="form-control" aria-label="Bank name">
             </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Branch code</span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Branch code">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Card Holder</span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Card Holder">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Account Number</span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Account number">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-primary text-white">R</span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                    <div class="input-group-append">
-                        <span class="input-group-text">.00</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="margin-top: 7%">
-                <a style="margin-left: 5%; width: 90%; margin-bottom: 2%" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"  >Make payment</a>
-            </div>
-
         </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Branch code</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Branch code">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Card Holder</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Card Holder">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Account Number</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Account number">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-primary text-white">R</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <div class="input-group-append">
+                    <span class="input-group-text">.00</span>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 7%">
+            <a style="margin-left: 5%; width: 90%; margin-bottom: 2%" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"  >Make payment</a>
+        </div>
+
     </div>
+</div>
+<div *ngIf="isLoading | async" class="overlay">
+    <div class="spinner">
+        <img class="loader" src="../../../assets/wheel.gif">
+    </div>
+</div>

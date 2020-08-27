@@ -35,12 +35,8 @@ export class ViewQuotationPdfComponent implements OnInit {
                 private toastr: ToastrService,
                 private invoiceService: InvoiceService) {
 
-        if(this.router.getCurrentNavigation().extras.state != undefined) {
-            this.quotation = this.router.getCurrentNavigation().extras.state.quotation;
-        }else{
-            this.router.navigateByUrl('/view-quotation');
-        }
-
+        this.quotation =  JSON.parse(sessionStorage.getItem("viewQuotation"));
+        this.userInformation  = JSON.parse(sessionStorage.getItem("userInformation"));
     }
 
     ngOnInit() {
@@ -49,7 +45,9 @@ export class ViewQuotationPdfComponent implements OnInit {
 
 
     public convertToPDF() {
-        let date = moment().format("YYYY-MM-DD");
+        this.isLoading.next(true);
+
+        let date = moment().format("yyyy-MM-DD");
         let data = document.getElementById('pdfTable');
 
         html2canvas(data).then(canvas => {
@@ -65,6 +63,8 @@ export class ViewQuotationPdfComponent implements OnInit {
             pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
 
             pdf.save('Quotation-'+date+'.pdf');
+
+            this.isLoading.next(false);
         });
     }
 
@@ -85,12 +85,10 @@ export class ViewQuotationPdfComponent implements OnInit {
             },
             error => {
                 console.log(error);
-                this.isLoading.next(false);
                 this.showError();
 
             },
             () => {
-                this.isLoading.next(false);
                 this.generateInvoice(quotation);
                 this.router.navigateByUrl('/view-quotation');
             }
@@ -106,11 +104,9 @@ export class ViewQuotationPdfComponent implements OnInit {
             },
             error => {
                 console.log(error);
-                this.isLoading.next(false);
                 this.showError();
             },
             () => {
-                this.isLoading.next(false);
                 this.showSuccess();
                 this.hide();
                 this.router.navigateByUrl('/view-quotation');
@@ -128,8 +124,9 @@ export class ViewQuotationPdfComponent implements OnInit {
     }
 
     generateInvoice(quotation : QuotationResponseModel){
-        let date = moment().format("YYYY-MM-DD");
-        this.userInformation  = JSON.parse(sessionStorage.getItem("userInformation"));
+        this.isLoading.next(true);
+
+        let date = moment().format("yyyy-MM-DD");
 
         let invoice : InvoiceRequestModel = {};
 
@@ -150,17 +147,14 @@ export class ViewQuotationPdfComponent implements OnInit {
         invoice.generatedBy = '';
         invoice.approvedBy = '';
 
-        this.isLoading.next(true);
         this.invoiceService.apiInvoiceGenerateInvoicePost(invoice).subscribe (
             () => {
             },
             error => {
                 console.log(error);
-                this.isLoading.next(false);
                 this.showError();
             },
             () => {
-                this.isLoading.next(false);
                 this.showSuccess();
             }
         );
@@ -171,11 +165,13 @@ export class ViewQuotationPdfComponent implements OnInit {
         this.toastr.success('Process successfully completed', 'Success', {
             timeOut: 3000,
         });
+        this.isLoading.next(false);
     }
 
     showError() {
         this.toastr.error('Ops, an error occurred. Please try again.', 'Error!!!', {
             timeOut: 3000,
         });
+        this.isLoading.next(false);
     }
 }

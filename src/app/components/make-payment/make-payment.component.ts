@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-make-payment',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./make-payment.component.scss']
 })
 export class MakePaymentComponent implements OnInit {
+  isLoading = new Subject<boolean>();
 
   constructor() { }
 

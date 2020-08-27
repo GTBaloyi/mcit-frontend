@@ -1,5 +1,5 @@
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
-  <ul class="nav">
+<nav class="sidebar sidebar-offcanvas" id="sidebar" >
+  <ul class="nav" >
     <li class="nav-item style18" [ngClass]="{ 'active': dashboard.isActive }">
       <a class="nav-link" routerLink="/dashboard" routerLinkActive #dashboard="routerLinkActive">
         <span class="menu-title">Dashboard</span>
@@ -12,10 +12,10 @@
         <i class="mdi mdi-receipt menu-icon"></i>
       </a>
     </li>
-    <li class="nav-item style18" [ngClass]="{ 'active': make_payment.isActive }">
-      <a class="nav-link" routerLink="/make-payment" routerLinkActive="active" #make_payment="routerLinkActive">
-        <span class="menu-title">Make Payment</span>
-        <i class="mdi mdi-file-pdf menu-icon"></i>
+    <li class="nav-item style18" [ngClass]="{ 'active': viewReceipts.isActive }">
+      <a class="nav-link" routerLink="/view-receipts" routerLinkActive="active" #viewReceipts="routerLinkActive">
+        <span class="menu-title">Payment Receipts</span>
+        <i class="mdi mdi-currency-usd menu-icon"></i>
       </a>
     </li>
     <li class="nav-item style18" [ngClass]="{'active' : Create.isActive || View.isActive  }">

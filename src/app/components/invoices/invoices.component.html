@@ -26,12 +26,12 @@
                     </tr>
                     </thead>
                     <tbody *ngIf="invoices.length != 0">
-                        <tr *ngFor="let invoice of invoices | paginate: config | filter: filter">
+                        <tr *ngFor="let invoice of invoices | paginate: config | filter: filter; let i = index">
                             <td>
                                 {{invoice.reference}}
                             </td>
                             <td>
-                                {{invoice.invoice_date | date:'MMMM d, y'}}
+                                {{invoice.invoice_date | date:'yyyy-MM-dd'}}
                             </td>
                             <td>
                                 R {{invoice.grand_totoal}}
@@ -43,12 +43,14 @@
                                 R{{invoice.amount_due}}
                             </td>
                             <td>
-                                <div class="template-demo">
-                                    <button type="button" class="btn btn-gradient-primary btn-icon-text">
-                                        <i class="mdi mdi-file-check btn-icon-prepend"></i>
-                                        Make Payment
-                                    </button>
-                                </div>
+                                <button type="button" class="btn btn-social-icon btn-outline-facebook"
+                                        (click)="viewPDF(invoice)">
+                                    <i class="mdi mdi-eye"></i>
+                                </button>
+                                <button type="button" class="btn btn-social-icon btn-outline-facebook">
+                                    <i class="mdi mdi-credit-card"></i>
+                                </button>
+
                             </td>
                         </tr>
                     </tbody>
@@ -59,5 +61,10 @@
             </div>
         </div>
         <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+    </div>
+</div>
+<div *ngIf="isLoading | async" class="overlay">
+    <div class="spinner">
+        <img class="loader" src="../../../assets/wheel.gif">
     </div>
 </div>

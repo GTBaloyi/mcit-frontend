@@ -1,7 +1,7 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
-import {ProductsService, QuotationModel, QuotationService} from "../../services";
+import {ProductsService, QuotationModel, QuotationResponseModel, QuotationService} from "../../services";
 import {Subject} from "rxjs";
 import {QuotationItemEntity} from "../../services";
 import moment = require('moment');
@@ -34,6 +34,7 @@ export class RequestQuotationComponent implements OnInit, OnChanges {
         this.selectedFocusArea = 'Physical Metallurgy';
         this.selectedProduct = 'Non Testing Act (Phys)';
         this.selectedQuantity = 1;
+        this.quotation.description = '';
 
         this.getFocusArea();
         this.getProducts(this.selectedFocusArea);
@@ -79,15 +80,18 @@ export class RequestQuotationComponent implements OnInit, OnChanges {
         if (this.termsConditions) {
             this.isLoading.next(true);
 
-            let date = moment().format("YYYY-MM-DD");
+            let date = moment().format("yyyy-MM-DD");
 
+            this.quotation.quote_id = 0;
             this.quotation.quote_reference = '';
             this.quotation.date_generated = date.toString();
             this.quotation.quote_expiryDate = date.toString();
             this.quotation.subTotal = 0;
-            this.quotation.globalDiscount = 0;
-            this.quotation.globalTax = 0;
+            this.quotation.discount = 0;
+            this.quotation.vatAmount = 0;
             this.quotation.grand_total = 0;
+            this.quotation.generatedBy = '';
+            this.quotation.approvedBy = '';
             this.quotation.items = this.productsArray;
             this.quotation.status = 'Pending';
 
@@ -141,7 +145,16 @@ export class RequestQuotationComponent implements OnInit, OnChanges {
     }
 
     addItem() {
-        this.newProduct = {id:0, focusArea: this.selectedFocusArea, item: this.selectedProduct ,unit_Price:0, quantity: this.selectedQuantity, total: 0};
+        this.newProduct = {
+            id:0,
+            focusArea: this.selectedFocusArea,
+            item: this.selectedProduct,
+            numberOfTests: 0,
+            unit_Price: 0,
+            quantity: this.selectedQuantity,
+            total: 0,
+            quote_reference: ''
+        };
         this.productsArray.push(this.newProduct);
         this.toastr.success('New row added successfully', 'New product');
         return true;
