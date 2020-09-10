@@ -1,101 +1,274 @@
-<div class="page-header">
-    <h3 class="page-title">
-    <span class="page-title-icon bg-gradient-primary text-white mr-2">
-      <i class="mdi mdi-home"></i>
-    </span>
-        Dashboard
-    </h3>
-</div>
-<div class="row container-scroller">
-    <div class="col-md-4 stretch-card grid-margin">
-        <div class="card bg-gradient-danger card-img-holder text-white">
-            <div class="card-body">
-                <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image"/>
-                <h4 class="font-weight-normal mb-3">Paid Invoices
-                    <i class="mdi mdi-chart-line mdi-24px float-right"></i>
-                </h4>
-                <h2 class="mb-5">R 15,0000</h2>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 stretch-card grid-margin">
-        <div class="card bg-gradient-info card-img-holder text-white">
-            <div class="card-body">
-                <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image"/>
-                <h4 class="font-weight-normal mb-3">Unpaid Invoices
-                    <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
-                </h4>
-                <h2 class="mb-5">R 4,6334</h2>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 stretch-card grid-margin">
-        <div class="card bg-gradient-success card-img-holder text-white">
-            <div class="card-body">
-                <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image"/>
-                <h4 class="font-weight-normal mb-3">Overdue Invoices
-                    <i class="mdi mdi-diamond mdi-24px float-right"></i>
-                </h4>
-                <h2 class="mb-5">R 5,5741</h2>
-            </div>
-        </div>
-    </div>
-</div>
+<app-page-title [heading]="heading" [subheading]="subheading" [icon]="icon"></app-page-title>
 
-<div class="row">
-    <div class="col-lg-12 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Project Status</h4>
-                <div class="form-group">
-                    <input style="border: solid  #05b5d4 1px" type="text" class="form-control" placeholder="Search Here" [(ngModel)]="filter">
-                </div>
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Date created</th>
-                            <th>Project name</th>
-                            <th>Project number</th>
-                            <th>Progress</th>
-                        </tr>
-                        </thead>
-                        <tbody *ngIf="projects.length != 0">
-                        <tr *ngFor="let project of projects | paginate: config | filter: filter ; let i = index">
-                            <td>{{i}}</td>
-                            <td>{{project.createdOn}}</td>
-                            <td>{{project.projectName}}</td>
-                            <td>{{project.projectNumber}}</td>
-                            <td style="color: #000">
-                                10%
-                                <div class="progress" >
-                                    <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div class="text" *ngIf="projects.length == 0">
-                        No Records Found!
+<div class="mb-3 card">
+    <div class="card-header-tab card-header">
+        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+            <i class="header-icon lnr-charts icon-gradient bg-happy-green"> </i>
+            Invoice Analytics
+        </div>
+    </div>
+    <div class="no-gutters row" style="padding-left: 10%">
+        <div class="col-sm-6 col-md-4 col-xl-4">
+            <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+                <div class="icon-wrapper rounded-circle">
+                    <div class="icon-wrapper-bg opacity-10 bg-warning"></div>
+                    <i class="pe-7s-wallet text-white opacity-8"></i></div>
+                <div class="widget-chart-content">
+                    <div class="widget-subheading">Paid Invoice(s)</div>
+                    <div class="widget-numbers">R 0</div>
+                    <div class="widget-description opacity-8 text-primary">
+                        <div class="d-inline text-info pr-1">
+                            <fa name="angle-down"></fa>
+                            <span class="pl-1">4</span>
+                        </div>
+                        Invoice(s)
                     </div>
                 </div>
-                <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
             </div>
+            <div class="divider m-0 d-md-none d-sm-block"></div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-xl-4">
+            <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+                <div class="icon-wrapper rounded-circle">
+                    <div class="icon-wrapper-bg opacity-10 bg-warning"></div>
+                    <i class="pe-7s-info text-white opacity-8"></i></div>
+                <div class="widget-chart-content">
+                    <div class="widget-subheading">Unpaid Invoice(s)</div>
+                    <div class="widget-numbers">R 0</div>
+                    <div class="widget-description opacity-8 text-primary">
+                        <div class="d-inline text-info pr-1">
+                            <fa name="angle-down"></fa>
+                            <span class="pl-1">4</span>
+                        </div>
+                        Invoice(s)
+                    </div>
+                </div>
+            </div>
+            <div class="divider m-0 d-md-none d-sm-block"></div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-xl-4">
+            <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+                <div class="icon-wrapper rounded-circle">
+                    <div class="icon-wrapper-bg opacity-10 bg-warning"></div>
+                    <i class="pe-7s-attention text-white opacity-8"></i></div>
+                <div class="widget-chart-content">
+                    <div class="widget-subheading">Overdue Invoice(s)</div>
+                    <div class="widget-numbers">R 0</div>
+                    <div class="widget-description opacity-8 text-primary">
+                        <div class="d-inline text-info pr-1">
+                            <fa name="angle-down"></fa>
+                            <span class="pl-1">4</span>
+                        </div>
+                        Invoice(s)
+                    </div>
+                </div>
+            </div>
+            <div class="divider m-0 d-md-none d-sm-block"></div>
         </div>
     </div>
-   <!-- <div class="col-md-5 stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Todo</h4>
-                <app-todo></app-todo>
-            </div>
-        </div>
-    </div>-->
+    <div class="text-center d-block p-3 card-footer">
+        <button class="btn-pill btn-shadow btn-wide fsize-1 btn btn-dark btn-lg" routerLink="/invoice">
+                  <span class="mr-2 opacity-7">
+                      <i class="icon icon-anim-pulse ion-ios-analytics-outline"></i>
+                  </span>
+            <span class="mr-1" >View Invoices</span>
+        </button>
+    </div>
 </div>
-
-<div *ngIf="isLoading | async" class="overlay">
-    <div class="spinner">
-        <img class="loader" src="../../../assets/wheel.gif">
+<div class="main-card mb-3 card">
+    <div class="card-header">
+        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">Projects Analytics</div>
+    </div>
+    <div class="table-responsive">
+        <table class="align-middle text-truncate mb-0 table table-borderless table-hover">
+            <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th class="text-center">Avatar</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Company</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">Due Date</th>
+                <th class="text-center">Target Achievement</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="text-center text-muted" style="width: 80px;">#54</td>
+                <td class="text-center" style="width: 80px;">
+                    <img width="40" class="rounded-circle" src="./assets/images/avatars/1.jpg" alt="">
+                </td>
+                <td class="text-center"><a [routerLink]="">Juan C. Cargill</a></td>
+                <td class="text-center"><a [routerLink]="">Micro Electronics</a></td>
+                <td class="text-center">
+                    <div class="badge badge-pill badge-danger">Canceled</div>
+                </td>
+                <td class="text-center">
+                                        <span class="pr-2 opacity-6">
+                                            <i class="fa fa-business-time"></i>
+                                        </span>
+                    12 Dec
+                </td>
+                <td class="text-center" style="width: 200px;">
+                    <div class="widget-content p-0">
+                        <div class="widget-content-outer">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left pr-2">
+                                    <div class="widget-numbers fsize-1 text-warning">71%</div>
+                                </div>
+                                <div class="widget-content-right w-100">
+                                    <div class="progress-bar-xs progress">
+                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="71" aria-valuemin="0"
+                                             aria-valuemax="100" style="width: 71%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div role="group" class="btn-group-sm btn-group">
+                        <button class="btn-shadow btn btn-dark">Hire</button>
+                        <button class="btn-shadow btn btn-dark">Fire</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center text-muted" style="width: 80px;">#55</td>
+                <td class="text-center" style="width: 80px;">
+                    <img width="40" class="rounded-circle" src="./assets/images/avatars/2.jpg" alt="">
+                </td>
+                <td class="text-center"><a [routerLink]="">Johnathan Phelan</a></td>
+                <td class="text-center"><a [routerLink]="">Hatchworks</a></td>
+                <td class="text-center">
+                    <div class="badge badge-pill badge-info">On Hold</div>
+                </td>
+                <td class="text-center">
+                                        <span class="pr-2 opacity-6">
+                                            <i class="fa fa-business-time"></i>
+                                        </span>
+                    12 Dec
+                </td>
+                <td class="text-center" style="width: 200px;">
+                    <div class="widget-content p-0">
+                        <div class="widget-content-outer">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left pr-2">
+                                    <div class="widget-numbers fsize-1 text-warning">54%</div>
+                                </div>
+                                <div class="widget-content-right w-100">
+                                    <div class="progress-bar-xs progress">
+                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="54" aria-valuemin="0"
+                                             aria-valuemax="100" style="width: 54%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div role="group" class="btn-group-sm btn-group">
+                        <button class="btn-shadow btn btn-dark">Hire</button>
+                        <button class="btn-shadow btn btn-dark">Fire</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center text-muted" style="width: 80px;">#56</td>
+                <td class="text-center" style="width: 80px;">
+                    <img width="40" class="rounded-circle" src="./assets/images/avatars/3.jpg" alt="">
+                </td>
+                <td class="text-center"><a [routerLink]="">Darrell Lowe</a></td>
+                <td class="text-center"><a [routerLink]="">Riddle Electronics</a></td>
+                <td class="text-center">
+                    <div class="badge badge-pill badge-warning">In Progress</div>
+                </td>
+                <td class="text-center">
+                                        <span class="pr-2 opacity-6">
+                                            <i class="fa fa-business-time"></i>
+                                        </span>
+                    12 Dec
+                </td>
+                <td class="text-center" style="width: 200px;">
+                    <div class="widget-content p-0">
+                        <div class="widget-content-outer">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left pr-2">
+                                    <div class="widget-numbers fsize-1 text-warning">97%</div>
+                                </div>
+                                <div class="widget-content-right w-100">
+                                    <div class="progress-bar-xs progress">
+                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="97" aria-valuemin="0"
+                                             aria-valuemax="100" style="width: 97%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div role="group" class="btn-group-sm btn-group">
+                        <button class="btn-shadow btn btn-dark">Hire</button>
+                        <button class="btn-shadow btn btn-dark">Fire</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center text-muted" style="width: 80px;">#56</td>
+                <td class="text-center" style="width: 80px;">
+                    <img width="40" class="rounded-circle" src="./assets/images/avatars/4.jpg" alt="">
+                </td>
+                <td class="text-center">
+                    <a [routerLink]="">George T. Cottrell</a>
+                </td>
+                <td class="text-center">
+                    <a [routerLink]="">Pixelcloud</a></td>
+                <td class="text-center">
+                    <div class="badge badge-pill badge-success">
+                        Completed
+                    </div>
+                </td>
+                <td class="text-center">
+                                        <span class="pr-2 opacity-6">
+                                            <i class="fa fa-business-time"></i>
+                                        </span>
+                    12 Dec
+                </td>
+                <td class="text-center" style="width: 200px;">
+                    <div class="widget-content p-0">
+                        <div class="widget-content-outer">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left pr-2">
+                                    <div class="widget-numbers fsize-1 text-warning">88%</div>
+                                </div>
+                                <div class="widget-content-right w-100">
+                                    <div class="progress-bar-xs progress">
+                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="88" aria-valuemin="0"
+                                             aria-valuemax="100" style="width: 88%;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div role="group" class="btn-group-sm btn-group">
+                        <button class="btn-shadow btn btn-dark">Hire</button>
+                        <button class="btn-shadow btn btn-dark">Fire</button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="d-block p-4 text-center card-footer">
+        <button class="btn-pill btn-shadow btn-wide fsize-1 btn btn-dark btn-lg" routerLink="/projects">
+          <span class="mr-2 opacity-7">
+              <i class="fa fa-cog fa-spin"></i>
+          </span>
+            <span class="mr-1">View Projects</span>
+        </button>
     </div>
 </div>

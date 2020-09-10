@@ -1,112 +1,110 @@
-<div class="page-header">
-    <h3 class="page-title">
-    <span class="page-title-icon bg-gradient-primary text-white mr-2">
-      <i class="mdi mdi-file-pdf"></i>
-    </span>
-        View Quotation
-    </h3>
-</div>
+<app-page-title [heading]="heading" [subheading]="subheading" [icon]="icon"></app-page-title>
 
 
-<div class="col-lg-12 grid-margin stretch-card">
-    <div class="card">
-        <div class="card-body">
-            <div class="form-group">
-                <input style="border: solid  #05b5d4 1px" type="text" class="form-control" placeholder="Search Here" [(ngModel)]="filter">
-            </div>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Reference</th>
-                        <th>Date generated</th>
-                        <th>Expiry date</th>
-                        <th>Amount</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody *ngIf="quotationsArray.length != 0">
-                        <tr *ngFor="let quotation of quotationsArray | paginate: config | filter: filter">
-                            <td>
-                                {{ quotation.quote_reference }}
-                            </td>
-                            <td>
-                               {{quotation.date_generated | date:'yyyy-MM-dd'}}
-                            </td>
-                            <td>
-                               {{quotation.quote_expiryDate | date:'yyyy-MM-dd'}}
-                            </td>
-                            <td>
-                               R {{quotation.grand_total}}
-                            </td>
-                            <td>
-                                {{quotation.status}}
-                            </td>
-                            <td style="width: 230px">
-                                <div class="template-demo">
-                                    <button type="button" class="btn btn-social-icon btn-outline-facebook"
-                                            (click)="viewPDF(quotation)"
-                                            [disabled]=" disableButton(quotation.status)">
-                                        <i class="mdi mdi-eye"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-social-icon btn-outline-twitter"
-                                            (click)="acceptQuotation(quotation)"
-                                            [disabled]="quotation.status !== 'Pending Client Approval'">
-                                        <i class="mdi mdi-check-circle"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-social-icon btn-outline-youtube"
-                                            (click) = "show()"
-                                            [disabled]="quotation.status !== 'Pending Client Approval'">
-                                        <i class="mdi mdi-close-circle"></i>
-                                    </button>
+<div class="main-card mb-3 card">
+    <div class="card-header">
 
-                                    <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content"  style="background-color: #ffffff; -webkit-box-shadow: inset 0 0 10px #23275b;box-shadow: inset 0 0 10px #23275b;">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel" style="font-weight: bolder" >Reason for rejecting quotation</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form class="pt-3" #quoteReasonForm="ngForm" (ngSubmit)="quoteReasonForm.form.valid && rejectQuotation(quotation)">
-
-                                                        <div class="form-group" >
-                                                            <input style="border: solid  #23275b 1px" class="form-control form-control-lg" type="text" placeholder="Reason for rejection"
-                                                                   [(ngModel)]="quotation.reason"
-                                                                   name="reason"
-                                                                   #comment="ngModel"
-                                                                   [ngClass]="{ 'is-invalid': quoteReasonForm.submitted && comment.invalid }"
-                                                                   required>
-                                                            <div *ngIf="quoteReasonForm.submitted && comment.invalid" class="invalid-feedback">
-                                                                <div *ngIf="comment.errors.required">Reason is required</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-gradient-danger" data-dismiss="modal" (click) = "hide()">Cancel</button>
-                                                            <button type="submit" class="btn btn-gradient-primary" data-dismiss="modal">Submit</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="text" *ngIf="quotationsArray.length == 0">
-                    No Records Found!
-                </div>
-            </div>
-        </div>
-        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
+    <div class="table-responsive">
+        <div class="form-group">
+            <input style="border: solid  #05b5d4 1px; width: 95%; margin: 2%" type="text" class="form-control" placeholder="Search Here" [(ngModel)]="filter">
+        </div>
+
+        <table class="align-middle mb-0 table table-striped table-hover">
+            <thead>
+            <tr>
+                <th class="text-center">Reference</th>
+                <th class="text-center">Date generated</th>
+                <th class="text-center">Expiry date</th>
+                <th class="text-center">Amount</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">Action</th>
+            </tr>
+            </thead>
+            <tbody *ngIf="quotationsArray.length != 0">
+                <tr *ngFor="let quotation of quotationsArray | paginate: config | filter: filter">
+                    <td class="text-center">
+                        {{ quotation.quote_reference }}
+                    </td>
+                    <td class="text-center">
+                        {{quotation.date_generated | date:'yyyy-MM-dd'}}
+                    </td>
+                    <td class="text-center">
+                        {{quotation.quote_expiryDate | date:'yyyy-MM-dd'}}
+                    </td>
+                    <td class="text-center">
+                        R {{quotation.grand_total}}
+                    </td>
+                    <td class="text-center">
+                        {{quotation.status}}
+                    </td>
+                    <td style="width: 230px">
+                        <div class="template-demo">
+                            <div class="template-demo">
+                                <button type="button" class="mr-2 btn-icon btn-icon-only btn btn-dark"
+                                        (click)="viewPDF(quotation)"
+                                        [disabled]=" disableButton(quotation.status)">
+                                    <i class="pe-7s-look btn-icon-wrapper"></i>
+                                </button>
+
+                                <button type="button" class="mr-2 btn-icon btn-icon-only btn btn-success"
+                                        (click)="acceptQuotation(quotation)"
+                                        [disabled]="quotation.status !== 'Pending Client Approval'">
+                                    <i class="pe-7s-check btn-icon-wrapper"></i>
+                                </button>
+
+                                <button type="button" class="mr-2 btn-icon btn-icon-only btn btn-danger"
+                                        (click) = "show()"
+                                        [disabled]="quotation.status !== 'Pending Client Approval'">
+                                    <i class="pe-7s-close btn-icon-wrapper"></i>
+                                </button>
+                            </div>
+
+                            <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content"  style="background-color: #ffffff; -webkit-box-shadow: inset 0 0 10px #23275b;box-shadow: inset 0 0 10px #23275b;">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel" style="font-weight: bolder" >Reason for rejecting quotation</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="pt-3" #quoteReasonForm="ngForm" (ngSubmit)="quoteReasonForm.form.valid && rejectQuotation(quotation)">
+
+                                                <div class="form-group" >
+                                                    <input style="border: solid  #23275b 1px" class="form-control" type="text" placeholder="Reason for rejection"
+                                                           [(ngModel)]="quotation.reason"
+                                                           name="reason"
+                                                           #comment="ngModel"
+                                                           [ngClass]="{ 'is-invalid': quoteReasonForm.submitted && comment.invalid }"
+                                                           required>
+                                                    <div *ngIf="quoteReasonForm.submitted && comment.invalid" class="invalid-feedback">
+                                                        <div *ngIf="comment.errors.required">Reason is required</div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-dark" data-dismiss="modal" (click) = "hide()">Cancel</button>
+                                                    <button type="submit" class="btn btn-info" data-dismiss="modal">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text" *ngIf="quotationsArray.length == 0">
+        No Records Found!
+    </div>
+    <pagination-controls (pageChange)="pageChanged($event)" style="margin-top: 5%"></pagination-controls>
 </div>
+
 <div *ngIf="isLoading | async" class="overlay">
     <div class="spinner">
         <img class="loader" src="../../../assets/wheel.gif">
     </div>
 </div>
+

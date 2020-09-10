@@ -18,6 +18,9 @@ import {QuotationResponseModel} from "../../services/model/models";
   styleUrls: ['./view-quotation.component.scss']
 })
 export class ViewQuotationComponent implements OnInit {
+    heading = 'Quotation';
+    subheading = 'View all quotations';
+    icon = 'pe-7s-calculator icon-gradient bg-tempting-azure';
 
     isLoading = new Subject<boolean>();
     private invoice : InvoiceRequestModel;

@@ -15,6 +15,7 @@ import {CreateQuotationComponent} from "./components/create-quotation/create-quo
 import {ProjectsComponent} from "./components/projects/projects.component";
 import {ViewQuotationPdfComponent} from "./components/view-quotation-pdf/view-quotation-pdf.component";
 import {ViewInvoicePdfComponent} from "./components/view-invoice-pdf/view-invoice-pdf.component";
+import {RegisterComponent} from "./components/register/register.component";
 
 const routes: Routes = [
     {
@@ -40,6 +41,9 @@ const routes: Routes = [
     }
     ,{
         path: 'landing-page', component: LandingPageComponent
+    },
+    {
+      path: 'register', component: RegisterComponent
     },
     {
       path: 'change-password', component: ChangePasswordComponent

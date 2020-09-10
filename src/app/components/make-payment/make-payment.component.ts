@@ -7,6 +7,10 @@ import {Subject} from "rxjs";
   styleUrls: ['./make-payment.component.scss']
 })
 export class MakePaymentComponent implements OnInit {
+  heading = 'Payments';
+  subheading = 'View and manage payments';
+  icon = 'pe-7s-home icon-gradient bg-tempting-azure';
+
   isLoading = new Subject<boolean>();
 
   constructor() { }

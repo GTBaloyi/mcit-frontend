@@ -28,8 +28,16 @@ import {ProjectsComponent} from "../projects/projects.component";
 import {ViewQuotationPdfComponent} from "../view-quotation-pdf/view-quotation-pdf.component";
 import {NgxPaginationModule} from "ngx-pagination";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
-import {TodoComponent} from "../../shared/todo-list/todo/todo.component";
-import {TodoListComponent} from "../../shared/todo-list/todo-list.component";
+import {RegisterComponent} from "../register/register.component";
+import {UserBoxComponent} from "../../shared/header/elements/user-box/user-box.component";
+import {HeaderComponent} from "../../shared/header/header.component";
+import {HttpClientModule} from "@angular/common/http";
+import {AngularFontAwesomeModule} from "angular-font-awesome";
+import {PerfectScrollbarModule} from "ngx-perfect-scrollbar";
+import {NgReduxModule} from "@angular-redux/store";
+import {LoadingBarRouterModule} from "@ngx-loading-bar/router";
+import {PageTitleComponent} from "../../shared/page-title/page-title.component";
+import {ConfigActions} from "../../ThemeOptions/store/config.actions";
 
 
 @NgModule({
@@ -51,7 +59,10 @@ import {TodoListComponent} from "../../shared/todo-list/todo-list.component";
       ViewQuotationComponent,
       ProjectsComponent,
       ViewQuotationPdfComponent,
-      TodoComponent
+      RegisterComponent,
+      UserBoxComponent,
+      HeaderComponent,
+      PageTitleComponent
   ],
     imports: [
 
@@ -68,7 +79,12 @@ import {TodoListComponent} from "../../shared/todo-list/todo-list.component";
         ToastrModule.forRoot(),
         FormsModule,
         NgxPaginationModule,
-        Ng2SearchPipeModule
+        Ng2SearchPipeModule,
+        NgReduxModule,
+        LoadingBarRouterModule,
+        PerfectScrollbarModule,
+        AngularFontAwesomeModule,
+        HttpClientModule
     ],
   exports: [
 
@@ -82,9 +98,12 @@ import {TodoListComponent} from "../../shared/todo-list/todo-list.component";
       AppRoutingModule,
       NgbModule,
       ChartsModule,
-      ToastrModule
+      ToastrModule,
+      Ng2SearchPipeModule,
+      PageTitleComponent
   ],
   providers: [
+      ConfigActions,
       DashboardService
   ]
 })

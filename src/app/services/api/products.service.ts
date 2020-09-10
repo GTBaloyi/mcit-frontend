@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 })
 export class ProductsService {
 
-    protected basePath = 'https://mcts-service.azurewebsites.net';
+    protected basePath = 'http://localhost';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;

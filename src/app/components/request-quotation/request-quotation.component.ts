@@ -14,6 +14,9 @@ import moment = require('moment');
   styleUrls: ['./request-quotation.component.scss']
 })
 export class RequestQuotationComponent implements OnInit, OnChanges {
+    heading = 'Quotation';
+    subheading = 'Request a quotation';
+    icon = 'pe-7s-calculator icon-gradient bg-tempting-azure';
 
     isLoading = new Subject<boolean>();
     private focusAreas: Array<any> = [];

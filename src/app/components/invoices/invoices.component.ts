@@ -11,6 +11,9 @@ import {Subject} from "rxjs";
   styleUrls: ['./invoices.component.scss']
 })
 export class InvoicesComponent implements OnInit {
+    heading = 'Invoices';
+    subheading = 'View all invoices';
+    icon = 'pe-7s-note2 icon-gradient bg-tempting-azure';
 
     isLoading = new Subject<boolean>();
     private invoices: Array<InvoiceRequestModel> = [];

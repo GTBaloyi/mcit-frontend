@@ -21,6 +21,9 @@ import {Subject} from "rxjs";
   styleUrls: ['./view-quotation-pdf.component.scss']
 })
 export class ViewQuotationPdfComponent implements OnInit {
+    heading = 'Quotation';
+    subheading = 'View all quotations';
+    icon = 'pe-7s-calculator icon-gradient bg-tempting-azure';
 
     @ViewChild('pdfTable', {static: false}) pdfTable: ElementRef;
     isLoading = new Subject<boolean>();

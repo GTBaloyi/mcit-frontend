@@ -12,6 +12,10 @@ import moment = require('moment');
   styleUrls: ['./create-quotation.component.scss']
 })
 export class CreateQuotationComponent implements OnInit {
+    heading = 'Quotation';
+    subheading = 'Request a quotation';
+    icon = 'pe-7s-calculator icon-gradient bg-tempting-azure';
+
 
     isLoading = new Subject<boolean>();
     private focusAreas: Array<any> = [];

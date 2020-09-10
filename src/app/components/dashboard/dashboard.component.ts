@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {ClientsService, LoginResponseModel, ProjectInformationResponseModel, ProjectsService} from "../../services";
+import {ClientsService, ProjectInformationResponseModel, ProjectsService} from "../../services";
 import {ClientRegistrationRequestModel} from "../../services/model/models";
 import {Subject} from "rxjs";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
+import {Color} from "ng2-charts";
+
 
 @Component({
     selector: 'app-dashboard',
@@ -11,6 +13,11 @@ import {ToastrService} from "ngx-toastr";
     styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+    heading = 'Analytics Dashboard';
+    subheading = 'Summary of available reports';
+    icon = 'pe-7s-home icon-gradient bg-tempting-azure';
+
+
     isLoading = new Subject<boolean>();
     private emailAddress : string;
     private userInformation : ClientRegistrationRequestModel;
@@ -27,7 +34,6 @@ export class DashboardComponent implements OnInit {
 
 
     ngOnInit() {
-
         this.emailAddress  = JSON.parse(sessionStorage.getItem("username"));
         this.getClientInformation(this.emailAddress);
 
@@ -75,3 +81,4 @@ export class DashboardComponent implements OnInit {
         this.config.currentPage = event;
     }
 }
+

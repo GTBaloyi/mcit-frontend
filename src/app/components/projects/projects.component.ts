@@ -15,6 +15,11 @@ import {ToastrService} from "ngx-toastr";
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
+  heading = 'Projects';
+  subheading = 'View all available projects';
+  icon = 'pe-7s-hammer icon-gradient bg-tempting-azure';
+
+
   isLoading = new Subject<boolean>();
   private projects: Array<ProjectInformationResponseModel> = [];
   private userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;

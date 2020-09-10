@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 })
 export class ProjectsService {
 
-    protected basePath = 'https://mcts-service.azurewebsites.net';
+    protected basePath = 'http://localhost';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
@@ -354,6 +354,49 @@ export class ProjectsService {
 
         return this.httpClient.post<any>(`${this.configuration.basePath}/api/Projects/create-project`,
             projectInformationRequestModel,
+            {
+                responseType: <any>responseType,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * @param projectNumber 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public apiProjectsProjectNumberDelete(projectNumber: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined}): Observable<any>;
+    public apiProjectsProjectNumberDelete(projectNumber: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined}): Observable<HttpResponse<any>>;
+    public apiProjectsProjectNumberDelete(projectNumber: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined}): Observable<HttpEvent<any>>;
+    public apiProjectsProjectNumberDelete(projectNumber: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined}): Observable<any> {
+        if (projectNumber === null || projectNumber === undefined) {
+            throw new Error('Required parameter projectNumber was null or undefined when calling apiProjectsProjectNumberDelete.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        let httpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (httpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+            ];
+            httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+
+        let responseType: 'text' | 'json' = 'json';
+        if(httpHeaderAcceptSelected && httpHeaderAcceptSelected.startsWith('text')) {
+            responseType = 'text';
+        }
+
+        return this.httpClient.delete<any>(`${this.configuration.basePath}/api/Projects/${encodeURIComponent(String(projectNumber))}`,
             {
                 responseType: <any>responseType,
                 withCredentials: this.configuration.withCredentials,

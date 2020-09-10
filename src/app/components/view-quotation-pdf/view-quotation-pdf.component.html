@@ -1,132 +1,128 @@
-<div class="page-header">
-    <button type="button" class="btn btn-gradient-primary btn-rounded btn-icon" routerLink="/view-quotation" >
-        <i class="mdi mdi-backspace icon-md"></i>
-    </button>
+<app-page-title [heading]="heading" [subheading]="subheading" [icon]="icon"></app-page-title>
 
-    <h3 class="page-title">
-    <span class="page-title-icon bg-gradient-primary text-white mr-2">
-      <i class="mdi mdi-file-pdf"></i>
-    </span>
-        View Quotation
-    </h3>
-</div>
+<div class="card">
+    <div class="invoice">
+        <div class="toolbar hidden-print">
+            <div class="text-right">
+                <button type="button" class="btn btn-dark" routerLink="/view-quotation" value="Convert">
+                    <i class="pe-7s-back btn-icon-wrapper"></i>
+                    Back
+                </button>
+                <button type="button" class="btn btn-light" (click)="convertToPDF()" value="Convert">
+                    <i class="pe-7s-cloud-download btn-icon-wrapper"></i>
+                    Download
+                </button>
 
-<div>
-    <div class="card">
-        <div class="invoice">
-            <div class="toolbar hidden-print">
-                <div class="text-right">
-                    <button type="button" class="btn btn-gradient-primary" (click)="convertToPDF()" value="Convert">
-                        <i class="mdi mdi-download d-block mb-1"></i>
-                        Download
-                    </button>
-                    <button type="button" class="btn btn-gradient-success"
-                            (click)="acceptQuotation(quotation)"
-                            [disabled]=" disableButton(quotation.status)">
-                        <i class="mdi mdi-check-circle d-block mb-1"></i>
-                        Accept
-                    </button>
-                    <button type="button" class="btn btn-gradient-danger"
-                            (click)="show()"
-                            [disabled]=" disableButton(quotation.status)">
-                        <i class="mdi mdi-close-circle d-block mb-1"></i>
-                        Reject
-                    </button>
-                </div>
-                <hr>
+                <button type="button" class="mr-2 btn-icon btn-icon-only btn btn-success"
+                        (click)="acceptQuotation(quotation)"
+                        [disabled]=" disableButton(quotation.status)">
+                    <i class="pe-7s-check btn-icon-wrapper"></i>
+                    Accept
+                </button>
+                <button type="button" class="mr-2 btn-icon btn-icon-only btn btn-danger"
+                        (click)="show()"
+                        [disabled]=" disableButton(quotation.status)">
+                    <i class="pe-7s-close btn-icon-wrapper"></i>
+                    Reject
+                </button>
+
+                <button type="button" class="btn btn-info" value="Convert">
+                    <i class="pe-7s-mail-open-file btn-icon-wrapper"></i>
+                    Email
+                </button>
             </div>
-            <div class="invoice overflow-auto" #pdfTable id="pdfTable">
-                <div style="min-width: 600px">
-                    <header>
-                        <div class="row">
-                            <div class="col">
-                                <img src="../../../assets/quotationLogo.png" data-holder-rendered="true" />
-                            </div>
-                            <div class="col company-details">
-                                <h3 class="name">
-                                    Metal Casting Technology Station (MCTS)
-                                </h3>
-                                <div>University of Johannesburg 101 John Orr Building Beit Street Doornfontein
-                                    Campus P.O. Box 17001 Doornfontein 2028 VAT No. 4900127681, Johannesburg,
-                                    2094 Gauteng, South Africa</div>
-                                <div>Phone: (+27) 11 559 6290</div>
-                                <div>Email: commuczz@communityengagement.co.za</div>
-                            </div>
+            <hr>
+        </div>
+        <div class="invoice overflow-auto" #pdfTable id="pdfTable">
+            <div style="min-width: 600px">
+                <header>
+                    <div class="row">
+                        <div class="col">
+                            <img src="../../../assets/quotationLogo.png" data-holder-rendered="true" />
                         </div>
-                    </header>
-
-                    <main>
-                        <div class="row contacts">
-                            <div class="col invoice-to">
-                                <div class="text-gray-light">QUOTATION TO:</div>
-                                <h2 class="to">{{quotation.company_name}}</h2>
-                                <div class="address">Bill address: {{quotation.bill_address}}</div>
-                                <div class="email"><a href="{{quotation.email}}">Email address: {{quotation.email}}</a></div>
-                            </div>
-                            <div class="col invoice-details">
-                                <h1 class="invoice-id">{{quotation.quote_reference}}</h1>
-                                <div class="date">Date generated: {{quotation.date_generated | date:'yyyy-MM-dd'}}</div>
-                                <div class="date">Expiry date: {{quotation.quote_expiryDate| date:'yyyy-MM-dd'}}</div>
-                            </div>
+                        <div class="col company-details">
+                            <h3 class="name">
+                                Metal Casting Technology Station (MCTS)
+                            </h3>
+                            <div>University of Johannesburg 101 John Orr Building Beit Street Doornfontein
+                                Campus P.O. Box 17001 Doornfontein 2028 VAT No. 4900127681, Johannesburg,
+                                2094 Gauteng, South Africa</div>
+                            <div>Phone: (+27) 11 559 6290</div>
+                            <div>Email: commuczz@communityengagement.co.za</div>
                         </div>
+                    </div>
+                </header>
 
-
-
-                        <table border="0" cellspacing="0" cellpadding="0" style="margin-top: 5%">
-                            <thead>
-                            <tr>
-                                <th class="text-left">Focus area</th>
-                                <th class="text-right">Product</th>
-                                <th class="text-right">Quantity</th>
-                                <th class="text-right">Unit price</th>
-                                <th class="text-right">TOTAL</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr *ngFor="let item of quotation.items">
-                                <td class="no">{{item.focusArea}}</td>
-                                <td class="text-left">{{item.item}}</td>
-                                <td class="unit">{{item.quantity}}</td>
-                                <td class="qty">{{item.unit_Price}}</td>
-                                <td class="total">{{item.total}}</td>
-                            </tr>
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <td colspan="2"></td>
-                                <td colspan="2">GRAND TOTAL</td>
-                                <td>{{quotation.grand_total}}</td>
-                            </tr>
-                            </tfoot>
-                        </table>
-
-
-                        <div class="notices">
-                            <H5 style="font-weight: bolder">Terms & Conditions</H5>
-                            <div>This quote is valid for 30 days and only relates to the official enquiry quoted above.</div>
-                            <div>Results will be issued in 5 working days or less from the day of receiving samples.</div>
-                            <div>Written acceptance of a quote is required before work can commence. An official order is required before results will be
-                                released.</div>
-                            <div>Results and all information of work done related to the quote is treated as confidential and will not be revealed to any third
-                                party without authorization in writing.</div>
+                <main>
+                    <div class="row contacts">
+                        <div class="col invoice-to">
+                            <div class="text-gray-light">QUOTATION TO:</div>
+                            <h2 class="to">{{quotation.company_name}}</h2>
+                            <div class="address">Bill address: {{quotation.bill_address}}</div>
+                            <div class="email"><a href="{{quotation.email}}">Email address: {{quotation.email}}</a></div>
                         </div>
-                    </main>
-
-                    <div>
-                        <H5 style="font-weight: bolder">
-                            Acceptance: I hereby accept this quote, subject to the stipulations as specified and guarantee that I am
-                            properly authorized in terms of the resolution.
-                        </H5>
+                        <div class="col invoice-details">
+                            <h1 class="invoice-id">{{quotation.quote_reference}}</h1>
+                            <div class="date">Date generated: {{quotation.date_generated | date:'yyyy-MM-dd'}}</div>
+                            <div class="date">Expiry date: {{quotation.quote_expiryDate| date:'yyyy-MM-dd'}}</div>
+                        </div>
                     </div>
 
-                    <footer>
-                        Quotation was created on a computer and is valid without the signature and seal.
-                    </footer>
+
+
+                    <table border="0" cellspacing="0" cellpadding="0" style="margin-top: 5%">
+                        <thead>
+                        <tr>
+                            <th class="text-left">Focus area</th>
+                            <th class="text-right">Product</th>
+                            <th class="text-right">Quantity</th>
+                            <th class="text-right">Unit price</th>
+                            <th class="text-right">TOTAL</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of quotation.items">
+                            <td class="no">{{item.focusArea}}</td>
+                            <td class="text-left">{{item.item}}</td>
+                            <td class="unit">{{item.quantity}}</td>
+                            <td class="qty">{{item.unit_Price}}</td>
+                            <td class="total">{{item.total}}</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2">GRAND TOTAL</td>
+                            <td>{{quotation.grand_total}}</td>
+                        </tr>
+                        </tfoot>
+                    </table>
+
+
+                    <div class="notices">
+                        <H5 style="font-weight: bolder">Terms & Conditions</H5>
+                        <div>This quote is valid for 30 days and only relates to the official enquiry quoted above.</div>
+                        <div>Results will be issued in 5 working days or less from the day of receiving samples.</div>
+                        <div>Written acceptance of a quote is required before work can commence. An official order is required before results will be
+                            released.</div>
+                        <div>Results and all information of work done related to the quote is treated as confidential and will not be revealed to any third
+                            party without authorization in writing.</div>
+                    </div>
+                </main>
+
+                <div>
+                    <H5 style="font-weight: bolder">
+                        Acceptance: I hereby accept this quote, subject to the stipulations as specified and guarantee that I am
+                        properly authorized in terms of the resolution.
+                    </H5>
                 </div>
 
+                <footer>
+                    Quotation was created on a computer and is valid without the signature and seal.
+                </footer>
             </div>
-        </div>
 
+        </div>
     </div>
 </div>
 
@@ -140,19 +136,19 @@
                 <form class="pt-3" #quoteReasonForm="ngForm" (ngSubmit)="quoteReasonForm.form.valid && rejectQuotation(quotation)">
 
                     <div class="form-group" >
-                        <input style="border: solid  #23275b 1px" class="form-control form-control-lg" type="text" placeholder="Reason for rejection"
+                        <input  class="form-control" type="text" placeholder="Reason for rejection"
                                [(ngModel)]="quotation.reason"
                                name="reason"
-                               #comment="ngModel"
-                               [ngClass]="{ 'is-invalid': quoteReasonForm.submitted && comment.invalid }"
+                               #reason="ngModel"
+                               [ngClass]="{ 'is-invalid': quoteReasonForm.submitted && reason.invalid }"
                                required>
-                        <div *ngIf="quoteReasonForm.submitted && comment.invalid" class="invalid-feedback">
-                            <div *ngIf="comment.errors.required">Reason is required</div>
+                        <div *ngIf="quoteReasonForm.submitted && reason.invalid" class="invalid-feedback">
+                            <div *ngIf="reason.errors.required">Reason is required</div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-gradient-danger" data-dismiss="modal" (click) = "hide()">Cancel</button>
-                        <button type="submit" class="btn btn-gradient-primary" data-dismiss="modal">Submit</button>
+                        <button type="button" class="btn btn-dark" data-dismiss="modal" (click) = "hide()">Cancel</button>
+                        <button type="submit" class="btn btn-info" data-dismiss="modal">Submit</button>
                     </div>
                 </form>
             </div>

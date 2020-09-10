@@ -21,6 +21,9 @@ import {Subject} from "rxjs";
   styleUrls: ['./view-invoice-pdf.component.scss']
 })
 export class ViewInvoicePdfComponent implements OnInit {
+  heading = 'Invoices';
+  subheading = 'View and manage all client invoices';
+  icon = 'pe-7s-note2 icon-gradient bg-tempting-azure';
 
   @ViewChild('pdfTable', {static: false}) pdfTable: ElementRef;
   isLoading = new Subject<boolean>();

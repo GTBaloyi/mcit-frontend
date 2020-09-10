@@ -1,9 +1,6 @@
-@import '../../../styles.scss';
+.body{
+  background: url('../../../assets/login_bg.jpg') fixed center top no-repeat;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
 
-.card {
-  height: 100%;
-  opacity: 98%;
-  width: 60%;
-  background: $theme-gradient;
-  margin: auto;
 }
