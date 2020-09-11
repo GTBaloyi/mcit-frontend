@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 })
 export class QuotationService {
 
-    protected basePath = 'http://localhost';
+    protected basePath = 'https://mcts-service.azurewebsites.net';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
