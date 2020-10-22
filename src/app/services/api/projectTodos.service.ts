@@ -470,4 +470,100 @@ export class ProjectTodosService {
         );
     }
 
+    /**
+     * @param employee 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public apiProjectTodosTodosEmployeeGet(employee: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<ProjectTodoResponseModel>;
+    public apiProjectTodosTodosEmployeeGet(employee: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<ProjectTodoResponseModel>>;
+    public apiProjectTodosTodosEmployeeGet(employee: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<ProjectTodoResponseModel>>;
+    public apiProjectTodosTodosEmployeeGet(employee: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<any> {
+        if (employee === null || employee === undefined) {
+            throw new Error('Required parameter employee was null or undefined when calling apiProjectTodosTodosEmployeeGet.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        let httpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (httpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                'text/plain',
+                'application/json',
+                'text/json'
+            ];
+            httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+
+        let responseType: 'text' | 'json' = 'json';
+        if(httpHeaderAcceptSelected && httpHeaderAcceptSelected.startsWith('text')) {
+            responseType = 'text';
+        }
+
+        return this.httpClient.get<ProjectTodoResponseModel>(`${this.configuration.basePath}/api/ProjectTodos/todos/${encodeURIComponent(String(employee))}`,
+            {
+                responseType: <any>responseType,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * @param employee 
+     * @param projectNumber 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public apiProjectTodosTodosEmployeeProjectNumberGet(employee: string, projectNumber: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<ProjectTodoResponseModel>;
+    public apiProjectTodosTodosEmployeeProjectNumberGet(employee: string, projectNumber: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<ProjectTodoResponseModel>>;
+    public apiProjectTodosTodosEmployeeProjectNumberGet(employee: string, projectNumber: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<ProjectTodoResponseModel>>;
+    public apiProjectTodosTodosEmployeeProjectNumberGet(employee: string, projectNumber: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<any> {
+        if (employee === null || employee === undefined) {
+            throw new Error('Required parameter employee was null or undefined when calling apiProjectTodosTodosEmployeeProjectNumberGet.');
+        }
+        if (projectNumber === null || projectNumber === undefined) {
+            throw new Error('Required parameter projectNumber was null or undefined when calling apiProjectTodosTodosEmployeeProjectNumberGet.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        let httpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (httpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                'text/plain',
+                'application/json',
+                'text/json'
+            ];
+            httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+
+        let responseType: 'text' | 'json' = 'json';
+        if(httpHeaderAcceptSelected && httpHeaderAcceptSelected.startsWith('text')) {
+            responseType = 'text';
+        }
+
+        return this.httpClient.get<ProjectTodoResponseModel>(`${this.configuration.basePath}/api/ProjectTodos/todos/${encodeURIComponent(String(employee))}/${encodeURIComponent(String(projectNumber))}`,
+            {
+                responseType: <any>responseType,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
 }

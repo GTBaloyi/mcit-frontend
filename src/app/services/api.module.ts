@@ -10,6 +10,7 @@ import { EmployeesReportsService } from './api/employeesReports.service';
 import { EnquiryService } from './api/enquiry.service';
 import { GenericServicesService } from './api/genericServices.service';
 import { InvoiceService } from './api/invoice.service';
+import { MctsKpiReportsService } from './api/mctsKpiReports.service';
 import { PaymentService } from './api/payment.service';
 import { ProductsService } from './api/products.service';
 import { ProjectExpenditureService } from './api/projectExpenditure.service';
