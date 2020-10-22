@@ -1,13 +1,9 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Subject} from "rxjs";
-import {
-  ClientRegistrationRequestModel,
-  InvoiceResponseModel, InvoiceService, ProductsService, ProjectInformationResponseModel, ProjectsService,
-  QuotationResponseModel,
-  QuotationService
-} from "../../services";
+import {ClientRegistrationRequestModel, ProjectInformationRequestModel, ProjectInformationResponseModel, ProjectsService} from "../../services";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-projects',
@@ -20,17 +16,20 @@ export class ProjectsComponent implements OnInit {
   icon = 'pe-7s-hammer icon-gradient bg-tempting-azure';
 
 
-  isLoading = new Subject<boolean>();
+  isLoading = true;
   private projects: Array<ProjectInformationResponseModel> = [];
-  private userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;
-  private filter : string;
+  private project: ProjectInformationResponseModel = {};
+  private userInformation: ClientRegistrationRequestModel = <ClientRegistrationRequestModel>'';
+  private filter: string;
   private config: any;
+  private currentRate = 0;
 
   constructor(private projectsService: ProjectsService,
               private router: Router,
+              private modalService: NgbModal,
               private toastr: ToastrService) {
 
-    this.userInformation  = JSON.parse(sessionStorage.getItem("userInformation"));
+    this.userInformation = JSON.parse(sessionStorage.getItem("userInformation"));
 
   }
 
@@ -44,24 +43,83 @@ export class ProjectsComponent implements OnInit {
     };
   }
 
-  getProjects(){
-    this.projectsService.apiProjectsAllProjectsGet().subscribe (
+  getProjects() {
+    this.projectsService.apiProjectsByCompanyCompanyRegistrationGet(this.userInformation.companyRegistrationNumber).subscribe(
         (data: any) => {
-          this.projects = data
-          console.log('projects: ', data);
+          this.projects = data;
         },
         error => {
           console.log(error);
           this.showError();
         },
         () => {
+          this.sortData;
           this.showSuccess();
         }
     )
 
   }
 
-  pageChanged(event){
+  getProgressPercentage(value): string {
+    return value + '%';
+  }
+
+  disableButton(project): boolean {
+    if (project.projectProgress.projectStatus === 'Completed' && project.projectSatisfaction == 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  get sortData(): Array<ProjectInformationResponseModel> {
+    return this.projects.sort((projectUnsorted, projectSorted) => {
+      return <any>new Date(projectSorted.projectProgress.actualStartDate) - <any>new Date(projectUnsorted.projectProgress.actualStartDate);
+    });
+  }
+
+  projectDetails(project: ProjectInformationRequestModel) {
+    sessionStorage.setItem('projectDetails', JSON.stringify(project));
+    this.router.navigateByUrl('/project-details');
+  }
+
+  getRatingPercentage(value): number {
+    return (value * 100) / 5;
+  }
+
+  rateProject(projectItem) {
+    var projectSatisfaction = this.getRatingPercentage(this.currentRate)
+
+    projectItem.projectSatisfaction = projectSatisfaction;
+
+    this.isLoading = true;
+
+    this.projectsService.apiProjectsUpdateProjectPut(projectItem).subscribe(
+        (data: any) => {
+        },
+        error => {
+          if (error.status == 200) {
+            this.modalService.dismissAll();
+            this.getProjects();
+            this.showSuccess();
+          } else {
+            console.log(error);
+            this.showError();
+          }
+        },
+        () => {
+          this.showSuccess();
+        }
+    );
+  }
+
+
+  openModal(value: any, data: any) {
+    this.project = data
+    this.modalService.open(value);
+  }
+
+  pageChanged(event) {
     this.config.currentPage = event;
   }
 
@@ -69,11 +127,14 @@ export class ProjectsComponent implements OnInit {
     this.toastr.success('Process successfully completed', 'Success', {
       timeOut: 3000,
     });
+    this.isLoading = false;
   }
 
   showError() {
     this.toastr.error('Ops, an error occurred. Please try again.', 'Error!!!', {
       timeOut: 3000,
     });
+    this.isLoading = false;
   }
 }
+

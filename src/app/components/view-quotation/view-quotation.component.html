@@ -6,6 +6,7 @@
 
     </div>
     <div class="table-responsive">
+
         <div class="form-group">
             <input style="border: solid  #05b5d4 1px; width: 95%; margin: 2%" type="text" class="form-control" placeholder="Search Here" [(ngModel)]="filter">
         </div>
@@ -102,7 +103,7 @@
     <pagination-controls (pageChange)="pageChanged($event)" style="margin-top: 5%"></pagination-controls>
 </div>
 
-<div *ngIf="isLoading | async" class="overlay">
+<div *ngIf="isLoading" class="overlay">
     <div class="spinner">
         <img class="loader" src="../../../assets/wheel.gif">
     </div>

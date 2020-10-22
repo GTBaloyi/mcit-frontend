@@ -21,5 +21,6 @@ export interface ProjectTodosRequestModel {
     status?: string | null;
     dateStarted?: string;
     dateEnded?: string;
+    responsibleEmployees?: Array<string> | null;
 }
 

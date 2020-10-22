@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 })
 export class ProjectTodosService {
 
-    protected basePath = 'https://mcts-service.azurewebsites.net';
+    protected basePath = 'https://localhost:5001';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
@@ -184,14 +184,17 @@ export class ProjectTodosService {
     }
 
     /**
-     * @param projectTodosRequestModel 
+     * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiProjectTodosDeleteDelete(projectTodosRequestModel?: ProjectTodosRequestModel, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined}): Observable<any>;
-    public apiProjectTodosDeleteDelete(projectTodosRequestModel?: ProjectTodosRequestModel, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined}): Observable<HttpResponse<any>>;
-    public apiProjectTodosDeleteDelete(projectTodosRequestModel?: ProjectTodosRequestModel, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined}): Observable<HttpEvent<any>>;
-    public apiProjectTodosDeleteDelete(projectTodosRequestModel?: ProjectTodosRequestModel, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined}): Observable<any> {
+    public apiProjectTodosDeleteIdDelete(id: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined}): Observable<any>;
+    public apiProjectTodosDeleteIdDelete(id: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined}): Observable<HttpResponse<any>>;
+    public apiProjectTodosDeleteIdDelete(id: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined}): Observable<HttpEvent<any>>;
+    public apiProjectTodosDeleteIdDelete(id: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined}): Observable<any> {
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling apiProjectTodosDeleteIdDelete.');
+        }
 
         let headers = this.defaultHeaders;
 
@@ -207,23 +210,12 @@ export class ProjectTodosService {
         }
 
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json',
-            'text/json',
-            'application/_*+json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
-
         let responseType: 'text' | 'json' = 'json';
         if(httpHeaderAcceptSelected && httpHeaderAcceptSelected.startsWith('text')) {
             responseType = 'text';
         }
 
-        return this.httpClient.delete<any>(`${this.configuration.basePath}/api/ProjectTodos/delete`,
+        return this.httpClient.delete<any>(`${this.configuration.basePath}/api/ProjectTodos/delete/${encodeURIComponent(String(id))}`,
             {
                 responseType: <any>responseType,
                 withCredentials: this.configuration.withCredentials,
@@ -352,6 +344,7 @@ export class ProjectTodosService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
+            'application/json-patch+json',
             'application/json',
             'text/json',
             'application/_*+json'
@@ -450,6 +443,7 @@ export class ProjectTodosService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
+            'application/json-patch+json',
             'application/json',
             'text/json',
             'application/_*+json'

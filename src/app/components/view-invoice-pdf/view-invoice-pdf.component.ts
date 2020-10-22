@@ -4,8 +4,11 @@ import html2canvas from "html2canvas";
 import jsPDF from 'jspdf';
 import {
   ClientRegistrationRequestModel,
-  InvoiceRequestModel, InvoiceResponseModel,
+  GenericServicesService,
+  InvoiceResponseModel,
   InvoiceService,
+  PaymentRequestModel,
+  PaymentService,
   ProductsService,
   QuotationResponseModel,
   QuotationService
@@ -13,6 +16,7 @@ import {
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {Subject} from "rxjs";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 
 @Component({
@@ -26,18 +30,33 @@ export class ViewInvoicePdfComponent implements OnInit {
   icon = 'pe-7s-note2 icon-gradient bg-tempting-azure';
 
   @ViewChild('pdfTable', {static: false}) pdfTable: ElementRef;
+
+  private file: any;
+  private invoiceFile: any;
+  private path: string;
+  private config: any;
+  private filter : string;
+  private fileName: string;
+  private showModal: boolean;
+  private amountPayed: number;
+  private reference: string = '';
   isLoading = new Subject<boolean>();
+  private paymentMethod: string = '';
+  private companyRegistration: string = '';
   invoice: InvoiceResponseModel = <InvoiceResponseModel>'';
   quotation: QuotationResponseModel = <QuotationResponseModel>'';
+  private paymentMethods = ['Cash','Check','Bank transfer','Online','Other'];
   private userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;
-  private showModal: boolean;
 
 
   constructor(private quotationService: QuotationService,
               private productsService: ProductsService,
               private router: Router,
               private toastr: ToastrService,
-              private invoiceService: InvoiceService) {
+              private invoiceService: InvoiceService,
+              private genericService: GenericServicesService,
+              private modalService: NgbModal,
+              private paymentService : PaymentService) {
 
       this.invoice = JSON.parse(sessionStorage.getItem("viewInvoice"));
       console.log('invoice: ', this.invoice);
@@ -47,6 +66,7 @@ export class ViewInvoicePdfComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.paymentMethod = 'Cash';
 
   }
 
@@ -84,6 +104,124 @@ export class ViewInvoicePdfComponent implements OnInit {
     this.showModal = false;
   }
 
+  openModal(value: any, data: any) {
+    this.reference =  data.reference;
+    this.companyRegistration = data.company_registration;
+    this.modalService.open( value);
+  }
+
+  fileEvent(fileInput: any){
+    this.file = fileInput.target.files[0];
+  }
+
+  makePayment(paymentDetails){
+    this.isLoading.next(true);
+
+    this.paymentService.apiPaymentCreatePost(paymentDetails).subscribe (
+        () => {
+        },
+        error => {
+          console.log(error);
+          this.isLoading.next(false);
+          this.showError();
+        },
+        () => {
+          this.isLoading.next(false);
+          this.router.navigateByUrl('/invoice');
+          this.showSuccess();
+        }
+    );
+
+  }
+
+  uploadPop(){
+    const paymentDetails: PaymentRequestModel = {};
+
+    //Files
+    var fileExtension = '.' + this.file.name.split('.').pop();
+    this.fileName = "payment_"+ this.companyRegistration +"_"+this.file.lastModified+"_"+fileExtension
+
+    //Details
+    paymentDetails.approvedBy = '';
+    paymentDetails.status = 'Pending';
+    paymentDetails.amount = this.amountPayed;
+    paymentDetails.paymentType = this.paymentMethod;
+    paymentDetails.invoiceReference = this.reference;
+    paymentDetails.companyRegistration = this.companyRegistration;
+    paymentDetails.proofOfPaymentURL = "https://mcts-storage.s3.us-east-2.amazonaws.com/proof-of-payment/" + this.fileName;
+
+    this.isLoading.next(true);
+
+    this.paymentService.apiPaymentUploadPopPost(this.fileName, this.file).subscribe (
+        () => {
+        },
+        error => {
+          if(error.status == 200) {
+            this.makePayment(paymentDetails)
+            this.modalService.dismissAll();
+
+            this.file= null;
+            this.fileName= '';
+            this.amountPayed = null;
+            this.reference = '';
+
+            this.isLoading.next(false);
+          }else{
+            console.log(error);
+            this.isLoading.next(false);
+            this.showError();
+          }
+        },
+        () => {
+          this.isLoading.next(false);
+        }
+    );
+
+  }
+
+  emailDocument(){
+    this.isLoading.next(true);
+
+    let date = moment().format("yyyy-MM-DD");
+    let data = document.getElementById('pdfTable');
+
+     html2canvas(data).then(canvas => {
+      let imgWidth = 200;
+      let pageHeight = 395;
+      let imgHeight = canvas.height * imgWidth / canvas.width;
+      let heightLeft = imgHeight;
+
+      const contentDataURL = canvas.toDataURL('pdf');
+      let pdf = new jsPDF('p', 'mm', 'a4');
+      let position = 3;
+
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+
+       this.invoiceFile =pdf.convertToPDF();
+
+    });
+
+    this.genericService.apiGenericServicesEmailAttachmentPost(this.userInformation.contactEmail,
+        'Invoice from Metal Casting Technology station',
+        'Dear '+this.userInformation.companyName+ '\n Please find invoice attached.',
+        'Invoice-'+date+'.pdf',
+        this.invoiceFile
+    ).subscribe (
+        () => {
+        },
+        error => {
+          console.log(error);
+          this.isLoading.next(false);
+          this.showError();
+        },
+        () => {
+          this.isLoading.next(false);
+          this.showSuccess();
+        }
+    );
+
+    console.log('file to email: ', this.invoiceFile);
+  }
 
   showSuccess() {
     this.toastr.success('Process successfully completed', 'Success', {

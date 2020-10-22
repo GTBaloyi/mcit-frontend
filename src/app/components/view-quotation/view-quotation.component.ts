@@ -22,14 +22,14 @@ export class ViewQuotationComponent implements OnInit {
     subheading = 'View all quotations';
     icon = 'pe-7s-calculator icon-gradient bg-tempting-azure';
 
-    isLoading = new Subject<boolean>();
-    private invoice : InvoiceRequestModel;
-    private userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;
-    private quotationsArray: Array<QuotationResponseModel> = [];
-    private username : any;
-    private filter : string;
-    private config: any;
-    private showModal: boolean;
+    isLoading = true;
+    invoice : InvoiceRequestModel;
+    userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;
+    quotationsArray: Array<QuotationResponseModel> = [];
+    username : any;
+    filter : string;
+    config: any;
+    showModal: boolean;
 
 
     constructor(private quotationService: QuotationService,
@@ -51,22 +51,34 @@ export class ViewQuotationComponent implements OnInit {
     }
 
     getQuotation(){
-      this.isLoading.next(true);
+        this.isLoading = true;
 
       this.quotationService.apiQuotationQuotesEmailGet(this.username).subscribe (
           (data: any) => {
-            this.quotationsArray = data;
+              this.quotationsArray = data;
           },
           error => {
-
-            console.log(error);
-            this.showError();
+              console.log(error);
+              this.showError();
           },
           () => {
-            this.showSuccess();
+              this.sortData;
+              this.showSuccess();
           }
       );
     }
+
+
+    get sortData(): Array<QuotationResponseModel> {
+        return this.quotationsArray.sort((quotationUnsorted, quotationSorted) => {
+            return <any>new Date(quotationSorted.date_generated) - <any>new Date(quotationUnsorted.date_generated);
+        });
+    }
+
+    /*filterData(searchTerm){
+        this.quotationsArray = this.quotationsArray.filter(quotations => matches(quotations, searchTerm, this.pipe));
+        const total = this.quotationsArray.length;
+    }*/
 
     show() {
         this.showModal = true;
@@ -80,7 +92,7 @@ export class ViewQuotationComponent implements OnInit {
     acceptQuotation(quotation : QuotationResponseModel){
         quotation.status = "Accepted";
 
-        this.isLoading.next(true);
+        this.isLoading = true;
         this.quotationService.apiQuotationUpdateQuotePut(quotation).subscribe (
             () => {
             },
@@ -99,7 +111,7 @@ export class ViewQuotationComponent implements OnInit {
     rejectQuotation(quotation : QuotationResponseModel){
         quotation.status = "Rejected";
 
-        this.isLoading.next(true);
+        this.isLoading = true;
         this.quotationService.apiQuotationUpdateQuotePut(quotation).subscribe (
             () => {
             },
@@ -134,7 +146,7 @@ export class ViewQuotationComponent implements OnInit {
         this.invoice.generatedBy = '';
         this.invoice.approvedBy = '';
 
-        this.isLoading.next(true);
+        this.isLoading = true;
         this.invoiceService.apiInvoiceGenerateInvoicePost(this.invoice).subscribe (
             () => {
             },
@@ -174,14 +186,14 @@ export class ViewQuotationComponent implements OnInit {
       this.toastr.success('Process successfully completed', 'Success', {
           timeOut: 3000,
       });
-      this.isLoading.next(false);
+        this.isLoading = false;
     }
 
     showError() {
       this.toastr.error('Ops, an error occurred. Please try again.', 'Error!!!', {
           timeOut: 3000,
       });
-      this.isLoading.next(false);
+        this.isLoading = false;
     }
 
 }

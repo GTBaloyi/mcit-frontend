@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { ResponsibleEmployees } from './responsibleEmployees';
 
 
 export interface ProjectTodoResponseModel { 
@@ -18,7 +19,9 @@ export interface ProjectTodoResponseModel {
     isSequential?: boolean;
     focusArea?: string | null;
     item?: string | null;
+    status?: string | null;
     dateStarted?: string;
     dateEnded?: string;
+    responsibleEmployees?: Array<ResponsibleEmployees> | null;
 }
 

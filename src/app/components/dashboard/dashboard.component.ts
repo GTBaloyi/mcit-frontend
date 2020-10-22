@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ClientsService, ProjectInformationResponseModel, ProjectsService} from "../../services";
+import {ClientInvoiceSummary, ClientsReportsService, ClientsService, ProjectInformationResponseModel, ProjectsService} from "../../services";
 import {ClientRegistrationRequestModel} from "../../services/model/models";
 import {Subject} from "rxjs";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
-import {Color} from "ng2-charts";
 
 
 @Component({
@@ -17,19 +16,18 @@ export class DashboardComponent implements OnInit {
     subheading = 'Summary of available reports';
     icon = 'pe-7s-home icon-gradient bg-tempting-azure';
 
-
-    isLoading = new Subject<boolean>();
+    isLoading = true;
     private emailAddress : string;
     private userInformation : ClientRegistrationRequestModel;
+    private clientInvoiceSummary : ClientInvoiceSummary = {};
     private projects: Array<ProjectInformationResponseModel> = [];
-    private filter : string;
     private config: any;
 
     constructor(private projectsService: ProjectsService,
                 private router: Router,
                 private toastr: ToastrService,
+                private clientsReportsService : ClientsReportsService,
                 private clientService: ClientsService) {
-        this.userInformation  = JSON.parse(sessionStorage.getItem("userInformation"));
     }
 
 
@@ -37,7 +35,6 @@ export class DashboardComponent implements OnInit {
         this.emailAddress  = JSON.parse(sessionStorage.getItem("username"));
         this.getClientInformation(this.emailAddress);
 
-        this.getProjects();
         this.config = {
             itemsPerPage: 5,
             currentPage: 1,
@@ -46,7 +43,25 @@ export class DashboardComponent implements OnInit {
     }
 
 
+    public getInvoiceInformation() {
+        this.isLoading = true;
+
+        this.clientsReportsService.apiClientsReportsInvoiceSummaryCompanyRegistrationGet(this.userInformation.companyRegistrationNumber).subscribe(
+            (data) => {
+                this.clientInvoiceSummary = data;
+            },
+            error => {
+                this.isLoading = false;
+
+            },
+            () => {
+                this.isLoading = false;
+            }
+        );
+    }
+
     public getClientInformation(email: string) {
+        this.isLoading = true;
 
         this.clientService.apiClientsByEmailEmailGet(email).subscribe(
 
@@ -54,31 +69,51 @@ export class DashboardComponent implements OnInit {
                 this.userInformation = data;
             },
             error => {
+                this.isLoading = false;
 
             },
             () => {
+                this.isLoading = false;
                 sessionStorage.setItem('userInformation', JSON.stringify(this.userInformation));
+                this.getInvoiceInformation();
+                this.getProjects();
             }
         );
     }
 
-    getProjects(){
-        this.projectsService.apiProjectsAllProjectsGet().subscribe (
+
+    pageChanged(event){
+        this.config.currentPage = event;
+    }
+
+    getProjects() {
+        this.isLoading = true;
+
+        this.projectsService.apiProjectsByCompanyCompanyRegistrationGet(this.userInformation.companyRegistrationNumber).subscribe(
             (data: any) => {
-                this.projects = data
-                console.log('projects: ', data);
+                this.projects = data;
             },
             error => {
+                this.isLoading = false;
+
                 console.log(error);
             },
             () => {
+                this.isLoading = false;
+                this.sortData;
             }
         )
 
     }
 
-    pageChanged(event){
-        this.config.currentPage = event;
+    get sortData(): Array<ProjectInformationResponseModel> {
+        return this.projects.sort((projectUnsorted, projectSorted) => {
+            return <any>new Date(projectSorted.projectProgress.actualStartDate) - <any>new Date(projectUnsorted.projectProgress.actualStartDate);
+        });
+    }
+
+    getProgressPercentage(value): string {
+        return value + '%';
     }
 }
 

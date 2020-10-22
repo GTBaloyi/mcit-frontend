@@ -29,7 +29,8 @@
                             (click)="viewPDF(invoice)">
                         <i class="pe-7s-look btn-icon-wrapper"></i>
                     </button>
-                    <button type="button" class="md-2 btn-icon btn-icon-only btn btn-info">
+                    <button type="button" class="md-2 btn-icon btn-icon-only btn btn-primary"
+                            (click)="openModal(MakePayment, invoice)">
                         <i class="pe-7s-credit font-icon-lg btn-icon-wrapper"></i>
                     </button>
                 </td>
@@ -43,8 +44,90 @@
     <pagination-controls (pageChange)="pageChanged($event)" style="margin-top: 5%"></pagination-controls>
 </div>
 
+<ng-template class="modal fade" #MakePayment let-modal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="card-title" id="exampleModalLabel3">Make Payment</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.dismiss()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form class="pt-3"  #makePaymentForm="ngForm" (ngSubmit)="makePaymentForm.form.valid && uploadPop()">
+                <div class="form-group" >
+                    <label>Invoice Reference</label>
+                    <input class="form-control text-left" type="text" placeholder="Invoice reference"
+                           [(ngModel)]="reference"
+                           name="invoiceReference"
+                           #invoiceReference="ngModel"
+                           [ngClass]="{ 'is-invalid': makePaymentForm.submitted && invoiceReference.invalid}"
+                           readonly>
+                    <div *ngIf="makePaymentForm.submitted && invoiceReference.invalid" class="invalid-feedback">
+                        <div *ngIf="invoiceReference.errors.required">Invoice reference is required</div>
+                    </div>
+                </div>
 
-<div *ngIf="isLoading | async" class="overlay">
+                <div class="form-group">
+                    <label>Payment type</label>
+                    <select  type="text"
+                             [(ngModel)]="paymentMethod"
+                             name="paymentType"
+                             #paymentType="ngModel"
+                             [ngClass]="{ 'is-invalid': makePaymentForm.submitted && paymentType.invalid }"
+                             class="form-control text-left"
+                             required>
+                        <option *ngFor="let option of paymentMethods" [value]="option">{{option}}</option>
+                    </select>
+                </div>
+
+                <label>Amount</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text btn-light">R</span></div>
+                    <input class="form-control" type="number"  placeholder="Amount"
+                           [(ngModel)]="amountPayed"
+                           name="amount"
+                           #amount="ngModel"
+                           [ngClass]="{ 'is-invalid': makePaymentForm.submitted && amount.invalid }"
+                           required>
+                    <div class="input-group-append"><span class="input-group-text btn-light">.00</span></div>
+                    <div *ngIf="makePaymentForm.submitted && amount.invalid" class="invalid-feedback">
+                        <div *ngIf="amount.errors.required">Amount is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="position-relative">
+                        <label>File</label>
+                        <input class="form-control-file " type="file" name="files"
+                               (change)="fileEvent($event)"
+                               [(ngModel)]="path"
+                               name="formFile"
+                               #formFile="ngModel"
+                               [ngClass]="{ 'is-invalid': makePaymentForm.submitted && formFile.invalid }"
+                               required>
+                        <div *ngIf="makePaymentForm.submitted && formFile.invalid" class="invalid-feedback">
+                            <div *ngIf="formFile.errors.required">File is required</div>
+                        </div>
+                        <small class="form-text text-muted"><small class="form-text text-muted">
+                            Supported file formats include JPG, JPEG, PNG, PNG, GIF, PDF, DOCX., TXT.
+                            You can find out the file format by looking at the last 3-4 letters on the file name.
+                            (This is known as the extension.)
+                            For example my-logo.jpg is a JPG format image.
+                        </small>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="modal.close()">Cancel</button>
+                    <button type="submit" class="btn btn-info" data-dismiss="Submit" >Continue</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+<div *ngIf="isLoading" class="overlay">
     <div class="spinner">
         <img class="loader" src="../../../assets/wheel.gif">
     </div>

@@ -8,7 +8,8 @@ import {environment} from "../environments/environment.prod";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {LandingPageComponent } from './components/landing-page/landing-page.component';
-import { ViewInvoicePdfComponent } from './components/view-invoice-pdf/view-invoice-pdf.component';
+import { MyAccountComponent } from './components/my-account/my-account.component';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { ViewInvoicePdfComponent } from './components/view-invoice-pdf/view-invo
     declarations: [
         AppComponent,
         LandingPageComponent,
-        ViewInvoicePdfComponent
+        MyAccountComponent,
+        UpdatePasswordComponent,
     ],
     providers: [
         {provide: BASE_API_URL, useValue: environment.BASE_API_URL},

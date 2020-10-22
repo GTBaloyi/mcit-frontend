@@ -18,12 +18,9 @@ export class CreateQuotationComponent implements OnInit {
 
 
     isLoading = new Subject<boolean>();
-    private focusAreas: Array<any> = [];
     private selectedFocusArea: string;
-    private products: Array<any> = [];
     private selectedProduct: string;
     private selectedQuantity: number;
-    private newProduct: QuotationItemEntity = {};
     private quotation: QuotationModel = <QuotationModel>{};
     private productsArray: Array<QuotationItemEntity> = [];
     private userInformation: ClientRegistrationRequestModel = <ClientRegistrationRequestModel>{};
@@ -43,42 +40,6 @@ export class CreateQuotationComponent implements OnInit {
         this.quotation.phone_number = this.userInformation.contactNumber;
         this.quotation.email = this.userInformation.contactEmail;
         this.quotation.company_Registration = this.userInformation.companyRegistrationNumber;
-
-        this.getFocusArea();
-        this.getProducts(this.selectedFocusArea);
-    }
-
-
-    getFocusArea() {
-        this.productsService.apiProductsFocusAreasGet().subscribe(
-            (data: any) => {
-                this.focusAreas = data
-            },
-            error => {
-                console.log(error);
-            },
-            () => {
-            }
-        )
-
-    }
-
-    getProducts(focusArea: any) {
-
-        this.selectedFocusArea = focusArea;
-        this.products = [];
-
-
-        this.productsService.apiProductsProductsFocusAreaGet(focusArea).subscribe(
-            (data: any) => {
-                this.products = data
-            },
-            error => {
-                console.log(error);
-            },
-            () => {
-            }
-        )
     }
 
     requestQuotation() {
@@ -121,7 +82,6 @@ export class CreateQuotationComponent implements OnInit {
 
     }
 
-
     showSuccess() {
         this.toastr.success('Process successfully completed', 'Success', {
             timeOut: 3000,
@@ -132,35 +92,5 @@ export class CreateQuotationComponent implements OnInit {
         this.toastr.error('Ops, an error occurred. Please try again.', 'Error!!!', {
             timeOut: 3000,
         });
-    }
-
-    changeProduct(value) {
-        this.selectedProduct = value;
-    }
-
-    changeQuantity(value) {
-        this.selectedQuantity = Number(value);
-    }
-
-    addItem() {
-        this.newProduct = {
-            id:0,
-            focusArea: this.selectedFocusArea,
-            item: this.selectedProduct,
-            numberOfTests: 0,
-            unit_Price: 0,
-            quantity: this.selectedQuantity,
-            total: 0,
-            quote_reference: ''
-        };
-        this.productsArray.push(this.newProduct);
-        this.toastr.success('New row added successfully', 'New product');
-        return true;
-    }
-
-    deleteItem(index) {
-        this.productsArray.splice(index, 1);
-        this.toastr.warning('Product deleted successfully', 'Delete product');
-        return true;
     }
 }

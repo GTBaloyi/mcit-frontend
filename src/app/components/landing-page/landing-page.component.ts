@@ -63,6 +63,7 @@ export class LandingPageComponent implements OnInit {
                 this.user = data;
                 if (this.user != null) {
                     this.user.loggedIn = true;
+                    sessionStorage.setItem('password', JSON.stringify(loginForm.value.password));
                     sessionStorage.setItem('loginInfo', JSON.stringify(data));
                 }
             },
@@ -83,37 +84,6 @@ export class LandingPageComponent implements OnInit {
                 this.router.navigateByUrl('/dashboard');
             }
         );
-    }
-
-    signUp(registrationForm) {
-
-        if(this.termsConditions) {
-            registrationForm.value.isCompanyPresent = true;
-            registrationForm.value.avatar = '';
-
-            this.isLoading.next(true);
-            this.usersService.apiUsersClientRegistrationPost(registrationForm.value).subscribe(
-                (data: any) => {
-                    this.result = data;
-                },
-                error => {
-                    console.log(error);
-                    this.showError();
-                    this.isLoading.next(false);
-                },
-                () => {
-                    this.showSuccess();
-                    this.isLoading.next(false);
-                    this.router.navigateByUrl('/landing-page');
-
-                }
-            )
-        }else{
-            this.toastr.error('Please accept our terms and conditions then, try again.', 'Error!!!', {
-                timeOut: 3000,
-            });
-
-        }
     }
 
     showSuccess() {

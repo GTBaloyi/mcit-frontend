@@ -27,5 +27,7 @@ export interface ProjectInformationResponseModel {
     projectTodo?: Array<ProjectTodoResponseModel> | null;
     projectProgress?: ProjectProgressResponseModel;
     createdOn?: string;
+    projectLeaderId?: string | null;
+    projectLeaderNames?: string | null;
 }
 

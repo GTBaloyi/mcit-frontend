@@ -8,7 +8,6 @@ import {ChangePasswordComponent} from "./components/change-password/change-passw
 import {ForgotPasswordComponent} from "./components/forgot-password/forgot-password.component";
 import {RequestQuotationComponent} from "./components/request-quotation/request-quotation.component";
 import {InvoicesComponent} from "./components/invoices/invoices.component";
-import {MakePaymentComponent} from "./components/make-payment/make-payment.component";
 import {ViewReceiptsComponent} from "./components/view-receipts/view-receipts.component";
 import {ViewQuotationComponent} from "./components/view-quotation/view-quotation.component";
 import {CreateQuotationComponent} from "./components/create-quotation/create-quotation.component";
@@ -16,6 +15,10 @@ import {ProjectsComponent} from "./components/projects/projects.component";
 import {ViewQuotationPdfComponent} from "./components/view-quotation-pdf/view-quotation-pdf.component";
 import {ViewInvoicePdfComponent} from "./components/view-invoice-pdf/view-invoice-pdf.component";
 import {RegisterComponent} from "./components/register/register.component";
+import {MessagesComponent} from "./components/messages/messages.component";
+import {ProjectDetailsComponent} from "./components/project-details/project-details.component";
+import {MyAccountComponent} from "./components/my-account/my-account.component";
+import {UpdatePasswordComponent} from "./components/update-password/update-password.component";
 
 const routes: Routes = [
     {
@@ -29,13 +32,17 @@ const routes: Routes = [
             },
             {path: 'dashboard', component: DashboardComponent},
             {path: 'invoice', component: InvoicesComponent},
-            {path: 'make-payment', component: MakePaymentComponent},
             {path: 'view-receipts', component: ViewReceiptsComponent},
             {path: 'view-quotation', component: ViewQuotationComponent},
             {path: 'create-quotation', component: CreateQuotationComponent},
             {path: 'projects', component: ProjectsComponent},
             {path: 'view-quotation-pdf', component: ViewQuotationPdfComponent},
             {path: 'view-invoice-pdf', component: ViewInvoicePdfComponent},
+            {path: 'messages', component: MessagesComponent, data: {extraParameter: 'Messages'}},
+            {path: 'project-details', component: ProjectDetailsComponent},
+            {path: 'account', component: MyAccountComponent},
+            {path: 'updatePassword', component: UpdatePasswordComponent},
+
         ],
         canActivate: [AuthGuard]
     }

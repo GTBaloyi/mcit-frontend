@@ -20,7 +20,6 @@ import {ForgotPasswordComponent} from "../forgot-password/forgot-password.compon
 import {ChangePasswordComponent} from "../change-password/change-password.component";
 import {RequestQuotationComponent} from "../request-quotation/request-quotation.component";
 import {InvoicesComponent} from "../invoices/invoices.component";
-import {MakePaymentComponent} from "../make-payment/make-payment.component";
 import {ViewReceiptsComponent} from "../view-receipts/view-receipts.component";
 import {CreateQuotationComponent} from "../create-quotation/create-quotation.component";
 import {ViewQuotationComponent} from "../view-quotation/view-quotation.component";
@@ -38,6 +37,12 @@ import {NgReduxModule} from "@angular-redux/store";
 import {LoadingBarRouterModule} from "@ngx-loading-bar/router";
 import {PageTitleComponent} from "../../shared/page-title/page-title.component";
 import {ConfigActions} from "../../ThemeOptions/store/config.actions";
+import {MessageService} from "../../message.service";
+import {PusherService} from "../../pusher.service";
+import {MessagesComponent} from "../messages/messages.component";
+import {NewMessageComponent} from "../new-message/new-message.component";
+import {ViewInvoicePdfComponent} from "../view-invoice-pdf/view-invoice-pdf.component";
+import {ProjectDetailsComponent} from "../project-details/project-details.component";
 
 
 @NgModule({
@@ -53,7 +58,6 @@ import {ConfigActions} from "../../ThemeOptions/store/config.actions";
       ChangePasswordComponent,
       RequestQuotationComponent,
       InvoicesComponent,
-      MakePaymentComponent,
       ViewReceiptsComponent,
       CreateQuotationComponent,
       ViewQuotationComponent,
@@ -62,7 +66,12 @@ import {ConfigActions} from "../../ThemeOptions/store/config.actions";
       RegisterComponent,
       UserBoxComponent,
       HeaderComponent,
-      PageTitleComponent
+      PageTitleComponent,
+      MessagesComponent,
+      NewMessageComponent,
+      ViewInvoicePdfComponent,
+      ProjectDetailsComponent
+
   ],
     imports: [
 
@@ -100,11 +109,13 @@ import {ConfigActions} from "../../ThemeOptions/store/config.actions";
       ChartsModule,
       ToastrModule,
       Ng2SearchPipeModule,
-      PageTitleComponent
+      PageTitleComponent,
   ],
   providers: [
       ConfigActions,
-      DashboardService
+      DashboardService,
+      MessageService,
+      PusherService
   ]
 })
 export class DefaultModule { }

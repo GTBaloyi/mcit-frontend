@@ -13,7 +13,6 @@ import {AuthGuard} from "../../services/auth.guard";
 })
 export class ChangePasswordComponent implements OnInit {
 
-    private formGroup: FormGroup;
     private user : LoginResponseModel;
     private oldPassword : string;
     private newPassword : string;
@@ -37,9 +36,6 @@ export class ChangePasswordComponent implements OnInit {
         this.user = JSON.parse(sessionStorage.getItem("loginInfo"));
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
-
-    }
 
     changePassword(changePasswordForm) {
         this.isLoading.next(true);

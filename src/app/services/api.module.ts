@@ -4,10 +4,13 @@ import { HttpClient } from '@angular/common/http';
 
 
 import { ClientsService } from './api/clients.service';
+import { ClientsReportsService } from './api/clientsReports.service';
 import { EmployeesService } from './api/employees.service';
+import { EmployeesReportsService } from './api/employeesReports.service';
 import { EnquiryService } from './api/enquiry.service';
 import { GenericServicesService } from './api/genericServices.service';
 import { InvoiceService } from './api/invoice.service';
+import { PaymentService } from './api/payment.service';
 import { ProductsService } from './api/products.service';
 import { ProjectExpenditureService } from './api/projectExpenditure.service';
 import { ProjectProgressService } from './api/projectProgress.service';

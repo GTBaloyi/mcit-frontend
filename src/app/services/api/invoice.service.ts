@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 })
 export class InvoiceService {
 
-    protected basePath = 'https://mcts-service.azurewebsites.net';
+    protected basePath = 'https://localhost:5001';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
@@ -115,6 +115,7 @@ export class InvoiceService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
+            'application/json-patch+json',
             'application/json',
             'text/json',
             'application/_*+json'
@@ -304,6 +305,7 @@ export class InvoiceService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
+            'application/json-patch+json',
             'application/json',
             'text/json',
             'application/_*+json'
