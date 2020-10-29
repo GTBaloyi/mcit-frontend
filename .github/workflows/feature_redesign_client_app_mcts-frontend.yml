@@ -31,5 +31,5 @@ jobs:
       with:
         app-name: 'mcts-frontend'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6a4e736fdb114bb68edaa55d2abb1ec3 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_7384b8442ea24a39b4aa9629ac22da38 }}
         package: .
