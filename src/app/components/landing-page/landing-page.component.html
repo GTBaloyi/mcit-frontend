@@ -17,14 +17,14 @@
                             <div id="exampleInputGroup1" role="group" aria-describedby="exampleInputGroup1__BV_description_"
                                  class="form-group">
                                 <div>
-                                    <input id="exampleInput1" type="email" name="email" placeholder="Employee ID"
+                                    <input id="exampleInput1" type="email" name="email" placeholder="Username"
                                            aria-required="true" class="form-control"
                                            [(ngModel)]="login.email"
                                            #id="ngModel"
                                            [ngClass]="{ 'is-invalid': loginForm.submitted && id.invalid }"
                                            required>
                                     <div *ngIf="loginForm.submitted && id.invalid" class="invalid-feedback">
-                                        <div *ngIf="id.errors.required">Employee ID is required</div>
+                                        <div *ngIf="id.errors.required">Username is required</div>
                                     </div>
                                 </div>
                             </div>
