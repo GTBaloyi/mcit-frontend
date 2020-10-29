@@ -9,11 +9,6 @@
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 # Learn more about Git LFS for large files:
 #     https://www.atlassian.com/git/tutorials/git-lfs
-<<<<<<< HEAD
-bitbucket-pipelines.yml
-=======
-node_modules
->>>>>>> feature/register_screen
 
 .DS_Store
 
