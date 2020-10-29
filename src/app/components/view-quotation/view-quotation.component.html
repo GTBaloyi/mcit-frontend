@@ -50,7 +50,7 @@
 
                                 <button type="button" class="mr-2 btn-icon btn-icon-only btn btn-success"
                                         (click)="acceptQuotation(quotation)"
-                                        >
+                                        [disabled]="quotation.status !== 'Pending Client Approval'">
                                     <i class="pe-7s-check btn-icon-wrapper"></i>
                                 </button>
 
