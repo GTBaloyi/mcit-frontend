@@ -23,7 +23,7 @@ export class ViewQuotationComponent implements OnInit {
     icon = 'pe-7s-calculator icon-gradient bg-tempting-azure';
 
     isLoading = true;
-    invoice : InvoiceRequestModel;
+    invoice : InvoiceRequestModel = {};
     userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;
     quotationsArray: Array<QuotationResponseModel> = [];
     username : any;
@@ -99,11 +99,11 @@ export class ViewQuotationComponent implements OnInit {
             error => {
                 console.log(error);
                 this.showError();
-
             },
             () => {
                 this.generateInvoice(quotation);
                 this.getQuotation();
+                this.showSuccess();
             }
         );
     }
@@ -122,11 +122,14 @@ export class ViewQuotationComponent implements OnInit {
             () => {
                 this.hide();
                 this.getQuotation();
+                this.showSuccess();
             }
         );
     }
 
     generateInvoice(quotation : QuotationResponseModel){
+        console.log('I came in here');
+
         let date = moment().format("yyyy-MM-DD");
         this.userInformation  = JSON.parse(sessionStorage.getItem("userInformation"));
 
