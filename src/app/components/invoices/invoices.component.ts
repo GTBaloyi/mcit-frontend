@@ -16,26 +16,26 @@ export class InvoicesComponent implements OnInit {
     subheading = 'View all invoices';
     icon = 'pe-7s-note2 icon-gradient bg-tempting-azure';
 
-    private file: any;
-    private path: string;
-    private config: any;
-    private filter : string;
-    private fileName: string;
-    private amountPayed: number;
-    private reference: string = '';
+    public file: any;
+    public path: string;
+    public config: any;
+    public filter : string;
+    public fileName: string;
+    public amountPayed: number;
+    public reference: string = '';
     isLoading = true;
-    private paymentMethod: string = '';
-    private companyRegistration: string = '';
-    private invoices: Array<InvoiceRequestModel> = [];
-    private paymentMethods = ['Cash','Check','Bank transfer','Online','Other'];
-    private userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;
+    public paymentMethod: string = '';
+    public companyRegistration: string = '';
+    public invoices: Array<InvoiceRequestModel> = [];
+    public paymentMethods = ['Cash','Check','Bank transfer','Online','Other'];
+    public userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;
 
 
-    constructor( private router: Router,
-                 private toastr: ToastrService,
-                 private modalService: NgbModal,
-                 private invoiceService: InvoiceService,
-                 private paymentService : PaymentService) {
+    constructor( public router: Router,
+                 public toastr: ToastrService,
+                 public modalService: NgbModal,
+                 public invoiceService: InvoiceService,
+                 public paymentService : PaymentService) {
         sessionStorage.removeItem('viewInvoice');
     }
 

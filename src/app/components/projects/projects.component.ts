@@ -17,17 +17,17 @@ export class ProjectsComponent implements OnInit {
 
 
   isLoading = true;
-  private projects: Array<ProjectInformationResponseModel> = [];
-  private project: ProjectInformationResponseModel = {};
-  private userInformation: ClientRegistrationRequestModel = <ClientRegistrationRequestModel>'';
-  private filter: string;
-  private config: any;
-  private currentRate = 0;
+  public projects: Array<ProjectInformationResponseModel> = [];
+  public project: ProjectInformationResponseModel = {};
+  public userInformation: ClientRegistrationRequestModel = <ClientRegistrationRequestModel>'';
+  public filter: string;
+  public config: any;
+  public currentRate = 0;
 
-  constructor(private projectsService: ProjectsService,
-              private router: Router,
-              private modalService: NgbModal,
-              private toastr: ToastrService) {
+  constructor(public projectsService: ProjectsService,
+              public router: Router,
+              public modalService: NgbModal,
+              public toastr: ToastrService) {
 
     this.userInformation = JSON.parse(sessionStorage.getItem("userInformation"));
 

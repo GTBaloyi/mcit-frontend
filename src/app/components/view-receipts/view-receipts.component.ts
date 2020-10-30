@@ -24,20 +24,20 @@ export class ViewReceiptsComponent implements OnInit {
   subheading = 'View and manage receipts';
   icon = 'pe-7s-news-paper icon-gradient bg-tempting-azure';
 
-  private config: any;
-  private filter : string;
+  public config: any;
+  public filter : string;
   isLoading = true;
-  private payments: Array<PaymentResponseModel> = [];
-  private invoice: InvoiceResponseModel =<InvoiceResponseModel> '';
-  private payment: PaymentResponseModel = <PaymentResponseModel> '';
-  private userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;
+  public payments: Array<PaymentResponseModel> = [];
+  public invoice: InvoiceResponseModel =<InvoiceResponseModel> '';
+  public payment: PaymentResponseModel = <PaymentResponseModel> '';
+  public userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;
 
 
-  constructor( private router: Router,
-               private toastr: ToastrService,
-               private modalService: NgbModal,
-               private invoiceService: InvoiceService,
-               private paymentService: PaymentService) {
+  constructor( public router: Router,
+               public toastr: ToastrService,
+               public modalService: NgbModal,
+               public invoiceService: InvoiceService,
+               public paymentService: PaymentService) {
 
   }
 

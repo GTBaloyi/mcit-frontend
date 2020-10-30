@@ -16,16 +16,16 @@ export class UpdatePasswordComponent implements OnInit {
   icon = 'pe-7s-door-lock icon-gradient bg-tempting-azure';
 
   isLoading = new Subject<boolean>();
-  private oldPassword : string;
-  private newPassword : string;
-  private user : LoginResponseModel;
-  private userInformation: ClientRegistrationRequestModel = <ClientRegistrationRequestModel>{};
+  public oldPassword : string;
+  public newPassword : string;
+  public user : LoginResponseModel;
+  public userInformation: ClientRegistrationRequestModel = <ClientRegistrationRequestModel>{};
 
 
-  constructor(private formBuilder: FormBuilder,
-              private router: Router,
-              private toastr: ToastrService,
-              private usersService: UsersService) {
+  constructor(public formBuilder: FormBuilder,
+              public router: Router,
+              public toastr: ToastrService,
+              public usersService: UsersService) {
     this.user = JSON.parse(sessionStorage.getItem("loginInfo"));
     this.userInformation = JSON.parse(sessionStorage.getItem("userInformation"));
   }

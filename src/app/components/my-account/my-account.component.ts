@@ -16,16 +16,16 @@ export class MyAccountComponent implements OnInit {
   icon = 'pe-7s-id icon-gradient bg-tempting-azure';
 
   isLoading = new Subject<boolean>();
-  private userInformation: ClientRegistrationRequestModel;
-  private titles: Array<string> = ['Mr', 'Mrs', 'Miss', 'Ms', 'Sir', 'Dr'];
-  private genders: Array<string> = ['Male', 'Female', 'Other'];
-  private companyProfiles: Array<string> = ['Small', 'Large', 'HEIs/Science Council', 'Techno/Star-Entrepreneur'];
+  public userInformation: ClientRegistrationRequestModel;
+  public titles: Array<string> = ['Mr', 'Mrs', 'Miss', 'Ms', 'Sir', 'Dr'];
+  public genders: Array<string> = ['Male', 'Female', 'Other'];
+  public companyProfiles: Array<string> = ['Small', 'Large', 'HEIs/Science Council', 'Techno/Star-Entrepreneur'];
 
 
-  constructor(private router: Router,
-              private toastr: ToastrService,
-              private clientService: ClientsService,
-              private usersService: UsersService) {
+  constructor(public router: Router,
+              public toastr: ToastrService,
+              public clientService: ClientsService,
+              public usersService: UsersService) {
     this.userInformation = JSON.parse(sessionStorage.getItem("userInformation"));
 
   }

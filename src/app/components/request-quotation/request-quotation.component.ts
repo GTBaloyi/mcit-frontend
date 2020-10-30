@@ -19,14 +19,14 @@ export class RequestQuotationComponent implements OnInit, OnChanges {
     icon = 'pe-7s-calculator icon-gradient bg-tempting-azure';
 
     isLoading = new Subject<boolean>();
-    private selectedFocusArea: string;
-    private selectedProduct: string;
-    private selectedQuantity: number;
-    private termsConditions: boolean = false;
-    private quotation: QuotationModel= <QuotationModel> {};
-    private productsArray: Array<QuotationItemEntity> = [];
+    public selectedFocusArea: string;
+    public selectedProduct: string;
+    public selectedQuantity: number;
+    public termsConditions: boolean = false;
+    public quotation: QuotationModel= <QuotationModel> {};
+    public productsArray: Array<QuotationItemEntity> = [];
 
-    constructor(private quotationService: QuotationService, private productsService: ProductsService, private router: Router,private toastr: ToastrService) {
+    constructor(public quotationService: QuotationService, public productsService: ProductsService, public router: Router,public toastr: ToastrService) {
     }
 
 

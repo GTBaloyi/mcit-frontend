@@ -18,15 +18,15 @@ export class CreateQuotationComponent implements OnInit {
 
 
     isLoading = new Subject<boolean>();
-    private selectedFocusArea: string;
-    private selectedProduct: string;
-    private selectedQuantity: number;
-    private quotation: QuotationModel = <QuotationModel>{};
-    private productsArray: Array<QuotationItemEntity> = [];
-    private userInformation: ClientRegistrationRequestModel = <ClientRegistrationRequestModel>{};
+    public selectedFocusArea: string;
+    public selectedProduct: string;
+    public selectedQuantity: number;
+    public quotation: QuotationModel = <QuotationModel>{};
+    public productsArray: Array<QuotationItemEntity> = [];
+    public userInformation: ClientRegistrationRequestModel = <ClientRegistrationRequestModel>{};
 
 
-    constructor(private quotationService: QuotationService, private productsService: ProductsService, private router: Router, private toastr: ToastrService) {
+    constructor(public quotationService: QuotationService, public productsService: ProductsService, public router: Router, public toastr: ToastrService) {
         this.userInformation = JSON.parse(sessionStorage.getItem("userInformation"));
     }
 

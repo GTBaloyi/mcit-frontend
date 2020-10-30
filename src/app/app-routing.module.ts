@@ -15,7 +15,6 @@ import {ProjectsComponent} from "./components/projects/projects.component";
 import {ViewQuotationPdfComponent} from "./components/view-quotation-pdf/view-quotation-pdf.component";
 import {ViewInvoicePdfComponent} from "./components/view-invoice-pdf/view-invoice-pdf.component";
 import {RegisterComponent} from "./components/register/register.component";
-import {MessagesComponent} from "./components/messages/messages.component";
 import {ProjectDetailsComponent} from "./components/project-details/project-details.component";
 import {MyAccountComponent} from "./components/my-account/my-account.component";
 import {UpdatePasswordComponent} from "./components/update-password/update-password.component";
@@ -38,7 +37,6 @@ const routes: Routes = [
             {path: 'projects', component: ProjectsComponent},
             {path: 'view-quotation-pdf', component: ViewQuotationPdfComponent},
             {path: 'view-invoice-pdf', component: ViewInvoicePdfComponent},
-            {path: 'messages', component: MessagesComponent, data: {extraParameter: 'Messages'}},
             {path: 'project-details', component: ProjectDetailsComponent},
             {path: 'account', component: MyAccountComponent},
             {path: 'updatePassword', component: UpdatePasswordComponent},

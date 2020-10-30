@@ -22,20 +22,20 @@ export class ProjectDetailsComponent implements OnInit {
     subheading = 'View all available projects';
     icon = 'pe-7s-hammer icon-gradient bg-tempting-azure';
 
-    private config: any;
+    public config: any;
     isLoading = new Subject<boolean>();
-    private employeeInformation: EmployeeRequestModel;
-    private ProjectTodoItems: ProjectTodosRequestModel[] = [];
-    private project: ProjectInformationResponseModel = <ProjectInformationResponseModel>'';
-    private currentRate = 0;
+    public employeeInformation: EmployeeRequestModel;
+    public ProjectTodoItems: ProjectTodosRequestModel[] = [];
+    public project: ProjectInformationResponseModel = <ProjectInformationResponseModel>'';
+    public currentRate = 0;
 
-    constructor(private router: Router,
-                private toastr: ToastrService,
-                private modalService: NgbModal,
-                private projectTodosService: ProjectTodosService,
-                private projectsService: ProjectsService,
-                private projectService: ProjectsService,
-                private employeeService: EmployeesService) {
+    constructor(public router: Router,
+                public toastr: ToastrService,
+                public modalService: NgbModal,
+                public projectTodosService: ProjectTodosService,
+                public projectsService: ProjectsService,
+                public projectService: ProjectsService,
+                public employeeService: EmployeesService) {
         this.project = JSON.parse(sessionStorage.getItem("projectDetails"));
 
     }

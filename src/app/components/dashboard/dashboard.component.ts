@@ -17,17 +17,17 @@ export class DashboardComponent implements OnInit {
     icon = 'pe-7s-home icon-gradient bg-tempting-azure';
 
     isLoading = true;
-    private emailAddress : string;
-    private userInformation : ClientRegistrationRequestModel;
-    private clientInvoiceSummary : ClientInvoiceSummary = {};
-    private projects: Array<ProjectInformationResponseModel> = [];
-    private config: any;
+     emailAddress : string;
+     userInformation : ClientRegistrationRequestModel;
+     clientInvoiceSummary : ClientInvoiceSummary = {};
+     projects: Array<ProjectInformationResponseModel> = [];
+     config: any;
 
-    constructor(private projectsService: ProjectsService,
-                private router: Router,
-                private toastr: ToastrService,
-                private clientsReportsService : ClientsReportsService,
-                private clientService: ClientsService) {
+    constructor(public projectsService: ProjectsService,
+                public router: Router,
+                public toastr: ToastrService,
+                public clientsReportsService : ClientsReportsService,
+                public clientService: ClientsService) {
     }
 
 

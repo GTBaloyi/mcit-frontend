@@ -9,9 +9,9 @@ import {EmployeeRequestModel, EmployeesService, LoginResponseModel} from "../../
 })
 export class UserBoxComponent implements OnInit {
 
-  private user : LoginResponseModel;
+  public user : LoginResponseModel;
 
-  constructor(public globals: ThemeOptions, private router: Router) {
+  constructor(public globals: ThemeOptions, public router: Router) {
   }
 
   ngOnInit() {

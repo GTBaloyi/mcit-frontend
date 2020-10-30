@@ -28,15 +28,15 @@ export class ViewQuotationPdfComponent implements OnInit {
     @ViewChild('pdfTable', {static: false}) pdfTable: ElementRef;
     isLoading = new Subject<boolean>();
     quotation: QuotationResponseModel = <QuotationResponseModel>'';
-    private userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;
-    private showModal: boolean;
+    public userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;
+    public showModal: boolean;
 
 
-    constructor(private quotationService: QuotationService,
-                private productsService: ProductsService,
-                private router: Router,
-                private toastr: ToastrService,
-                private invoiceService: InvoiceService) {
+    constructor(public quotationService: QuotationService,
+                public productsService: ProductsService,
+                public router: Router,
+                public toastr: ToastrService,
+                public invoiceService: InvoiceService) {
 
         this.quotation =  JSON.parse(sessionStorage.getItem("viewQuotation"));
         this.userInformation  = JSON.parse(sessionStorage.getItem("userInformation"));

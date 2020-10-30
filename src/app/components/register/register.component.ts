@@ -15,18 +15,18 @@ import {ToastrService} from "ngx-toastr";
 export class RegisterComponent implements OnInit {
 
   isLoading = new Subject<boolean>();
-  private titles: Array<string> = ['Mr', 'Mrs', 'Miss', 'Ms', 'Sir', 'Dr'];
-  private genders: Array<string> = ['Male', 'Female', 'Other'];
-  private companyProfiles: Array<string> = ['Small', 'Large', 'HEIs/Science Council', 'Techno/Star-Entrepreneur'];
-  private result: ClientRegistrationRequestModel;
-  private termsConditions: boolean = false;
-  private registration: RegistrationForm =<RegistrationForm>{};
+  public titles: Array<string> = ['Mr', 'Mrs', 'Miss', 'Ms', 'Sir', 'Dr'];
+  public genders: Array<string> = ['Male', 'Female', 'Other'];
+  public companyProfiles: Array<string> = ['Small', 'Large', 'HEIs/Science Council', 'Techno/Star-Entrepreneur'];
+  public result: ClientRegistrationRequestModel;
+  public termsConditions: boolean = false;
+  public registration: RegistrationForm =<RegistrationForm>{};
 
   constructor(config: NgbDropdownConfig,
-              private usersService: UsersService,
-              private authGuard: AuthGuard,
-              private router: Router,
-              private toastr: ToastrService) {
+              public usersService: UsersService,
+              public authGuard: AuthGuard,
+              public router: Router,
+              public toastr: ToastrService) {
     config.placement = 'bottom-right';
 
   }

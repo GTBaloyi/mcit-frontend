@@ -37,10 +37,6 @@ import {NgReduxModule} from "@angular-redux/store";
 import {LoadingBarRouterModule} from "@ngx-loading-bar/router";
 import {PageTitleComponent} from "../../shared/page-title/page-title.component";
 import {ConfigActions} from "../../ThemeOptions/store/config.actions";
-import {MessageService} from "../../message.service";
-import {PusherService} from "../../pusher.service";
-import {MessagesComponent} from "../messages/messages.component";
-import {NewMessageComponent} from "../new-message/new-message.component";
 import {ViewInvoicePdfComponent} from "../view-invoice-pdf/view-invoice-pdf.component";
 import {ProjectDetailsComponent} from "../project-details/project-details.component";
 
@@ -67,8 +63,6 @@ import {ProjectDetailsComponent} from "../project-details/project-details.compon
       UserBoxComponent,
       HeaderComponent,
       PageTitleComponent,
-      MessagesComponent,
-      NewMessageComponent,
       ViewInvoicePdfComponent,
       ProjectDetailsComponent
 
@@ -96,7 +90,6 @@ import {ProjectDetailsComponent} from "../project-details/project-details.compon
         HttpClientModule
     ],
   exports: [
-
       ReactiveFormsModule,
       FormsModule,
       CommonModule,
@@ -113,9 +106,7 @@ import {ProjectDetailsComponent} from "../project-details/project-details.compon
   ],
   providers: [
       ConfigActions,
-      DashboardService,
-      MessageService,
-      PusherService
+      DashboardService
   ]
 })
 export class DefaultModule { }

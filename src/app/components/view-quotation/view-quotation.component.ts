@@ -32,11 +32,11 @@ export class ViewQuotationComponent implements OnInit {
     showModal: boolean;
 
 
-    constructor(private quotationService: QuotationService,
-                private productsService: ProductsService,
-                private router: Router,
-                private toastr: ToastrService,
-                private invoiceService: InvoiceService) {
+    constructor(public quotationService: QuotationService,
+                public productsService: ProductsService,
+                public router: Router,
+                public toastr: ToastrService,
+                public invoiceService: InvoiceService) {
     }
 
     ngOnInit() {

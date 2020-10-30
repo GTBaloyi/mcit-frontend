@@ -31,32 +31,32 @@ export class ViewInvoicePdfComponent implements OnInit {
 
   @ViewChild('pdfTable', {static: false}) pdfTable: ElementRef;
 
-  private file: any;
-  private invoiceFile: any;
-  private path: string;
-  private config: any;
-  private filter : string;
-  private fileName: string;
-  private showModal: boolean;
-  private amountPayed: number;
-  private reference: string = '';
+  public file: any;
+  public invoiceFile: any;
+  public path: string;
+  public config: any;
+  public filter : string;
+  public fileName: string;
+  public showModal: boolean;
+  public amountPayed: number;
+  public reference: string = '';
   isLoading = new Subject<boolean>();
-  private paymentMethod: string = '';
-  private companyRegistration: string = '';
+  public paymentMethod: string = '';
+  public companyRegistration: string = '';
   invoice: InvoiceResponseModel = <InvoiceResponseModel>'';
   quotation: QuotationResponseModel = <QuotationResponseModel>'';
-  private paymentMethods = ['Cash','Check','Bank transfer','Online','Other'];
-  private userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;
+  public paymentMethods = ['Cash','Check','Bank transfer','Online','Other'];
+  public userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;
 
 
-  constructor(private quotationService: QuotationService,
-              private productsService: ProductsService,
-              private router: Router,
-              private toastr: ToastrService,
-              private invoiceService: InvoiceService,
-              private genericService: GenericServicesService,
-              private modalService: NgbModal,
-              private paymentService : PaymentService) {
+  constructor(public quotationService: QuotationService,
+              public productsService: ProductsService,
+              public router: Router,
+              public toastr: ToastrService,
+              public invoiceService: InvoiceService,
+              public genericService: GenericServicesService,
+              public modalService: NgbModal,
+              public paymentService : PaymentService) {
 
       this.invoice = JSON.parse(sessionStorage.getItem("viewInvoice"));
       console.log('invoice: ', this.invoice);

@@ -33,20 +33,20 @@ export interface RegistrationForm {
 export class LandingPageComponent implements OnInit {
 
     isLoading = new Subject<boolean>();
-    private user: LoginResponseModel;
-    private titles: Array<string> = ['Mr', 'Mrs', 'Miss', 'Ms', 'Sir', 'Dr'];
-    private genders: Array<string> = ['Male', 'Female', 'Other'];
-    private companyProfiles: Array<string> = ['Small', 'Large', 'HEIs/Science Council', 'Techno/Star-Entrepreneur'];
-    private result: ClientRegistrationRequestModel;
-    private termsConditions: boolean = false;
-    private login: LoginForm = <LoginForm>{};
-    private registration: RegistrationForm =<RegistrationForm>{};
+    public user: LoginResponseModel;
+    public titles: Array<string> = ['Mr', 'Mrs', 'Miss', 'Ms', 'Sir', 'Dr'];
+    public genders: Array<string> = ['Male', 'Female', 'Other'];
+    public companyProfiles: Array<string> = ['Small', 'Large', 'HEIs/Science Council', 'Techno/Star-Entrepreneur'];
+    public result: ClientRegistrationRequestModel;
+    public termsConditions: boolean = false;
+    public login: LoginForm = <LoginForm>{};
+    public registration: RegistrationForm =<RegistrationForm>{};
 
     constructor(config: NgbDropdownConfig,
-                private usersService: UsersService,
-                private authGuard: AuthGuard,
-                private router: Router,
-                private toastr: ToastrService) {
+                public usersService: UsersService,
+                public authGuard: AuthGuard,
+                public router: Router,
+                public toastr: ToastrService) {
         config.placement = 'bottom-right';
     }
 
