@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 7000",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -14,6 +14,10 @@
     "build:server:serverless": "webpack --config webpack.server.config.js --progress --colors",
     "aws-deploy": "aws s3 sync dist/ s3://mcp-frontend",
     "swagger:generate": "openapi-generator  generate -i src/app/services/swagger.json -g typescript-angular -o ./src/app/services --config angular.json"
+  },
+  "engines": {
+    "node": "10.9",
+    "npm": "6.4.1"
   },
   "private": true,
   "dependencies": {
