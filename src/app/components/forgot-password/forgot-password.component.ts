@@ -12,11 +12,11 @@ import {Subject} from "rxjs";
 export class ForgotPasswordComponent implements OnInit {
 
     isLoading = new Subject<boolean>();
-    private companyRegistration: string;
-    private email: string;
-    private contactNumber: string;
+    public companyRegistration: string;
+    public email: string;
+    public contactNumber: string;
 
-    constructor(private toastr: ToastrService, private router: Router, private usersService: UsersService) { }
+    constructor(public toastr: ToastrService, public router: Router, public usersService: UsersService) { }
 
     ngOnInit() {
     }

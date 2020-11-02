@@ -129,6 +129,11 @@
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientRegistrationRequestModel"
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/ClientRegistrationRequestModel"
@@ -171,6 +176,74 @@
         "responses": {
           "200": {
             "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/ClientsReports/invoice-summary/{companyRegistration}": {
+      "get": {
+        "tags": [
+          "ClientsReports"
+        ],
+        "parameters": [
+          {
+            "name": "companyRegistration",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientInvoiceSummary"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientInvoiceSummary"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientInvoiceSummary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ClientsReports/invoice-summary": {
+      "get": {
+        "tags": [
+          "ClientsReports"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientInvoiceSummary"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientInvoiceSummary"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientInvoiceSummary"
+                }
+              }
+            }
           }
         }
       }
@@ -259,6 +332,11 @@
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeeResponseModel"
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/EmployeeResponseModel"
@@ -312,6 +390,11 @@
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeeRequestModel"
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/EmployeeRequestModel"
@@ -374,6 +457,93 @@
         }
       }
     },
+    "/api/EmployeesReports/clients-general-report": {
+      "get": {
+        "tags": [
+          "EmployeesReports"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientsGeneralReportsModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientsGeneralReportsModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientsGeneralReportsModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/EmployeesReports/invoice-general-report": {
+      "get": {
+        "tags": [
+          "EmployeesReports"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientsGeneralReportsModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientsGeneralReportsModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientsGeneralReportsModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/EmployeesReports/quotation-general-report": {
+      "get": {
+        "tags": [
+          "EmployeesReports"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuotationGeneralReportModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuotationGeneralReportModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuotationGeneralReportModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Enquiry/create-enquiry": {
       "post": {
         "tags": [
@@ -381,6 +551,11 @@
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnquiryRequestModel"
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/EnquiryRequestModel"
@@ -412,6 +587,11 @@
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnquiryRequestModel"
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/EnquiryRequestModel"
@@ -531,6 +711,67 @@
         }
       }
     },
+    "/api/GenericServices/email-attachment": {
+      "post": {
+        "tags": [
+          "GenericServices"
+        ],
+        "parameters": [
+          {
+            "name": "reciepentAddress",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "body",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "FileName": {
+                    "type": "string"
+                  },
+                  "FormFile": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "FileName": {
+                  "style": "form"
+                },
+                "FormFile": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Invoice/generate-invoice": {
       "post": {
         "tags": [
@@ -538,6 +779,11 @@
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceRequestModel"
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/InvoiceRequestModel"
@@ -586,6 +832,11 @@
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceRequestModel"
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/InvoiceRequestModel"
@@ -675,6 +926,45 @@
         }
       }
     },
+    "/api/Invoice/invoice/by-reference/{invoiceReference}": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "parameters": [
+          {
+            "name": "invoiceReference",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Invoice/invoice": {
       "get": {
         "tags": [
@@ -713,6 +1003,486 @@
         }
       }
     },
+    "/api/Mcts_Kpi_Reports/mcts-kpi-summary-tiles": {
+      "get": {
+        "tags": [
+          "Mcts_Kpi_Reports"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MctsKpiSummaryTile"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MctsKpiSummaryTile"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MctsKpiSummaryTile"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Mcts_Kpi_Reports/mcts-kpi-project-inBudget": {
+      "get": {
+        "tags": [
+          "Mcts_Kpi_Reports"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MctsKpiSummaryTile"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MctsKpiSummaryTile"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MctsKpiSummaryTile"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Mcts_Kpi_Reports/delivered-inTime-report": {
+      "get": {
+        "tags": [
+          "Mcts_Kpi_Reports"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PerformanceIndicatorModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PerformanceIndicatorModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PerformanceIndicatorModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Mcts_Kpi_Reports/customer-satisfaction": {
+      "get": {
+        "tags": [
+          "Mcts_Kpi_Reports"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PerformanceIndicatorModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PerformanceIndicatorModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PerformanceIndicatorModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Payment/by-invoice/{invoiceReference}": {
+      "get": {
+        "tags": [
+          "Payment"
+        ],
+        "parameters": [
+          {
+            "name": "invoiceReference",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaymentResponseModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaymentResponseModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaymentResponseModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Payment/by-company/{companyRegistration}": {
+      "get": {
+        "tags": [
+          "Payment"
+        ],
+        "parameters": [
+          {
+            "name": "companyRegistration",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaymentResponseModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaymentResponseModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaymentResponseModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Payment/by-date/{startDate}/{endDate}": {
+      "get": {
+        "tags": [
+          "Payment"
+        ],
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaymentResponseModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaymentResponseModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaymentResponseModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Payment/all": {
+      "get": {
+        "tags": [
+          "Payment"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaymentResponseModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaymentResponseModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaymentResponseModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Payment/create": {
+      "post": {
+        "tags": [
+          "Payment"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaymentResponseModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaymentResponseModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaymentResponseModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Payment/upload-pop": {
+      "post": {
+        "tags": [
+          "Payment"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "FileName": {
+                    "type": "string"
+                  },
+                  "FormFile": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "FileName": {
+                  "style": "form"
+                },
+                "FormFile": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Payment/update": {
+      "put": {
+        "tags": [
+          "Payment"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Payment/delete": {
+      "put": {
+        "tags": [
+          "Payment"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Products/focusAreas": {
       "get": {
         "tags": [
@@ -744,6 +1514,84 @@
                   "items": {
                     "$ref": "#/components/schemas/FocusAreaModel"
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Products/focusAreas/{name}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FocusAreaModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FocusAreaModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FocusAreaModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Products/product/{name}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AllProductsResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AllProductsResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AllProductsResponseModel"
                 }
               }
             }
@@ -787,6 +1635,74 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Products"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
       }
     },
     "/api/Products/products/{focusArea}": {
@@ -810,17 +1726,26 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/AllProductsResponseModel"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AllProductsResponseModel"
+                  }
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AllProductsResponseModel"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AllProductsResponseModel"
+                  }
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AllProductsResponseModel"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AllProductsResponseModel"
+                  }
                 }
               }
             }
@@ -828,10 +1753,20 @@
         }
       }
     },
-    "/api/Projects": {
-      "get": {
+    "/api/Products/products/{focusAreaName}": {
+      "post": {
         "tags": [
-          "Projects"
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "focusAreaName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -840,10 +1775,1331 @@
         }
       }
     },
-    "/api/Projects/{id}": {
+    "/api/Products/focus-area": {
+      "put": {
+        "tags": [
+          "Products"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FocusAreaModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FocusAreaModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FocusAreaModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FocusAreaModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Products/products/{productID}": {
+      "delete": {
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "productID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Products/products/focusArea": {
+      "delete": {
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "focusArea",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/ProjectExpenditure/all-projectExpenditures": {
+      "get": {
+        "tags": [
+          "ProjectExpenditure"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectExpenditureResponseModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectExpenditureResponseModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectExpenditureResponseModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ProjectExpenditure/by-focusArea/{focusArea}": {
+      "get": {
+        "tags": [
+          "ProjectExpenditure"
+        ],
+        "parameters": [
+          {
+            "name": "focusArea",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectExpenditureResponseModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectExpenditureResponseModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectExpenditureResponseModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ProjectExpenditure/by-item/{item}": {
+      "get": {
+        "tags": [
+          "ProjectExpenditure"
+        ],
+        "parameters": [
+          {
+            "name": "item",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectExpenditureResponseModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectExpenditureResponseModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectExpenditureResponseModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ProjectExpenditure/by-projectNumber/{projectNumber}": {
+      "get": {
+        "tags": [
+          "ProjectExpenditure"
+        ],
+        "parameters": [
+          {
+            "name": "projectNumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectExpenditureResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectExpenditureResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectExpenditureResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ProjectExpenditure/update": {
+      "put": {
+        "tags": [
+          "ProjectExpenditure"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectExpenditureRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectExpenditureRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectExpenditureRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectExpenditureRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/ProjectExpenditure/create": {
+      "post": {
+        "tags": [
+          "ProjectExpenditure"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectExpenditureRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectExpenditureRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectExpenditureRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectExpenditureRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/ProjectExpenditure/delete": {
+      "delete": {
+        "tags": [
+          "ProjectExpenditure"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectExpenditureRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectExpenditureRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectExpenditureRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectExpenditureRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/ProjectProgress/all-projects": {
+      "get": {
+        "tags": [
+          "ProjectProgress"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectProgressResponseModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectProgressResponseModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectProgressResponseModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ProjectProgress/by-quarter/{quarter}": {
+      "get": {
+        "tags": [
+          "ProjectProgress"
+        ],
+        "parameters": [
+          {
+            "name": "quarter",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectProgressResponseModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectProgressResponseModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectProgressResponseModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ProjectProgress/by-projectNumber/{projectNumber}": {
+      "get": {
+        "tags": [
+          "ProjectProgress"
+        ],
+        "parameters": [
+          {
+            "name": "projectNumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectProgressResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectProgressResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectProgressResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ProjectProgress/update": {
+      "put": {
+        "tags": [
+          "ProjectProgress"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectProgressRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectProgressRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectProgressRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectProgressRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/ProjectProgress/create": {
+      "post": {
+        "tags": [
+          "ProjectProgress"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectProgressRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectProgressRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectProgressRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectProgressRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/ProjectProgress/delete/{projectNumber}": {
+      "delete": {
+        "tags": [
+          "ProjectProgress"
+        ],
+        "parameters": [
+          {
+            "name": "projectNumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Projects/all-projects": {
       "get": {
         "tags": [
           "Projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectInformationResponseModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectInformationResponseModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectInformationResponseModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Projects/by-employee/{employeeId}": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "parameters": [
+          {
+            "name": "employeeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectInformationResponseModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectInformationResponseModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectInformationResponseModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Projects/summary/{projectLeaderId}": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "parameters": [
+          {
+            "name": "projectLeaderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectSummaryModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectSummaryModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectSummaryModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Projects/summary": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectSummaryModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectSummaryModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectSummaryModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Projects/by-company/{companyRegistration}": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "parameters": [
+          {
+            "name": "companyRegistration",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectInformationResponseModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectInformationResponseModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectInformationResponseModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Projects/by-invoice/{invoiceId}": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "parameters": [
+          {
+            "name": "invoiceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectInformationResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectInformationResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectInformationResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Projects/by-projectNumber/{projectNumber}": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "parameters": [
+          {
+            "name": "projectNumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectInformationResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectInformationResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectInformationResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Projects/update-project": {
+      "put": {
+        "tags": [
+          "Projects"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectInformationRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectInformationRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectInformationRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectInformationRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Projects/create-project": {
+      "post": {
+        "tags": [
+          "Projects"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectInformationRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectInformationRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectInformationRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectInformationRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Projects/{projectNumber}": {
+      "delete": {
+        "tags": [
+          "Projects"
+        ],
+        "parameters": [
+          {
+            "name": "projectNumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/ProjectTodos/all": {
+      "get": {
+        "tags": [
+          "ProjectTodos"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ProjectTodos/dateRange": {
+      "get": {
+        "tags": [
+          "ProjectTodos"
+        ],
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ProjectTodos/focusArea/{focusArea}": {
+      "get": {
+        "tags": [
+          "ProjectTodos"
+        ],
+        "parameters": [
+          {
+            "name": "focusArea",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ProjectTodos/todos/{employee}": {
+      "get": {
+        "tags": [
+          "ProjectTodos"
+        ],
+        "parameters": [
+          {
+            "name": "employee",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ProjectTodos/todos/{employee}/{projectNumber}": {
+      "get": {
+        "tags": [
+          "ProjectTodos"
+        ],
+        "parameters": [
+          {
+            "name": "employee",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "projectNumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ProjectTodos/item/{item}": {
+      "get": {
+        "tags": [
+          "ProjectTodos"
+        ],
+        "parameters": [
+          {
+            "name": "item",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ProjectTodos/projectNumber/{projectNumber}": {
+      "get": {
+        "tags": [
+          "ProjectTodos"
+        ],
+        "parameters": [
+          {
+            "name": "projectNumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectTodoResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ProjectTodos": {
+      "post": {
+        "tags": [
+          "ProjectTodos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectTodosRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectTodosRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectTodosRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectTodosRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ProjectTodos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectTodosRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectTodosRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectTodosRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectTodosRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/ProjectTodos/delete/{id}": {
+      "delete": {
+        "tags": [
+          "ProjectTodos"
         ],
         "parameters": [
           {
@@ -863,57 +3119,139 @@
         }
       }
     },
-    "/api/Projects/update-project": {
-      "put": {
+    "/api/Quarters/all": {
+      "get": {
         "tags": [
-          "Projects"
+          "Quarters"
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "string"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "string"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "string"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuarterModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuarterModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuarterModel"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/api/Projects/create-project": {
+    "/api/Quarters/{id}": {
+      "get": {
+        "tags": [
+          "Quarters"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuarterModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuarterModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuarterModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Quarters/by-quarter/{quarter}": {
+      "get": {
+        "tags": [
+          "Quarters"
+        ],
+        "parameters": [
+          {
+            "name": "quarter",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuarterModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuarterModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuarterModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Quarters": {
       "post": {
         "tags": [
-          "Projects"
+          "Quarters"
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuarterModel"
+              }
+            },
             "application/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/QuarterModel"
               }
             },
             "text/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/QuarterModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/QuarterModel"
               }
             }
           }
@@ -923,28 +3261,65 @@
             "description": "Success"
           }
         }
-      }
-    },
-    "/api/Projects/delete-project": {
-      "delete": {
+      },
+      "put": {
         "tags": [
-          "Projects"
+          "Quarters"
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuarterModel"
+              }
+            },
             "application/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/QuarterModel"
               }
             },
             "text/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/QuarterModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/QuarterModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Quarters"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuarterModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuarterModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuarterModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuarterModel"
               }
             }
           }
@@ -963,6 +3338,11 @@
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuotationModel"
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/QuotationModel"
@@ -994,6 +3374,11 @@
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuotationModel"
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/QuotationModel"
@@ -1042,6 +3427,11 @@
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuotationModel"
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/QuotationModel"
@@ -1096,6 +3486,45 @@
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuotationResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuotationResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuotationResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Quotation/quote-reference/{quoteReference}": {
+      "get": {
+        "tags": [
+          "Quotation"
+        ],
+        "parameters": [
+          {
+            "name": "quoteReference",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -1209,6 +3638,317 @@
         }
       }
     },
+    "/api/TargetSettings/all": {
+      "get": {
+        "tags": [
+          "TargetSettings"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TargetSettingModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TargetSettingModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TargetSettingModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/TargetSettings/by-id/{id}": {
+      "get": {
+        "tags": [
+          "TargetSettings"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TargetSettingModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TargetSettingModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TargetSettingModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/TargetSettings/by-title/{title}": {
+      "get": {
+        "tags": [
+          "TargetSettings"
+        ],
+        "parameters": [
+          {
+            "name": "title",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TargetSettingModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TargetSettingModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TargetSettingModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/TargetSettings/by-category/{category}": {
+      "get": {
+        "tags": [
+          "TargetSettings"
+        ],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TargetSettingModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TargetSettingModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TargetSettingModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/TargetSettings/create": {
+      "post": {
+        "tags": [
+          "TargetSettings"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetSettingModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetSettingModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetSettingModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetSettingModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TargetSettingModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TargetSettingModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TargetSettingModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/TargetSettings/update": {
+      "put": {
+        "tags": [
+          "TargetSettings"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetSettingModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetSettingModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetSettingModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetSettingModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TargetSettingModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TargetSettingModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TargetSettingModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/TargetSettings/delete/{id}": {
+      "delete": {
+        "tags": [
+          "TargetSettings"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TargetSettingModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TargetSettingModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TargetSettingModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Users/login": {
       "get": {
         "tags": [
@@ -1261,6 +4001,11 @@
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientRegistrationRequestModel"
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/ClientRegistrationRequestModel"
@@ -1440,6 +4185,36 @@
         },
         "additionalProperties": false
       },
+      "ClientInvoiceSummary": {
+        "type": "object",
+        "properties": {
+          "paidInvoices": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paidInvoiceAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "unpaidInvoices": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unpaidInvoiceAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "overdueInvoices": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "overdueInvoiceAmount": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
       "EmployeeResponseModel": {
         "type": "object",
         "properties": {
@@ -1522,6 +4297,62 @@
           "position": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClientsGeneralReportsModel": {
+        "type": "object",
+        "properties": {
+          "totalActiveClients": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalInActiveClients": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalSuspendedClients": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalDeactivatedClients": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "averageClientSatisfaction": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuotationGeneralReportModel": {
+        "type": "object",
+        "properties": {
+          "totalQuotationsRequested": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPendingManagerApproval": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPendingEmployeeAttention": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPendingCustomerApproval": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalAccepted": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalRejected": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -1819,6 +4650,162 @@
         },
         "additionalProperties": false
       },
+      "MctsKpiSummaryTile": {
+        "type": "object",
+        "properties": {
+          "pInvoiceValueAdded": {
+            "type": "number",
+            "format": "double"
+          },
+          "onTimeDelivery": {
+            "type": "number",
+            "format": "double"
+          },
+          "inBudgetProject": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PerformanceIndicatorModel": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "overallTarget": {
+            "type": "number",
+            "format": "double"
+          },
+          "category": {
+            "type": "string",
+            "nullable": true
+          },
+          "actualOverallTarget": {
+            "type": "number",
+            "format": "double"
+          },
+          "firstQuarterTarget": {
+            "type": "number",
+            "format": "double"
+          },
+          "firstQuarterActual": {
+            "type": "number",
+            "format": "double"
+          },
+          "secondQuarterTarget": {
+            "type": "number",
+            "format": "double"
+          },
+          "secondQuarterActual": {
+            "type": "number",
+            "format": "double"
+          },
+          "thirdQuarterTarget": {
+            "type": "number",
+            "format": "double"
+          },
+          "thirdQuarterActual": {
+            "type": "number",
+            "format": "double"
+          },
+          "fourthQuarterTarget": {
+            "type": "number",
+            "format": "double"
+          },
+          "fourthQuarterActual": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentResponseModel": {
+        "type": "object",
+        "properties": {
+          "paymentId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "invoiceReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateOfPayment": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "paymentType": {
+            "type": "string",
+            "nullable": true
+          },
+          "companyRegistration": {
+            "type": "string",
+            "nullable": true
+          },
+          "proofOfPaymentURL": {
+            "type": "string",
+            "nullable": true
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "approvedBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentRequestModel": {
+        "type": "object",
+        "properties": {
+          "paymentId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "invoiceReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateOfPayment": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "proofOfPaymentURL": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentType": {
+            "type": "string",
+            "nullable": true
+          },
+          "companyRegistration": {
+            "type": "string",
+            "nullable": true
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "approvedBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "FocusAreaModel": {
         "type": "object",
         "properties": {
@@ -1855,6 +4842,489 @@
           "timeStudyPerTest": {
             "type": "number",
             "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductRequestModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "timeStudyPerTest": {
+            "type": "number",
+            "format": "double"
+          },
+          "ratePerHour": {
+            "type": "number",
+            "format": "double"
+          },
+          "focusArea": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectExpenditureResponseModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "focusArea": {
+            "type": "string",
+            "nullable": true
+          },
+          "item": {
+            "type": "string",
+            "nullable": true
+          },
+          "actualCost": {
+            "type": "number",
+            "format": "double"
+          },
+          "targetCost": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectExpenditureRequestModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "focusArea": {
+            "type": "string",
+            "nullable": true
+          },
+          "item": {
+            "type": "string",
+            "nullable": true
+          },
+          "actualCost": {
+            "type": "number",
+            "format": "double"
+          },
+          "targetCost": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectProgressResponseModel": {
+        "type": "object",
+        "properties": {
+          "projectNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "targetStartDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "targetEndDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "actualStartDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "actualEndDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "projectStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "progressUpdatePercentage": {
+            "type": "number",
+            "format": "double"
+          },
+          "startedQuarter": {
+            "type": "string",
+            "nullable": true
+          },
+          "currentQuarter": {
+            "type": "string",
+            "nullable": true
+          },
+          "endingQuarter": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectDuration": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectProgressRequestModel": {
+        "type": "object",
+        "properties": {
+          "projectNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "targetStartDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "targetEndDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "actualStartDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "actualEndDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "projectStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "progressUpdatePercentage": {
+            "type": "number",
+            "format": "double"
+          },
+          "startedQuarter": {
+            "type": "string",
+            "nullable": true
+          },
+          "currentQuarter": {
+            "type": "string",
+            "nullable": true
+          },
+          "endingQuarter": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResponsibleEmployees": {
+        "type": "object",
+        "properties": {
+          "employeeNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "surname": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectTodoResponseModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "sequenceNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isSequential": {
+            "type": "boolean"
+          },
+          "focusArea": {
+            "type": "string",
+            "nullable": true
+          },
+          "item": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateStarted": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateEnded": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "responsibleEmployees": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResponsibleEmployees"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectInformationResponseModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectName": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "invoiceReferenceNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "companyRegistrationNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "assignedEmployees": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "projectSatisfaction": {
+            "type": "number",
+            "format": "double"
+          },
+          "projectExpenditure": {
+            "$ref": "#/components/schemas/ProjectExpenditureResponseModel"
+          },
+          "projectTodo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProjectTodoResponseModel"
+            },
+            "nullable": true
+          },
+          "projectProgress": {
+            "$ref": "#/components/schemas/ProjectProgressResponseModel"
+          },
+          "createdOn": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "projectLeaderId": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectLeaderNames": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectSummaryModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectName": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "companyRegistrationNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "invoiceReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectProgress": {
+            "type": "number",
+            "format": "double"
+          },
+          "employeeNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "surname": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdOn": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectInformationRequestModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectName": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSequential": {
+            "type": "boolean"
+          },
+          "projectDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "invoiceReferenceNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "companyRegistrationNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectSatisfaction": {
+            "type": "number",
+            "format": "double"
+          },
+          "createdOn": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "projectLeaderId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectTodosRequestModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "sequenceNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isSequential": {
+            "type": "boolean"
+          },
+          "focusArea": {
+            "type": "string",
+            "nullable": true
+          },
+          "item": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateStarted": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateEnded": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "responsibleEmployees": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuarterModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quarter": {
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false
@@ -1913,11 +5383,11 @@
             "type": "number",
             "format": "double"
           },
-          "globalDiscount": {
+          "discount": {
             "type": "number",
             "format": "double"
           },
-          "globalTax": {
+          "vatAmount": {
             "type": "number",
             "format": "double"
           },
@@ -1971,6 +5441,10 @@
             "type": "string",
             "nullable": true
           },
+          "company_registration": {
+            "type": "string",
+            "nullable": true
+          },
           "bill_address": {
             "type": "string",
             "nullable": true
@@ -2017,6 +5491,64 @@
           "description": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TargetSettingModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "nullable": true
+          },
+          "actualOverallTarget": {
+            "type": "number",
+            "format": "double"
+          },
+          "overallTarget": {
+            "type": "number",
+            "format": "double"
+          },
+          "q1_target": {
+            "type": "number",
+            "format": "double"
+          },
+          "q2_target": {
+            "type": "number",
+            "format": "double"
+          },
+          "q3_target": {
+            "type": "number",
+            "format": "double"
+          },
+          "q4_target": {
+            "type": "number",
+            "format": "double"
+          },
+          "q1_actual": {
+            "type": "number",
+            "format": "double"
+          },
+          "q2_actual": {
+            "type": "number",
+            "format": "double"
+          },
+          "q3_actual": {
+            "type": "number",
+            "format": "double"
+          },
+          "q4_actual": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false

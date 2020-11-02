@@ -1,0 +1,205 @@
+<app-page-title [heading]="heading" [subheading]="subheading" [icon]="icon"></app-page-title>
+
+
+<div class="card">
+    <div class="invoice">
+        <div class="toolbar hidden-print">
+            <div class="text-right">
+                <button type="button" class="btn btn-dark" routerLink="/invoice" value="Convert">
+                    <i class="pe-7s-back btn-icon-wrapper"></i>
+                    Back
+                </button>
+
+                <button type="button" class="btn btn-light" (click)="convertToPDF()" value="Convert">
+                    <i class="pe-7s-cloud-download btn-icon-wrapper"></i>
+                    Download
+                </button>
+                <button type="button" class="btn btn-primary" (click)="openModal(MakePayment, invoice)">
+                    <i class="pe-7s-credit btn-icon-wrapper"></i>
+                    Payment
+                </button>
+            </div>
+            <hr>
+        </div>
+        <div class="invoice overflow-auto" #pdfTable id="pdfTable">
+            <div style="min-width: 600px">
+                <header>
+                    <div class="row">
+                        <div class="col">
+                            <img src="../../../assets/quotationLogo.png" data-holder-rendered="true" />
+                        </div>
+                        <div class="col company-details">
+                            <h3 class="name">
+                                Metal Casting Technology Station (MCTS)
+                            </h3>
+                            <div>University of Johannesburg 101 John Orr Building Beit Street Doornfontein
+                                Campus P.O. Box 17001 Doornfontein 2028 VAT No. 4900127681, Johannesburg,
+                                2094 Gauteng, South Africa</div>
+                            <div>Phone: (+27) 11 559 6290</div>
+                            <div>Email: commuczz@communityengagement.co.za</div>
+                        </div>
+                    </div>
+                </header>
+                <main>
+                    <div class="row contacts">
+                        <div class="col invoice-to">
+                            <div class="text-gray-light">INVOICE TO:</div>
+                            <div class="address">Registration number: {{invoice.company_registration}}</div>
+                            <div class="address">Bill address: {{invoice.bill_address}}</div>
+                            <div class="email"><a href="">Email address: {{userInformation.contactEmail}}</a></div>
+                        </div>
+                        <div class="col invoice-details">
+                            <h1 class="invoice-id">INVOICE {{invoice.reference}}</h1>
+                            <div class="date">Date of Invoice: {{invoice.invoice_date  | date: 'yyyy-MM-dd'}}</div>
+                            <div class="date">Due Date: {{invoice.date_due  | date: 'yyyy-MM-dd'}}</div>
+                        </div>
+                    </div>
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th class="text-left">PRODUCT DESCRIPTION</th>
+                            <th class="text-right">QUANTITY</th>
+                            <th class="text-right">UNIT PRICE</th>
+                            <th class="text-right">TOTAL</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let product of invoice.items; let i = index">
+                            <td class="no">{{i}}</td>
+                            <td class="text-left"><h3>{{product.focusArea}}</h3>{{product.item}}</td>
+                            <td class="unit">{{product.quantity}}</td>
+                            <td class="qty">{{product.unit_Price}}</td>
+                            <td class="total">{{product.total}}</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2">SUBTOTAL</td>
+                            <td>R {{invoice.subtotal}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2">VAT {{invoice.vat_percentage * 100}}%</td>
+                            <td>R{{invoice.vat}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2">GRAND TOTAL</td>
+                            <td>R{{invoice.grand_totoal}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2">Amount Due</td>
+                            <td>R{{invoice.amount_due}}</td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                    <div class="notices">
+                        <div>Terms & Conditions:</div>
+                        <div class="notice">
+                            All quotations, indication of costs and financial commitments given or made by the Seller are based on the assumption of
+                            the validity of the information provided is fully accurate and correct in all circumstances. The Seller maintains the right at
+                            any stage to re-negotiate any contract, cost agreement or any other relevant commitment should any information provided
+                            by the Purchaser fail to be fully valid accurate and correct.</div>
+                    </div>
+                </main>
+                <footer>
+                    Invoice was created on a computer and is valid without the signature and seal.
+                </footer>
+            </div>
+            <div></div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template class="modal fade" #MakePayment let-modal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="card-title" id="exampleModalLabel3">Make Payment</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.dismiss()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form class="pt-3"  #makePaymentForm="ngForm" (ngSubmit)="makePaymentForm.form.valid && uploadPop()">
+                <div class="form-group" >
+                    <label>Invoice Reference</label>
+                    <input class="form-control text-left" type="text" placeholder="Invoice reference"
+                           [(ngModel)]="reference"
+                           name="invoiceReference"
+                           #invoiceReference="ngModel"
+                           [ngClass]="{ 'is-invalid': makePaymentForm.submitted && invoiceReference.invalid}"
+                           readonly>
+                    <div *ngIf="makePaymentForm.submitted && invoiceReference.invalid" class="invalid-feedback">
+                        <div *ngIf="invoiceReference.errors.required">Invoice reference is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Payment type</label>
+                    <select  type="text"
+                             [(ngModel)]="paymentMethod"
+                             name="paymentType"
+                             #paymentType="ngModel"
+                             [ngClass]="{ 'is-invalid': makePaymentForm.submitted && paymentType.invalid }"
+                             class="form-control text-left"
+                             required>
+                        <option *ngFor="let option of paymentMethods" [value]="option">{{option}}</option>
+                    </select>
+                </div>
+
+                <label>Amount</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text btn-light">R</span></div>
+                    <input class="form-control" type="number"  placeholder="Amount"
+                           [(ngModel)]="amountPayed"
+                           name="amount"
+                           #amount="ngModel"
+                           [ngClass]="{ 'is-invalid': makePaymentForm.submitted && amount.invalid }"
+                           required>
+                    <div class="input-group-append"><span class="input-group-text btn-light">.00</span></div>
+                    <div *ngIf="makePaymentForm.submitted && amount.invalid" class="invalid-feedback">
+                        <div *ngIf="amount.errors.required">Amount is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="position-relative">
+                        <label>File</label>
+                        <input class="form-control-file " type="file" name="files"
+                               (change)="fileEvent($event)"
+                               [(ngModel)]="path"
+                               name="formFile"
+                               #formFile="ngModel"
+                               [ngClass]="{ 'is-invalid': makePaymentForm.submitted && formFile.invalid }"
+                               required>
+                        <div *ngIf="makePaymentForm.submitted && formFile.invalid" class="invalid-feedback">
+                            <div *ngIf="formFile.errors.required">File is required</div>
+                        </div>
+                        <small class="form-text text-muted">
+                            Supported file formats include JPG, JPEG, PNG, PNG, GIF, PDF, DOCX., TXT.
+                            You can find out the file format by looking at the last 3-4 letters on the file name.
+                            (This is known as the extension.)
+                            For example my-logo.jpg is a JPG format image.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="modal.close()">Cancel</button>
+                    <button type="submit" class="btn btn-info" data-dismiss="Submit" >Continue</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+<div *ngIf="isLoading | async" class="overlay">
+    <div class="spinner">
+        <img class="loader" src="../../../assets/wheel.gif">
+    </div>
+</div>
+

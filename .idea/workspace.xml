@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a32c9bf2-7d9a-450a-9ad2-e14383b58691" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/clients.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/clients.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/clientsReports.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/clientsReports.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/employees.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/employees.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/employeesReports.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/employeesReports.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/enquiry.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/enquiry.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/genericServices.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/genericServices.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/invoice.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/invoice.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/mctsKpiReports.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/mctsKpiReports.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/payment.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/payment.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/products.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/products.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/projectExpenditure.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/projectExpenditure.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/projectProgress.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/projectProgress.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/projectTodos.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/projectTodos.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/projects.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/projects.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/quarters.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/quarters.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/quotation.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/quotation.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/reports.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/reports.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/targetSettings.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/targetSettings.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api/users.service.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="SCSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/feature/login_screen" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/metal-casting-system-app/node_modules" />
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="ProjectId" id="1gCGUdSsHsbOzfPIkiM63A6le0W" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="android.sdk.path" value="$ANDROID_SDK_ROOT$" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1597600807693" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+  </component>
+  <component name="Push.Settings">
+    <force-push-targets>
+      <force-push-target remote-path="origin" branch="feature_redesign_client_app" />
+    </force-push-targets>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/assets/components/icons" />
+      <recent name="$PROJECT_DIR$/src/assets" />
+      <recent name="$PROJECT_DIR$/src/app/components/invoices" />
+      <recent name="$PROJECT_DIR$/src/app/components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/components" />
+      <recent name="$PROJECT_DIR$/src/app" />
+      <recent name="$PROJECT_DIR$/src/assets" />
+      <recent name="$PROJECT_DIR$/src/assets/scss" />
+      <recent name="$PROJECT_DIR$/src/app/shared" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.start">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="build:serverless:deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build:serverless:deploy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a32c9bf2-7d9a-450a-9ad2-e14383b58691" name="Default Changelist" comment="" />
+      <created>1583953473489</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583953473489</updated>
+      <workItem from="1583953478327" duration="259000" />
+      <workItem from="1583953805017" duration="488000" />
+      <workItem from="1584008083320" duration="1545000" />
+      <workItem from="1584011663757" duration="1256000" />
+      <workItem from="1584013884664" duration="373000" />
+      <workItem from="1584014635237" duration="10386000" />
+      <workItem from="1584079984191" duration="3402000" />
+      <workItem from="1584094942188" duration="2480000" />
+      <workItem from="1584097809028" duration="17733000" />
+      <workItem from="1584205959753" duration="5253000" />
+      <workItem from="1584211764746" duration="5065000" />
+      <workItem from="1584217944864" duration="345000" />
+      <workItem from="1584218489184" duration="16915000" />
+      <workItem from="1584302331806" duration="235000" />
+      <workItem from="1584302735998" duration="723000" />
+      <workItem from="1584379870604" duration="603000" />
+      <workItem from="1584462055194" duration="5000" />
+      <workItem from="1584861583865" duration="4960000" />
+      <workItem from="1584887035927" duration="2016000" />
+      <workItem from="1584891245544" duration="1814000" />
+      <workItem from="1584896680236" duration="1427000" />
+      <workItem from="1585066505556" duration="639000" />
+      <workItem from="1585339722350" duration="24576000" />
+      <workItem from="1585425188943" duration="12511000" />
+      <workItem from="1585489318318" duration="7219000" />
+      <workItem from="1585509662076" duration="90000" />
+      <workItem from="1585509819481" duration="30043000" />
+      <workItem from="1585683411355" duration="23945000" />
+      <workItem from="1586071799009" duration="3581000" />
+      <workItem from="1586443813885" duration="2083000" />
+      <workItem from="1586623258497" duration="1278000" />
+      <workItem from="1586716946106" duration="330000" />
+      <workItem from="1586793168490" duration="2996000" />
+      <workItem from="1587219945104" duration="17447000" />
+      <workItem from="1587649578488" duration="21358000" />
+      <workItem from="1588179885904" duration="1088000" />
+      <workItem from="1588781148813" duration="664000" />
+      <workItem from="1588959859800" duration="48446000" />
+      <workItem from="1589480741691" duration="1021000" />
+      <workItem from="1589482735614" duration="15000" />
+      <workItem from="1589482753705" duration="20000" />
+      <workItem from="1589482776747" duration="58000" />
+      <workItem from="1589482849723" duration="15042000" />
+      <workItem from="1589723166597" duration="1837000" />
+      <workItem from="1590171410673" duration="7113000" />
+      <workItem from="1590576209633" duration="221000" />
+      <workItem from="1592467215571" duration="17746000" />
+      <workItem from="1592550024952" duration="107564000" />
+      <workItem from="1595171352462" duration="10486000" />
+      <workItem from="1595331154365" duration="20104000" />
+      <workItem from="1595673945042" duration="1310000" />
+      <workItem from="1595675538086" duration="34808000" />
+      <workItem from="1595781317188" duration="11637000" />
+      <workItem from="1595872360231" duration="57135000" />
+      <workItem from="1596053237244" duration="5978000" />
+      <workItem from="1596059437936" duration="796000" />
+      <workItem from="1596100980507" duration="26175000" />
+      <workItem from="1596817370448" duration="7883000" />
+      <workItem from="1597078744909" duration="4788000" />
+      <workItem from="1597165710183" duration="7631000" />
+      <workItem from="1597341168861" duration="7897000" />
+      <workItem from="1597399443654" duration="7613000" />
+      <workItem from="1597415502315" duration="138000" />
+      <workItem from="1597420654745" duration="19464000" />
+      <workItem from="1597601279907" duration="1840000" />
+      <workItem from="1597604685582" duration="1664000" />
+      <workItem from="1597611189792" duration="2060000" />
+      <workItem from="1597613793862" duration="1790000" />
+      <workItem from="1597615761016" duration="2059000" />
+      <workItem from="1597650786853" duration="690000" />
+      <workItem from="1597667087079" duration="3021000" />
+      <workItem from="1597678828034" duration="885000" />
+      <workItem from="1597687415208" duration="9000" />
+      <workItem from="1597687447732" duration="9865000" />
+      <workItem from="1597700168577" duration="85066000" />
+      <workItem from="1598092454404" duration="33090000" />
+      <workItem from="1598298494490" duration="43601000" />
+      <workItem from="1598553197297" duration="2001000" />
+      <workItem from="1598809308138" duration="5536000" />
+      <workItem from="1598904321872" duration="2236000" />
+      <workItem from="1598955582969" duration="2586000" />
+      <workItem from="1598965329980" duration="380000" />
+      <workItem from="1598965755037" duration="21399000" />
+      <workItem from="1599505774560" duration="12455000" />
+      <workItem from="1599722421616" duration="4720000" />
+      <workItem from="1600796830181" duration="6295000" />
+      <workItem from="1601315491355" duration="42367000" />
+      <workItem from="1601753387540" duration="2158000" />
+      <workItem from="1601840068200" duration="38902000" />
+      <workItem from="1602111860256" duration="22824000" />
+      <workItem from="1603375337698" duration="14497000" />
+      <workItem from="1603973871889" duration="150000" />
+      <workItem from="1603987107138" duration="641000" />
+      <workItem from="1603990118201" duration="222000" />
+      <workItem from="1603991984517" duration="448000" />
+      <workItem from="1603996640811" duration="2339000" />
+      <workItem from="1604027548890" duration="5739000" />
+    </task>
+    <task id="LOCAL-00001" summary="forgot password screen in progress">
+      <created>1589561420978</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589561420978</updated>
+    </task>
+    <task id="LOCAL-00002" summary="forgot password screen done">
+      <created>1592500154612</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1592500154612</updated>
+    </task>
+    <task id="LOCAL-00003" summary="client profile screen in progress">
+      <created>1593258669369</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1593258669370</updated>
+    </task>
+    <task id="LOCAL-00004" summary="client profile screen in progress">
+      <created>1595351634859</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1595351634860</updated>
+    </task>
+    <task id="LOCAL-00005" summary="redesign in progress">
+      <created>1596104015629</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1596104015629</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Quotation pdf done">
+      <created>1596133090855</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1596133090855</updated>
+    </task>
+    <task id="LOCAL-00007" summary="screen redesign">
+      <created>1597165862000</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1597165862000</updated>
+    </task>
+    <task id="LOCAL-00008" summary="screen designing">
+      <created>1597346779699</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1597346779700</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Quotation pdf done">
+      <created>1597346936928</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1597346936928</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Quotation pdf done">
+      <created>1597347446482</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1597347446482</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Quotation pdf done">
+      <created>1597348143872</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1597348143872</updated>
+    </task>
+    <task id="LOCAL-00012" summary="redesing in progress">
+      <created>1597667016062</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1597667016062</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Quotation pdf done">
+      <created>1598018653700</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1598018653702</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Quotation pdf done">
+      <created>1598355797019</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1598355797019</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Quotation pdf done">
+      <created>1598548193826</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1598548193829</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Quotation pdf done">
+      <created>1599759426102</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1599759426102</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Quotation pdf done">
+      <created>1599830163116</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1599830163116</updated>
+    </task>
+    <task id="LOCAL-00018" summary="done alot of functionality">
+      <created>1603396040459</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1603396040459</updated>
+    </task>
+    <task id="LOCAL-00019" summary="done alot of functionality">
+      <created>1603397773704</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1603397773706</updated>
+    </task>
+    <task id="LOCAL-00020" summary="done alot of functionality">
+      <created>1603951879738</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1603951879738</updated>
+    </task>
+    <task id="LOCAL-00021" summary="login screen fix">
+      <created>1603974010680</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1603974010680</updated>
+    </task>
+    <task id="LOCAL-00022" summary="done alot of functionality">
+      <created>1604000689493</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1604000689493</updated>
+    </task>
+    <task id="LOCAL-00023" summary="done alot of functionality">
+      <created>1604005765101</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1604005765101</updated>
+    </task>
+    <task id="LOCAL-00024" summary="done alot of functionality">
+      <created>1604036097194</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1604036097195</updated>
+    </task>
+    <task id="LOCAL-00025" summary="done alot of functionality">
+      <created>1604037942048</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1604037942048</updated>
+    </task>
+    <task id="LOCAL-00026" summary="done alot of functionality">
+      <created>1604038598234</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1604038598234</updated>
+    </task>
+    <task id="LOCAL-00027" summary="done alot of functionality">
+      <created>1604038989294</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1604038989294</updated>
+    </task>
+    <task id="LOCAL-00028" summary="done alot of functionality">
+      <created>1604039191777</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1604039191777</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <MESSAGE value="first  initial commit" />
+    <MESSAGE value="second design" />
+    <MESSAGE value="login screen design" />
+    <MESSAGE value="registration screen design" />
+    <MESSAGE value="forgot password screen in progress" />
+    <MESSAGE value="forgot password screen done" />
+    <MESSAGE value="client profile screen in progress" />
+    <MESSAGE value="redesign in progress" />
+    <MESSAGE value="screen redesign" />
+    <MESSAGE value="screen designing" />
+    <MESSAGE value="redesing in progress" />
+    <MESSAGE value="Quotation pdf done" />
+    <MESSAGE value="login screen fix" />
+    <MESSAGE value="done alot of functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="done alot of functionality" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="208" y="31" key="#Project_Structure" timestamp="1601753270014">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="208" y="31" key="#Project_Structure/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1601753270014" />
+    <state x="208" y="31" key="#Project_Structure/0.0.1440.900@0.0.1440.900" timestamp="1597617841760" />
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597689299094">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1597689299094" />
+    <state x="766" y="246" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604038935470">
+      <screen x="0" y="23" width="1440" height="829" />
+    </state>
+    <state x="766" y="246" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.829/34.-745.1366.745@0.23.1440.829" timestamp="1604038935470" />
+    <state x="766" y="246" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.829@0.23.1440.829" timestamp="1598809852534" />
+    <state x="458" y="191" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604035260583">
+      <screen x="0" y="23" width="1440" height="829" />
+    </state>
+    <state x="458" y="191" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.829/34.-745.1366.745@0.23.1440.829" timestamp="1604035260583" />
+    <state x="100" y="100" width="1240" height="700" key="AVDManager" timestamp="1597615553959">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="100" y="100" width="1240" height="700" key="AVDManager/0.0.1440.900@0.0.1440.900" timestamp="1597615553959" />
+    <state x="583" y="221" key="AndroidProcessChooserDialog" timestamp="1597614165049">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="583" y="221" key="AndroidProcessChooserDialog/0.0.1440.900@0.0.1440.900" timestamp="1597614165049" />
+    <state x="141" y="23" width="1149" height="829" key="CommitChangelistDialog2" timestamp="1604039191569">
+      <screen x="0" y="23" width="1440" height="829" />
+    </state>
+    <state x="141" y="25" key="CommitChangelistDialog2/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1603974008275" />
+    <state x="141" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1598548193039" />
+    <state x="141" y="23" key="CommitChangelistDialog2/0.23.1440.827@0.23.1440.827" timestamp="1604000689177" />
+    <state x="141" y="23" width="1149" height="829" key="CommitChangelistDialog2/0.23.1440.829/34.-745.1366.745@0.23.1440.829" timestamp="1604039191569" />
+    <state x="141" y="23" width="1148" height="829" key="CommitChangelistDialog2/0.23.1440.829@0.23.1440.829" timestamp="1604005764816" />
+    <state x="105" y="117" width="1230" height="666" key="DiffContextDialog" timestamp="1598007946611">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="105" y="117" width="1230" height="666" key="DiffContextDialog/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1598007946611" />
+    <state x="134" y="-668" width="1166" height="568" key="DiffContextDialog/0.23.1440.877/34.-768.1366.768@34.-768.1366.768" timestamp="1597789786974" />
+    <state width="1398" height="238" key="GridCell.Tab.0.bottom" timestamp="1604035393885">
+      <screen x="0" y="23" width="1440" height="829" />
+    </state>
+    <state width="1398" height="273" key="GridCell.Tab.0.bottom/0.0.1440.838/34.-745.1366.745@0.0.1440.838" timestamp="1603952849165" />
+    <state width="1398" height="265" key="GridCell.Tab.0.bottom/0.0.1440.900/34.-745.1366.745@0.0.1440.900" timestamp="1601753353522" />
+    <state width="1398" height="273" key="GridCell.Tab.0.bottom/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1604027471444" />
+    <state width="1324" height="276" key="GridCell.Tab.0.bottom/0.0.1440.900/34.-768.1366.768@34.-768.1366.768" timestamp="1601057556162" />
+    <state width="1398" height="265" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1601842345382" />
+    <state width="1398" height="265" key="GridCell.Tab.0.bottom/0.23.1440.821@0.23.1440.821" timestamp="1601839231013" />
+    <state width="1324" height="276" key="GridCell.Tab.0.bottom/0.23.1440.824/34.-745.1366.745@0.23.1440.824" timestamp="1601314778301" />
+    <state width="1398" height="336" key="GridCell.Tab.0.bottom/0.23.1440.825/34.-745.1366.745@0.23.1440.825" timestamp="1598552937319" />
+    <state width="1398" height="238" key="GridCell.Tab.0.bottom/0.23.1440.829/34.-745.1366.745@0.23.1440.829" timestamp="1604035393885" />
+    <state width="1398" height="273" key="GridCell.Tab.0.bottom/0.23.1440.830/34.-745.1366.745@0.23.1440.830" timestamp="1604035121307" />
+    <state width="1398" height="238" key="GridCell.Tab.0.center" timestamp="1604035393882">
+      <screen x="0" y="23" width="1440" height="829" />
+    </state>
+    <state width="1398" height="273" key="GridCell.Tab.0.center/0.0.1440.838/34.-745.1366.745@0.0.1440.838" timestamp="1603952849078" />
+    <state width="1398" height="265" key="GridCell.Tab.0.center/0.0.1440.900/34.-745.1366.745@0.0.1440.900" timestamp="1601753353517" />
+    <state width="1398" height="273" key="GridCell.Tab.0.center/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1604027471442" />
+    <state width="1324" height="276" key="GridCell.Tab.0.center/0.0.1440.900/34.-768.1366.768@34.-768.1366.768" timestamp="1601057556158" />
+    <state width="1398" height="265" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1601842345378" />
+    <state width="1398" height="265" key="GridCell.Tab.0.center/0.23.1440.821@0.23.1440.821" timestamp="1601839231011" />
+    <state width="1324" height="276" key="GridCell.Tab.0.center/0.23.1440.824/34.-745.1366.745@0.23.1440.824" timestamp="1601314778289" />
+    <state width="1398" height="336" key="GridCell.Tab.0.center/0.23.1440.825/34.-745.1366.745@0.23.1440.825" timestamp="1598552937313" />
+    <state width="1398" height="238" key="GridCell.Tab.0.center/0.23.1440.829/34.-745.1366.745@0.23.1440.829" timestamp="1604035393882" />
+    <state width="1398" height="273" key="GridCell.Tab.0.center/0.23.1440.830/34.-745.1366.745@0.23.1440.830" timestamp="1604035121303" />
+    <state width="1398" height="238" key="GridCell.Tab.0.left" timestamp="1604035393880">
+      <screen x="0" y="23" width="1440" height="829" />
+    </state>
+    <state width="1398" height="273" key="GridCell.Tab.0.left/0.0.1440.838/34.-745.1366.745@0.0.1440.838" timestamp="1603952848779" />
+    <state width="1398" height="265" key="GridCell.Tab.0.left/0.0.1440.900/34.-745.1366.745@0.0.1440.900" timestamp="1601753353514" />
+    <state width="1398" height="273" key="GridCell.Tab.0.left/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1604027471441" />
+    <state width="1324" height="276" key="GridCell.Tab.0.left/0.0.1440.900/34.-768.1366.768@34.-768.1366.768" timestamp="1601057556156" />
+    <state width="1398" height="265" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1601842345377" />
+    <state width="1398" height="265" key="GridCell.Tab.0.left/0.23.1440.821@0.23.1440.821" timestamp="1601839231009" />
+    <state width="1324" height="276" key="GridCell.Tab.0.left/0.23.1440.824/34.-745.1366.745@0.23.1440.824" timestamp="1601314778285" />
+    <state width="1398" height="336" key="GridCell.Tab.0.left/0.23.1440.825/34.-745.1366.745@0.23.1440.825" timestamp="1598552937312" />
+    <state width="1398" height="238" key="GridCell.Tab.0.left/0.23.1440.829/34.-745.1366.745@0.23.1440.829" timestamp="1604035393880" />
+    <state width="1398" height="273" key="GridCell.Tab.0.left/0.23.1440.830/34.-745.1366.745@0.23.1440.830" timestamp="1604035121301" />
+    <state width="1398" height="238" key="GridCell.Tab.0.right" timestamp="1604035393883">
+      <screen x="0" y="23" width="1440" height="829" />
+    </state>
+    <state width="1398" height="273" key="GridCell.Tab.0.right/0.0.1440.838/34.-745.1366.745@0.0.1440.838" timestamp="1603952849100" />
+    <state width="1398" height="265" key="GridCell.Tab.0.right/0.0.1440.900/34.-745.1366.745@0.0.1440.900" timestamp="1601753353519" />
+    <state width="1398" height="273" key="GridCell.Tab.0.right/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1604027471443" />
+    <state width="1324" height="276" key="GridCell.Tab.0.right/0.0.1440.900/34.-768.1366.768@34.-768.1366.768" timestamp="1601057556160" />
+    <state width="1398" height="265" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1601842345380" />
+    <state width="1398" height="265" key="GridCell.Tab.0.right/0.23.1440.821@0.23.1440.821" timestamp="1601839231012" />
+    <state width="1324" height="276" key="GridCell.Tab.0.right/0.23.1440.824/34.-745.1366.745@0.23.1440.824" timestamp="1601314778299" />
+    <state width="1398" height="336" key="GridCell.Tab.0.right/0.23.1440.825/34.-745.1366.745@0.23.1440.825" timestamp="1598552937315" />
+    <state width="1398" height="238" key="GridCell.Tab.0.right/0.23.1440.829/34.-745.1366.745@0.23.1440.829" timestamp="1604035393883" />
+    <state width="1398" height="273" key="GridCell.Tab.0.right/0.23.1440.830/34.-745.1366.745@0.23.1440.830" timestamp="1604035121304" />
+    <state width="1398" height="241" key="GridCell.Tab.1.bottom" timestamp="1598046473861">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="241" key="GridCell.Tab.1.bottom/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1597857786849" />
+    <state width="1398" height="241" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1598046473861" />
+    <state width="1398" height="241" key="GridCell.Tab.1.center" timestamp="1598046473857">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="241" key="GridCell.Tab.1.center/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1597857786846" />
+    <state width="1398" height="241" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1598046473857" />
+    <state width="1398" height="241" key="GridCell.Tab.1.left" timestamp="1598046473856">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="241" key="GridCell.Tab.1.left/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1597857786845" />
+    <state width="1398" height="241" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1598046473855" />
+    <state width="1398" height="241" key="GridCell.Tab.1.right" timestamp="1598046473860">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="241" key="GridCell.Tab.1.right/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1597857786848" />
+    <state width="1398" height="241" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1598046473860" />
+    <state width="1398" height="241" key="GridCell.Tab.2.bottom" timestamp="1598046473871">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="241" key="GridCell.Tab.2.bottom/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1597857786857" />
+    <state width="1398" height="241" key="GridCell.Tab.2.bottom/0.0.1440.900@0.0.1440.900" timestamp="1598046473871" />
+    <state width="1398" height="241" key="GridCell.Tab.2.center" timestamp="1598046473867">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="241" key="GridCell.Tab.2.center/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1597857786852" />
+    <state width="1398" height="241" key="GridCell.Tab.2.center/0.0.1440.900@0.0.1440.900" timestamp="1598046473867" />
+    <state width="1398" height="241" key="GridCell.Tab.2.left" timestamp="1598046473864">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="241" key="GridCell.Tab.2.left/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1597857786851" />
+    <state width="1398" height="241" key="GridCell.Tab.2.left/0.0.1440.900@0.0.1440.900" timestamp="1598046473864" />
+    <state width="1398" height="241" key="GridCell.Tab.2.right" timestamp="1598046473869">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="241" key="GridCell.Tab.2.right/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1597857786854" />
+    <state width="1398" height="241" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1598046473869" />
+    <state width="1398" height="241" key="GridCell.Tab.3.bottom" timestamp="1598046473880">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="241" key="GridCell.Tab.3.bottom/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1597857786862" />
+    <state width="1398" height="241" key="GridCell.Tab.3.bottom/0.0.1440.900@0.0.1440.900" timestamp="1598046473880" />
+    <state width="1398" height="241" key="GridCell.Tab.3.center" timestamp="1598046473875">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="241" key="GridCell.Tab.3.center/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1597857786860" />
+    <state width="1398" height="241" key="GridCell.Tab.3.center/0.0.1440.900@0.0.1440.900" timestamp="1598046473875" />
+    <state width="1398" height="241" key="GridCell.Tab.3.left" timestamp="1598046473873">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="241" key="GridCell.Tab.3.left/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1597857786859" />
+    <state width="1398" height="241" key="GridCell.Tab.3.left/0.0.1440.900@0.0.1440.900" timestamp="1598046473873" />
+    <state width="1398" height="241" key="GridCell.Tab.3.right" timestamp="1598046473878">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="241" key="GridCell.Tab.3.right/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1597857786861" />
+    <state width="1398" height="241" key="GridCell.Tab.3.right/0.0.1440.900@0.0.1440.900" timestamp="1598046473878" />
+    <state x="318" y="156" key="NewModule_or_Project.wizard" timestamp="1601321100942">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="318" y="156" key="NewModule_or_Project.wizard/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1597692371986" />
+    <state x="336" y="-635" key="NewModule_or_Project.wizard/0.0.1440.900/34.-768.1366.768@34.-768.1366.768" timestamp="1597951203669" />
+    <state x="318" y="156" key="NewModule_or_Project.wizard/0.0.1440.900@0.0.1440.900" timestamp="1601321100942" />
+    <state x="336" y="-635" key="NewModule_or_Project.wizard/0.23.1440.877/34.-768.1366.768@34.-768.1366.768" timestamp="1597948327341" />
+    <state x="311" y="159" key="RollbackChangesDialog" timestamp="1598812722113">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="311" y="159" key="RollbackChangesDialog/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1598447511728" />
+    <state x="311" y="159" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1598812722113" />
+    <state x="48" y="30" width="1024" height="722" key="SettingsEditor" timestamp="1601753347786">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="48" y="30" key="SettingsEditor/0.0.1440.900/34.-745.1366.745@0.0.1440.900" timestamp="1601753347786" />
+    <state x="48" y="30" key="SettingsEditor/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1598275500148" />
+    <state x="48" y="30" width="1024" height="722" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1597618365829" />
+    <state x="320" y="186" key="Vcs.Push.Dialog.v2" timestamp="1604039193654">
+      <screen x="0" y="23" width="1440" height="829" />
+    </state>
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1603974012460" />
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1598548201346" />
+    <state x="320" y="186" key="Vcs.Push.Dialog.v2/0.23.1440.827@0.23.1440.827" timestamp="1604000697962" />
+    <state x="320" y="186" key="Vcs.Push.Dialog.v2/0.23.1440.829/34.-745.1366.745@0.23.1440.829" timestamp="1604039193654" />
+    <state x="320" y="186" key="Vcs.Push.Dialog.v2/0.23.1440.829@0.23.1440.829" timestamp="1604005767919" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1598813366632">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1598813366632" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.23.1440.829@0.23.1440.829" timestamp="1598812379260" />
+    <state x="100" y="84" width="1240" height="765" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1598812379261">
+      <screen x="0" y="23" width="1440" height="829" />
+    </state>
+    <state x="100" y="84" width="1240" height="765" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1598097962833" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.824@0.23.1440.824" timestamp="1597667532443" />
+    <state x="100" y="84" width="1240" height="765" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.829@0.23.1440.829" timestamp="1598812379261" />
+    <state x="512" y="371" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603990261101">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="512" y="371" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1603990261101" />
+    <state x="512" y="371" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1597667976974" />
+    <state x="185" y="-745" width="1041" height="745" key="dock-window-1" timestamp="1599165609015">
+      <screen x="34" y="-745" width="1366" height="745" />
+    </state>
+    <state x="185" y="-768" width="1041" height="759" key="dock-window-1/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1599164570403" />
+    <state x="185" y="-745" width="1041" height="745" key="dock-window-1/0.23.1440.829/34.-745.1366.745@0.23.1440.829" timestamp="1599165609015" />
+    <state x="395" y="173" width="739" height="531" key="find.popup" timestamp="1604035800268">
+      <screen x="0" y="23" width="1440" height="829" />
+    </state>
+    <state x="395" y="163" width="739" height="575" key="find.popup/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1602172790201" />
+    <state x="409" y="-629" width="615" height="490" key="find.popup/0.0.1440.900/34.-768.1366.768@34.-768.1366.768" timestamp="1597779084234" />
+    <state x="395" y="173" width="739" height="531" key="find.popup/0.23.1440.829/34.-745.1366.745@0.23.1440.829" timestamp="1604035800268" />
+    <state x="341" y="170" key="git4idea.branch.GitSmartOperationDialog" timestamp="1597689249180">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="341" y="170" key="git4idea.branch.GitSmartOperationDialog/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1597689249180" />
+    <state x="341" y="170" key="git4idea.branch.GitSmartOperationDialog/0.0.1440.900@0.0.1440.900" timestamp="1597667097971" />
+    <state x="52" y="72" key="new project wizard" timestamp="1597690727492">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="52" y="72" key="new project wizard/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1597690727492" />
+    <state x="385" y="210" key="run.anything.popup" timestamp="1597615871430">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="210" key="run.anything.popup/0.0.1440.900@0.0.1440.900" timestamp="1597615871430" />
+    <state x="367" y="108" width="707" height="793" key="search.everywhere.popup" timestamp="1602093844514">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="367" y="108" width="707" height="793" key="search.everywhere.popup/0.0.1440.900/34.-768.1366.768@0.0.1440.900" timestamp="1602093844514" />
+    <state x="382" y="-676" width="670" height="676" key="search.everywhere.popup/0.0.1440.900/34.-768.1366.768@34.-768.1366.768" timestamp="1597790410310" />
+    <state x="450" y="294" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1597667127744">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="450" y="294" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1440.900@0.0.1440.900" timestamp="1597667127744" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+</project>

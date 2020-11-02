@@ -1,63 +1,134 @@
-<div class="page-header">
-    <h3 class="page-title">
-    <span class="page-title-icon bg-gradient-primary text-white mr-2">
-      <i class="mdi mdi-receipt"></i>
-    </span>
-        Invoices
-    </h3>
+<app-page-title [heading]="heading" [subheading]="subheading" [icon]="icon"></app-page-title>
+
+<div class="main-card mb-3 card">
+    <div class="table-responsive">
+        <div class="form-group">
+            <input style="border: solid  #05b5d4 1px; width: 95%; margin: 2%" type="text" class="form-control" placeholder="Search Here" [(ngModel)]="filter">
+        </div>
+
+        <table class="align-middle mb-0 table table-striped table-hover">
+            <thead>
+            <tr>
+                <th class="text-center">Reference</th>
+                <th class="text-center">Date</th>
+                <th class="text-center">Grand total</th>
+                <th class="text-center">Total payed</th>
+                <th class="text-center">Amount Due</th>
+                <th class="text-center">Action</th>
+            </tr>
+            </thead>
+            <tbody *ngIf="invoices.length != 0">
+            <tr *ngFor="let invoice of invoices | paginate: config | filter: filter">
+                <td class="text-center">{{invoice.reference}}</td>
+                <td class="text-center">{{invoice.invoice_date | date:'yyyy-MM-dd'}}</td>
+                <td class="text-center">R {{invoice.grand_totoal}}</td>
+                <td class="text-center">R {{invoice.amount_payed}}</td>
+                <td class="text-center">R {{invoice.amount_due}}</td>
+                <td class="text-center">
+                    <button type="button" class="mr-2 btn-icon btn-icon-only btn btn-dark"
+                            (click)="viewPDF(invoice)">
+                        <i class="pe-7s-look btn-icon-wrapper"></i>
+                    </button>
+                    <button type="button" class="md-2 btn-icon btn-icon-only btn btn-primary"
+                            (click)="openModal(MakePayment, invoice)">
+                        <i class="pe-7s-credit font-icon-lg btn-icon-wrapper"></i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text" *ngIf="invoices.length == 0">
+        No Records Found!
+    </div>
+    <pagination-controls (pageChange)="pageChanged($event)" style="margin-top: 5%"></pagination-controls>
 </div>
 
-<div class="col-lg-12 grid-margin stretch-card">
-    <div class="card">
-        <div class="card-body">
-            <div class="form-group">
-                <input style="border: solid  #05b5d4 1px" type="text" class="form-control" placeholder="Search Here" [(ngModel)]="filter">
-            </div>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Reference</th>
-                        <th>Date</th>
-                        <th>Grand total</th>
-                        <th>Total payed</th>
-                        <th>Amount Due</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody *ngIf="invoices.length != 0">
-                        <tr *ngFor="let invoice of invoices | paginate: config | filter: filter">
-                            <td>
-                                {{invoice.reference}}
-                            </td>
-                            <td>
-                                {{invoice.invoice_date | date:'MMMM d, y'}}
-                            </td>
-                            <td>
-                                R {{invoice.grand_totoal}}
-                            </td>
-                            <td>
-                                R {{invoice.amount_payed}}
-                            </td>
-                            <td>
-                                R{{invoice.amount_due}}
-                            </td>
-                            <td>
-                                <div class="template-demo">
-                                    <button type="button" class="btn btn-gradient-primary btn-icon-text">
-                                        <i class="mdi mdi-file-check btn-icon-prepend"></i>
-                                        Make Payment
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="text" *ngIf="invoices.length == 0">
-                    No Records Found!
-                </div>
-            </div>
+<ng-template class="modal fade" #MakePayment let-modal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="card-title" id="exampleModalLabel3">Make Payment</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.dismiss()">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+        <div class="modal-body">
+            <form class="pt-3"  #makePaymentForm="ngForm" (ngSubmit)="makePaymentForm.form.valid && uploadPop()">
+                <div class="form-group" >
+                    <label>Invoice Reference</label>
+                    <input class="form-control text-left" type="text" placeholder="Invoice reference"
+                           [(ngModel)]="reference"
+                           name="invoiceReference"
+                           #invoiceReference="ngModel"
+                           [ngClass]="{ 'is-invalid': makePaymentForm.submitted && invoiceReference.invalid}"
+                           readonly>
+                    <div *ngIf="makePaymentForm.submitted && invoiceReference.invalid" class="invalid-feedback">
+                        <div *ngIf="invoiceReference.errors.required">Invoice reference is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Payment type</label>
+                    <select  type="text"
+                             [(ngModel)]="paymentMethod"
+                             name="paymentType"
+                             #paymentType="ngModel"
+                             [ngClass]="{ 'is-invalid': makePaymentForm.submitted && paymentType.invalid }"
+                             class="form-control text-left"
+                             required>
+                        <option *ngFor="let option of paymentMethods" [value]="option">{{option}}</option>
+                    </select>
+                </div>
+
+                <label>Amount</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text btn-light">R</span></div>
+                    <input class="form-control" type="number"  placeholder="Amount"
+                           [(ngModel)]="amountPayed"
+                           name="amount"
+                           #amount="ngModel"
+                           [ngClass]="{ 'is-invalid': makePaymentForm.submitted && amount.invalid }"
+                           required>
+                    <div class="input-group-append"><span class="input-group-text btn-light">.00</span></div>
+                    <div *ngIf="makePaymentForm.submitted && amount.invalid" class="invalid-feedback">
+                        <div *ngIf="amount.errors.required">Amount is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="position-relative">
+                        <label>File</label>
+                        <input class="form-control-file " type="file" name="files"
+                               (change)="fileEvent($event)"
+                               [(ngModel)]="path"
+                               name="formFile"
+                               #formFile="ngModel"
+                               [ngClass]="{ 'is-invalid': makePaymentForm.submitted && formFile.invalid }"
+                               required>
+                        <div *ngIf="makePaymentForm.submitted && formFile.invalid" class="invalid-feedback">
+                            <div *ngIf="formFile.errors.required">File is required</div>
+                        </div>
+                        <small class="form-text text-muted"><small class="form-text text-muted">
+                            Supported file formats include JPG, JPEG, PNG, PNG, GIF, PDF, DOCX., TXT.
+                            You can find out the file format by looking at the last 3-4 letters on the file name.
+                            (This is known as the extension.)
+                            For example my-logo.jpg is a JPG format image.
+                        </small>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="modal.close()">Cancel</button>
+                    <button type="submit" class="btn btn-info" data-dismiss="Submit" >Continue</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+<div *ngIf="isLoading" class="overlay">
+    <div class="spinner">
+        <img class="loader" src="../../../assets/wheel.gif">
     </div>
 </div>

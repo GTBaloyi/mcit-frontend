@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 })
 export class QuotationService {
 
-    protected basePath = 'https://mcts-service.azurewebsites.net';
+    protected basePath = 'https://mcts-backend.azurewebsites.net';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
@@ -112,6 +112,7 @@ export class QuotationService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
+            'application/json-patch+json',
             'application/json',
             'text/json',
             'application/_*+json'
@@ -167,6 +168,7 @@ export class QuotationService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
+            'application/json-patch+json',
             'application/json',
             'text/json',
             'application/_*+json'
@@ -229,6 +231,52 @@ export class QuotationService {
         }
 
         return this.httpClient.get<QuotationResponseModel>(`${this.configuration.basePath}/api/Quotation/quote/${encodeURIComponent(String(id))}`,
+            {
+                responseType: <any>responseType,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * @param quoteReference 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public apiQuotationQuoteReferenceQuoteReferenceGet(quoteReference: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<QuotationResponseModel>;
+    public apiQuotationQuoteReferenceQuoteReferenceGet(quoteReference: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<QuotationResponseModel>>;
+    public apiQuotationQuoteReferenceQuoteReferenceGet(quoteReference: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<QuotationResponseModel>>;
+    public apiQuotationQuoteReferenceQuoteReferenceGet(quoteReference: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<any> {
+        if (quoteReference === null || quoteReference === undefined) {
+            throw new Error('Required parameter quoteReference was null or undefined when calling apiQuotationQuoteReferenceQuoteReferenceGet.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        let httpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (httpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                'text/plain',
+                'application/json',
+                'text/json'
+            ];
+            httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+
+        let responseType: 'text' | 'json' = 'json';
+        if(httpHeaderAcceptSelected && httpHeaderAcceptSelected.startsWith('text')) {
+            responseType = 'text';
+        }
+
+        return this.httpClient.get<QuotationResponseModel>(`${this.configuration.basePath}/api/Quotation/quote-reference/${encodeURIComponent(String(quoteReference))}`,
             {
                 responseType: <any>responseType,
                 withCredentials: this.configuration.withCredentials,
@@ -356,6 +404,7 @@ export class QuotationService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
+            'application/json-patch+json',
             'application/json',
             'text/json',
             'application/_*+json'

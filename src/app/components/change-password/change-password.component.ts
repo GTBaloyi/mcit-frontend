@@ -13,17 +13,16 @@ import {AuthGuard} from "../../services/auth.guard";
 })
 export class ChangePasswordComponent implements OnInit {
 
-    private formGroup: FormGroup;
-    private user : LoginResponseModel;
-    private oldPassword : string;
-    private newPassword : string;
-    private username : string;
+    public user : LoginResponseModel;
+    public oldPassword : string;
+    public newPassword : string;
+    public username : string;
     isLoading = new Subject<boolean>();
 
-    constructor(private formBuilder: FormBuilder,
-                private router: Router,
-                private usersService: UsersService,
-                private authGuard: AuthGuard){
+    constructor(public formBuilder: FormBuilder,
+                public router: Router,
+                public usersService: UsersService,
+                public authGuard: AuthGuard){
 
         if(this.router.getCurrentNavigation().extras.state != undefined) {
             this.oldPassword = this.router.getCurrentNavigation().extras.state.password;
@@ -37,9 +36,6 @@ export class ChangePasswordComponent implements OnInit {
         this.user = JSON.parse(sessionStorage.getItem("loginInfo"));
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
-
-    }
 
     changePassword(changePasswordForm) {
         this.isLoading.next(true);

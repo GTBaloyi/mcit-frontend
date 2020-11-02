@@ -12,21 +12,22 @@ import moment = require('moment');
   styleUrls: ['./create-quotation.component.scss']
 })
 export class CreateQuotationComponent implements OnInit {
+    heading = 'Quotation';
+    subheading = 'Request a quotation';
+    icon = 'pe-7s-calculator icon-gradient bg-tempting-azure';
+
 
     isLoading = new Subject<boolean>();
-    private focusAreas: Array<any> = [];
-    private selectedFocusArea: string;
-    private products: Array<any> = [];
-    private selectedProduct: string;
-    private selectedQuantity: number;
-    private newProduct: QuotationItemEntity  = {};
-    private quotation: QuotationModel= <QuotationModel> {};
-    private productsArray: Array<QuotationItemEntity> = [];
-    private userInformation : ClientRegistrationRequestModel = <ClientRegistrationRequestModel> {};
+    public selectedFocusArea: string;
+    public selectedProduct: string;
+    public selectedQuantity: number;
+    public quotation: QuotationModel = <QuotationModel>{};
+    public productsArray: Array<QuotationItemEntity> = [];
+    public userInformation: ClientRegistrationRequestModel = <ClientRegistrationRequestModel>{};
 
 
-    constructor(private quotationService: QuotationService, private productsService: ProductsService, private router: Router,private toastr: ToastrService) {
-        this.userInformation  = JSON.parse(sessionStorage.getItem("userInformation"));
+    constructor(public quotationService: QuotationService, public productsService: ProductsService, public router: Router, public toastr: ToastrService) {
+        this.userInformation = JSON.parse(sessionStorage.getItem("userInformation"));
     }
 
 
@@ -39,70 +40,34 @@ export class CreateQuotationComponent implements OnInit {
         this.quotation.phone_number = this.userInformation.contactNumber;
         this.quotation.email = this.userInformation.contactEmail;
         this.quotation.company_Registration = this.userInformation.companyRegistrationNumber;
-
-        this.getFocusArea();
-        this.getProducts(this.selectedFocusArea);
     }
 
-
-    getFocusArea(){
-        this.productsService.apiProductsFocusAreasGet().subscribe (
-            (data: any) => {
-                this.focusAreas = data
-            },
-            error => {
-                console.log(error);
-            },
-            () => {
-            }
-        )
-
-    }
-
-    getProducts(focusArea: any){
-
-        this.selectedFocusArea = focusArea;
-        this.products = [];
-
-
-        this.productsService.apiProductsProductsFocusAreaGet(focusArea).subscribe (
-            (data: any ) => {
-                this.products = data
-            },
-            error => {
-                console.log(error);
-            },
-            () => {
-            }
-        )
-    }
-
-    requestQuotation(){
+    requestQuotation() {
         this.isLoading.next(true);
 
-        let date = moment().format("YYYY-MM-DD");
+        let date = moment().format("yyyy-MM-DD");
 
         this.quotation.quote_reference = '';
         this.quotation.date_generated = date.toString();
         this.quotation.quote_expiryDate = date.toString();
         this.quotation.subTotal = 0;
-        this.quotation.globalDiscount = 0;
-        this.quotation.globalTax = 0;
+        this.quotation.discount = 0;
+        this.quotation.vatAmount = 0;
         this.quotation.grand_total = 0;
         this.quotation.items = this.productsArray;
         this.quotation.status = 'Pending';
 
-        this.quotationService.apiQuotationCreateQuotePost(this.quotation).subscribe (
+        this.quotationService.apiQuotationCreateQuotePost(this.quotation).subscribe(
             (data: any) => {
                 data;
             },
             error => {
-                if(error.status == 200){
+                if (error.status == 200) {
                     this.isLoading.next(false);
                     this.showSuccess();
                     this.router.navigateByUrl('/view-quotation');
 
-                }else{
+                } else {
                     console.log(error);
                     this.isLoading.next(false);
                     this.showError();
@@ -117,7 +82,6 @@ export class CreateQuotationComponent implements OnInit {
 
     }
 
-
     showSuccess() {
         this.toastr.success('Process successfully completed', 'Success', {
             timeOut: 3000,
@@ -129,24 +93,4 @@ export class CreateQuotationComponent implements OnInit {
             timeOut: 3000,
         });
     }
-
-    changeProduct(value){
-        this.selectedProduct = value;
-    }
-
-    changeQuantity(value){
-        this.selectedQuantity = Number(value);
-    }
-
-    addItem() {
-        this.newProduct = {id:0, focusArea: this.selectedFocusArea, item: this.selectedProduct, quantity: this.selectedQuantity, total: 0};
-        this.productsArray.push(this.newProduct);
-        this.toastr.success('New row added successfully', 'New product');
-        return true;
-    }
-
-    deleteItem(index) {
-        this.productsArray.splice(index, 1);
-        this.toastr.warning('Product deleted successfully', 'Delete product');
-        return true;
-    }}
+}

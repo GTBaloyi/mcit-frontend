@@ -8,6 +8,8 @@ import {environment} from "../environments/environment.prod";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {LandingPageComponent } from './components/landing-page/landing-page.component';
+import { MyAccountComponent } from './components/my-account/my-account.component';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 
 @NgModule({
     imports: [
@@ -20,7 +22,9 @@ import {LandingPageComponent } from './components/landing-page/landing-page.comp
     ],
     declarations: [
         AppComponent,
-        LandingPageComponent
+        LandingPageComponent,
+        MyAccountComponent,
+        UpdatePasswordComponent,
     ],
     providers: [
         {provide: BASE_API_URL, useValue: environment.BASE_API_URL},

@@ -18,22 +18,25 @@ import {QuotationResponseModel} from "../../services/model/models";
   styleUrls: ['./view-quotation.component.scss']
 })
 export class ViewQuotationComponent implements OnInit {
+    heading = 'Quotation';
+    subheading = 'View all quotations';
+    icon = 'pe-7s-calculator icon-gradient bg-tempting-azure';
 
-    isLoading = new Subject<boolean>();
-    private invoice : InvoiceRequestModel;
-    private userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;
-    private quotationsArray: Array<QuotationResponseModel> = [];
-    private username : any;
-    private filter : string;
-    private config: any;
-    private showModal: boolean;
+    isLoading = true;
+    invoice : InvoiceRequestModel = {};
+    userInformation : ClientRegistrationRequestModel =  <ClientRegistrationRequestModel>'' ;
+    quotationsArray: Array<QuotationResponseModel> = [];
+    username : any;
+    filter : string;
+    config: any;
+    showModal: boolean;
 
 
-    constructor(private quotationService: QuotationService,
-                private productsService: ProductsService,
-                private router: Router,
-                private toastr: ToastrService,
-                private invoiceService: InvoiceService) {
+    constructor(public quotationService: QuotationService,
+                public productsService: ProductsService,
+                public router: Router,
+                public toastr: ToastrService,
+                public invoiceService: InvoiceService) {
     }
 
     ngOnInit() {
@@ -48,26 +51,34 @@ export class ViewQuotationComponent implements OnInit {
     }
 
     getQuotation(){
-      this.isLoading.next(true);
+        this.isLoading = true;
 
       this.quotationService.apiQuotationQuotesEmailGet(this.username).subscribe (
           (data: any) => {
-            this.quotationsArray = data;
+              this.quotationsArray = data;
           },
           error => {
-
-            console.log(error);
-            this.isLoading.next(false);
-            this.showError();
-
+              console.log(error);
+              this.showError();
           },
           () => {
-            this.isLoading.next(false);
-            this.showSuccess();
+              this.sortData;
+              this.showSuccess();
           }
       );
-
     }
+
+
+    get sortData(): Array<QuotationResponseModel> {
+        return this.quotationsArray.sort((quotationUnsorted, quotationSorted) => {
+            return <any>new Date(quotationSorted.date_generated) - <any>new Date(quotationUnsorted.date_generated);
+        });
+    }
+
+    /*filterData(searchTerm){
+        this.quotationsArray = this.quotationsArray.filter(quotations => matches(quotations, searchTerm, this.pipe));
+        const total = this.quotationsArray.length;
+    }*/
 
     show() {
         this.showModal = true;
@@ -81,20 +92,18 @@ export class ViewQuotationComponent implements OnInit {
     acceptQuotation(quotation : QuotationResponseModel){
         quotation.status = "Accepted";
 
-        this.isLoading.next(true);
+        this.isLoading = true;
         this.quotationService.apiQuotationUpdateQuotePut(quotation).subscribe (
             () => {
             },
             error => {
                 console.log(error);
-                this.isLoading.next(false);
                 this.showError();
-
             },
             () => {
-                this.isLoading.next(false);
                 this.generateInvoice(quotation);
                 this.getQuotation();
+                this.showSuccess();
             }
         );
     }
@@ -102,25 +111,26 @@ export class ViewQuotationComponent implements OnInit {
     rejectQuotation(quotation : QuotationResponseModel){
         quotation.status = "Rejected";
 
-        this.isLoading.next(true);
+        this.isLoading = true;
         this.quotationService.apiQuotationUpdateQuotePut(quotation).subscribe (
             () => {
             },
             error => {
                 console.log(error);
-                this.isLoading.next(false);
                 this.showError();
             },
             () => {
-                this.isLoading.next(false);
                 this.hide();
                 this.getQuotation();
+                this.showSuccess();
             }
         );
     }
 
     generateInvoice(quotation : QuotationResponseModel){
-        let date = moment().format("YYYY-MM-DD");
+        console.log('I came in here');
+
+        let date = moment().format("yyyy-MM-DD");
         this.userInformation  = JSON.parse(sessionStorage.getItem("userInformation"));
 
         this.invoice.id = 0;
@@ -139,17 +149,15 @@ export class ViewQuotationComponent implements OnInit {
         this.invoice.generatedBy = '';
         this.invoice.approvedBy = '';
 
-        this.isLoading.next(true);
+        this.isLoading = true;
         this.invoiceService.apiInvoiceGenerateInvoicePost(this.invoice).subscribe (
             () => {
             },
             error => {
                 console.log(error);
-                this.isLoading.next(false);
                 this.showError();
             },
             () => {
-                this.isLoading.next(false);
                 this.showSuccess();
             }
         );
@@ -157,7 +165,8 @@ export class ViewQuotationComponent implements OnInit {
     }
 
     viewPDF(quotation : QuotationResponseModel){
-      this.router.navigate(['/view-quotation-pdf'], {state:{quotation: quotation}});
+        sessionStorage.setItem('viewQuotation', JSON.stringify(quotation));
+        this.router.navigateByUrl('/view-quotation-pdf');
     }
 
     pageChanged(event){
@@ -180,12 +189,14 @@ export class ViewQuotationComponent implements OnInit {
       this.toastr.success('Process successfully completed', 'Success', {
           timeOut: 3000,
       });
+        this.isLoading = false;
     }
 
     showError() {
       this.toastr.error('Ops, an error occurred. Please try again.', 'Error!!!', {
           timeOut: 3000,
       });
+        this.isLoading = false;
     }
 
 }

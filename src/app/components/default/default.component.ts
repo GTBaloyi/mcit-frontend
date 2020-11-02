@@ -1,41 +1,48 @@
 import { Component, OnInit } from '@angular/core';
-import {NavigationEnd, RouteConfigLoadEnd, RouteConfigLoadStart, Router} from "@angular/router";
-
+import {animate, query, style, transition, trigger} from '@angular/animations';
+import {select} from '@angular-redux/store';
+import {Observable} from 'rxjs';
+import {ThemeOptions} from "../../theme-options";
+import {ConfigActions} from "../../ThemeOptions/store/config.actions";
 @Component({
-  selector: 'app-default',
-  templateUrl: './default.component.html',
-  styleUrls: ['./default.component.scss']
+    selector: 'app-default',
+    templateUrl: './default.component.html',
+    styleUrls: ['./default.component.scss'],
+    animations: [
+        trigger('Dashboard', [
+            transition('* <=> *', [
+                query(':enter, :leave', [
+                    style({
+                        opacity: 0,
+                        display: 'flex',
+                        flex: '1',
+                        transform: 'translateY(-20px)',
+                        flexDirection: 'column'
+
+                    }),
+                ]),
+                query(':enter', [
+                    animate('600ms ease', style({opacity: 1, transform: 'translateY(0)'})),
+                ]),
+
+                query(':leave', [
+                    animate('600ms ease', style({opacity: 0, transform: 'translateY(-20px)'})),
+                ], { optional: true })
+            ]),
+        ])
+    ]
 })
 export class DefaultComponent implements OnInit {
 
-    title = '';
+    @select('config') public config$: Observable<any>;
 
-    showSidebar: boolean = true;
-    showNavbar: boolean = true;
-    showFooter: boolean = true;
-    isLoading: boolean;
-
-    constructor(private router: Router) {
-
-        // Spinner for lazyload modules
-        router.events.forEach((event) => {
-            if (event instanceof RouteConfigLoadStart) {
-                this.isLoading = true;
-            } else if (event instanceof RouteConfigLoadEnd) {
-                this.isLoading = false;
-            }
-        });
+    constructor(public globals: ThemeOptions, public configActions: ConfigActions) {
     }
 
+    toggleSidebarMobile() {
+        this.globals.toggleSidebarMobile = !this.globals.toggleSidebarMobile;
+    }
 
-
-    ngOnInit() {
-        // Scroll to top after route change
-        this.router.events.subscribe((evt) => {
-            if (!(evt instanceof NavigationEnd)) {
-                return;
-            }
-            window.scrollTo(0, 0);
-        });
+    ngOnInit(): void {
     }
 }

@@ -1,0 +1,131 @@
+<app-page-title [heading]="heading" [subheading]="subheading" [icon]="icon"></app-page-title>
+
+<div class="main-card mb-3 card">
+    <div class="card-header" style="display: flex">
+        <div class="text-left" style="width: 93%">
+            <div class="widget-content p-0" style="width: 50%">
+                <div class="widget-content-wrapper">
+                    <div class="widget-content-left flex2">
+                        <div class="widget-heading">Project Name: {{project.projectName}} <br> Project Leader: {{employeeInformation?.name}} {{employeeInformation?.surname}} ({{employeeInformation?.email}})</div>
+                        <div class="widget-subheading">Project Description: {{project.projectDescription}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-right">
+            <button type="button" class="btn btn-dark" routerLink="/projects" value="Convert">
+                <i class="pe-7s-back btn-icon-wrapper"></i>
+                Back
+            </button>
+        </div>
+    </div>
+    <div class="card-header" style="display: flex">
+        <div class="text-left" style="width: 70%; margin-right: 5%; margin-top: 4px">
+            <div class="progress">
+                <div class="progress-bar bg-gradient-success" role="progressbar"
+                     aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+                     [style.width]="getProgressPercentage(project.projectProgress.progressUpdatePercentage)">
+                    <div class="textBar">{{project.projectProgress.progressUpdatePercentage}} %</div>
+                </div>
+            </div>
+        </div>
+        <div class="text-right" style="width: 400px">
+            <div class="badge badge-pill badge-success"
+                 style="width: 60%" *ngIf="project.projectProgress.projectStatus == 'Ongoing'">
+                {{project.projectProgress.projectStatus}}
+            </div>
+            <div class="badge badge-pill badge-dark"
+                 style="width: 60%" *ngIf="project.projectProgress.projectStatus == 'Not Started'">
+                {{project.projectProgress.projectStatus}}
+            </div>
+            <div class="badge badge-pill badge-danger" style="width: 60%"
+                 *ngIf="project.projectProgress.projectStatus == 'Paused'">
+                {{project.projectProgress.projectStatus}}
+            </div>
+            <div class="badge badge-pill badge-info" style="width: 60%"
+                 *ngIf="project.projectProgress.projectStatus == 'Completed'">
+                {{project.projectProgress.projectStatus}}
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal"
+                    [disabled]="disableButton()"
+                    (click)="openModal(rateService, '')">
+                <i class="pe-7s-star btn-icon-wrapper"></i> Rate
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <div class="invoice overflow-auto">
+                        <div *ngIf="ProjectTodoItems.length != 0">
+                            <table class="align-middle mb-0 table table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Focus Area</th>
+                                    <th>Product</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let item of ProjectTodoItems | paginate: config ;">
+                                    <td>{{item.focusArea}}</td>
+                                    <td>{{item.item}}</td>
+                                    <td>{{item.dateStarted | date:'yyyy-MM-dd'}}</td>
+                                    <td>{{item.dateEnded | date:'yyyy-MM-dd'}}</td>
+                                    <td>
+                                        <div class="badge badge-pill badge-success" style="width: 100%" *ngIf="item.status == 'Ongoing'">{{item.status }}</div>
+                                        <div class="badge badge-pill badge-dark" style="width: 100%" *ngIf="item.status  == 'Not Started'">{{item.status }}</div>
+                                        <div class="badge badge-pill badge-danger" style="width: 100%" *ngIf="item.status  == 'Paused'">{{item.status}}</div>
+                                        <div class="badge badge-pill badge-info" style="width: 100%" *ngIf="item.status == 'Completed'">{{item.status }}</div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <br>
+                            <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+
+                        </div>
+                        <div class="text" *ngIf="ProjectTodoItems.length == 0">
+                            No Items added for this project!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template class="modal fade" #rateService let-modal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="card-title" id="exampleModalLabel3">How would you rate our service?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.dismiss()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form class="pt-3"  #createRating="ngForm" (ngSubmit)="createRating.form.valid && rateProject()">
+                <div class="modal-footer d-block text-center">
+                    <h1 class="text-warning">
+                        <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="false"></ngb-rating>
+                    </h1>
+                    <p>Rate: {{currentRate}}</p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="modal.close()">Cancel</button>
+                    <button type="submit" class="btn btn-info" data-dismiss="Submit" >Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+<div *ngIf="isLoading | async" class="overlay">
+    <div class="spinner">
+        <img class="loader" src="../../../assets/wheel.gif">
+    </div>
+</div>

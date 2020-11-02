@@ -12,9 +12,9 @@ import {LoginResponseModel} from "../../services";
 export class NavbarComponent implements OnInit {
   public iconOnlyToggled = false;
   public sidebarToggled = false;
-  private user : LoginResponseModel;
+  public user : LoginResponseModel;
 
-  constructor(config: NgbDropdownConfig, private router: Router) {
+  constructor(config: NgbDropdownConfig, public router: Router) {
     config.placement = 'bottom-right';
   }
 
@@ -56,6 +56,8 @@ export class NavbarComponent implements OnInit {
       sessionStorage.removeItem('loginInfo');
       sessionStorage.removeItem('username');
       sessionStorage.removeItem('userInformation');
+      sessionStorage.removeItem('viewQuotation');
+      sessionStorage.removeItem('viewInvoice');
       this.router.navigateByUrl('/landing-page');
   }
 
