@@ -48,7 +48,7 @@
     "chartjs-plugin-annotation": "^0.5.7",
     "chartjs-plugin-datalabels": "^0.6.0",
     "compass-mixins": "^0.12.10",
-    "express": "^4.17.1",
+    "express": "^4.19.2",
     "font-awesome": "^4.7.0",
     "html2canvas": "^1.0.0-rc.5",
     "jquery": "^3.4.1",
